@@ -1,0 +1,48 @@
+name: Bug Report
+description: Report a bug or issue with Rayfin
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting a bug! Please provide enough detail so we can
+        reproduce and fix the issue.
+
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened?
+      description: Describe the bug. What did you expect vs. what actually happened?
+    validations:
+      required: true
+
+  - type: textarea
+    id: repro-steps
+    attributes:
+      label: Steps to reproduce
+      description: Minimal steps to trigger the bug.
+      placeholder: |
+        1. Run `npm create @microsoft/rayfin@latest`
+        2. Select template ...
+        3. Run `npm install && npm run dev`
+        4. Navigate to ...
+    validations:
+      required: true
+
+  - type: textarea
+    id: environment
+    attributes:
+      label: Environment
+      description: Node version, OS, browser, Rayfin CLI version, etc.
+      placeholder: |
+        - Node: 22.x
+        - OS: macOS 15
+        - Rayfin CLI: 0.5.0
+        - Browser: Chrome 130
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs or screenshots
+      description: Paste any relevant error output or attach screenshots.
+      render: shell
