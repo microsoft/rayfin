@@ -61,6 +61,7 @@ Rayfin supports a pure local development experience — no cloud resources requi
 | [`@microsoft/rayfin-lib`](https://www.npmjs.com/package/@microsoft/rayfin-lib) | Shared library utilities and HTTP client foundation |
 | [`@microsoft/rayfin-tools-common`](https://www.npmjs.com/package/@microsoft/rayfin-tools-common) | Shared utilities for Rayfin tools packages |
 | [`@microsoft/rayfin-docs`](https://www.npmjs.com/package/@microsoft/rayfin-docs) | Rayfin docs indexing and search library |
+| [`@microsoft/rayfin-guide`](https://www.npmjs.com/package/@microsoft/rayfin-guide) | Cross-cutting builder guides for the Rayfin platform |
 | [`@microsoft/rayfin-mcp`](https://www.npmjs.com/package/@microsoft/rayfin-mcp) | Rayfin Model Context Protocol tooling |
 | [`@microsoft/fabric-embedded-host`](https://www.npmjs.com/package/@microsoft/fabric-embedded-host) | PostMessage bridge and embedded mode detection for Fabric iframes |
 
