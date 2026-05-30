@@ -77,6 +77,7 @@ Rayfin supports a pure local development experience — no cloud resources requi
 - 📖 [Documentation](https://aka.ms/rayfin/docs)
 - 🐛 [Report a Bug](https://github.com/microsoft/rayfin/issues/new?template=bug.yml)
 - 💡 [Request a Feature](https://github.com/microsoft/rayfin/issues/new?template=feature-request.yml)
+- 🐟 [Reddit](https://reddit.com/r/rayfin)
 - 🤝 [Contributing Guide](CONTRIBUTING.md)
 
 ## Trademarks
