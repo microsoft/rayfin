@@ -39,6 +39,12 @@ npx rayfin up                          # deploy and run
 - **Typed Data Access** — Schema-driven GraphQL client with compile-time type checking
 - **Static Hosting** — Deploy frontends with `rayfin up staticapp deploy`
 
+## Local Development (Experimental)
+
+Rayfin supports a pure local development experience — no cloud resources required. This is currently experimental and great for trying out Rayfin or building offline.
+
+👉 See the [Todo Local Experimental template](https://github.com/microsoft/awesome-rayfin/tree/main/templates/todo-local-experimental) to get started.
+
 ## Packages
 
 | Package | Description |
