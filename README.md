@@ -9,7 +9,8 @@
   <a href="https://aka.ms/rayfin/docs">Docs</a> •
   <a href="https://aka.ms/rayfin">Website</a> •
   <a href="https://github.com/microsoft/awesome-rayfin">Templates</a> •
-  <a href="https://github.com/microsoft/rayfin/issues">Issues</a>
+  <a href="https://github.com/microsoft/rayfin/issues">Issues</a> •
+  <a href="https://reddit.com/r/rayfin">Reddit</a>
 </div>
 
 ---
