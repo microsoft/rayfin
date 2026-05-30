@@ -47,23 +47,23 @@ Rayfin supports a pure local development experience — no cloud resources requi
 
 ## Packages
 
-| Package | Description |
-|---------|-------------|
-| [`@microsoft/create-rayfin`](https://www.npmjs.com/package/@microsoft/create-rayfin) | Scaffold a Rayfin project with `npm create @microsoft/rayfin@latest` |
-| [`@microsoft/rayfin-cli`](https://www.npmjs.com/package/@microsoft/rayfin-cli) | CLI for scaffolding, deploying, and managing Rayfin apps |
-| [`@microsoft/rayfin-core`](https://www.npmjs.com/package/@microsoft/rayfin-core) | Entity decorators, schema definitions, and core types |
-| [`@microsoft/rayfin-client`](https://www.npmjs.com/package/@microsoft/rayfin-client) | Main client SDK for Rayfin services |
-| [`@microsoft/rayfin-data`](https://www.npmjs.com/package/@microsoft/rayfin-data) | Type-safe client library for Data API Builder endpoints |
-| [`@microsoft/rayfin-auth`](https://www.npmjs.com/package/@microsoft/rayfin-auth) | Authentication utilities for Rayfin SDK |
-| [`@microsoft/rayfin-auth-provider-fabric`](https://www.npmjs.com/package/@microsoft/rayfin-auth-provider-fabric) | Fabric brokered authentication provider for Rayfin SDK |
-| [`@microsoft/rayfin-functions`](https://www.npmjs.com/package/@microsoft/rayfin-functions) | Rayfin functions runtime |
-| [`@microsoft/rayfin-storage`](https://www.npmjs.com/package/@microsoft/rayfin-storage) | Type-safe client library for Rayfin storage operations |
-| [`@microsoft/rayfin-lib`](https://www.npmjs.com/package/@microsoft/rayfin-lib) | Shared library utilities and HTTP client foundation |
-| [`@microsoft/rayfin-tools-common`](https://www.npmjs.com/package/@microsoft/rayfin-tools-common) | Shared utilities for Rayfin tools packages |
-| [`@microsoft/rayfin-docs`](https://www.npmjs.com/package/@microsoft/rayfin-docs) | Rayfin docs indexing and search library |
-| [`@microsoft/rayfin-guide`](https://www.npmjs.com/package/@microsoft/rayfin-guide) | Cross-cutting builder guides for the Rayfin platform |
-| [`@microsoft/rayfin-mcp`](https://www.npmjs.com/package/@microsoft/rayfin-mcp) | Rayfin Model Context Protocol tooling |
-| [`@microsoft/fabric-embedded-host`](https://www.npmjs.com/package/@microsoft/fabric-embedded-host) | PostMessage bridge and embedded mode detection for Fabric iframes |
+| Package | Version | Description |
+|---------|---------|-------------|
+| [`@microsoft/create-rayfin`](https://www.npmjs.com/package/@microsoft/create-rayfin) | [![npm](https://img.shields.io/npm/v/@microsoft/create-rayfin)](https://www.npmjs.com/package/@microsoft/create-rayfin) | Scaffold a Rayfin project with `npm create @microsoft/rayfin@latest` |
+| [`@microsoft/rayfin-cli`](https://www.npmjs.com/package/@microsoft/rayfin-cli) | [![npm](https://img.shields.io/npm/v/@microsoft/rayfin-cli)](https://www.npmjs.com/package/@microsoft/rayfin-cli) | CLI for scaffolding, deploying, and managing Rayfin apps |
+| [`@microsoft/rayfin-core`](https://www.npmjs.com/package/@microsoft/rayfin-core) | [![npm](https://img.shields.io/npm/v/@microsoft/rayfin-core)](https://www.npmjs.com/package/@microsoft/rayfin-core) | Entity decorators, schema definitions, and core types |
+| [`@microsoft/rayfin-client`](https://www.npmjs.com/package/@microsoft/rayfin-client) | [![npm](https://img.shields.io/npm/v/@microsoft/rayfin-client)](https://www.npmjs.com/package/@microsoft/rayfin-client) | Main client SDK for Rayfin services |
+| [`@microsoft/rayfin-data`](https://www.npmjs.com/package/@microsoft/rayfin-data) | [![npm](https://img.shields.io/npm/v/@microsoft/rayfin-data)](https://www.npmjs.com/package/@microsoft/rayfin-data) | Type-safe client library for Data API Builder endpoints |
+| [`@microsoft/rayfin-auth`](https://www.npmjs.com/package/@microsoft/rayfin-auth) | [![npm](https://img.shields.io/npm/v/@microsoft/rayfin-auth)](https://www.npmjs.com/package/@microsoft/rayfin-auth) | Authentication utilities for Rayfin SDK |
+| [`@microsoft/rayfin-auth-provider-fabric`](https://www.npmjs.com/package/@microsoft/rayfin-auth-provider-fabric) | [![npm](https://img.shields.io/npm/v/@microsoft/rayfin-auth-provider-fabric)](https://www.npmjs.com/package/@microsoft/rayfin-auth-provider-fabric) | Fabric brokered authentication provider for Rayfin SDK |
+| [`@microsoft/rayfin-functions`](https://www.npmjs.com/package/@microsoft/rayfin-functions) | [![npm](https://img.shields.io/npm/v/@microsoft/rayfin-functions)](https://www.npmjs.com/package/@microsoft/rayfin-functions) | Rayfin functions runtime |
+| [`@microsoft/rayfin-storage`](https://www.npmjs.com/package/@microsoft/rayfin-storage) | [![npm](https://img.shields.io/npm/v/@microsoft/rayfin-storage)](https://www.npmjs.com/package/@microsoft/rayfin-storage) | Type-safe client library for Rayfin storage operations |
+| [`@microsoft/rayfin-lib`](https://www.npmjs.com/package/@microsoft/rayfin-lib) | [![npm](https://img.shields.io/npm/v/@microsoft/rayfin-lib)](https://www.npmjs.com/package/@microsoft/rayfin-lib) | Shared library utilities and HTTP client foundation |
+| [`@microsoft/rayfin-tools-common`](https://www.npmjs.com/package/@microsoft/rayfin-tools-common) | [![npm](https://img.shields.io/npm/v/@microsoft/rayfin-tools-common)](https://www.npmjs.com/package/@microsoft/rayfin-tools-common) | Shared utilities for Rayfin tools packages |
+| [`@microsoft/rayfin-docs`](https://www.npmjs.com/package/@microsoft/rayfin-docs) | [![npm](https://img.shields.io/npm/v/@microsoft/rayfin-docs)](https://www.npmjs.com/package/@microsoft/rayfin-docs) | Rayfin docs indexing and search library |
+| [`@microsoft/rayfin-guide`](https://www.npmjs.com/package/@microsoft/rayfin-guide) | [![npm](https://img.shields.io/npm/v/@microsoft/rayfin-guide)](https://www.npmjs.com/package/@microsoft/rayfin-guide) | Cross-cutting builder guides for the Rayfin platform |
+| [`@microsoft/rayfin-mcp`](https://www.npmjs.com/package/@microsoft/rayfin-mcp) | [![npm](https://img.shields.io/npm/v/@microsoft/rayfin-mcp)](https://www.npmjs.com/package/@microsoft/rayfin-mcp) | Rayfin Model Context Protocol tooling |
+| [`@microsoft/fabric-embedded-host`](https://www.npmjs.com/package/@microsoft/fabric-embedded-host) | [![npm](https://img.shields.io/npm/v/@microsoft/fabric-embedded-host)](https://www.npmjs.com/package/@microsoft/fabric-embedded-host) | PostMessage bridge and embedded mode detection for Fabric iframes |
 
 ## Related Repositories
 
