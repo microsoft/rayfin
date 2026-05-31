@@ -3,8 +3,11 @@
 <div align="center">
 
   <h1>🐟 Rayfin</h1>
-  <p>A modern Backend-as-a-Service (BaaS) platform built for the agentic era.<br>
-  Define your data model with TypeScript decorators — Rayfin handles the rest.</p>
+
+  <p>
+  A modern Backend-as-a-Service (BaaS) platform built for the agentic era.<br>
+  Define your data model with TypeScript decorators — Rayfin provisions and manages the backend for you.
+  </p>
 
   <a href="https://aka.ms/rayfin/docs">Docs</a> •
   <a href="https://aka.ms/rayfin">Website</a> •
@@ -21,23 +24,25 @@
 npm create @microsoft/rayfin@latest
 ```
 
-This scaffolds a new Rayfin project with everything you need — data models, auth, and a ready-to-deploy app.
+This CLI scaffolds a new Rayfin project with everything you need: data models, authentication, APIs, and a ready-to-deploy app.
 
 ## What is Rayfin?
 
-Rayfin is a **Backend-as-a-Service** platform that lets teams build and ship applications faster. Define your data model with TypeScript decorators and Rayfin handles auth, data APIs, storage, and hosting.
+Rayfin is a **fully managed Backend-as-a-Service (BaaS)** platform that helps teams build and ship applications faster without building or operating backend infrastructure.
+
+With Rayfin, you define your data model using TypeScript decorators, and the platform automatically provides and manages:
+- Database
+- Authentication
+- Data APIs
+- Storage
+- Hosting
+
+So you can focus on building your application, not backend services.
 
 ```bash
 npm create @microsoft/rayfin@latest    # scaffold a new project
 npx rayfin up                          # deploy and run
 ```
-
-### Key Features
-
-- **Decorator-Based Data Modeling** — Define entities with `@entity()`, `@text()`, `@boolean()`, `@date()`, and other decorators from `@microsoft/rayfin-core`
-- **Authentication** — Fabric Entra SSO in production, mock email/password locally
-- **Typed Data Access** — Schema-driven GraphQL client with compile-time type checking
-- **Static Hosting** — Deploy frontends with `rayfin up staticapp deploy`
 
 ## Local Development (Experimental)
 
