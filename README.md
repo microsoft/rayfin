@@ -50,6 +50,8 @@ Rayfin is built on [Microsoft Fabric](https://learn.microsoft.com/en-us/fabric/f
 
 This means your Rayfin apps inherit enterprise-grade security and governance out of the box, so you can build fast without compromising on compliance.
 
+👉 [Get started with Microsoft Fabric](https://www.microsoft.com/en-us/microsoft-fabric/getting-started)
+
 ## Local Development (Experimental)
 
 Rayfin supports a pure local development experience — no cloud resources required. This is currently experimental and great for trying out Rayfin or building offline.
@@ -86,6 +88,7 @@ Rayfin supports a pure local development experience — no cloud resources requi
 ## Community
 
 - 📖 [Documentation](https://aka.ms/rayfin/docs)
+- 🏗️ [Get started with Microsoft Fabric](https://www.microsoft.com/en-us/microsoft-fabric/getting-started)
 - 🐛 [Report a Bug](https://github.com/microsoft/rayfin/issues/new?template=bug.yml)
 - 💡 [Request a Feature](https://github.com/microsoft/rayfin/issues/new?template=feature-request.yml)
 - 🐟 [Reddit](https://reddit.com/r/rayfin)
