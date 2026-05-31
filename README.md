@@ -90,6 +90,7 @@ Rayfin supports a pure local development experience — no cloud resources requi
 - 📖 [Documentation](https://aka.ms/rayfin/docs)
 - 🏗️ [Get started with Microsoft Fabric](https://www.microsoft.com/en-us/microsoft-fabric/getting-started)
 - 🐛 [Report a Bug](https://github.com/microsoft/rayfin/issues/new?template=bug.yml)
+- ⚠️ [Known Issues](https://github.com/microsoft/rayfin/issues?q=state%3Aopen%20label%3Aknown-issue)
 - 💡 [Request a Feature](https://github.com/microsoft/rayfin/issues/new?template=feature-request.yml)
 - 🐟 [Reddit](https://reddit.com/r/rayfin)
 - 🤝 [Contributing Guide](CONTRIBUTING.md)
