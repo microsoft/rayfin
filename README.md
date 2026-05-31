@@ -44,6 +44,12 @@ npm create @microsoft/rayfin@latest    # scaffold a new project
 npx rayfin up                          # deploy and run
 ```
 
+## Why Fabric?
+
+Rayfin is built on [Microsoft Fabric](https://learn.microsoft.com/en-us/fabric/fundamentals/microsoft-fabric-overview), which provides centralized data discovery, access control, and governance capabilities -- helping organizations manage data access, sharing, and compliance consistently across workloads.
+
+This means your Rayfin apps inherit enterprise-grade security and governance out of the box, so you can build fast without compromising on compliance.
+
 ## Local Development (Experimental)
 
 Rayfin supports a pure local development experience — no cloud resources required. This is currently experimental and great for trying out Rayfin or building offline.
