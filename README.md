@@ -13,7 +13,7 @@
   <a href="https://aka.ms/rayfin">Website</a> •
   <a href="https://github.com/microsoft/awesome-rayfin">Templates</a> •
   <a href="https://github.com/microsoft/rayfin/issues">Issues</a> •
-  <a href="https://reddit.com/r/rayfin">Reddit</a>
+  <a href="https://reddit.com/r/MicrosoftFabric">Reddit</a>
 </div>
 
 ---
@@ -92,7 +92,7 @@ Rayfin supports a pure local development experience — no cloud resources requi
 - 🐛 [Report a Bug](https://github.com/microsoft/rayfin/issues/new?template=bug.yml)
 - ⚠️ [Known Issues](https://github.com/microsoft/rayfin/issues?q=state%3Aopen%20label%3Aknown-issue)
 - 💡 [Request a Feature](https://github.com/microsoft/rayfin/issues/new?template=feature-request.yml)
-- 🐟 [Reddit](https://reddit.com/r/rayfin)
+- 🐟 [Reddit](https://reddit.com/r/MicrosoftFabric)
 - 🤝 [Contributing Guide](CONTRIBUTING.md)
 
 ## Trademarks
