@@ -1,0 +1,170 @@
+[
+  {
+    "id": "REQ-0001",
+    "product": "Power BI",
+    "requestType": "New Data Source in Data Gateway",
+    "formData": {
+      "workspaceName": "7633781f-a32b-4261-8b3c-c35e191e2419",
+      "fabricCapacity": "6d80f0a3-c47e-4206-a7f9-21255fa8b0a0",
+      "semanticModelName": "b175488b-86de-4643-89e3-98335c66a8e3",
+      "environment": "PRO",
+      "dataSourceType": "SQL Server",
+      "sourceData": "prueba",
+      "usersToShare": [
+        {
+          "id": "62798af1-1f64-4f6c-bc53-08b9b4943c2f",
+          "name": "Alberto Castro Arnoso",
+          "mail": "albertocaa@inditex.com"
+        },
+        {
+          "id": "aac41588-460d-4192-be35-9460f30d5c9a",
+          "name": "Sandra Bermudez Gonzalez",
+          "mail": "sandrabg@inditex.com"
+        }
+      ]
+    },
+    "status": "Resolved",
+    "createdAt": "2026-06-04T14:25:07.165Z",
+    "userId": "62798af1-1f64-4f6c-bc53-08b9b4943c2f",
+    "userName": "Alberto Castro Arnoso",
+    "userMail": "albertocaa@inditex.com",
+    "resolutionComment": "ya te hemos dado los accesos",
+    "resolvedAt": "2026-06-04T15:03:20.987Z"
+  },
+  {
+    "id": "REQ-0002",
+    "product": "Power BI",
+    "requestType": "New Data Source in Data Gateway",
+    "formData": {
+      "workspaceName": "d40c8708-fcca-4d5b-a45d-ffa85e026d9d",
+      "fabricCapacity": "37e5e592-6640-47fa-beb9-5d11127d7f69",
+      "semanticModelName": "59168e1f-4d2a-4df8-bbfb-bfea924bc168",
+      "environment": "DEV",
+      "dataSourceType": "Oracle",
+      "sourceData": "d",
+      "usersToShare": [
+        {
+          "id": "62798af1-1f64-4f6c-bc53-08b9b4943c2f",
+          "name": "Alberto Castro Arnoso",
+          "mail": "albertocaa@inditex.com"
+        }
+      ],
+      "fabricCapacityName": "fabricfbcweu1procomercial017",
+      "workspaceDisplayName": "Análisis de Información Comercial",
+      "semanticModelDisplayName": "cuadre_venta_ped_vs_tck"
+    },
+    "status": "Open",
+    "createdAt": "2026-06-04T14:32:32.171Z",
+    "userId": "62798af1-1f64-4f6c-bc53-08b9b4943c2f",
+    "userName": "Alberto Castro Arnoso",
+    "userMail": "albertocaa@inditex.com"
+  },
+  {
+    "id": "REQ-0003",
+    "product": "Power BI",
+    "requestType": "New Data Source in Data Gateway",
+    "formData": {
+      "workspaceName": "f17c3fa1-c659-4453-b07d-e02fcffa9fc9",
+      "fabricCapacity": "5647f210-ea8f-4edf-91e9-d32fa795cf12",
+      "semanticModelName": "5ba55ace-8029-4e7e-9400-983fec9eaeb3",
+      "environment": "PRO",
+      "dataSourceType": "Folder",
+      "sourceData": "//carpeta",
+      "usersToShare": [
+        {
+          "id": "62798af1-1f64-4f6c-bc53-08b9b4943c2f",
+          "name": "Alberto Castro Arnoso",
+          "mail": "albertocaa@inditex.com"
+        },
+        {
+          "id": "aac41588-460d-4192-be35-9460f30d5c9a",
+          "name": "Sandra Bermudez Gonzalez",
+          "mail": "sandrabg@inditex.com"
+        }
+      ],
+      "fabricCapacityName": "fabricfbcweu1prologistics010",
+      "workspaceDisplayName": "Operaciones CD Cadenas",
+      "semanticModelDisplayName": "DSOPCD00C-OperacionesCD"
+    },
+    "status": "Resolved",
+    "createdAt": "2026-06-04T14:37:23.978Z",
+    "userId": "62798af1-1f64-4f6c-bc53-08b9b4943c2f",
+    "userName": "Alberto Castro Arnoso",
+    "userMail": "albertocaa@inditex.com",
+    "tracking": [
+      {
+        "status": "In Progress",
+        "timestamp": "2026-06-04T15:29:57.245Z",
+        "userName": "Alberto Castro Arnoso",
+        "userMail": "albertocaa@inditex.com"
+      },
+      {
+        "status": "Resolved",
+        "timestamp": "2026-06-04T15:30:09.321Z",
+        "userName": "Alberto Castro Arnoso",
+        "userMail": "albertocaa@inditex.com",
+        "comment": "ya te hemos dado los permiso"
+      }
+    ],
+    "resolutionComment": "ya te hemos dado los permiso",
+    "resolvedAt": "2026-06-04T15:30:09.321Z"
+  },
+  {
+    "id": "REQ-0004",
+    "product": "Power BI",
+    "requestType": "New Data Source in Data Gateway",
+    "formData": {
+      "workspaceName": "79c2cd68-9136-4dc9-8e5b-5434a7c16b85",
+      "fabricCapacity": "6d80f0a3-c47e-4206-a7f9-21255fa8b0a0",
+      "semanticModelName": "0a732b8b-f35b-4930-ba39-0fa638c5b8b5",
+      "environment": "PRO",
+      "dataSourceType": "Oracle",
+      "sourceData": "sfcsd",
+      "usersToShare": [
+        {
+          "id": "62798af1-1f64-4f6c-bc53-08b9b4943c2f",
+          "name": "Alberto Castro Arnoso",
+          "mail": "albertocaa@inditex.com"
+        }
+      ],
+      "comments": "comentarios",
+      "fabricCapacityName": "fabricfbcweu1probershka004",
+      "workspaceDisplayName": "Bershka Analytics [Test]",
+      "semanticModelDisplayName": "BSK - Bershka Loop - DEV"
+    },
+    "status": "In Progress",
+    "createdAt": "2026-06-04T14:52:03.243Z",
+    "userId": "62798af1-1f64-4f6c-bc53-08b9b4943c2f",
+    "userName": "Alberto Castro Arnoso",
+    "userMail": "albertocaa@inditex.com"
+  },
+  {
+    "id": "REQ-0005",
+    "product": "Power BI",
+    "requestType": "New Data Source in Data Gateway",
+    "formData": {
+      "workspaceName": "79c2cd68-9136-4dc9-8e5b-5434a7c16b85",
+      "fabricCapacity": "6d80f0a3-c47e-4206-a7f9-21255fa8b0a0",
+      "semanticModelName": "5626d898-a001-4f56-bda0-72bb3d06428c",
+      "environment": "PRO",
+      "dataSourceType": "Oracle",
+      "sourceData": "dsfsd",
+      "usersToShare": [
+        {
+          "id": "4da5046b-6c4d-4071-8a27-f98a1fba8f06",
+          "name": "Albert Aguilar Obrador",
+          "mail": "albertao@ext.inditex.com"
+        }
+      ],
+      "comments": "sv",
+      "fabricCapacityName": "fabricfbcweu1probershka004",
+      "workspaceDisplayName": "Bershka Analytics [Test]",
+      "semanticModelDisplayName": "BSK - Bershka vs Cadenas"
+    },
+    "status": "Open",
+    "createdAt": "2026-06-04T14:56:54.596Z",
+    "userId": "62798af1-1f64-4f6c-bc53-08b9b4943c2f",
+    "userName": "Alberto Castro Arnoso",
+    "userMail": "albertocaa@inditex.com"
+  }
+]

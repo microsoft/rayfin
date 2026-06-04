@@ -1,0 +1,3712 @@
+[
+  {
+    "name": " ITX_ESCO_TYR",
+    "id": "61f51afc-f611-4cda-b34f-2b41115762ee",
+    "capacityId": "06cbd350-0043-4f32-b020-ab63a9bc81be"
+  },
+  {
+    "name": "AdmAlmacen Stradivarius",
+    "id": "659178ac-d465-4e59-ac7d-9c646e5f8c63",
+    "capacityId": "d3b63d6f-b65f-4b46-a263-5eb3d66eea6f"
+  },
+  {
+    "name": "Administración BR",
+    "id": "a983bf0b-6679-49f6-8a53-098eb019b9fa",
+    "capacityId": "06cbd350-0043-4f32-b020-ab63a9bc81be"
+  },
+  {
+    "name": "ADMINISTRACION NACIONAL",
+    "id": "337bd8b9-dae8-4522-97a2-07b003ea2164",
+    "capacityId": "06cbd350-0043-4f32-b020-ab63a9bc81be"
+  },
+  {
+    "name": "ADMPBIS - Fabric Capacity Utilization And Metrics",
+    "id": "8d023e2d-f0e9-4fb2-8448-da7b9b4a6da2",
+    "capacityId": "8b376c41-76f2-457b-b048-3b58477f3690"
+  },
+  {
+    "name": "ADMPBIS-Monitorizacion",
+    "id": "13b7e933-96a2-43f0-b250-ba1166926bae",
+    "capacityId": "8b376c41-76f2-457b-b048-3b58477f3690"
+  },
+  {
+    "name": "All Fabric Capacity Metrics",
+    "id": "384dc462-d79e-4e2e-9e28-53d862149983",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "AMT Tienda",
+    "id": "6b473fa1-90cc-4f9e-8b43-3d3b16d7d444",
+    "capacityId": "add763fc-29c1-47a1-8796-068e18f1bfde"
+  },
+  {
+    "name": "AMT Tienda [Development]",
+    "id": "ad47640c-7aa4-4db2-a640-714b6d9209ae",
+    "capacityId": "add763fc-29c1-47a1-8796-068e18f1bfde"
+  },
+  {
+    "name": "AMT Tienda [Test]",
+    "id": "13ffaff2-e1cd-4d4f-9434-4645d0311570",
+    "capacityId": "add763fc-29c1-47a1-8796-068e18f1bfde"
+  },
+  {
+    "name": "Análisis de Información Comercial",
+    "id": "d40c8708-fcca-4d5b-a45d-ffa85e026d9d",
+    "capacityId": "37e5e592-6640-47fa-beb9-5d11127d7f69"
+  },
+  {
+    "name": "Análisis de Información Comercial [Development]",
+    "id": "77a76b0a-f7f5-4d06-b662-8ca43d551b25",
+    "capacityId": "37e5e592-6640-47fa-beb9-5d11127d7f69"
+  },
+  {
+    "name": "Análisis de Información Comercial [Test]",
+    "id": "bcbd77e2-9737-4d2d-bdb7-a325f22dd0f4",
+    "capacityId": "37e5e592-6640-47fa-beb9-5d11127d7f69"
+  },
+  {
+    "name": "Análisis Evento Comercial",
+    "id": "c73ac2f6-c20b-48bc-931c-153b7680dcb3",
+    "capacityId": "37e5e592-6640-47fa-beb9-5d11127d7f69"
+  },
+  {
+    "name": "Análisis Eventos Comercial [Test]",
+    "id": "222d257f-0265-4bc4-afb0-4966269bb745",
+    "capacityId": "37e5e592-6640-47fa-beb9-5d11127d7f69"
+  },
+  {
+    "name": "Analítica Web",
+    "id": "c2d785a3-fdf8-46de-999d-283daaa56202",
+    "capacityId": "0dd77d0d-18e6-4ada-8b42-9913b67a92b9"
+  },
+  {
+    "name": "Analitica_website [Des]",
+    "id": "aef0a3f3-63d1-4fd0-ad96-2d9bb6589c2d",
+    "capacityId": "0dd77d0d-18e6-4ada-8b42-9913b67a92b9"
+  },
+  {
+    "name": "Analitica_website [PRE]",
+    "id": "b99a6efc-92e8-4ce0-ae63-575687bb6133",
+    "capacityId": "0dd77d0d-18e6-4ada-8b42-9913b67a92b9"
+  },
+  {
+    "name": "Analitica_website [PRO]",
+    "id": "9662fc9c-f227-498c-91df-38676957f969",
+    "capacityId": "0dd77d0d-18e6-4ada-8b42-9913b67a92b9"
+  },
+  {
+    "name": "Analytics",
+    "id": "efeaab6e-0ea2-41ff-96df-da400b107635",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "Analytics [Test]",
+    "id": "696bd6b0-d40f-42ba-b4a9-1b4a89b63537",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "Analytics_NM_Zenit_DEV",
+    "id": "f4210a69-7139-4bdd-ac1a-f8e9f895514f",
+    "capacityId": "6fe3cba2-e2c0-447f-878b-74a387f7c012"
+  },
+  {
+    "name": "Analytics_NM_Zenit_TEST",
+    "id": "baa19a08-30c2-4215-90a8-5ccc94fa05ff",
+    "capacityId": "6fe3cba2-e2c0-447f-878b-74a387f7c012"
+  },
+  {
+    "name": "Analytics_Nuevo_Modelo",
+    "id": "d48fcb89-9e2b-46de-98c1-c285af95930f",
+    "capacityId": "6fe3cba2-e2c0-447f-878b-74a387f7c012"
+  },
+  {
+    "name": "anewwkstest",
+    "id": "e3d0efa5-9e42-4687-9ae4-de5486a9ae86",
+    "capacityId": "8b376c41-76f2-457b-b048-3b58477f3690"
+  },
+  {
+    "name": "anewwkstest2",
+    "id": "0dc8f4e1-9fe7-492b-a5fd-d6610430b4a7",
+    "capacityId": "8b376c41-76f2-457b-b048-3b58477f3690"
+  },
+  {
+    "name": "anewwkstest3",
+    "id": "8bcc74e3-659a-4322-bc92-fca76695d1e8",
+    "capacityId": "8b376c41-76f2-457b-b048-3b58477f3690"
+  },
+  {
+    "name": "APM Data Comercial",
+    "id": "358b8ba5-03f9-4c45-a958-0f7161074ebe",
+    "capacityId": "37e5e592-6640-47fa-beb9-5d11127d7f69"
+  },
+  {
+    "name": "Area_Economica_PB",
+    "id": "ee82d832-940e-4752-b62c-9ee9d8ec3ad9",
+    "capacityId": "0dd77d0d-18e6-4ada-8b42-9913b67a92b9"
+  },
+  {
+    "name": "Area_Economica_PB [Development]",
+    "id": "ed145032-5cc9-48a1-84fd-62bee6e07df3",
+    "capacityId": "0dd77d0d-18e6-4ada-8b42-9913b67a92b9"
+  },
+  {
+    "name": "Area_Economica_PB [Test]",
+    "id": "8c55fe96-491a-4014-bcc1-d924d84caa78",
+    "capacityId": "0dd77d0d-18e6-4ada-8b42-9913b67a92b9"
+  },
+  {
+    "name": "ASSET_MANAGEMENT",
+    "id": "9c888285-9965-4844-99af-956735e6fe84",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "Atencion al cliente",
+    "id": "3caab4b7-ee66-4617-b6a4-a4c1ebcffa91",
+    "capacityId": "0dd77d0d-18e6-4ada-8b42-9913b67a92b9"
+  },
+  {
+    "name": "Atencion al cliente [Development]",
+    "id": "96182a42-7f71-42b7-919d-7f79e8a70359",
+    "capacityId": "0dd77d0d-18e6-4ada-8b42-9913b67a92b9"
+  },
+  {
+    "name": "Atencion al cliente [Test]",
+    "id": "2abfa38f-9b02-48e8-a1fe-03c86a7f3364",
+    "capacityId": "0dd77d0d-18e6-4ada-8b42-9913b67a92b9"
+  },
+  {
+    "name": "Auditoria Externa",
+    "id": "608683b5-20eb-4ea0-b9e2-17ed847475b3",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "Auditoría Interna BI",
+    "id": "df6101ce-afa8-4802-ab77-77f58865f543",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "Auditoría Interna BI [Development]",
+    "id": "7d32ee49-6614-4801-9b17-803ad027d778",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "Auditoría Interna BI [Test]",
+    "id": "a55337ac-1b4e-4c7a-b9b7-948c7b01e856",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "Bershka Analytics",
+    "id": "7633781f-a32b-4261-8b3c-c35e191e2419",
+    "capacityId": "6d80f0a3-c47e-4206-a7f9-21255fa8b0a0"
+  },
+  {
+    "name": "Bershka Analytics [Development]",
+    "id": "f8911414-0689-4bf0-8d7f-884d59b3455a",
+    "capacityId": "6d80f0a3-c47e-4206-a7f9-21255fa8b0a0"
+  },
+  {
+    "name": "Bershka Analytics [Test]",
+    "id": "79c2cd68-9136-4dc9-8e5b-5434a7c16b85",
+    "capacityId": "6d80f0a3-c47e-4206-a7f9-21255fa8b0a0"
+  },
+  {
+    "name": "Bershka Capacity Metrics Monitoring",
+    "id": "1d58f721-89f2-4b32-a5ac-db022366bd0d",
+    "capacityId": "6d80f0a3-c47e-4206-a7f9-21255fa8b0a0"
+  },
+  {
+    "name": "Bershka Distribución",
+    "id": "4fc2729b-3f6c-495d-816d-8262c9914b4f",
+    "capacityId": "6d80f0a3-c47e-4206-a7f9-21255fa8b0a0"
+  },
+  {
+    "name": "BERSHKA GIT [Test]",
+    "id": "1318be13-17a6-4276-a73d-6fae710977d6",
+    "capacityId": "6d80f0a3-c47e-4206-a7f9-21255fa8b0a0"
+  },
+  {
+    "name": "Bershka Informes",
+    "id": "5f001b37-e820-4e50-811a-8bc3db091a6b",
+    "capacityId": "6d80f0a3-c47e-4206-a7f9-21255fa8b0a0"
+  },
+  {
+    "name": "Bershka Logistica Power BI",
+    "id": "c6b9bbbc-4c48-4138-9045-f879c49ccb6e",
+    "capacityId": "6d80f0a3-c47e-4206-a7f9-21255fa8b0a0"
+  },
+  {
+    "name": "BERSHKA_CGCOMERCIAL",
+    "id": "a7347758-c8fd-4986-b12d-9c9d2185b15b",
+    "capacityId": "6d80f0a3-c47e-4206-a7f9-21255fa8b0a0"
+  },
+  {
+    "name": "BERSHKA_DIGITAL_PRODUCT",
+    "id": "a8063e12-2e9f-4ced-933c-77950c26a0f1",
+    "capacityId": "6d80f0a3-c47e-4206-a7f9-21255fa8b0a0"
+  },
+  {
+    "name": "BERSHKA_PROYECTOS",
+    "id": "0a7452e0-08b2-4099-95e0-6c625a412f85",
+    "capacityId": "6d80f0a3-c47e-4206-a7f9-21255fa8b0a0"
+  },
+  {
+    "name": "BERSHKA_SOSTENIBILIDAD",
+    "id": "20a3c66c-f892-4eda-a526-5a02a7fb6966",
+    "capacityId": "6d80f0a3-c47e-4206-a7f9-21255fa8b0a0"
+  },
+  {
+    "name": "BI Adm Exist Sistemas",
+    "id": "a999bea2-28eb-4e37-b5d7-b76a180aafd6",
+    "capacityId": "f20d9b3b-93d2-4f8e-99f2-f28f0c18aca5"
+  },
+  {
+    "name": "BI Adm Existencias",
+    "id": "0d125c1a-9ff1-4ecd-b17a-002c13666d72",
+    "capacityId": "f20d9b3b-93d2-4f8e-99f2-f28f0c18aca5"
+  },
+  {
+    "name": "BI Adm Existencias [Development]",
+    "id": "a974256e-3936-43ca-b2de-2b60f5d63993",
+    "capacityId": "f20d9b3b-93d2-4f8e-99f2-f28f0c18aca5"
+  },
+  {
+    "name": "BI Adm Existencias [Test]",
+    "id": "19940124-586e-4b7e-8d72-ab32d84b96c6",
+    "capacityId": "f20d9b3b-93d2-4f8e-99f2-f28f0c18aca5"
+  },
+  {
+    "name": "BI Automatización Producto",
+    "id": "5e6500e9-13b5-445c-8abb-6549a532512a",
+    "capacityId": "6a4aa9d7-68d2-41e9-95b4-7d35a494ee67"
+  },
+  {
+    "name": "BI Automatización Producto [Development]",
+    "id": "5a8b1c93-f837-415e-a912-af6ca2380392",
+    "capacityId": "6a4aa9d7-68d2-41e9-95b4-7d35a494ee67"
+  },
+  {
+    "name": "BI Automatización Producto [Test]",
+    "id": "a91c9b55-64ed-4fc0-825b-138f3cf97d4f",
+    "capacityId": "6a4aa9d7-68d2-41e9-95b4-7d35a494ee67"
+  },
+  {
+    "name": "BI eCommerce",
+    "id": "1dca33ef-3e58-441c-9113-28c552d1312c",
+    "capacityId": "c2191fa8-efc0-489c-8db6-c23c5ebcd2ab"
+  },
+  {
+    "name": "Bi eCommerce [Development]",
+    "id": "9be4a8a6-4768-4947-a076-0e2930bc33bd",
+    "capacityId": "c2191fa8-efc0-489c-8db6-c23c5ebcd2ab"
+  },
+  {
+    "name": "Bi eCommerce [Test]",
+    "id": "dca17ec4-2782-44bf-9e7b-417219eaef28",
+    "capacityId": "c2191fa8-efc0-489c-8db6-c23c5ebcd2ab"
+  },
+  {
+    "name": "BI Sostenibilidad gasto H&S",
+    "id": "165bce74-91aa-4306-86d1-1d372d19ca76",
+    "capacityId": "6a4aa9d7-68d2-41e9-95b4-7d35a494ee67"
+  },
+  {
+    "name": "BI Sostenibilidad Producto",
+    "id": "79750a5e-cf5c-4d44-a3b6-37b88704ec7b",
+    "capacityId": "6a4aa9d7-68d2-41e9-95b4-7d35a494ee67"
+  },
+  {
+    "name": "BI Sostenibilidad Producto [Development]",
+    "id": "f0860ebd-1b17-442a-b05c-f347a2822ac1",
+    "capacityId": "6a4aa9d7-68d2-41e9-95b4-7d35a494ee67"
+  },
+  {
+    "name": "BI Sostenibilidad Producto [Test]",
+    "id": "de689a2e-79cb-4cc7-9ecf-20e9b09c08b0",
+    "capacityId": "6a4aa9d7-68d2-41e9-95b4-7d35a494ee67"
+  },
+  {
+    "name": "BI Sostenibilidad Producto Reporting Team",
+    "id": "7fc2e591-a1a1-457c-b863-315f3a4d62f8",
+    "capacityId": "6a4aa9d7-68d2-41e9-95b4-7d35a494ee67"
+  },
+  {
+    "name": "BI Stock_Control_MPS",
+    "id": "24d6f37d-5180-4707-8f76-49bd2e65efb4",
+    "capacityId": "f20d9b3b-93d2-4f8e-99f2-f28f0c18aca5"
+  },
+  {
+    "name": "BI Stock_Control_MPS [Development]",
+    "id": "9bddf01b-4ef2-470b-a618-1883835c69e8",
+    "capacityId": "f20d9b3b-93d2-4f8e-99f2-f28f0c18aca5"
+  },
+  {
+    "name": "BI Stock_Control_MPS [Test]",
+    "id": "ec035250-cbf6-4cd8-944f-1232ef95ea7d",
+    "capacityId": "f20d9b3b-93d2-4f8e-99f2-f28f0c18aca5"
+  },
+  {
+    "name": "Bi Sust Corp Public",
+    "id": "f58e18c8-0826-4823-93d1-ef6c9af5cba2",
+    "capacityId": "6a4aa9d7-68d2-41e9-95b4-7d35a494ee67"
+  },
+  {
+    "name": "BI Sust Corp Reporting Team",
+    "id": "0fd223e6-38f0-45ff-a136-85c450413dde",
+    "capacityId": "6a4aa9d7-68d2-41e9-95b4-7d35a494ee67"
+  },
+  {
+    "name": "BillingDataPlatform",
+    "id": "78ce2dda-8dba-4470-b9ce-90dc43d90758",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "Bloqueos Compliance",
+    "id": "c8d8018d-d2b1-4173-a8c3-b7369530058b",
+    "capacityId": "6a4aa9d7-68d2-41e9-95b4-7d35a494ee67"
+  },
+  {
+    "name": "Bloqueos Compliance [Test]",
+    "id": "fe8dcb37-36a6-4ca5-8396-82cb9dc375cd",
+    "capacityId": "6a4aa9d7-68d2-41e9-95b4-7d35a494ee67"
+  },
+  {
+    "name": "BP_OYSHO",
+    "id": "f6dce61a-3264-4419-a235-00dffbdc2d08",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "BPS",
+    "id": "72549e6e-f49e-4555-ab58-e8a33325c040",
+    "capacityId": "06cbd350-0043-4f32-b020-ab63a9bc81be"
+  },
+  {
+    "name": "Business Analytics",
+    "id": "87d683a2-df90-443b-b98c-5f9d0938abe7",
+    "capacityId": "0dd77d0d-18e6-4ada-8b42-9913b67a92b9"
+  },
+  {
+    "name": "BUSINESS REVIEW",
+    "id": "ef8b49af-ef05-4f6b-8565-c88b9617e756",
+    "capacityId": "c2191fa8-efc0-489c-8db6-c23c5ebcd2ab"
+  },
+  {
+    "name": "BUSINESS REVIEW ANALYTICS",
+    "id": "4020172e-c933-4bd7-9b86-10eef0453dff",
+    "capacityId": "c2191fa8-efc0-489c-8db6-c23c5ebcd2ab"
+  },
+  {
+    "name": "BUSINESS REVIEW ANALYTICS [Test]",
+    "id": "34cefc53-2a8c-48c4-b316-c371722ea387",
+    "capacityId": "c2191fa8-efc0-489c-8db6-c23c5ebcd2ab"
+  },
+  {
+    "name": "CADENAS - ClickCollect",
+    "id": "0bbd7ede-623e-4ff9-8565-9b13adb3870c",
+    "capacityId": "3f6ce512-37bd-4b2d-b9d7-60e7ff17caa0"
+  },
+  {
+    "name": "CADENAS - ClickCollect - DATAFLOWS",
+    "id": "8dc64948-bd64-4d66-acfc-243dfceafb97",
+    "capacityId": "3f6ce512-37bd-4b2d-b9d7-60e7ff17caa0"
+  },
+  {
+    "name": "CADENAS - ClickCollect [Development]",
+    "id": "d6448dfb-8dcb-44da-be65-80b806402c4f",
+    "capacityId": "3f6ce512-37bd-4b2d-b9d7-60e7ff17caa0"
+  },
+  {
+    "name": "CADENAS - ClickCollect[Test]",
+    "id": "e5fdae26-e97f-4e9d-9291-5bec9c6f6c2c",
+    "capacityId": "3f6ce512-37bd-4b2d-b9d7-60e7ff17caa0"
+  },
+  {
+    "name": "CADENAS - CUSTOMER EXPERIENCE",
+    "id": "097a5f73-8f62-415b-a151-766d7c6aa22d",
+    "capacityId": "3f6ce512-37bd-4b2d-b9d7-60e7ff17caa0"
+  },
+  {
+    "name": "CADENAS - CUSTOMER EXPERIENCE - DATAFLOWS",
+    "id": "00dba567-9aae-43a3-ae38-bfab14c39ae8",
+    "capacityId": "3f6ce512-37bd-4b2d-b9d7-60e7ff17caa0"
+  },
+  {
+    "name": "CADENAS - CUSTOMER EXPERIENCE [Development]",
+    "id": "335c1341-976c-48da-9a88-ff27b8c7324d",
+    "capacityId": "ccb2ebf0-0ace-4341-a263-9c83412638c8"
+  },
+  {
+    "name": "CADENAS - CUSTOMER EXPERIENCE [Test]",
+    "id": "ed70752b-7d10-41bc-a533-dfc142832263",
+    "capacityId": "3f6ce512-37bd-4b2d-b9d7-60e7ff17caa0"
+  },
+  {
+    "name": "CADENAS - IPOD",
+    "id": "65b0dafd-a85f-4dae-989b-54c46d0c7194",
+    "capacityId": "3f6ce512-37bd-4b2d-b9d7-60e7ff17caa0"
+  },
+  {
+    "name": "CADENAS - IPOD - DATAFLOWS",
+    "id": "02335d35-8d71-468b-8a0f-4db7d6a76726",
+    "capacityId": "3f6ce512-37bd-4b2d-b9d7-60e7ff17caa0"
+  },
+  {
+    "name": "CADENAS - IPOD [Development]",
+    "id": "b805a20c-cbe8-4771-bda7-4fdc747f43f9",
+    "capacityId": "3f6ce512-37bd-4b2d-b9d7-60e7ff17caa0"
+  },
+  {
+    "name": "CADENAS - IPOD [Test]",
+    "id": "94ef00bc-5330-4715-83b4-e5af06e90840",
+    "capacityId": "3f6ce512-37bd-4b2d-b9d7-60e7ff17caa0"
+  },
+  {
+    "name": "CADENAS - MODO TIENDA",
+    "id": "9019dace-2fc0-4ae5-8104-4a53908d91fd",
+    "capacityId": "3f6ce512-37bd-4b2d-b9d7-60e7ff17caa0"
+  },
+  {
+    "name": "CADENAS - MODO TIENDA - DATAFLOWS",
+    "id": "6b6b1208-f6d7-4010-bbed-4c0c8de55170",
+    "capacityId": "3f6ce512-37bd-4b2d-b9d7-60e7ff17caa0"
+  },
+  {
+    "name": "CADENAS - MODO TIENDA [Development]",
+    "id": "f8ca36c6-a576-491f-8a75-a978f757186e",
+    "capacityId": "3f6ce512-37bd-4b2d-b9d7-60e7ff17caa0"
+  },
+  {
+    "name": "CADENAS - MODO TIENDA [Test]",
+    "id": "b05d413b-76d1-4492-b10a-43d9aeec0b2f",
+    "capacityId": "3f6ce512-37bd-4b2d-b9d7-60e7ff17caa0"
+  },
+  {
+    "name": "CADENAS - SINT",
+    "id": "88aee669-38f4-461c-ab12-fcfb3893a746",
+    "capacityId": "3f6ce512-37bd-4b2d-b9d7-60e7ff17caa0"
+  },
+  {
+    "name": "CADENAS - SINT - DATAFLOWS",
+    "id": "73d8ad3c-6792-467a-92be-1776148d6034",
+    "capacityId": "3f6ce512-37bd-4b2d-b9d7-60e7ff17caa0"
+  },
+  {
+    "name": "CADENAS - SINT [Development]",
+    "id": "bb336f83-f2ba-40ee-be7f-300c5378ce62",
+    "capacityId": "3f6ce512-37bd-4b2d-b9d7-60e7ff17caa0"
+  },
+  {
+    "name": "CADENAS - SINT [Test]",
+    "id": "ae305164-9713-4ed1-9eb4-3f255a2ba3bc",
+    "capacityId": "3f6ce512-37bd-4b2d-b9d7-60e7ff17caa0"
+  },
+  {
+    "name": "Calidad del Dato",
+    "id": "b3e29dac-d8ea-4bae-b612-40e1bd6dad5d",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "Calidad del Dato [Development]",
+    "id": "bcaf1cec-345b-460b-9463-be6843fd0e9f",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "Calidad del Dato [Test]",
+    "id": "f50f32af-a51e-4fc7-90db-ef94705b126f",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "CDSallent",
+    "id": "8b48f46e-5b8a-484d-8397-6fb8d6c80389",
+    "capacityId": "d3b63d6f-b65f-4b46-a263-5eb3d66eea6f"
+  },
+  {
+    "name": "Circular Señora",
+    "id": "6dd95b1f-3bbe-4ab1-bdef-6653166b9448",
+    "capacityId": "37e5e592-6640-47fa-beb9-5d11127d7f69"
+  },
+  {
+    "name": "CIRCULARIDAD Y MMPP",
+    "id": "a16ad1e6-6fd6-40cb-ad76-415c4f7d19aa",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "Clientes_PB",
+    "id": "1a68829e-2de7-4460-8760-414ebf719e9d",
+    "capacityId": "0dd77d0d-18e6-4ada-8b42-9913b67a92b9"
+  },
+  {
+    "name": "Clients Inditex",
+    "id": "17240226-746d-4723-a662-ad0d9c8dc520",
+    "capacityId": "c2191fa8-efc0-489c-8db6-c23c5ebcd2ab"
+  },
+  {
+    "name": "Clients Inditex [Test]",
+    "id": "f9c09b1a-3784-4757-8c52-9865685a0026",
+    "capacityId": "c2191fa8-efc0-489c-8db6-c23c5ebcd2ab"
+  },
+  {
+    "name": "Clients Marketing",
+    "id": "8599553a-3139-4976-8ada-59e7ad90b5f9",
+    "capacityId": "3f6ce512-37bd-4b2d-b9d7-60e7ff17caa0"
+  },
+  {
+    "name": "Comercial Analytics",
+    "id": "7b06c03b-6657-4441-9e66-eb7889fb8617",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "Comercial Basic",
+    "id": "a0004928-5e6b-4b27-b3f8-32d26f3231aa",
+    "capacityId": "37e5e592-6640-47fa-beb9-5d11127d7f69"
+  },
+  {
+    "name": "Comercial BI",
+    "id": "62203864-7ae8-4864-beef-b7db2eb3bc27",
+    "capacityId": "37e5e592-6640-47fa-beb9-5d11127d7f69"
+  },
+  {
+    "name": "Comercial BI [Development]",
+    "id": "b0ee3d36-049f-4034-9c33-5cfb256394fd",
+    "capacityId": "37e5e592-6640-47fa-beb9-5d11127d7f69"
+  },
+  {
+    "name": "Comercial BI [Test]",
+    "id": "b10bed15-15fa-46ae-a91a-ee8b664544ec",
+    "capacityId": "37e5e592-6640-47fa-beb9-5d11127d7f69"
+  },
+  {
+    "name": "Comercial BIApps",
+    "id": "6e3c3f4f-98bd-4b53-b943-2bc3d2f5f864",
+    "capacityId": "37e5e592-6640-47fa-beb9-5d11127d7f69"
+  },
+  {
+    "name": "COMERCIAL ECOMMERCE",
+    "id": "cfe68501-579c-487f-8935-d1d5097dc90d",
+    "capacityId": "ccb2ebf0-0ace-4341-a263-9c83412638c8"
+  },
+  {
+    "name": "Comercial Fabric Capacity Metrics Monitoring",
+    "id": "24eea624-c5ce-4756-acc0-cc03c5802c9a",
+    "capacityId": "37e5e592-6640-47fa-beb9-5d11127d7f69"
+  },
+  {
+    "name": "Comercial Lefties",
+    "id": "c9704b01-7092-450a-8f0f-518c9fcb6f53",
+    "capacityId": "33e95abe-5ab3-41ed-ac1a-4d5b01595d54"
+  },
+  {
+    "name": "Comercial Lefties [Development]",
+    "id": "8e3a3da6-2f81-48b8-a2ce-01f405e78699",
+    "capacityId": "37e5e592-6640-47fa-beb9-5d11127d7f69"
+  },
+  {
+    "name": "Comercial Lefties [Test]",
+    "id": "ffcd89ba-749d-417a-8839-5ea7d62d283e",
+    "capacityId": "37e5e592-6640-47fa-beb9-5d11127d7f69"
+  },
+  {
+    "name": "Comercial PCG",
+    "id": "9892e516-9ac5-442d-bdcf-bd37c2690314",
+    "capacityId": "37e5e592-6640-47fa-beb9-5d11127d7f69"
+  },
+  {
+    "name": "Comercial PCG [Development]",
+    "id": "a5f40944-2961-43f5-a413-24b527ce9a3d",
+    "capacityId": "37e5e592-6640-47fa-beb9-5d11127d7f69"
+  },
+  {
+    "name": "Comercial PCG [Test]",
+    "id": "07571da6-47bd-4502-b813-668742ce964e",
+    "capacityId": "37e5e592-6640-47fa-beb9-5d11127d7f69"
+  },
+  {
+    "name": "Comercial Perfumería",
+    "id": "744ee206-6352-43dd-890b-a37dedd48b79",
+    "capacityId": "37e5e592-6640-47fa-beb9-5d11127d7f69"
+  },
+  {
+    "name": "Comercial Projects",
+    "id": "fb91e029-0175-4c3d-ae59-17a8a35b5659",
+    "capacityId": "37e5e592-6640-47fa-beb9-5d11127d7f69"
+  },
+  {
+    "name": "Comercial Projects [Development]",
+    "id": "f3fe87c6-bf6c-4f34-81b3-93e9dd808fcc",
+    "capacityId": "37e5e592-6640-47fa-beb9-5d11127d7f69"
+  },
+  {
+    "name": "Comercial Projects [Test]",
+    "id": "4f3e235d-30e6-4bab-96cb-28b4e89dda03",
+    "capacityId": "37e5e592-6640-47fa-beb9-5d11127d7f69"
+  },
+  {
+    "name": "Comercial Punto Caballero",
+    "id": "d608d400-c02a-4495-b3c5-0489734fb7ea",
+    "capacityId": "37e5e592-6640-47fa-beb9-5d11127d7f69"
+  },
+  {
+    "name": "Comercial Stradivarius",
+    "id": "62e5d09b-23f8-4f2f-a7e6-16ef6a112494",
+    "capacityId": "d3b63d6f-b65f-4b46-a263-5eb3d66eea6f"
+  },
+  {
+    "name": "Comercial Stradivarius [Development]",
+    "id": "4b11582c-47d8-47a8-ae10-d5a2ba217aa9",
+    "capacityId": "d3b63d6f-b65f-4b46-a263-5eb3d66eea6f"
+  },
+  {
+    "name": "Comercial Stradivarius [Test]",
+    "id": "02bb0aae-7c0d-4429-9dab-7ee38a2e0f3c",
+    "capacityId": "d3b63d6f-b65f-4b46-a263-5eb3d66eea6f"
+  },
+  {
+    "name": "Comercial Tempe",
+    "id": "ad4045e5-0763-4860-ade9-6749ef3e727d",
+    "capacityId": "40a5f9d8-f64a-4189-86bd-1c36a492594c"
+  },
+  {
+    "name": "Comercial Tempe [Development]",
+    "id": "a43d14a3-398d-4e99-87a3-33e9663429e0",
+    "capacityId": "40a5f9d8-f64a-4189-86bd-1c36a492594c"
+  },
+  {
+    "name": "Comercial Tempe [Test]",
+    "id": "da4dea6c-59dd-4bd1-994f-68f7321c7ec6",
+    "capacityId": "40a5f9d8-f64a-4189-86bd-1c36a492594c"
+  },
+  {
+    "name": "COMERCIAL_REPORTING",
+    "id": "c4d61586-c474-4fda-87bf-e5df02432be0",
+    "capacityId": "c2191fa8-efc0-489c-8db6-c23c5ebcd2ab"
+  },
+  {
+    "name": "COMERCIAL_REPORTING [Development]",
+    "id": "de72edfd-c8c7-4604-afd5-f51241fca0c3",
+    "capacityId": "ccb2ebf0-0ace-4341-a263-9c83412638c8"
+  },
+  {
+    "name": "COMERCIAL_REPORTING [Test]",
+    "id": "7874c831-707b-4ed1-9839-d528e691c10c",
+    "capacityId": "c2191fa8-efc0-489c-8db6-c23c5ebcd2ab"
+  },
+  {
+    "name": "Commercial Analysis",
+    "id": "8d3e4cad-c735-4c4b-9787-4dd93bdac0ad",
+    "capacityId": "37e5e592-6640-47fa-beb9-5d11127d7f69"
+  },
+  {
+    "name": "Commercial Analysis [Development]",
+    "id": "0822d1ef-c828-4984-a121-8e71cc0a39f4",
+    "capacityId": "37e5e592-6640-47fa-beb9-5d11127d7f69"
+  },
+  {
+    "name": "Commercial Analysis [Test]",
+    "id": "154f5ede-bbde-453e-8ef6-004cf200308b",
+    "capacityId": "37e5e592-6640-47fa-beb9-5d11127d7f69"
+  },
+  {
+    "name": "Commercial Projects Bershka",
+    "id": "18f35aac-85c2-4629-9101-e187676d1f12",
+    "capacityId": "6d80f0a3-c47e-4206-a7f9-21255fa8b0a0"
+  },
+  {
+    "name": "Commercial Projects Bershka [Development]",
+    "id": "7425a931-6721-4d31-864a-1e34e9f85079",
+    "capacityId": "6d80f0a3-c47e-4206-a7f9-21255fa8b0a0"
+  },
+  {
+    "name": "Commercial Projects Bershka [Test]",
+    "id": "20921b3a-e5fa-4547-a63e-9a27f7e7f6da",
+    "capacityId": "6d80f0a3-c47e-4206-a7f9-21255fa8b0a0"
+  },
+  {
+    "name": "Compliance",
+    "id": "feed8176-5e04-474d-9da9-4fced19e4da6",
+    "capacityId": "6f100e9f-598d-485b-87d2-348e628829dc"
+  },
+  {
+    "name": "Condiciones de reglas de bloqueo",
+    "id": "34a0f246-12ef-465d-85b3-f5f8295abf58",
+    "capacityId": "37e5e592-6640-47fa-beb9-5d11127d7f69"
+  },
+  {
+    "name": "Consolidaciones TW Cabanillas",
+    "id": "cdd4c606-4a0f-4711-adab-8916a6bcfa42",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "Consumos Azure",
+    "id": "224ea0b0-afdb-47c5-b919-d90e140dfa61",
+    "capacityId": "8b376c41-76f2-457b-b048-3b58477f3690"
+  },
+  {
+    "name": "Control Comercial Retail",
+    "id": "16e377b8-edcb-4ac2-9566-586ec405c46d",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "Control Comercial Retail [Development]",
+    "id": "0f7d37f7-dc7a-4cd6-971e-cf52c9a07574",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "Control Comercial Retail [Test]",
+    "id": "fa2d19ae-473d-4e05-9509-5283d258b1c8",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "Control de gestion",
+    "id": "c91efff2-bdba-4678-b33f-3ca2d8732c99",
+    "capacityId": "c2191fa8-efc0-489c-8db6-c23c5ebcd2ab"
+  },
+  {
+    "name": "Control_Comercial_PB",
+    "id": "34ab6c2c-e2d0-4bbe-948c-8a80e047a6ef",
+    "capacityId": "0dd77d0d-18e6-4ada-8b42-9913b67a92b9"
+  },
+  {
+    "name": "Control_Comercial_PB [Development]",
+    "id": "f24b9ebd-6893-479a-a5d5-c7d72349d082",
+    "capacityId": "0dd77d0d-18e6-4ada-8b42-9913b67a92b9"
+  },
+  {
+    "name": "Control_Comercial_PB [Test]",
+    "id": "69061125-e3d3-45a1-8308-7cee6b8fea65",
+    "capacityId": "0dd77d0d-18e6-4ada-8b42-9913b67a92b9"
+  },
+  {
+    "name": "ControlDeStock",
+    "id": "dcdd6c5c-11f3-48b9-8a12-14d76955c93c",
+    "capacityId": "f20d9b3b-93d2-4f8e-99f2-f28f0c18aca5"
+  },
+  {
+    "name": "CORE PLATFORM ARCHITECTURE",
+    "id": "ed7cc801-7fd3-44f2-9d10-3ebc85773599",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "CorePlatform",
+    "id": "c9fe3b05-544c-4395-b10f-2b946b21ee95",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "Cuadro de mando MDO",
+    "id": "5d027d6e-67cc-43fa-9823-131d6d9cc046",
+    "capacityId": "06cbd350-0043-4f32-b020-ab63a9bc81be"
+  },
+  {
+    "name": "Customer Care",
+    "id": "96021771-6e97-4f43-b6d8-f81978524c0a",
+    "capacityId": "ccb2ebf0-0ace-4341-a263-9c83412638c8"
+  },
+  {
+    "name": "Customer Experience",
+    "id": "399d08d2-a6f9-4eba-bd05-aaa55a0b3b6f",
+    "capacityId": "ccb2ebf0-0ace-4341-a263-9c83412638c8"
+  },
+  {
+    "name": "Customer Projects",
+    "id": "135c1a76-b548-448e-98f9-0da2d5e7b5bd",
+    "capacityId": "37e5e592-6640-47fa-beb9-5d11127d7f69"
+  },
+  {
+    "name": "Customer Projects [Development]",
+    "id": "75e68769-a31d-4654-b2d1-7bead84dc225",
+    "capacityId": "37e5e592-6640-47fa-beb9-5d11127d7f69"
+  },
+  {
+    "name": "Customer Projects [Test]",
+    "id": "4536d17b-5f59-45a6-9ab2-3a66a569004a",
+    "capacityId": "37e5e592-6640-47fa-beb9-5d11127d7f69"
+  },
+  {
+    "name": "Customer Service Managed Workspace_44af59a6-b22f-ef11-8406-000d3a3a2944",
+    "id": "552b2fe3-a3e4-4539-a780-a33f6db41343",
+    "capacityId": "eb0841d1-9fbc-4596-ac77-3db94148bfe7"
+  },
+  {
+    "name": "Customer Service Managed Workspace_dde25578-c8f1-ee11-a1fa-000d3a248d6c",
+    "id": "9cd34611-71ac-45e4-a481-1ae8c4129911",
+    "capacityId": "eb0841d1-9fbc-4596-ac77-3db94148bfe7"
+  },
+  {
+    "name": "Customer Service Managed Workspace_e7792cc4-4a5e-ef11-bfdf-000d3a67cc4e",
+    "id": "cfb9fb82-8410-4292-8983-f323e9942667",
+    "capacityId": "eb0841d1-9fbc-4596-ac77-3db94148bfe7"
+  },
+  {
+    "name": "Customer Service Managed Workspace_ea53ac33-195e-ef11-bfdd-000d3a2a7e75",
+    "id": "f6b8d030-50b5-4c89-8336-b304babe4ca4",
+    "capacityId": "eb0841d1-9fbc-4596-ac77-3db94148bfe7"
+  },
+  {
+    "name": "DAO",
+    "id": "0b343fae-e878-4c8f-8e3f-07677ca56bf4",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "DAO [Test]",
+    "id": "dc5c2586-b259-4652-aa95-59aa009fe428",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "Data OFDA - Oficina de datos",
+    "id": "282e1106-0073-4d11-9ce9-601e43c3e7d4",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "Data OFDA - Oficina de datos [Test]",
+    "id": "c5c92be2-45dd-4eee-874b-e7eebd243e2a",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "DATA SEO",
+    "id": "6440f528-a555-4eab-b8be-9e03edbefe68",
+    "capacityId": "0dd77d0d-18e6-4ada-8b42-9913b67a92b9"
+  },
+  {
+    "name": "Dataflows Comercial",
+    "id": "47e8de08-79d1-4e21-9966-b5942f31e7c0",
+    "capacityId": "37e5e592-6640-47fa-beb9-5d11127d7f69"
+  },
+  {
+    "name": "Dataflows Comercial [Development]",
+    "id": "d7455feb-7fbf-4e42-b4dc-9e3d147811e4",
+    "capacityId": "37e5e592-6640-47fa-beb9-5d11127d7f69"
+  },
+  {
+    "name": "Dataflows Comercial [Test]",
+    "id": "b485b0ef-2e02-428b-a00f-8a7bbd795c3c",
+    "capacityId": "37e5e592-6640-47fa-beb9-5d11127d7f69"
+  },
+  {
+    "name": "Dataflows_PB",
+    "id": "3fe91013-1102-49b7-9596-3ecf18e9cfe2",
+    "capacityId": "0dd77d0d-18e6-4ada-8b42-9913b67a92b9"
+  },
+  {
+    "name": "DataPB",
+    "id": "cbe08850-772b-4f5b-ab21-94055ce3ff16",
+    "capacityId": "0dd77d0d-18e6-4ada-8b42-9913b67a92b9"
+  },
+  {
+    "name": "DataPB [Development]",
+    "id": "880fc39d-0401-4901-b85c-cfece3a5464d",
+    "capacityId": "0dd77d0d-18e6-4ada-8b42-9913b67a92b9"
+  },
+  {
+    "name": "DataPB [Test]",
+    "id": "588db6e9-787b-4a2d-8d16-e60f0007645d",
+    "capacityId": "0dd77d0d-18e6-4ada-8b42-9913b67a92b9"
+  },
+  {
+    "name": "DATAPB_DISTRIBUCION",
+    "id": "0df7bb1c-51e5-41c7-a4fd-f549282b86a9",
+    "capacityId": "0dd77d0d-18e6-4ada-8b42-9913b67a92b9"
+  },
+  {
+    "name": "DATAPB_DISTRIBUCION [Development]",
+    "id": "ec2f68f3-d084-4149-b62f-c8c2af543f69",
+    "capacityId": "0dd77d0d-18e6-4ada-8b42-9913b67a92b9"
+  },
+  {
+    "name": "DATAPB_DISTRIBUCION [Test]",
+    "id": "ce5f20b4-6fac-4f28-bb11-ab73828ff82f",
+    "capacityId": "0dd77d0d-18e6-4ada-8b42-9913b67a92b9"
+  },
+  {
+    "name": "Demo git fabric",
+    "id": "46d6e504-cbb3-4b76-b7d8-1a50786e6912",
+    "capacityId": "8b376c41-76f2-457b-b048-3b58477f3690"
+  },
+  {
+    "name": "DemoNewWks",
+    "id": "f1b0e837-137f-476b-8290-8644320f494a",
+    "capacityId": "8b376c41-76f2-457b-b048-3b58477f3690"
+  },
+  {
+    "name": "DemoNewWks [Development]",
+    "id": "850be76f-d1f9-40dd-ad7c-29d2d6caab5a",
+    "capacityId": "8b376c41-76f2-457b-b048-3b58477f3690"
+  },
+  {
+    "name": "DemoNewWks [Test]",
+    "id": "22e46231-972c-4625-8718-b223f42d9d55",
+    "capacityId": "8b376c41-76f2-457b-b048-3b58477f3690"
+  },
+  {
+    "name": "devhealth",
+    "id": "ca8eab88-f9f2-4acd-b5d8-9d16a50b427d",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "devhealth [Development]",
+    "id": "2cafd825-395e-4388-849e-e838cf86c253",
+    "capacityId": "3f6ce512-37bd-4b2d-b9d7-60e7ff17caa0"
+  },
+  {
+    "name": "devhealth [Test]",
+    "id": "be44d2f1-b1d4-4478-90fe-e1e8acddc1b9",
+    "capacityId": "3f6ce512-37bd-4b2d-b9d7-60e7ff17caa0"
+  },
+  {
+    "name": "DIGITAL MARKETING",
+    "id": "9a230986-480b-4266-8198-a4cf1fcfe0b2",
+    "capacityId": "c2191fa8-efc0-489c-8db6-c23c5ebcd2ab"
+  },
+  {
+    "name": "DIGITAL SEARCH",
+    "id": "fca932b8-ad63-4360-b37b-0420559bc574",
+    "capacityId": "6fe3cba2-e2c0-447f-878b-74a387f7c012"
+  },
+  {
+    "name": "DIGITAL SEARCH CADENAS",
+    "id": "9144611e-c202-417f-b846-eabb37a0da83",
+    "capacityId": "3f6ce512-37bd-4b2d-b9d7-60e7ff17caa0"
+  },
+  {
+    "name": "Distribucion Bloqueos",
+    "id": "295364f6-9bdf-4e6b-a298-e2d620ba0149",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "Distribucion Bloqueos [Test]",
+    "id": "fe2589ef-c185-41dd-8bce-beafcc14dd02",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "Distribución Tecnología",
+    "id": "627d3258-3190-4c77-a35e-68d3721af910",
+    "capacityId": "33e95abe-5ab3-41ed-ac1a-4d5b01595d54"
+  },
+  {
+    "name": "Distribución Zara",
+    "id": "549447d3-4293-4205-a370-2aaa8dbb8d8a",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "Distribucion_PB",
+    "id": "7a4a1177-8dde-4888-80d6-d1aef73bbe45",
+    "capacityId": "0dd77d0d-18e6-4ada-8b42-9913b67a92b9"
+  },
+  {
+    "name": "Distribution Analysis",
+    "id": "9f5a1f2f-bc4a-4ec2-99c5-a5fd91956902",
+    "capacityId": "37e5e592-6640-47fa-beb9-5d11127d7f69"
+  },
+  {
+    "name": "Distribution Analysis [Development]",
+    "id": "a9dc2bf4-feb0-4541-9627-01edd306f4bc",
+    "capacityId": "37e5e592-6640-47fa-beb9-5d11127d7f69"
+  },
+  {
+    "name": "Distribution Analysis [Test]",
+    "id": "e1a00ae8-041e-4fc3-a5d9-30f7e881fce3",
+    "capacityId": "37e5e592-6640-47fa-beb9-5d11127d7f69"
+  },
+  {
+    "name": "Distribution Projects",
+    "id": "d1643e28-2353-40fa-9097-2aa890168fcc",
+    "capacityId": "37e5e592-6640-47fa-beb9-5d11127d7f69"
+  },
+  {
+    "name": "Distribution Projects [Development]",
+    "id": "e318e086-4927-4507-9f90-87e845aa22db",
+    "capacityId": "37e5e592-6640-47fa-beb9-5d11127d7f69"
+  },
+  {
+    "name": "Distribution Projects [Test]",
+    "id": "d82bd7ad-1a14-47db-8d78-5be3a5c9469a",
+    "capacityId": "37e5e592-6640-47fa-beb9-5d11127d7f69"
+  },
+  {
+    "name": "dmo",
+    "id": "2a98cd80-7ff1-49d7-bd02-5eddb11747b4",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "DMO [Development]",
+    "id": "d778517a-7c8f-48bf-a6cc-8f0a1062e05f",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "DMO [Test]",
+    "id": "5e5da716-323a-447a-ba43-ed6ed3ebc807",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "Domo-Customer",
+    "id": "05b75198-01e1-4bed-9fe3-5e514785a122",
+    "capacityId": "ccb2ebf0-0ace-4341-a263-9c83412638c8"
+  },
+  {
+    "name": "Domo-Delivery",
+    "id": "4e5eb6a2-8bdc-41bd-bedc-0975183f3552",
+    "capacityId": "ccb2ebf0-0ace-4341-a263-9c83412638c8"
+  },
+  {
+    "name": "ECOM_OYSHO",
+    "id": "3d6223a6-d0e2-412b-83e7-ec2715908bd7",
+    "capacityId": "3f6ce512-37bd-4b2d-b9d7-60e7ff17caa0"
+  },
+  {
+    "name": "ECOMMERCE REPORTING",
+    "id": "c017543c-cd7f-483f-9fa1-f05ad0dfdd9b",
+    "capacityId": "c2191fa8-efc0-489c-8db6-c23c5ebcd2ab"
+  },
+  {
+    "name": "ECOMMERCE_AFTERSALES",
+    "id": "401f5691-1df9-41bc-bcbf-11c3c51f2786",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "Ecommerce_PB",
+    "id": "8d2253a5-9f3e-4f29-8c64-b69d1948a507",
+    "capacityId": "0dd77d0d-18e6-4ada-8b42-9913b67a92b9"
+  },
+  {
+    "name": "Ecommerce_PB [Development]",
+    "id": "a7a21a9e-363c-4890-980f-0b0289bd2d0c",
+    "capacityId": "0dd77d0d-18e6-4ada-8b42-9913b67a92b9"
+  },
+  {
+    "name": "Ecommerce_PB [Test]",
+    "id": "05dd3913-2346-4bd3-ba7b-a3c6b1cb7073",
+    "capacityId": "0dd77d0d-18e6-4ada-8b42-9913b67a92b9"
+  },
+  {
+    "name": "ESCO",
+    "id": "42385880-dd73-41b6-ae72-da2180858678",
+    "capacityId": "06cbd350-0043-4f32-b020-ab63a9bc81be"
+  },
+  {
+    "name": "ETL ECOMMERCE",
+    "id": "708f8fcb-d2f4-4f2f-93b0-a5a56f7fee49",
+    "capacityId": "3f6ce512-37bd-4b2d-b9d7-60e7ff17caa0"
+  },
+  {
+    "name": "EVOLUCIÓN MATERIAS PRIMAS",
+    "id": "6ad028be-adb0-447f-9525-ec5bc77d94bd",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "example_wk_ with chars",
+    "id": "1dda312d-0bc2-4557-9bda-8fd82068e6d0",
+    "capacityId": "6f100e9f-598d-485b-87d2-348e628829dc"
+  },
+  {
+    "name": "example_wk_ with chars 4",
+    "id": "18f43ee0-aeaf-42c1-a098-c5365b4d4dfb",
+    "capacityId": "6f100e9f-598d-485b-87d2-348e628829dc"
+  },
+  {
+    "name": "Explotación",
+    "id": "3ddc70fc-d614-4624-bde9-9bb53c86bfe4",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "Fabricacion Tempe",
+    "id": "f77a723e-aa55-4fc1-9ebc-6f4d2eb60c0b",
+    "capacityId": "40a5f9d8-f64a-4189-86bd-1c36a492594c"
+  },
+  {
+    "name": "Fabricacion Tempe [Development]",
+    "id": "a21193b9-008f-4ed6-a4ad-01786486de14",
+    "capacityId": "40a5f9d8-f64a-4189-86bd-1c36a492594c"
+  },
+  {
+    "name": "Fabricacion Tempe [Test]",
+    "id": "fd4ec279-4621-4119-8e36-03fff9be4a8a",
+    "capacityId": "40a5f9d8-f64a-4189-86bd-1c36a492594c"
+  },
+  {
+    "name": "Feel Data Center",
+    "id": "e2cddc97-f1fc-412d-a43e-feba415b79e2",
+    "capacityId": "366412eb-e6cf-4f0b-8f0e-ef384312f5e4"
+  },
+  {
+    "name": "FINANBI | Demo 2",
+    "id": "ae445b12-c26f-4032-8c2b-dcc5faf6d983",
+    "capacityId": "06cbd350-0043-4f32-b020-ab63a9bc81be"
+  },
+  {
+    "name": "FINANCIERO - Administración Corporativa",
+    "id": "c8a4039a-b98c-4071-9e3f-be5cdbfcaad2",
+    "capacityId": "06cbd350-0043-4f32-b020-ab63a9bc81be"
+  },
+  {
+    "name": "FINANCIERO - Aduanas",
+    "id": "49448cfa-5722-4b19-ad76-246d506dbdd8",
+    "capacityId": "06cbd350-0043-4f32-b020-ab63a9bc81be"
+  },
+  {
+    "name": "FINANCIERO - FISCAL",
+    "id": "14772bcf-1a0e-4956-a06e-8655f0ec331e",
+    "capacityId": "06cbd350-0043-4f32-b020-ab63a9bc81be"
+  },
+  {
+    "name": "FINANCIERO - Gestión de Accesos",
+    "id": "12309ab3-6797-40f6-9540-ba1f49ead5fc",
+    "capacityId": "06cbd350-0043-4f32-b020-ab63a9bc81be"
+  },
+  {
+    "name": "FINANCIERO - Global Occupation Cost Process",
+    "id": "acee42c0-3c09-4bb3-86da-d4d83a0b37c6",
+    "capacityId": "06cbd350-0043-4f32-b020-ab63a9bc81be"
+  },
+  {
+    "name": "FINANCIERO - ITX Nordics",
+    "id": "ef1cdf33-ac6c-4cd7-9448-198a8c4132a2",
+    "capacityId": "06cbd350-0043-4f32-b020-ab63a9bc81be"
+  },
+  {
+    "name": "Financiero - Maker",
+    "id": "9f4a4337-12c8-4813-a24a-bcaf394db203",
+    "capacityId": "06cbd350-0043-4f32-b020-ab63a9bc81be"
+  },
+  {
+    "name": "FINANCIERO - PCG",
+    "id": "7db8999c-8078-4075-9cd3-e543ecfcea16",
+    "capacityId": "06cbd350-0043-4f32-b020-ab63a9bc81be"
+  },
+  {
+    "name": "FINANCIERO - PCG [Development]",
+    "id": "335ba80b-6f60-4fa6-8914-1673714a609d",
+    "capacityId": "06cbd350-0043-4f32-b020-ab63a9bc81be"
+  },
+  {
+    "name": "FINANCIERO - Procesos y proyectos",
+    "id": "14b178fc-52c4-482b-a554-625545784b0e",
+    "capacityId": "06cbd350-0043-4f32-b020-ab63a9bc81be"
+  },
+  {
+    "name": "FINANCIERO - RCA",
+    "id": "3f47d541-8503-4652-bc07-cb4530f2a4b4",
+    "capacityId": "06cbd350-0043-4f32-b020-ab63a9bc81be"
+  },
+  {
+    "name": "FINANCIERO - Sandbox",
+    "id": "7ee4f5a5-fe91-4d9d-b64f-5d8db4c0c17c",
+    "capacityId": "06cbd350-0043-4f32-b020-ab63a9bc81be"
+  },
+  {
+    "name": "FINANCIERO - Ventas y Conciliación",
+    "id": "ad1b0e66-bf91-4904-9e0a-0a05cc9e6a91",
+    "capacityId": "06cbd350-0043-4f32-b020-ab63a9bc81be"
+  },
+  {
+    "name": "FINANCIERO BI",
+    "id": "b67ea176-277b-40e4-859a-1791fd16dbc6",
+    "capacityId": "06cbd350-0043-4f32-b020-ab63a9bc81be"
+  },
+  {
+    "name": "FINANCIERO Transporte",
+    "id": "b5aa2df4-557b-4651-a7f3-8ab920394336",
+    "capacityId": "06cbd350-0043-4f32-b020-ab63a9bc81be"
+  },
+  {
+    "name": "Financiero-FabricTest",
+    "id": "b8012ba5-146f-447f-807b-8450cb55f6ba",
+    "capacityId": "06cbd350-0043-4f32-b020-ab63a9bc81be"
+  },
+  {
+    "name": "Financiero&RRHH",
+    "id": "9ea4c14e-0ac0-40fa-87c8-27959cb2c6e7",
+    "capacityId": "06cbd350-0043-4f32-b020-ab63a9bc81be"
+  },
+  {
+    "name": "FinancieroZcom",
+    "id": "206b80b2-a768-4074-ab3f-b89f6c999672",
+    "capacityId": "c2191fa8-efc0-489c-8db6-c23c5ebcd2ab"
+  },
+  {
+    "name": "FinancieroZcom (Criterio Facturado)",
+    "id": "735a2473-5b99-4520-ad93-65428e1961bb",
+    "capacityId": "3f6ce512-37bd-4b2d-b9d7-60e7ff17caa0"
+  },
+  {
+    "name": "FinancieroZcom [Development]",
+    "id": "ddadbd5a-4283-4d82-9ffd-1de50be74197",
+    "capacityId": "c2191fa8-efc0-489c-8db6-c23c5ebcd2ab"
+  },
+  {
+    "name": "FinancieroZcom [Test]",
+    "id": "5ebadf15-8076-4cdb-8f50-5a8e6e5a4d8d",
+    "capacityId": "c2191fa8-efc0-489c-8db6-c23c5ebcd2ab"
+  },
+  {
+    "name": "Formacion Aplicaciones",
+    "id": "d3cef0f6-d7c8-4723-8dc2-811e65d8807d",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "Fraude_team",
+    "id": "ae78628b-46f6-4761-8eec-5f1ad20b7a8b",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "FUAM",
+    "id": "bffd302d-d336-4b91-a555-561057df95c0",
+    "capacityId": "8b376c41-76f2-457b-b048-3b58477f3690"
+  },
+  {
+    "name": "GAS",
+    "id": "8e24d528-9772-46f2-ab66-d087ba229947",
+    "capacityId": "f20d9b3b-93d2-4f8e-99f2-f28f0c18aca5"
+  },
+  {
+    "name": "GAS [Test]",
+    "id": "647342f3-fccb-4903-b19b-0dcf3da4b547",
+    "capacityId": "f20d9b3b-93d2-4f8e-99f2-f28f0c18aca5"
+  },
+  {
+    "name": "General Accounting",
+    "id": "7c5e0402-902f-4bc9-8a6b-f10aded87538",
+    "capacityId": "06cbd350-0043-4f32-b020-ab63a9bc81be"
+  },
+  {
+    "name": "Gestión Financiera Tecnología",
+    "id": "e08a17e6-7c41-4b67-874d-aa8f5d789fe7",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "Gestión Financiera Tecnología [Development]",
+    "id": "71324d30-0e6f-4a10-ad1f-daf0b9867807",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "Gestión Financiera Tecnología [Test]",
+    "id": "9ceb08cd-75dd-4184-b5bf-5a9186b7b0be",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "git project template",
+    "id": "48f3077d-954d-4f1e-8c49-b9b6e329b997",
+    "capacityId": "8b376c41-76f2-457b-b048-3b58477f3690"
+  },
+  {
+    "name": "GitHub Copilot Metrics v.25",
+    "id": "281ab9c8-2584-4dcb-a6e7-6b8d3b085ce5",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "GLOBAL CRO - TEJIDOS",
+    "id": "692aa6f0-87b2-497c-9718-d6ad3a136216",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "GLOBAL FIXED ASSETS",
+    "id": "2b3ed81d-9b46-45d8-beb8-8b899fb07517",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "Global Sales and Receivable Process",
+    "id": "5a014e19-2b65-44c8-818a-03e49530520c",
+    "capacityId": "06cbd350-0043-4f32-b020-ab63a9bc81be"
+  },
+  {
+    "name": "GlobalSalesProcess",
+    "id": "a81aba84-76d5-454c-982f-72490d110fc3",
+    "capacityId": "06cbd350-0043-4f32-b020-ab63a9bc81be"
+  },
+  {
+    "name": "GRETA",
+    "id": "7fc6f5f2-c8e8-4511-9599-046893d13c3b",
+    "capacityId": "37e5e592-6640-47fa-beb9-5d11127d7f69"
+  },
+  {
+    "name": "GRETA [Development]",
+    "id": "5b964073-0059-4fb8-945f-81ce0fb04595",
+    "capacityId": "37e5e592-6640-47fa-beb9-5d11127d7f69"
+  },
+  {
+    "name": "GRETA [Test]",
+    "id": "28778ab0-7077-4d3f-aa56-d9e0ac48e473",
+    "capacityId": "37e5e592-6640-47fa-beb9-5d11127d7f69"
+  },
+  {
+    "name": "GRETA Compras",
+    "id": "2b0e1531-b07e-4b52-8ec5-7c1e7385f2d2",
+    "capacityId": "37e5e592-6640-47fa-beb9-5d11127d7f69"
+  },
+  {
+    "name": "GRETA Compras [Development]",
+    "id": "b060f42b-d48e-417b-91f8-4c810dc0456e",
+    "capacityId": "37e5e592-6640-47fa-beb9-5d11127d7f69"
+  },
+  {
+    "name": "GRETA Compras [Test]",
+    "id": "d2055114-cce1-49bb-9276-0a80c767f702",
+    "capacityId": "37e5e592-6640-47fa-beb9-5d11127d7f69"
+  },
+  {
+    "name": "GRETA Taller",
+    "id": "e0cd9b08-8d04-4154-976f-ea0126f385c3",
+    "capacityId": "37e5e592-6640-47fa-beb9-5d11127d7f69"
+  },
+  {
+    "name": "GRETA Taller [Development]",
+    "id": "4c53f924-76d6-4d22-9ee7-2731b5756e7b",
+    "capacityId": "37e5e592-6640-47fa-beb9-5d11127d7f69"
+  },
+  {
+    "name": "GRETA Taller [Test]",
+    "id": "28b3b931-0e17-47ea-ab07-9a25061fc67c",
+    "capacityId": "37e5e592-6640-47fa-beb9-5d11127d7f69"
+  },
+  {
+    "name": "Grids - Métricas de producto",
+    "id": "2c62e423-7496-46cc-85a0-7237415cbb6f",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "GRT_analytics",
+    "id": "3936d981-1840-4982-8050-671125a88763",
+    "capacityId": "06cbd350-0043-4f32-b020-ab63a9bc81be"
+  },
+  {
+    "name": "GRTanalytics [DEV]",
+    "id": "44d0daab-e78b-4e72-87e2-b203f7f21132",
+    "capacityId": "06cbd350-0043-4f32-b020-ab63a9bc81be"
+  },
+  {
+    "name": "GRTanalytics [TEST]",
+    "id": "792d7f6d-74cc-4ea3-85b6-4a7ccbca02aa",
+    "capacityId": "06cbd350-0043-4f32-b020-ab63a9bc81be"
+  },
+  {
+    "name": "Health and Safety USA",
+    "id": "86bcc1f3-6b9f-43b2-8c7d-c3c710eab0b8",
+    "capacityId": "6f100e9f-598d-485b-87d2-348e628829dc"
+  },
+  {
+    "name": "HR Belarus",
+    "id": "a61a4a42-c8fa-4f65-b4ed-6e70353c0bd1",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "HR BELUX",
+    "id": "71b3bf1d-36ad-4073-b5f9-c8b93c26b1d8",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "HR FRANCE",
+    "id": "25645c5c-d2b6-4698-b311-863b5b826c86",
+    "capacityId": "6f100e9f-598d-485b-87d2-348e628829dc"
+  },
+  {
+    "name": "HR GERMANY",
+    "id": "ee8213fd-3558-4819-879b-3bc51bc25e6c",
+    "capacityId": "6f100e9f-598d-485b-87d2-348e628829dc"
+  },
+  {
+    "name": "HR Netherlands",
+    "id": "7ef75646-0c71-43fe-b03b-4a62da080a33",
+    "capacityId": "6f100e9f-598d-485b-87d2-348e628829dc"
+  },
+  {
+    "name": "HR ROMANIA ",
+    "id": "371a06d9-4b03-4612-ae50-86b8be62156b",
+    "capacityId": "6f100e9f-598d-485b-87d2-348e628829dc"
+  },
+  {
+    "name": "HR Russia",
+    "id": "30fe685c-b2bf-4baa-9be6-2fef8a7abae0",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "IAT",
+    "id": "1a794df4-9ca4-4336-a8f8-9075d0a4e92d",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "INCIDENCIAS_REMEDY",
+    "id": "09984338-a88d-4fd5-ad11-3a253d3f3761",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "INCIDENCIAS_REMEDY [Test]",
+    "id": "b582d31c-f00b-4ffc-a6ad-d790b4118d1b",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "Inditex - Customer Experience",
+    "id": "e04dfc7e-b991-4ab9-ad04-f7f0213e1034",
+    "capacityId": "c2191fa8-efc0-489c-8db6-c23c5ebcd2ab"
+  },
+  {
+    "name": "Inditex - Customer Experience [Development]",
+    "id": "00512d0c-972a-45d3-bdf6-3969526b8677",
+    "capacityId": "c2191fa8-efc0-489c-8db6-c23c5ebcd2ab"
+  },
+  {
+    "name": "Inditex - Customer Experience [Test]",
+    "id": "fd535a19-5ed3-466a-be3d-b5417f23c8dd",
+    "capacityId": "c2191fa8-efc0-489c-8db6-c23c5ebcd2ab"
+  },
+  {
+    "name": "Inditex - Customer Experience Dataflows",
+    "id": "4af6b345-8139-428d-9f0f-9e92c797f237",
+    "capacityId": "c2191fa8-efc0-489c-8db6-c23c5ebcd2ab"
+  },
+  {
+    "name": "Inditex - Loyalty Experience",
+    "id": "ec9601f7-9f42-423c-adcd-75b3ac3da7cc",
+    "capacityId": "3f6ce512-37bd-4b2d-b9d7-60e7ff17caa0"
+  },
+  {
+    "name": "Inditex - Loyalty Experience [Development]",
+    "id": "c7228b89-05f2-4eb6-bb43-aeef13126242",
+    "capacityId": "3f6ce512-37bd-4b2d-b9d7-60e7ff17caa0"
+  },
+  {
+    "name": "Inditex - Loyalty Experience [Test]",
+    "id": "9a3aeb49-459b-40c8-99d1-bf2bc4168085",
+    "capacityId": "3f6ce512-37bd-4b2d-b9d7-60e7ff17caa0"
+  },
+  {
+    "name": "INDOM",
+    "id": "6d1c09c7-f4b7-4d94-b26d-25668cbf835d",
+    "capacityId": "c2191fa8-efc0-489c-8db6-c23c5ebcd2ab"
+  },
+  {
+    "name": "INET",
+    "id": "9be4465f-89a7-48bf-85fb-07489bd21cb9",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "Informe Logistica",
+    "id": "134955eb-61de-417c-9fbd-b166cba67960",
+    "capacityId": "3f6ce512-37bd-4b2d-b9d7-60e7ff17caa0"
+  },
+  {
+    "name": "Internacional",
+    "id": "a16956c4-3e90-4978-a647-101461cd5a03",
+    "capacityId": "ccb2ebf0-0ace-4341-a263-9c83412638c8"
+  },
+  {
+    "name": "Intuneautomation",
+    "id": "ba599485-efa1-45c3-a4f3-542770cb569f",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "IOP DATA REPORTING - PRO",
+    "id": "3665999d-4065-4783-baae-512b087c1152",
+    "capacityId": "c2191fa8-efc0-489c-8db6-c23c5ebcd2ab"
+  },
+  {
+    "name": "IOPFraudPreventionStore",
+    "id": "cfcdcca5-9619-47f7-8a37-97eeb9fb7533",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "IT CHINA",
+    "id": "5e894f4d-d86c-44dd-bf94-0d8608ea67a1",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "ITX - Compras y contrataciones",
+    "id": "eced4594-22fd-446f-9491-074b89eff09f",
+    "capacityId": "06cbd350-0043-4f32-b020-ab63a9bc81be"
+  },
+  {
+    "name": "ITX - Compras y Contrataciones - Presupuestación Filiales.",
+    "id": "7958fd6b-f621-489c-a6ec-f02558a21de9",
+    "capacityId": "06cbd350-0043-4f32-b020-ab63a9bc81be"
+  },
+  {
+    "name": "ITX - Compras y Contrataciones - Presupuestación Filiales. PROD",
+    "id": "895aacfc-3cb8-4e93-bbd4-5e6ecb16f542",
+    "capacityId": "06cbd350-0043-4f32-b020-ab63a9bc81be"
+  },
+  {
+    "name": "ITX Trading",
+    "id": "640df982-1632-4f10-9b8c-4644aeff865b",
+    "capacityId": "06cbd350-0043-4f32-b020-ab63a9bc81be"
+  },
+  {
+    "name": "ITX_ESCO - Compras y contrataciones",
+    "id": "8bd688dc-dae4-44a7-862b-2f095d3fc1a4",
+    "capacityId": "06cbd350-0043-4f32-b020-ab63a9bc81be"
+  },
+  {
+    "name": "ITX_ESCO - MDO",
+    "id": "495713b5-7c04-48b7-8b49-fdf3ee19f344",
+    "capacityId": "06cbd350-0043-4f32-b020-ab63a9bc81be"
+  },
+  {
+    "name": "ITX_ESCO_BACKOFFICE",
+    "id": "5c0a5759-ceff-473e-ae66-3cbb533f2a44",
+    "capacityId": "06cbd350-0043-4f32-b020-ab63a9bc81be"
+  },
+  {
+    "name": "ITX_ESCO_FAM",
+    "id": "4db49130-0603-45cb-aed0-9d550cfd6190",
+    "capacityId": "06cbd350-0043-4f32-b020-ab63a9bc81be"
+  },
+  {
+    "name": "ITX_ESCO_GESMAIN",
+    "id": "0229aa2f-ad51-4556-abb9-0c7c08c7f8a9",
+    "capacityId": "06cbd350-0043-4f32-b020-ab63a9bc81be"
+  },
+  {
+    "name": "ITX_ESCO_INCALL",
+    "id": "79ec7e8f-8b4a-482e-8d66-7db08b6a1785",
+    "capacityId": "06cbd350-0043-4f32-b020-ab63a9bc81be"
+  },
+  {
+    "name": "ITX_ESCO_INERGY_CD2",
+    "id": "1be41c1e-67bf-429c-9287-b85281bfb421",
+    "capacityId": "06cbd350-0043-4f32-b020-ab63a9bc81be"
+  },
+  {
+    "name": "ITX_ESCO_INFRAESTRUCTURAS",
+    "id": "8c783d13-d251-40a9-bb20-ef5d8cfcbe45",
+    "capacityId": "06cbd350-0043-4f32-b020-ab63a9bc81be"
+  },
+  {
+    "name": "ITX_ESCO_INFRAESTRUCTURASERVICIOS",
+    "id": "8215ffe6-0c03-49cf-9e56-4683fba7eab4",
+    "capacityId": "06cbd350-0043-4f32-b020-ab63a9bc81be"
+  },
+  {
+    "name": "ITX_ESCO_INVOICE_COLLECTOR",
+    "id": "1702c6ae-24a6-4922-b72c-46d086c664aa",
+    "capacityId": "06cbd350-0043-4f32-b020-ab63a9bc81be"
+  },
+  {
+    "name": "ITX_ESCO_MATERIALES",
+    "id": "3778df07-4a74-4cd9-a51d-29f404163119",
+    "capacityId": "06cbd350-0043-4f32-b020-ab63a9bc81be"
+  },
+  {
+    "name": "ITX_ESCO_MOS",
+    "id": "f679a766-0cc0-4f84-b7a6-80693f8a9c4c",
+    "capacityId": "06cbd350-0043-4f32-b020-ab63a9bc81be"
+  },
+  {
+    "name": "ITX_ESCO_OGOS_FILIAL",
+    "id": "6e92ff21-d794-4b33-8442-e6b7e3cc8bc9",
+    "capacityId": "06cbd350-0043-4f32-b020-ab63a9bc81be"
+  },
+  {
+    "name": "ITX_ESCO_PAFF",
+    "id": "1a367b7a-187c-4515-b8d3-55c6fcc78d64",
+    "capacityId": "06cbd350-0043-4f32-b020-ab63a9bc81be"
+  },
+  {
+    "name": "ITX_ESCO_PRESUPUESTACION_FILIALES",
+    "id": "cf40a410-1926-477d-890e-f50dd6ed67f5",
+    "capacityId": "06cbd350-0043-4f32-b020-ab63a9bc81be"
+  },
+  {
+    "name": "ITX_ESCO_RAM",
+    "id": "66b6819f-c83b-460c-9db5-1668f23f6cca",
+    "capacityId": "06cbd350-0043-4f32-b020-ab63a9bc81be"
+  },
+  {
+    "name": "ITX_ESCO_REPORTS",
+    "id": "9b3040ee-285a-4689-935c-a748bfe26035",
+    "capacityId": "06cbd350-0043-4f32-b020-ab63a9bc81be"
+  },
+  {
+    "name": "ITX_ESCO_RFID",
+    "id": "2e641ca5-03db-4843-9b3b-c7fa52e3e2b7",
+    "capacityId": "06cbd350-0043-4f32-b020-ab63a9bc81be"
+  },
+  {
+    "name": "ITX_ESCO_SEGURIDAD",
+    "id": "776486aa-5cdd-4585-8b8d-8e108e677494",
+    "capacityId": "06cbd350-0043-4f32-b020-ab63a9bc81be"
+  },
+  {
+    "name": "ITX_ESCO_SS.GG.",
+    "id": "739fe9d3-da20-421e-8057-eea43df277dc",
+    "capacityId": "06cbd350-0043-4f32-b020-ab63a9bc81be"
+  },
+  {
+    "name": "ITX_ESCO_SSLL",
+    "id": "e9c401e3-c821-40be-a7a0-fbf71f9aec1d",
+    "capacityId": "06cbd350-0043-4f32-b020-ab63a9bc81be"
+  },
+  {
+    "name": "ITX_ESCO_TCE",
+    "id": "ce364da1-89da-42f6-bd3f-e5fa37842b44",
+    "capacityId": "06cbd350-0043-4f32-b020-ab63a9bc81be"
+  },
+  {
+    "name": "ITX_ESCO_TIENDAS",
+    "id": "33d794ce-cee4-4d1f-912f-29b6c9f8a268",
+    "capacityId": "06cbd350-0043-4f32-b020-ab63a9bc81be"
+  },
+  {
+    "name": "ITX_ESCO_VIAJES",
+    "id": "174bf8ce-b59f-468a-822e-0d81a812fead",
+    "capacityId": "06cbd350-0043-4f32-b020-ab63a9bc81be"
+  },
+  {
+    "name": "ITX_ESCO_ZERO_WASTE",
+    "id": "474225af-6893-4d2d-853c-6b8ba19280b9",
+    "capacityId": "06cbd350-0043-4f32-b020-ab63a9bc81be"
+  },
+  {
+    "name": "ITX_EXCO_DESARROLLOS_NEGOCIO",
+    "id": "12588c45-2074-4a8b-b358-dd8bd5bab113",
+    "capacityId": "06cbd350-0043-4f32-b020-ab63a9bc81be"
+  },
+  {
+    "name": "ITX_PCG_GERMANY",
+    "id": "a717721a-6eed-40da-a5f5-25d0b09b066a",
+    "capacityId": "6f100e9f-598d-485b-87d2-348e628829dc"
+  },
+  {
+    "name": "itx-icare-insightshistorical-brands-prod",
+    "id": "33240524-e1cf-4146-8645-9390d5acde64",
+    "capacityId": "eb0841d1-9fbc-4596-ac77-3db94148bfe7"
+  },
+  {
+    "name": "itx-icare-insightshistorical-brands-test",
+    "id": "4ea49e09-65ce-4989-aa60-a1605363a20d",
+    "capacityId": "eb0841d1-9fbc-4596-ac77-3db94148bfe7"
+  },
+  {
+    "name": "itx-icare-insightshistorical-prod",
+    "id": "b0e2572c-4a1e-4e83-8b73-91631f713a4d",
+    "capacityId": "eb0841d1-9fbc-4596-ac77-3db94148bfe7"
+  },
+  {
+    "name": "itx-icare-insightshistorical-test",
+    "id": "40fa5a57-67f6-4c98-908f-11298cdb76fb",
+    "capacityId": "eb0841d1-9fbc-4596-ac77-3db94148bfe7"
+  },
+  {
+    "name": "itx-icare-insightsrealtime-brands-prod",
+    "id": "ef186712-c138-49c6-90e3-bdf8f200a4ec",
+    "capacityId": "eb0841d1-9fbc-4596-ac77-3db94148bfe7"
+  },
+  {
+    "name": "itx-icare-insightsrealtime-brands-test",
+    "id": "2a7c7a3d-9016-43a4-b48c-6aefdafa89fc",
+    "capacityId": "eb0841d1-9fbc-4596-ac77-3db94148bfe7"
+  },
+  {
+    "name": "itx-icare-insightsrealtime-prod",
+    "id": "7826ac26-76b0-43fe-aced-f57d5bd9159a",
+    "capacityId": "eb0841d1-9fbc-4596-ac77-3db94148bfe7"
+  },
+  {
+    "name": "itx-icare-insightsrealtime-test",
+    "id": "881e9e27-d2cf-477f-b528-54f34a6e6796",
+    "capacityId": "eb0841d1-9fbc-4596-ac77-3db94148bfe7"
+  },
+  {
+    "name": "ldp [Test]",
+    "id": "e162f054-f28d-48b1-a076-4d2cacdcda36",
+    "capacityId": "6b84b405-563c-4518-a8d4-82540ac8bd2c"
+  },
+  {
+    "name": "LDPCadenasPro",
+    "id": "ae69734f-89be-4be6-b6a7-ed8dd3ee366d",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "ldpdq",
+    "id": "cdb943da-c881-4c3f-b451-99ad697bf1ce",
+    "capacityId": "66e331e2-46bf-430b-b865-31f542998034"
+  },
+  {
+    "name": "ldpimport",
+    "id": "9726a026-84c3-4e0e-8169-a13f7713d23b",
+    "capacityId": "6b84b405-563c-4518-a8d4-82540ac8bd2c"
+  },
+  {
+    "name": "Lelystad Platform Operations",
+    "id": "78523b19-3ae6-4984-81f7-5a0be17eee00",
+    "capacityId": "479badc8-f6c2-48b7-9e89-8498440195bb"
+  },
+  {
+    "name": "Licenses",
+    "id": "bc8ee363-3fc5-48b8-baae-7b9c45ae8cc5",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "Licenses [Development]",
+    "id": "0e90a953-d7b5-46c8-bef9-f911769b6061",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "Licenses [Test]",
+    "id": "4a03a131-139f-4119-9b0f-d0bfc871ef7a",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "LOG_ALMACEN_LARACHA",
+    "id": "39241f83-12dc-4b80-8981-c8f7ef019cb7",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "LOGISTICA ECOMMERCE OYSHO",
+    "id": "c80de50c-9d28-4de1-9a23-48dc1f1c1cb9",
+    "capacityId": "479badc8-f6c2-48b7-9e89-8498440195bb"
+  },
+  {
+    "name": "Logistica Tempe",
+    "id": "fd52ec43-3a49-4c68-9f98-13f6ac7e2dc3",
+    "capacityId": "40a5f9d8-f64a-4189-86bd-1c36a492594c"
+  },
+  {
+    "name": "Logistica Tempe [Development]",
+    "id": "b4b34211-88fb-4839-9bed-73b211979638",
+    "capacityId": "40a5f9d8-f64a-4189-86bd-1c36a492594c"
+  },
+  {
+    "name": "Logistica Tempe [Test]",
+    "id": "887df52d-cab8-4d61-a6c6-87a27aef1600",
+    "capacityId": "40a5f9d8-f64a-4189-86bd-1c36a492594c"
+  },
+  {
+    "name": "Logistica_PB",
+    "id": "b8dac7d5-5bbe-45e5-91ff-b2ef44f75c1d",
+    "capacityId": "0dd77d0d-18e6-4ada-8b42-9913b67a92b9"
+  },
+  {
+    "name": "Logistica_Tiendas_PB",
+    "id": "8a856fcf-3f5d-4f6b-9e22-6d03a776a6c9",
+    "capacityId": "0dd77d0d-18e6-4ada-8b42-9913b67a92b9"
+  },
+  {
+    "name": "LogisticaGestion",
+    "id": "d6a7c463-168d-4fe9-bb52-3449a15e294f",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "LOGISTICS - DATAFLOWS",
+    "id": "e48f605f-2db9-4fa9-bd9c-655eb585a966",
+    "capacityId": "c2191fa8-efc0-489c-8db6-c23c5ebcd2ab"
+  },
+  {
+    "name": "LOGISTICS - STOCK - CADENAS",
+    "id": "ea597e20-4e97-4b78-8b4e-660420248227",
+    "capacityId": "3f6ce512-37bd-4b2d-b9d7-60e7ff17caa0"
+  },
+  {
+    "name": "LOGISTICS - STOCK - CADENAS [Development]",
+    "id": "20c2e55b-8380-4bee-86ed-bfdd0db373b8",
+    "capacityId": "3f6ce512-37bd-4b2d-b9d7-60e7ff17caa0"
+  },
+  {
+    "name": "LOGISTICS - STOCK - CADENAS [Test]",
+    "id": "054c23d2-7074-4a6c-936f-d0f2a7520579",
+    "capacityId": "3f6ce512-37bd-4b2d-b9d7-60e7ff17caa0"
+  },
+  {
+    "name": "LOGISTICS - STOCK - ZARA",
+    "id": "b6819769-b13b-42a2-b154-072773f6ec59",
+    "capacityId": "c2191fa8-efc0-489c-8db6-c23c5ebcd2ab"
+  },
+  {
+    "name": "LOGISTICS - STOCK - ZARA [Development]",
+    "id": "40d2ddd5-beb9-473d-88c1-1f814403decf",
+    "capacityId": "c2191fa8-efc0-489c-8db6-c23c5ebcd2ab"
+  },
+  {
+    "name": "LOGISTICS - STOCK - ZARA [Test]",
+    "id": "52a38aeb-b9af-4034-bcb9-b7e851fc7c23",
+    "capacityId": "c2191fa8-efc0-489c-8db6-c23c5ebcd2ab"
+  },
+  {
+    "name": "Logistics & Transport Netherlands",
+    "id": "2016fca1-ab27-439b-979b-7b924d81dd8f",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "LogisticsDE",
+    "id": "7f2cc5b6-e9c5-4a76-a8a1-72b94e7ba607",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "LogisticsZcom",
+    "id": "abb6fdeb-4af0-4aee-848b-538c60b9ce60",
+    "capacityId": "0fdc0884-82ad-43a9-8e0e-8c4e7577d940"
+  },
+  {
+    "name": "LogisticsZcom [Development]",
+    "id": "2233994f-bee1-467c-bee2-3b2043f0ca1e",
+    "capacityId": "0fdc0884-82ad-43a9-8e0e-8c4e7577d940"
+  },
+  {
+    "name": "MACRO - EUROPA SUR Y AMERICA",
+    "id": "ab6eba1f-990e-4042-a8ac-1a49e54017ae",
+    "capacityId": "1e2f5b26-813a-4a8e-8ebc-265c8951f261"
+  },
+  {
+    "name": "MACRO [Test] - EUROPA SUR Y AMERICA",
+    "id": "fd396d26-0612-4038-b9d6-d430f4f0d8e9",
+    "capacityId": "1e2f5b26-813a-4a8e-8ebc-265c8951f261"
+  },
+  {
+    "name": "MAGI-C",
+    "id": "266e7186-dd15-415f-a0b5-8acd1931f90a",
+    "capacityId": "06cbd350-0043-4f32-b020-ab63a9bc81be"
+  },
+  {
+    "name": "Maker",
+    "id": "1dfe5a8a-73c2-45b8-8ac3-ad725a091257",
+    "capacityId": "0dd77d0d-18e6-4ada-8b42-9913b67a92b9"
+  },
+  {
+    "name": "Maker - Interno [Development]",
+    "id": "d274a52c-4aa5-4b53-b930-821aaf9b3992",
+    "capacityId": "37e5e592-6640-47fa-beb9-5d11127d7f69"
+  },
+  {
+    "name": "Maker Interno",
+    "id": "07d3d78f-5c34-4017-bdb1-7502aed65216",
+    "capacityId": "37e5e592-6640-47fa-beb9-5d11127d7f69"
+  },
+  {
+    "name": "Maker Interno [Test]",
+    "id": "e03d9fef-1940-4dff-bb64-d0f7d682761a",
+    "capacityId": "37e5e592-6640-47fa-beb9-5d11127d7f69"
+  },
+  {
+    "name": "MAKER_PRO",
+    "id": "e4ba319c-0ba2-41ce-924b-6ca51b1fbf05",
+    "capacityId": "c2191fa8-efc0-489c-8db6-c23c5ebcd2ab"
+  },
+  {
+    "name": "Management Projects",
+    "id": "12de61cd-b93a-486c-8ced-b3ce193f30d1",
+    "capacityId": "37e5e592-6640-47fa-beb9-5d11127d7f69"
+  },
+  {
+    "name": "Management Projects [Development]",
+    "id": "647c3af3-ea3a-4f9a-86b2-b5a3b5cf6ba7",
+    "capacityId": "37e5e592-6640-47fa-beb9-5d11127d7f69"
+  },
+  {
+    "name": "Management Projects [Test]",
+    "id": "8644b0d8-4fc2-429b-a70d-44eb83be191e",
+    "capacityId": "37e5e592-6640-47fa-beb9-5d11127d7f69"
+  },
+  {
+    "name": "MARKETING",
+    "id": "43ec2470-5046-484d-8a2b-0a8d78bda3b2",
+    "capacityId": "ccb2ebf0-0ace-4341-a263-9c83412638c8"
+  },
+  {
+    "name": "MARKETING CORPORATIVO",
+    "id": "c448e5fd-9610-46e3-a053-41dce8eddeb4",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "Marketplaces",
+    "id": "443ebc20-8616-4308-9add-c885335a857f",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "MD CCyCC",
+    "id": "31211c51-22b8-4374-9e48-7fd0f37f6462",
+    "capacityId": "366412eb-e6cf-4f0b-8f0e-ef384312f5e4"
+  },
+  {
+    "name": "MD CGComercial",
+    "id": "e2d45cf4-5693-4ba4-8901-ad0158632d01",
+    "capacityId": "366412eb-e6cf-4f0b-8f0e-ef384312f5e4"
+  },
+  {
+    "name": "MD CGComercial [Development]",
+    "id": "22aba39d-7622-48e5-9e24-14b885a403c0",
+    "capacityId": "366412eb-e6cf-4f0b-8f0e-ef384312f5e4"
+  },
+  {
+    "name": "MD CGComercial [Test]",
+    "id": "dc9b1649-2a06-43ba-9398-e2cb31a30971",
+    "capacityId": "366412eb-e6cf-4f0b-8f0e-ef384312f5e4"
+  },
+  {
+    "name": "MD COMERCIAL",
+    "id": "426894c3-b7be-4a37-848a-e4120a7f5ab9",
+    "capacityId": "366412eb-e6cf-4f0b-8f0e-ef384312f5e4"
+  },
+  {
+    "name": "MD COMPRAS [Test]",
+    "id": "5e0ec5f6-53ec-4156-b106-8abe7ab53dee",
+    "capacityId": "3f6ce512-37bd-4b2d-b9d7-60e7ff17caa0"
+  },
+  {
+    "name": "MD DATA ECOMMERCE",
+    "id": "ce09f770-12fb-4034-b7c6-ffe15a9e1b42",
+    "capacityId": "366412eb-e6cf-4f0b-8f0e-ef384312f5e4"
+  },
+  {
+    "name": "MD DATA ECOMMERCE - CRO",
+    "id": "7304f058-dd15-45e3-a1d4-fd14227f51da",
+    "capacityId": "366412eb-e6cf-4f0b-8f0e-ef384312f5e4"
+  },
+  {
+    "name": "MD DIRECCION",
+    "id": "3a4f9ff3-675a-42e6-bc4c-daffef198a77",
+    "capacityId": "366412eb-e6cf-4f0b-8f0e-ef384312f5e4"
+  },
+  {
+    "name": "MD DISTRIBUCION",
+    "id": "83afd41f-af5f-4f1c-b5bb-a63324652e9b",
+    "capacityId": "366412eb-e6cf-4f0b-8f0e-ef384312f5e4"
+  },
+  {
+    "name": "MD ECOMMERCE",
+    "id": "e9ed492b-a22b-457b-9c78-023c1288bc29",
+    "capacityId": "3f6ce512-37bd-4b2d-b9d7-60e7ff17caa0"
+  },
+  {
+    "name": "MD EXPANSION",
+    "id": "80d169ed-7ce2-4f73-8273-fe829295a33f",
+    "capacityId": "366412eb-e6cf-4f0b-8f0e-ef384312f5e4"
+  },
+  {
+    "name": "MD Feel Data Center",
+    "id": "8eaf2f25-e743-4d4a-ae68-b536898868c0",
+    "capacityId": "366412eb-e6cf-4f0b-8f0e-ef384312f5e4"
+  },
+  {
+    "name": "MD Feel Data Center [Development]",
+    "id": "286b93f2-7b23-454b-8b97-4f0f4ce36195",
+    "capacityId": "366412eb-e6cf-4f0b-8f0e-ef384312f5e4"
+  },
+  {
+    "name": "MD Feel Data Center [Test]",
+    "id": "706b3bd6-dd2c-44c9-a8a1-d107fa207a3d",
+    "capacityId": "366412eb-e6cf-4f0b-8f0e-ef384312f5e4"
+  },
+  {
+    "name": "MD FINANCIERO",
+    "id": "8f8340fe-a46f-4ef8-a703-0a75aa422487",
+    "capacityId": "366412eb-e6cf-4f0b-8f0e-ef384312f5e4"
+  },
+  {
+    "name": "MD FINANCIERO HISTÓRICO",
+    "id": "d92c4011-f28c-45dc-8c50-84537cb14454",
+    "capacityId": "366412eb-e6cf-4f0b-8f0e-ef384312f5e4"
+  },
+  {
+    "name": "MD FORMACION 1",
+    "id": "35cc5ae1-987d-4a7c-9946-57814be63df7",
+    "capacityId": "366412eb-e6cf-4f0b-8f0e-ef384312f5e4"
+  },
+  {
+    "name": "MD HR Team",
+    "id": "808a365b-d5bd-4424-86a4-73a99dce5344",
+    "capacityId": "366412eb-e6cf-4f0b-8f0e-ef384312f5e4"
+  },
+  {
+    "name": "MD LOGISTICA",
+    "id": "53700591-d055-4e9f-8805-5ff476423f05",
+    "capacityId": "366412eb-e6cf-4f0b-8f0e-ef384312f5e4"
+  },
+  {
+    "name": "MD OPERACIONES TIENDAS",
+    "id": "ba8ac236-099e-4110-88cc-0fa13718c0ff",
+    "capacityId": "366412eb-e6cf-4f0b-8f0e-ef384312f5e4"
+  },
+  {
+    "name": "MD Operaciones.com",
+    "id": "0e71e52a-9d0a-4f53-b098-87f6dc97ebab",
+    "capacityId": "366412eb-e6cf-4f0b-8f0e-ef384312f5e4"
+  },
+  {
+    "name": "MD QUALITY ASSURANCE",
+    "id": "72ac55bc-b4d8-4450-97b8-0134e0971b02",
+    "capacityId": "366412eb-e6cf-4f0b-8f0e-ef384312f5e4"
+  },
+  {
+    "name": "MD Sistemas",
+    "id": "f861b114-f5ba-49bf-8617-c8db9139370c",
+    "capacityId": "366412eb-e6cf-4f0b-8f0e-ef384312f5e4"
+  },
+  {
+    "name": "MD SOSTENIBILIDAD",
+    "id": "a5465eba-1515-41bb-8bd7-7b12d2fb4811",
+    "capacityId": "366412eb-e6cf-4f0b-8f0e-ef384312f5e4"
+  },
+  {
+    "name": "MD STORE OPERATIONS",
+    "id": "5890b1d6-a035-4d64-908d-17bf27b1391d",
+    "capacityId": "366412eb-e6cf-4f0b-8f0e-ef384312f5e4"
+  },
+  {
+    "name": "MD STORE OPERATIONS [Development]",
+    "id": "a3266909-b94c-4995-a3a1-b39d02c59b06",
+    "capacityId": "366412eb-e6cf-4f0b-8f0e-ef384312f5e4"
+  },
+  {
+    "name": "MD STORE OPERATIONS [Test]",
+    "id": "327cbc81-7d59-43bf-a0a5-b54d7eb68900",
+    "capacityId": "366412eb-e6cf-4f0b-8f0e-ef384312f5e4"
+  },
+  {
+    "name": "MD TIENDAS",
+    "id": "ea3b5000-2b85-4444-ba1c-661013a927aa",
+    "capacityId": "366412eb-e6cf-4f0b-8f0e-ef384312f5e4"
+  },
+  {
+    "name": "MD_KPIs_Workspace",
+    "id": "1213059d-06a5-4a75-a049-2536381dcb0e",
+    "capacityId": "366412eb-e6cf-4f0b-8f0e-ef384312f5e4"
+  },
+  {
+    "name": "Memoria Anual",
+    "id": "089e8315-ad29-4064-8afc-ea6ca9204cf7",
+    "capacityId": "6a4aa9d7-68d2-41e9-95b4-7d35a494ee67"
+  },
+  {
+    "name": "MERKEN | Control de Gestión",
+    "id": "f0d18d8b-9524-4480-86b3-d68340c1e71b",
+    "capacityId": "06cbd350-0043-4f32-b020-ab63a9bc81be"
+  },
+  {
+    "name": "Microsoft Fabric Capacity Metrics 2/3/2026 10:15:28",
+    "id": "f7e237f7-78eb-4b37-b9d6-32a5f2648be1",
+    "capacityId": "37e5e592-6640-47fa-beb9-5d11127d7f69"
+  },
+  {
+    "name": "Microsoft Fabric Platform Monitoring",
+    "id": "baf71ce2-ba7f-46b2-8975-cb0803b87dac",
+    "capacityId": "479badc8-f6c2-48b7-9e89-8498440195bb"
+  },
+  {
+    "name": "MIDBI - Monitorización MSTR [Test] ",
+    "id": "d25dbb62-809c-4d16-a96e-818198810f5f",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "MIDBI - Monitorización SSAS",
+    "id": "81ed7f4f-dc54-49a3-9b11-7ca7b44ad486",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "Middleware",
+    "id": "cad2a7e5-e406-4f54-bc25-bb90dfbc3ef3",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "Mobile Notification ZA",
+    "id": "463b5abf-b6ff-47b6-afc6-b098ea87c1dd",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "Mobile Notification ZA [Test]",
+    "id": "00b34f71-208a-4bad-9368-0f04d8bae3dc",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "Multichannel",
+    "id": "334e3d47-10f0-4f6e-b07d-c63d8b177725",
+    "capacityId": "add763fc-29c1-47a1-8796-068e18f1bfde"
+  },
+  {
+    "name": "NL Finance Hub",
+    "id": "74af7a7a-7632-4b4f-a156-a1041022d981",
+    "capacityId": "06cbd350-0043-4f32-b020-ab63a9bc81be"
+  },
+  {
+    "name": "O&P workspace",
+    "id": "781809f3-7174-40ab-b4a4-87627c0eaee1",
+    "capacityId": "479badc8-f6c2-48b7-9e89-8498440195bb"
+  },
+  {
+    "name": "ODP [Test]",
+    "id": "220299ce-b903-4a19-9794-4c82ee7029f3",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "Omnichannel Managed Workspace_44af59a6-b22f-ef11-8406-000d3a3a2944",
+    "id": "892dfd5d-8ba6-4b9a-9b67-ca55656fde17",
+    "capacityId": "eb0841d1-9fbc-4596-ac77-3db94148bfe7"
+  },
+  {
+    "name": "Omnichannel Managed Workspace_dde25578-c8f1-ee11-a1fa-000d3a248d6c",
+    "id": "c1d855bf-7206-480e-aadd-05df38c3e535",
+    "capacityId": "eb0841d1-9fbc-4596-ac77-3db94148bfe7"
+  },
+  {
+    "name": "Omnichannel Managed Workspace_e7792cc4-4a5e-ef11-bfdf-000d3a67cc4e",
+    "id": "e8fbd215-16d6-4f46-a83a-1cfc10f301cb",
+    "capacityId": "eb0841d1-9fbc-4596-ac77-3db94148bfe7"
+  },
+  {
+    "name": "Omnichannel Managed Workspace_ea53ac33-195e-ef11-bfdd-000d3a2a7e75",
+    "id": "1f950fad-8f53-4817-b650-0865e03c56cd",
+    "capacityId": "eb0841d1-9fbc-4596-ac77-3db94148bfe7"
+  },
+  {
+    "name": "OmnichannelPayments",
+    "id": "8027446a-4383-4811-8d0c-13718756a8fe",
+    "capacityId": "c2191fa8-efc0-489c-8db6-c23c5ebcd2ab"
+  },
+  {
+    "name": "Operaciones - Cuenta Personas",
+    "id": "6317c46d-cbd7-4105-8a0e-ef17220ec7ea",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "Operaciones - Cuenta Personas [Test]",
+    "id": "ad0a10f4-f6a7-4400-90ec-61fe8f0524a3",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "Operaciones CD Cadenas",
+    "id": "f17c3fa1-c659-4453-b07d-e02fcffa9fc9",
+    "capacityId": "5647f210-ea8f-4edf-91e9-d32fa795cf12"
+  },
+  {
+    "name": "Operaciones CD Cadenas [Development]",
+    "id": "1747abe0-3bf4-41f7-a48a-6a942dca0f01",
+    "capacityId": "5647f210-ea8f-4edf-91e9-d32fa795cf12"
+  },
+  {
+    "name": "Operaciones CD Cadenas [Test]",
+    "id": "3c6d485e-ef42-4828-a6e7-5b2325c5d13d",
+    "capacityId": "5647f210-ea8f-4edf-91e9-d32fa795cf12"
+  },
+  {
+    "name": "OPERACIONES CD ZARA",
+    "id": "0f2074b1-34b3-4169-a79e-a9ac15a0924f",
+    "capacityId": "5647f210-ea8f-4edf-91e9-d32fa795cf12"
+  },
+  {
+    "name": "OPERACIONES CD ZARA - Centros",
+    "id": "91bbc010-c049-467c-a537-ac38d84be718",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "OPERACIONES CD ZARA - Centros - N3",
+    "id": "1ee826ad-5e9d-4e97-acf8-9e49cfa07cc1",
+    "capacityId": "5647f210-ea8f-4edf-91e9-d32fa795cf12"
+  },
+  {
+    "name": "OPERACIONES CD ZARA [Development]",
+    "id": "a60fe605-0f2e-45f5-ab12-072828b9e1f0",
+    "capacityId": "5647f210-ea8f-4edf-91e9-d32fa795cf12"
+  },
+  {
+    "name": "OPERACIONES CD ZARA [Test]",
+    "id": "e567b94c-d80c-4c95-8a7f-1bb0f4e65e0d",
+    "capacityId": "5647f210-ea8f-4edf-91e9-d32fa795cf12"
+  },
+  {
+    "name": "Operaciones Infraestructura",
+    "id": "d784e28c-06ba-4f45-8e90-7f7dfe79941d",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "Operaciones Tienda",
+    "id": "a78a6b12-c57f-47ed-8c05-7e2a3010b55c",
+    "capacityId": "add763fc-29c1-47a1-8796-068e18f1bfde"
+  },
+  {
+    "name": "Operaciones Tienda [Development]",
+    "id": "7030a330-58aa-4f94-a467-edf48d739da2",
+    "capacityId": "add763fc-29c1-47a1-8796-068e18f1bfde"
+  },
+  {
+    "name": "Operaciones Tienda [Test]",
+    "id": "d41e393e-5ebd-4c9f-ad17-232fc3cf782c",
+    "capacityId": "add763fc-29c1-47a1-8796-068e18f1bfde"
+  },
+  {
+    "name": "OPERACIONES_CD_PB",
+    "id": "6a119095-001f-4757-9046-29f8094f84aa",
+    "capacityId": "0dd77d0d-18e6-4ada-8b42-9913b67a92b9"
+  },
+  {
+    "name": "Operaciones_Ecom_PB",
+    "id": "7b38c17e-af0a-4c95-ace2-dc97c6dfc872",
+    "capacityId": "0dd77d0d-18e6-4ada-8b42-9913b67a92b9"
+  },
+  {
+    "name": "ottools",
+    "id": "bdb37fa6-c39b-4229-b0e2-0827a439a00b",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "OY-TRAINING",
+    "id": "0c7d3965-d5b7-4082-b162-48ddd17539fe",
+    "capacityId": "3f6ce512-37bd-4b2d-b9d7-60e7ff17caa0"
+  },
+  {
+    "name": "OyP-GastosViaje",
+    "id": "6b93f6a2-87fc-41af-b904-361fc73e10d2",
+    "capacityId": "479badc8-f6c2-48b7-9e89-8498440195bb"
+  },
+  {
+    "name": "OyP-GastosViaje [Development]",
+    "id": "ff40b3d6-fcaa-42b6-80d4-1bb5ce2a2b99",
+    "capacityId": "479badc8-f6c2-48b7-9e89-8498440195bb"
+  },
+  {
+    "name": "OYP.001 - Inergy",
+    "id": "73480605-25f2-4970-ad0f-65fa2173ecc1",
+    "capacityId": "06cbd350-0043-4f32-b020-ab63a9bc81be"
+  },
+  {
+    "name": "OYP.001 - Inergy [Development]",
+    "id": "6f42811e-aed6-49ea-ae66-d5b1a6f19956",
+    "capacityId": "06cbd350-0043-4f32-b020-ab63a9bc81be"
+  },
+  {
+    "name": "OYP.001 - Inergy [Test]",
+    "id": "521a01ba-d7c1-479e-ace1-8f55e536d714",
+    "capacityId": "06cbd350-0043-4f32-b020-ab63a9bc81be"
+  },
+  {
+    "name": "OYSHO ADM CD",
+    "id": "911afcc0-c3ea-4f98-852e-935a9bb30b0f",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "Oysho Ecomm - Venta / Devos",
+    "id": "e95264e6-a332-4815-ba33-0edbaad2cfce",
+    "capacityId": "3f6ce512-37bd-4b2d-b9d7-60e7ff17caa0"
+  },
+  {
+    "name": "OYSHO RRHH",
+    "id": "5f484cd8-213e-473c-821d-2434a1dcae9b",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "Paginated Reports Comercial",
+    "id": "ce345c5c-309a-4514-9472-88d36b4db155",
+    "capacityId": "37e5e592-6640-47fa-beb9-5d11127d7f69"
+  },
+  {
+    "name": "Paginated Reports Comercial [Development]",
+    "id": "94a54cd9-7c2b-4a57-b579-e23a2df83a74",
+    "capacityId": "37e5e592-6640-47fa-beb9-5d11127d7f69"
+  },
+  {
+    "name": "Paginated Reports Comercial [Test]",
+    "id": "55936724-df74-491e-8308-8c0a6390f484",
+    "capacityId": "37e5e592-6640-47fa-beb9-5d11127d7f69"
+  },
+  {
+    "name": "Paginated Reports PCG",
+    "id": "e96b4264-1a7b-4602-b03a-91ceac5a6ab2",
+    "capacityId": "37e5e592-6640-47fa-beb9-5d11127d7f69"
+  },
+  {
+    "name": "Paginated Reports PCG [Development]",
+    "id": "4c856b73-a0bd-49b9-a687-c7ad56591851",
+    "capacityId": "37e5e592-6640-47fa-beb9-5d11127d7f69"
+  },
+  {
+    "name": "Paginated Reports PCG [Test]",
+    "id": "96939fae-6530-4c6c-ac71-e9dbd58d0711",
+    "capacityId": "37e5e592-6640-47fa-beb9-5d11127d7f69"
+  },
+  {
+    "name": "Pagos Tienda",
+    "id": "9e3479f6-3185-449d-aaad-4eecb90d0bb8",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "Payment by Analytics",
+    "id": "2e484e14-3243-4b7f-9e43-77ccd570783a",
+    "capacityId": "c2191fa8-efc0-489c-8db6-c23c5ebcd2ab"
+  },
+  {
+    "name": "PB_Analysis",
+    "id": "85c0b4c0-b8ee-4529-a8fe-cb356fdbb012",
+    "capacityId": "0dd77d0d-18e6-4ada-8b42-9913b67a92b9"
+  },
+  {
+    "name": "PB_Data",
+    "id": "d239e3d5-34bf-4b98-bdcc-40e8b4eb86d5",
+    "capacityId": "0dd77d0d-18e6-4ada-8b42-9913b67a92b9"
+  },
+  {
+    "name": "PB_Data [Development]",
+    "id": "ce303499-9923-4686-acf0-3f5bafa0ef61",
+    "capacityId": "0dd77d0d-18e6-4ada-8b42-9913b67a92b9"
+  },
+  {
+    "name": "PB_Data [Test]",
+    "id": "46d32863-9b83-4e95-82c8-6d701d0f103d",
+    "capacityId": "0dd77d0d-18e6-4ada-8b42-9913b67a92b9"
+  },
+  {
+    "name": "PB_IP_Producto",
+    "id": "b2904a15-44a1-4800-8e3f-9326226f313e",
+    "capacityId": "0dd77d0d-18e6-4ada-8b42-9913b67a92b9"
+  },
+  {
+    "name": "PB_OBRAS",
+    "id": "b24e6886-939a-47e0-9726-d8e63298918e",
+    "capacityId": "0dd77d0d-18e6-4ada-8b42-9913b67a92b9"
+  },
+  {
+    "name": "PB_Report",
+    "id": "e6f185e1-ec96-455b-94f8-8f68c644d293",
+    "capacityId": "0dd77d0d-18e6-4ada-8b42-9913b67a92b9"
+  },
+  {
+    "name": "PB_Report [Development]",
+    "id": "72be13b9-a9d8-44b5-a165-095c5343ae31",
+    "capacityId": "0dd77d0d-18e6-4ada-8b42-9913b67a92b9"
+  },
+  {
+    "name": "PB_Report [Test]",
+    "id": "7a70ffc7-af1a-4232-b1fc-5fa6a94f3067",
+    "capacityId": "0dd77d0d-18e6-4ada-8b42-9913b67a92b9"
+  },
+  {
+    "name": "PB_Supernova",
+    "id": "b8042df2-e698-444e-8ce7-7ecba6664b08",
+    "capacityId": "0dd77d0d-18e6-4ada-8b42-9913b67a92b9"
+  },
+  {
+    "name": "PB_Supernova [Dev]",
+    "id": "7eff314c-f256-4d31-ba42-0e2c1253b942",
+    "capacityId": "0dd77d0d-18e6-4ada-8b42-9913b67a92b9"
+  },
+  {
+    "name": "PB_Supernova [Test]",
+    "id": "d3bcd1e9-0a99-4b49-8916-c7eb432d784b",
+    "capacityId": "0dd77d0d-18e6-4ada-8b42-9913b67a92b9"
+  },
+  {
+    "name": "PBCDs",
+    "id": "6a184eb5-894e-4e78-8642-c1399d956072",
+    "capacityId": "0dd77d0d-18e6-4ada-8b42-9913b67a92b9"
+  },
+  {
+    "name": "pbidata",
+    "id": "32069ef0-6b13-461b-b76d-b1f4b1175ffd",
+    "capacityId": "8b376c41-76f2-457b-b048-3b58477f3690"
+  },
+  {
+    "name": "pbidata [Test]",
+    "id": "c4e0a96d-85f3-483e-86b4-75adf0044b73",
+    "capacityId": "33e95abe-5ab3-41ed-ac1a-4d5b01595d54"
+  },
+  {
+    "name": "pbidata2",
+    "id": "5cb12f35-7ad5-443e-9d59-c046ef34d5ef",
+    "capacityId": "479badc8-f6c2-48b7-9e89-8498440195bb"
+  },
+  {
+    "name": "pbidataGitCicd",
+    "id": "0ef0e7fd-0f71-4d7c-bcc9-17c1ee902340",
+    "capacityId": "8b376c41-76f2-457b-b048-3b58477f3690"
+  },
+  {
+    "name": "pbidataGitCicd [Development]",
+    "id": "9d201594-bb5c-4979-8408-d1b4a8b33df2",
+    "capacityId": "8b376c41-76f2-457b-b048-3b58477f3690"
+  },
+  {
+    "name": "pbidataGitCicd [Test]",
+    "id": "276ac454-da94-4c7f-a68b-1cf5c3fb8f4c",
+    "capacityId": "8b376c41-76f2-457b-b048-3b58477f3690"
+  },
+  {
+    "name": "PBIRS Estadisticas",
+    "id": "fa078649-6c44-47a3-ac94-66755437a604",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "PCG",
+    "id": "6105adcd-e923-41af-958d-d4e04320caed",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "PCG - Comparte",
+    "id": "dbbb42d9-e5cf-46d7-9ee8-a1118dc77164",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "PCG [Development]",
+    "id": "475e3414-474a-49a3-bcb6-5a0d4df3d5ba",
+    "capacityId": "06cbd350-0043-4f32-b020-ab63a9bc81be"
+  },
+  {
+    "name": "PCG China",
+    "id": "dcd78b91-edaf-478d-bf25-69493ad869a7",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "PCG_OYSHO",
+    "id": "d2b94d0a-c222-46b7-9e8a-073b4788ad1d",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "Personas_BR",
+    "id": "3ae6ebe4-4384-4a4d-89e3-dda8f6b7f637",
+    "capacityId": "6f100e9f-598d-485b-87d2-348e628829dc"
+  },
+  {
+    "name": "Power Platform Inventory (Fabric)",
+    "id": "bbd2ff4b-c3b7-49a5-b3bf-983776a719d6",
+    "capacityId": "8b376c41-76f2-457b-b048-3b58477f3690"
+  },
+  {
+    "name": "powerai",
+    "id": "29f0a932-e971-4e7a-98ff-28f3174851ae",
+    "capacityId": "8b376c41-76f2-457b-b048-3b58477f3690"
+  },
+  {
+    "name": "powerai [Development]",
+    "id": "26c3f62e-d60b-468e-92d5-4fe6b2610ada",
+    "capacityId": "8b376c41-76f2-457b-b048-3b58477f3690"
+  },
+  {
+    "name": "powerai [Test]",
+    "id": "ab026bdf-350d-48ef-a0c1-cbe46c8a75c5",
+    "capacityId": "8b376c41-76f2-457b-b048-3b58477f3690"
+  },
+  {
+    "name": "powerbifunctions",
+    "id": "be923202-bfa2-4b4a-98fd-6ce7823f94c4",
+    "capacityId": "8b376c41-76f2-457b-b048-3b58477f3690"
+  },
+  {
+    "name": "PPI Reporting",
+    "id": "ac9961c3-4e4b-49b0-994d-f94f4c010dcc",
+    "capacityId": "479badc8-f6c2-48b7-9e89-8498440195bb"
+  },
+  {
+    "name": "Procesos y Control",
+    "id": "190ec04e-d24b-4f5a-abaa-8177d0d60fd8",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "Producto_Pais_PB",
+    "id": "c0c1dd7d-3473-4451-975b-d6fcf748397e",
+    "capacityId": "0dd77d0d-18e6-4ada-8b42-9913b67a92b9"
+  },
+  {
+    "name": "Producto_Pais_PB [Development]",
+    "id": "aef2e02b-d64e-414c-b5a1-4942a8896954",
+    "capacityId": "0dd77d0d-18e6-4ada-8b42-9913b67a92b9"
+  },
+  {
+    "name": "Producto_Pais_PB [Test]",
+    "id": "4a9955ee-90e5-4234-be96-bd0a6693cd05",
+    "capacityId": "0dd77d0d-18e6-4ada-8b42-9913b67a92b9"
+  },
+  {
+    "name": "Promociones",
+    "id": "6b23c2db-b2ff-4ece-b0bd-bda0b762c72a",
+    "capacityId": "3f6ce512-37bd-4b2d-b9d7-60e7ff17caa0"
+  },
+  {
+    "name": "Proyecto BTC (Boost the change)",
+    "id": "af54d805-54d0-4170-ad36-da52274c3d90",
+    "capacityId": "6f100e9f-598d-485b-87d2-348e628829dc"
+  },
+  {
+    "name": "Proyecto Phoenix",
+    "id": "b6a54a59-03f5-490e-a87e-cb5e3b1e85c4",
+    "capacityId": "0dd77d0d-18e6-4ada-8b42-9913b67a92b9"
+  },
+  {
+    "name": "Proyecto Phoenix [Development]",
+    "id": "2f105fd5-4b34-4f2a-a83b-e576040698c0",
+    "capacityId": "0dd77d0d-18e6-4ada-8b42-9913b67a92b9"
+  },
+  {
+    "name": "Proyecto Phoenix [Test]",
+    "id": "96ef5cf4-0f3a-4801-9934-123f4cfbe9bb",
+    "capacityId": "0dd77d0d-18e6-4ada-8b42-9913b67a92b9"
+  },
+  {
+    "name": "PROYECTOS - EUROPA SUR Y AMERICA ",
+    "id": "4c72632e-fa38-4f8f-9b80-cfb435719684",
+    "capacityId": "1e2f5b26-813a-4a8e-8ebc-265c8951f261"
+  },
+  {
+    "name": "PROYECTOS 2.0 - EUROPA SUR Y AMERICA",
+    "id": "9c0d1f39-f96d-4019-8042-95b74af1873f",
+    "capacityId": "1e2f5b26-813a-4a8e-8ebc-265c8951f261"
+  },
+  {
+    "name": "Proyectos Stock Control",
+    "id": "33a0c127-6001-4f9a-9add-368d09bfc6ea",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "ProyectosEcommerce",
+    "id": "a08265fe-1881-4d8a-b8a4-e13919c90166",
+    "capacityId": "6d80f0a3-c47e-4206-a7f9-21255fa8b0a0"
+  },
+  {
+    "name": "PTR - Data Statistics & BI",
+    "id": "37013024-a470-4433-8017-75297d8afcd7",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "Pullbear Capacity Metrics Monitoring",
+    "id": "4d58b089-e43e-4af5-8f48-670ee452b979",
+    "capacityId": "0dd77d0d-18e6-4ada-8b42-9913b67a92b9"
+  },
+  {
+    "name": "pullbearmonitoringteam",
+    "id": "e2e22eee-d040-47e4-9205-47835bb3ccb6",
+    "capacityId": "3f6ce512-37bd-4b2d-b9d7-60e7ff17caa0"
+  },
+  {
+    "name": "Recursos BI",
+    "id": "4ac360eb-1a59-43c9-ac23-f0eaeb293f8e",
+    "capacityId": "37e5e592-6640-47fa-beb9-5d11127d7f69"
+  },
+  {
+    "name": "Recursos BI [Development]",
+    "id": "0c9deb96-2161-44f2-9beb-2e08e021cd8a",
+    "capacityId": "37e5e592-6640-47fa-beb9-5d11127d7f69"
+  },
+  {
+    "name": "Recursos BI [Test]",
+    "id": "a5cf44c6-e509-4559-8941-03308c03b050",
+    "capacityId": "37e5e592-6640-47fa-beb9-5d11127d7f69"
+  },
+  {
+    "name": "Reporting Fabricas",
+    "id": "405fd39e-63de-40e1-bcff-4b3721891f63",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "Reunión Seguimiento Compras N1 - N2",
+    "id": "59821a8f-1d99-4c22-a6c3-1271814a9bfc",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "Reunión Seguimiento Distribución N1 - N2",
+    "id": "b3543c8a-75f6-44c2-992d-c32f0773e2cf",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "Reunión Seguimiento Maestro N1 - N2",
+    "id": "656cabf9-debf-414d-a1b6-d640441e5bf4",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "Reunión Seguimiento Ventas N1 - N2",
+    "id": "e7efa9c3-8202-406c-9685-8dd0b3d45505",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "RFID_AS_EAS",
+    "id": "316cfce7-f9d3-4aa5-a106-a378ad217987",
+    "capacityId": "add763fc-29c1-47a1-8796-068e18f1bfde"
+  },
+  {
+    "name": "RFIDWarehouse_WS",
+    "id": "97b8deed-2cfd-4417-98fe-de690df46c1b",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "RGC Premium",
+    "id": "8fcedbd5-3bb5-48ef-a7f0-5f6e66e8ede4",
+    "capacityId": "1bb0fa4d-4438-4ef5-81e9-ef3f09fa8163"
+  },
+  {
+    "name": "Risk Management & Business Intelligence",
+    "id": "e803a0db-9558-4a34-a932-7f3223242f11",
+    "capacityId": "06cbd350-0043-4f32-b020-ab63a9bc81be"
+  },
+  {
+    "name": "RPS Comercial",
+    "id": "3d9bf675-2f69-4c39-ad46-02fc8727727e",
+    "capacityId": "37e5e592-6640-47fa-beb9-5d11127d7f69"
+  },
+  {
+    "name": "RPS Comercial [Development]",
+    "id": "b4b7a2d8-ab37-4e0d-8179-30e44e3b5fe9",
+    "capacityId": "37e5e592-6640-47fa-beb9-5d11127d7f69"
+  },
+  {
+    "name": "RPS Comercial [Test]",
+    "id": "06a7a257-9235-4a00-a361-cf523e9e074a",
+    "capacityId": "37e5e592-6640-47fa-beb9-5d11127d7f69"
+  },
+  {
+    "name": "RRHH Asia Internacional",
+    "id": "5d75e65c-9c74-432f-97ac-f8d6afd55c1e",
+    "capacityId": "6f100e9f-598d-485b-87d2-348e628829dc"
+  },
+  {
+    "name": "RRHH Bienestar",
+    "id": "422f4955-0934-45ac-9210-e099d07fc883",
+    "capacityId": "6f100e9f-598d-485b-87d2-348e628829dc"
+  },
+  {
+    "name": "RRHH Centros logísticos",
+    "id": "70ee3070-4a2b-42f0-b3d6-5fb593e952cb",
+    "capacityId": "6f100e9f-598d-485b-87d2-348e628829dc"
+  },
+  {
+    "name": "RRHH Compensación",
+    "id": "44ca1c89-fe78-4dab-9f17-9072b3bdcb92",
+    "capacityId": "6f100e9f-598d-485b-87d2-348e628829dc"
+  },
+  {
+    "name": "RRHH Control de gestion",
+    "id": "b67b57a8-0b20-478a-b603-b0a8cbe30ff6",
+    "capacityId": "6f100e9f-598d-485b-87d2-348e628829dc"
+  },
+  {
+    "name": "RRHH Control interno",
+    "id": "12445360-c3cb-4f2a-84c8-5f58bbdd0552",
+    "capacityId": "6f100e9f-598d-485b-87d2-348e628829dc"
+  },
+  {
+    "name": "RRHH Data Highway",
+    "id": "844a9e7b-9ee3-4496-993c-c408c79f66df",
+    "capacityId": "6f100e9f-598d-485b-87d2-348e628829dc"
+  },
+  {
+    "name": "RRHH Franquicias",
+    "id": "8ad93f3e-e484-42f1-8b7a-af2b39d4cbff",
+    "capacityId": "6f100e9f-598d-485b-87d2-348e628829dc"
+  },
+  {
+    "name": "RRHH Gestión de tiempos",
+    "id": "ccbd4a4c-7df4-4ba4-a801-189d13eabe83",
+    "capacityId": "6f100e9f-598d-485b-87d2-348e628829dc"
+  },
+  {
+    "name": "RRHH In & Out",
+    "id": "7ac3874b-8871-4812-aa15-c5259a274375",
+    "capacityId": "6f100e9f-598d-485b-87d2-348e628829dc"
+  },
+  {
+    "name": "RRHH Internacional Europa",
+    "id": "e454f47a-2b60-4781-9f8a-ad84d22e7e3c",
+    "capacityId": "6f100e9f-598d-485b-87d2-348e628829dc"
+  },
+  {
+    "name": "RRHH Libro de ventas Stradivarius",
+    "id": "fb1fc689-9244-4103-a725-0e8526aeb9fa",
+    "capacityId": "6f100e9f-598d-485b-87d2-348e628829dc"
+  },
+  {
+    "name": "RRHH Modelos golden",
+    "id": "4125523a-7f79-4d0d-941f-b6987d96b436",
+    "capacityId": "6f100e9f-598d-485b-87d2-348e628829dc"
+  },
+  {
+    "name": "RRHH Modelos golden [Development]",
+    "id": "0804d300-a13a-4517-92e4-1726bd5d0730",
+    "capacityId": "6f100e9f-598d-485b-87d2-348e628829dc"
+  },
+  {
+    "name": "RRHH Modelos golden [Test]",
+    "id": "0ec0de9d-377f-4682-b993-cab9e439fe68",
+    "capacityId": "6f100e9f-598d-485b-87d2-348e628829dc"
+  },
+  {
+    "name": "RRHH Obras",
+    "id": "b797d744-a531-49b4-aa7a-e7a5d1536579",
+    "capacityId": "06cbd350-0043-4f32-b020-ab63a9bc81be"
+  },
+  {
+    "name": "RRHH Organizacion y procesos",
+    "id": "26c5fdbb-3bb5-4304-91dd-6d2faa9ea454",
+    "capacityId": "6f100e9f-598d-485b-87d2-348e628829dc"
+  },
+  {
+    "name": "RRHH People Planning",
+    "id": "a56d1a3e-a74c-4f00-964e-24410cffe761",
+    "capacityId": "6f100e9f-598d-485b-87d2-348e628829dc"
+  },
+  {
+    "name": "RRHH Productividad",
+    "id": "4af00c20-4b6e-496e-b5e9-63e251eede87",
+    "capacityId": "6f100e9f-598d-485b-87d2-348e628829dc"
+  },
+  {
+    "name": "RRHH Sandbox",
+    "id": "22d2113e-9e98-4c4e-9051-161388df3802",
+    "capacityId": "6f100e9f-598d-485b-87d2-348e628829dc"
+  },
+  {
+    "name": "RRHH Sandbox CI y Compensacion",
+    "id": "d4c03197-c2a6-4d60-8f3b-d3dd7a056224",
+    "capacityId": "6f100e9f-598d-485b-87d2-348e628829dc"
+  },
+  {
+    "name": "RRHH Seguridad y Salud",
+    "id": "0f17524d-8301-4103-bd4e-a6fb9d269999",
+    "capacityId": "6f100e9f-598d-485b-87d2-348e628829dc"
+  },
+  {
+    "name": "RRHH Sistemas",
+    "id": "502a567e-d9f1-4557-8f4b-f333c59a52c8",
+    "capacityId": "6f100e9f-598d-485b-87d2-348e628829dc"
+  },
+  {
+    "name": "RRHH Talento",
+    "id": "467dd702-9a72-4138-92dd-42979cc683ce",
+    "capacityId": "6f100e9f-598d-485b-87d2-348e628829dc"
+  },
+  {
+    "name": "RRHH Train",
+    "id": "c6dc876f-ba10-4f19-be06-b7d3890b3942",
+    "capacityId": "6f100e9f-598d-485b-87d2-348e628829dc"
+  },
+  {
+    "name": "RRHH_CAB_PB",
+    "id": "6e9bbc5c-eed2-4b04-b9e2-04b8266f953c",
+    "capacityId": "0dd77d0d-18e6-4ada-8b42-9913b67a92b9"
+  },
+  {
+    "name": "SCIIF",
+    "id": "d783cc39-6ced-4f88-9c80-c333dabdce0b",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "Segmentation",
+    "id": "a7c6a0c1-a12a-478d-9968-99e4986fcbcc",
+    "capacityId": "c2191fa8-efc0-489c-8db6-c23c5ebcd2ab"
+  },
+  {
+    "name": "Seguimiento Eventos",
+    "id": "f875cd8e-0d7b-4944-a4aa-f7329947555f",
+    "capacityId": "6fe3cba2-e2c0-447f-878b-74a387f7c012"
+  },
+  {
+    "name": "Seguimiento Eventos [test]",
+    "id": "86347337-3a01-4395-8f03-7fd29dfc42ee",
+    "capacityId": "c2191fa8-efc0-489c-8db6-c23c5ebcd2ab"
+  },
+  {
+    "name": "Seguimiento Sofia",
+    "id": "859fb41f-0dbd-4d27-9483-852cff9d5b7b",
+    "capacityId": "37e5e592-6640-47fa-beb9-5d11127d7f69"
+  },
+  {
+    "name": "Seguridad de la Informacion",
+    "id": "38493eed-00f2-4b30-95d3-451f1add416b",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "Servicio Trazabilidad",
+    "id": "f5fc330e-49c0-4f97-9105-e987ddb4ce0b",
+    "capacityId": "6a4aa9d7-68d2-41e9-95b4-7d35a494ee67"
+  },
+  {
+    "name": "SIST_OPER_INCIDENCIAS REMEDY",
+    "id": "2b142f82-4bbb-469c-8156-4eb6e15cdf2d",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "SIST_OPER_INCIDENCIAS REMEDY [Test]",
+    "id": "38b72180-0268-42ad-8501-29725818230e",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "SIST_OPER_SMO_INCIDENCIAS_REMEDY",
+    "id": "e5d35391-a18d-4ab4-a3a2-765636fdf337",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "SIST_OPER_SMO_INCIDENCIAS_REMEDY [Test]",
+    "id": "5d7e55a3-41cf-4cf2-bda1-3b0832810b90",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "SMO",
+    "id": "03e226dd-5d9a-4f44-892d-9c1d877438b0",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "SMO [Development]",
+    "id": "b1051c7b-8ead-4b96-affc-a0e6bada9ad0",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "SMO [Test]",
+    "id": "362ae98f-2921-4962-b5ce-97ef8430b4f6",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "SNOWFLAKE",
+    "id": "ab710448-6f29-4394-969f-8fe24e181711",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "Soluciones Producto",
+    "id": "0c3067e2-c4b7-4949-95bf-c26184f5bebc",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "SOPDATECOM",
+    "id": "253ac24d-693b-41fa-9e06-861915836a2a",
+    "capacityId": "3f6ce512-37bd-4b2d-b9d7-60e7ff17caa0"
+  },
+  {
+    "name": "SoporteSGA",
+    "id": "5dc9757f-abbf-4297-96d7-40d99cb8247d",
+    "capacityId": "6b84b405-563c-4518-a8d4-82540ac8bd2c"
+  },
+  {
+    "name": "Sostenibilidad",
+    "id": "abeb3e1d-39ad-4700-b397-828064fd4a06",
+    "capacityId": "6a4aa9d7-68d2-41e9-95b4-7d35a494ee67"
+  },
+  {
+    "name": "Sostenibilidad [Development]",
+    "id": "59d07b21-bfb2-4732-ac4c-2c284cb55ad9",
+    "capacityId": "6a4aa9d7-68d2-41e9-95b4-7d35a494ee67"
+  },
+  {
+    "name": "Sostenibilidad [Test]",
+    "id": "42fa4945-a17f-4536-b021-8fc49524c50e",
+    "capacityId": "6a4aa9d7-68d2-41e9-95b4-7d35a494ee67"
+  },
+  {
+    "name": "Sostenibilidad Comercial",
+    "id": "88117160-3525-4505-844a-c6f1c1075e20",
+    "capacityId": "37e5e592-6640-47fa-beb9-5d11127d7f69"
+  },
+  {
+    "name": "Sostenibilidad Comercial [Development]",
+    "id": "66e789a2-737e-4262-abba-740ff9b0ecd2",
+    "capacityId": "37e5e592-6640-47fa-beb9-5d11127d7f69"
+  },
+  {
+    "name": "Sostenibilidad Comercial [Test]",
+    "id": "d4285476-4a06-4cad-8072-37df1996ef8c",
+    "capacityId": "37e5e592-6640-47fa-beb9-5d11127d7f69"
+  },
+  {
+    "name": "Sostenibilidad Zara",
+    "id": "e28e619b-18ba-4561-899c-d93aa76765e1",
+    "capacityId": "c2191fa8-efc0-489c-8db6-c23c5ebcd2ab"
+  },
+  {
+    "name": "SOSTENIBILIDAD_OYSHO",
+    "id": "eeb6aa46-5744-401f-9c8b-c304e4ad15a8",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "Sostenibilidad_PB",
+    "id": "5397f3ed-aad4-40c6-b410-64f95db681bd",
+    "capacityId": "0dd77d0d-18e6-4ada-8b42-9913b67a92b9"
+  },
+  {
+    "name": "Sostenibilidad_PB [Development]",
+    "id": "35159682-785e-4266-b569-78c890736316",
+    "capacityId": "0dd77d0d-18e6-4ada-8b42-9913b67a92b9"
+  },
+  {
+    "name": "Sostenibilidad_PB [Test]",
+    "id": "2e4e687f-07e6-4a7f-96ab-7ea2ddedc165",
+    "capacityId": "0dd77d0d-18e6-4ada-8b42-9913b67a92b9"
+  },
+  {
+    "name": "SRE Analytics Report Tool",
+    "id": "98f8d699-400c-4e2b-a9d2-1c77af9ae826",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "SRE Analytics Report Tool [Development]",
+    "id": "876ddc7c-27ed-4e3f-81c4-0950451c9013",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "SRE Analytics Report Tool [Test]",
+    "id": "498156b8-b2ab-4377-92d9-a149e3d1b84c",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "SRE_Reliability",
+    "id": "5011ed20-3cd1-4344-b687-fd5925accbb9",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "STOCK DATA",
+    "id": "eb6bcd51-90a8-4267-9c20-4dd258d31069",
+    "capacityId": "c2191fa8-efc0-489c-8db6-c23c5ebcd2ab"
+  },
+  {
+    "name": "StockManagement Fabric Capacity Metrics Monitoring",
+    "id": "109c1411-fdc0-497f-9c2d-6df061233ade",
+    "capacityId": "f20d9b3b-93d2-4f8e-99f2-f28f0c18aca5"
+  },
+  {
+    "name": "STR Compradores",
+    "id": "8b19b262-e51d-4e52-82b0-343c5e48a1dc",
+    "capacityId": "d3b63d6f-b65f-4b46-a263-5eb3d66eea6f"
+  },
+  {
+    "name": "STR Control Gestion",
+    "id": "5d1dd659-33a4-447a-a56d-903e723f31bb",
+    "capacityId": "d3b63d6f-b65f-4b46-a263-5eb3d66eea6f"
+  },
+  {
+    "name": "STR Financiero",
+    "id": "4d723c5c-093b-4fc7-944b-f256e397dbe1",
+    "capacityId": "d3b63d6f-b65f-4b46-a263-5eb3d66eea6f"
+  },
+  {
+    "name": "STR Operaciones",
+    "id": "8326de3a-7322-4173-8aca-7227a852e927",
+    "capacityId": "d3b63d6f-b65f-4b46-a263-5eb3d66eea6f"
+  },
+  {
+    "name": "Str Zona",
+    "id": "52abe46c-9ce6-409e-9bcc-edb0229a6df2",
+    "capacityId": "d3b63d6f-b65f-4b46-a263-5eb3d66eea6f"
+  },
+  {
+    "name": "STR-ECOMPBI",
+    "id": "bcdfb012-f552-4359-b41e-1fcdb80df7f8",
+    "capacityId": "3f6ce512-37bd-4b2d-b9d7-60e7ff17caa0"
+  },
+  {
+    "name": "STR-ECOMPBI [Development]",
+    "id": "0fe46077-9254-4a51-8e7e-4aa076abdb82",
+    "capacityId": "3f6ce512-37bd-4b2d-b9d7-60e7ff17caa0"
+  },
+  {
+    "name": "STR-ECOMPBI [Test]",
+    "id": "542863a7-136c-4a39-a290-c8867b6e1522",
+    "capacityId": "3f6ce512-37bd-4b2d-b9d7-60e7ff17caa0"
+  },
+  {
+    "name": "Stradivarius - ECOMM",
+    "id": "16f5ba53-7f0f-4cd7-877d-b008e1c9e122",
+    "capacityId": "d3b63d6f-b65f-4b46-a263-5eb3d66eea6f"
+  },
+  {
+    "name": "Supply Chain Projects",
+    "id": "59b4fcbb-004d-438c-8a7a-bfc949e2898a",
+    "capacityId": "37e5e592-6640-47fa-beb9-5d11127d7f69"
+  },
+  {
+    "name": "Supply Chain Projects [Development]",
+    "id": "599aaa0f-f10f-4874-8594-31eeb64c5f6a",
+    "capacityId": "37e5e592-6640-47fa-beb9-5d11127d7f69"
+  },
+  {
+    "name": "Supply Chain Projects [Test]",
+    "id": "a2f4d43b-a8d1-4c65-b147-23cc698bef4f",
+    "capacityId": "37e5e592-6640-47fa-beb9-5d11127d7f69"
+  },
+  {
+    "name": "SUPPORT_TECHNOLOGY_OPERATIONS",
+    "id": "74fff581-0041-436b-910f-40e04c147b90",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "Sustainability Reports",
+    "id": "a8dae36a-2714-4c94-966d-21cb16648151",
+    "capacityId": "6a4aa9d7-68d2-41e9-95b4-7d35a494ee67"
+  },
+  {
+    "name": "Sustainability Reports [Development]",
+    "id": "021be252-493a-4044-8f2c-58badfb472d1",
+    "capacityId": "6a4aa9d7-68d2-41e9-95b4-7d35a494ee67"
+  },
+  {
+    "name": "Sustainability Reports [Test]",
+    "id": "57cb5a9c-49f8-49f1-9c82-97a759b0455e",
+    "capacityId": "6a4aa9d7-68d2-41e9-95b4-7d35a494ee67"
+  },
+  {
+    "name": "Team and Product Metrics",
+    "id": "0124ddf4-8b60-466e-a54c-6285d4d309e2",
+    "capacityId": "479badc8-f6c2-48b7-9e89-8498440195bb"
+  },
+  {
+    "name": "Team and Product Metrics Internal",
+    "id": "a1f8c7c6-fb46-46e1-b8f0-b9da7d75227e",
+    "capacityId": "479badc8-f6c2-48b7-9e89-8498440195bb"
+  },
+  {
+    "name": "Team and Product Metrics Logistica",
+    "id": "9b95ba33-5ce2-4134-a83d-af8b1b2c9e0e",
+    "capacityId": "479badc8-f6c2-48b7-9e89-8498440195bb"
+  },
+  {
+    "name": "TechLog Support",
+    "id": "e5dc8b59-1ad7-4ff8-8e4a-d9a6e5a54cef",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "Technology",
+    "id": "ef227531-d6f3-495a-884a-919ec7768d01",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "TECHOPS&",
+    "id": "72bf2a88-2c9e-4eef-90d4-7e4d011d8afa",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "TechTiendaSalesAndAssistance",
+    "id": "4fabbe28-145f-40dc-b8bf-fe8efe818424",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "Tecnología_Sistemas_Operaciones",
+    "id": "79010da8-a723-44ee-a65e-c46a6896a987",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "Telecomunicaciones UC",
+    "id": "af534b8c-8f7c-4c7a-a610-72afc3b75b92",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "Tempe Capacity Metrics Monitoring",
+    "id": "617bdfe4-0df8-4be9-8a08-0e70d4ce66a2",
+    "capacityId": "40a5f9d8-f64a-4189-86bd-1c36a492594c"
+  },
+  {
+    "name": "TempeITARQSistemas",
+    "id": "c6d58879-8232-4015-acdd-ad68223c5181",
+    "capacityId": "40a5f9d8-f64a-4189-86bd-1c36a492594c"
+  },
+  {
+    "name": "Tesoreria",
+    "id": "29b4e473-b40d-4588-8743-953db5f209c2",
+    "capacityId": "06cbd350-0043-4f32-b020-ab63a9bc81be"
+  },
+  {
+    "name": "Tesoreria (Desarrollo)",
+    "id": "b5915248-6f0b-481e-bc01-5fbb00a0e557",
+    "capacityId": "06cbd350-0043-4f32-b020-ab63a9bc81be"
+  },
+  {
+    "name": "test_cicd_bidatos",
+    "id": "0e3a0f5d-ae41-430b-a057-ba1a7f457446",
+    "capacityId": "37e5e592-6640-47fa-beb9-5d11127d7f69"
+  },
+  {
+    "name": "testcicdbidatos",
+    "id": "7e7d99cb-8f73-4700-ba4a-a4d4b0ceded6",
+    "capacityId": "37e5e592-6640-47fa-beb9-5d11127d7f69"
+  },
+  {
+    "name": "TMS Analytics",
+    "id": "557c5b19-8208-48dc-93be-15d6477b8f5d",
+    "capacityId": "6ebabff6-11aa-4ed9-af8e-582c2f1af6d0"
+  },
+  {
+    "name": "TMS Analytics [Development]",
+    "id": "b0da3c77-9aee-4682-ae7c-e10cfe319740",
+    "capacityId": "6ebabff6-11aa-4ed9-af8e-582c2f1af6d0"
+  },
+  {
+    "name": "TMS Analytics [Test]",
+    "id": "3eadf623-97e2-4349-8425-2ccf779d4f60",
+    "capacityId": "6ebabff6-11aa-4ed9-af8e-582c2f1af6d0"
+  },
+  {
+    "name": "TMS Business",
+    "id": "1a4b2370-08e8-4746-a726-bf66897534b7",
+    "capacityId": "6ebabff6-11aa-4ed9-af8e-582c2f1af6d0"
+  },
+  {
+    "name": "TMS Business [Development]",
+    "id": "e8ef23c9-256d-4d4a-85ea-f78fbfc74448",
+    "capacityId": "6ebabff6-11aa-4ed9-af8e-582c2f1af6d0"
+  },
+  {
+    "name": "TMS Business [Test]",
+    "id": "8708fdf2-2fef-43ce-8a5d-f68273132e2b",
+    "capacityId": "6ebabff6-11aa-4ed9-af8e-582c2f1af6d0"
+  },
+  {
+    "name": "TMS Ecommerce",
+    "id": "3acc5023-97fc-4b8e-8b90-dce92fb0095b",
+    "capacityId": "6ebabff6-11aa-4ed9-af8e-582c2f1af6d0"
+  },
+  {
+    "name": "TMS Ecommerce [Test]",
+    "id": "1140ee77-3ff6-44f8-a1ef-5d8e38d6e80c",
+    "capacityId": "6ebabff6-11aa-4ed9-af8e-582c2f1af6d0"
+  },
+  {
+    "name": "TMS Projects",
+    "id": "74fa12e0-a659-46b5-8065-23ac181e14cf",
+    "capacityId": "6ebabff6-11aa-4ed9-af8e-582c2f1af6d0"
+  },
+  {
+    "name": "TMS Projects [Development]",
+    "id": "dd2cdd6f-098b-4979-8fc2-5121649e8a78",
+    "capacityId": "6ebabff6-11aa-4ed9-af8e-582c2f1af6d0"
+  },
+  {
+    "name": "TMS Projects [Test]",
+    "id": "7e814d0e-6268-44fc-9fd7-e310ca6b2d30",
+    "capacityId": "6ebabff6-11aa-4ed9-af8e-582c2f1af6d0"
+  },
+  {
+    "name": "Traceability Reports",
+    "id": "0839d0b2-3542-4232-bdd0-ba2df20b4650",
+    "capacityId": "6a4aa9d7-68d2-41e9-95b4-7d35a494ee67"
+  },
+  {
+    "name": "Traceability Reports [Development]",
+    "id": "cba3bce9-c3e7-4f4b-9135-fe50b68c6002",
+    "capacityId": "6a4aa9d7-68d2-41e9-95b4-7d35a494ee67"
+  },
+  {
+    "name": "Traceability Reports [Test]",
+    "id": "92a74826-4d00-4371-b877-e63e8facfe43",
+    "capacityId": "6a4aa9d7-68d2-41e9-95b4-7d35a494ee67"
+  },
+  {
+    "name": "Translations",
+    "id": "846316bd-3a2a-47e9-a063-d1952f1c6c59",
+    "capacityId": "3f6ce512-37bd-4b2d-b9d7-60e7ff17caa0"
+  },
+  {
+    "name": "TRANSPORT_ECOMMERCE",
+    "id": "bc118f10-ea2b-4e42-923e-f9d5da729b37",
+    "capacityId": "ccb2ebf0-0ace-4341-a263-9c83412638c8"
+  },
+  {
+    "name": "TRF BI",
+    "id": "5a4ba229-5ef2-4087-a1cc-f1f1f26d7111",
+    "capacityId": "37e5e592-6640-47fa-beb9-5d11127d7f69"
+  },
+  {
+    "name": "TRF BI [Development]",
+    "id": "87928e71-48ac-4043-8aaa-42852b2b99be",
+    "capacityId": "37e5e592-6640-47fa-beb9-5d11127d7f69"
+  },
+  {
+    "name": "TRF BI [Test]",
+    "id": "7dfe3237-0078-4584-b163-da5e3cb7fef8",
+    "capacityId": "37e5e592-6640-47fa-beb9-5d11127d7f69"
+  },
+  {
+    "name": "Tribu Indicadores Comerciales",
+    "id": "2f017269-3582-4d09-ab8a-d41650237a00",
+    "capacityId": "37e5e592-6640-47fa-beb9-5d11127d7f69"
+  },
+  {
+    "name": "UK Operations",
+    "id": "717f876b-05c2-47ae-a189-b0fd41f5ea8d",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "Usabilidad_DPQA",
+    "id": "23390574-a08a-4d56-97ce-2dffe29ec246",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "Usabilidad_DPQA [Development]",
+    "id": "c3d33030-bb39-4e02-b05f-7078541a0a0c",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "Usabilidad_DPQA [Test]",
+    "id": "e4567f2c-b294-4abf-bb76-62d1fa21cad3",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "Valexist",
+    "id": "b1930413-4f7c-4483-9fa0-131735225c0a",
+    "capacityId": "f20d9b3b-93d2-4f8e-99f2-f28f0c18aca5"
+  },
+  {
+    "name": "Valexist [Development]",
+    "id": "b9228b4a-ff2b-4c53-9f5f-63f9ad7fa03e",
+    "capacityId": "f20d9b3b-93d2-4f8e-99f2-f28f0c18aca5"
+  },
+  {
+    "name": "Valexist [Test]",
+    "id": "d9fa595d-eaa7-4de4-ab95-92b79ffed94f",
+    "capacityId": "f20d9b3b-93d2-4f8e-99f2-f28f0c18aca5"
+  },
+  {
+    "name": "VALIDACIÓN",
+    "id": "611ed882-300e-4578-b0ab-25caa9d6d6de",
+    "capacityId": "c2191fa8-efc0-489c-8db6-c23c5ebcd2ab"
+  },
+  {
+    "name": "Value Chain Reports",
+    "id": "70db911f-9029-41e2-9dd3-d677043fbc55",
+    "capacityId": "6a4aa9d7-68d2-41e9-95b4-7d35a494ee67"
+  },
+  {
+    "name": "Value Chain Reports [Development]",
+    "id": "a24ebf24-0d82-4c8f-b266-3284c2764922",
+    "capacityId": "6a4aa9d7-68d2-41e9-95b4-7d35a494ee67"
+  },
+  {
+    "name": "Value Chain Reports [Test]",
+    "id": "2ee0f132-a8df-4099-9310-fd2712b919d2",
+    "capacityId": "6a4aa9d7-68d2-41e9-95b4-7d35a494ee67"
+  },
+  {
+    "name": "VENTA ANUAL",
+    "id": "6deeda2f-efdb-4c42-bbfe-fce7d9bdfee7",
+    "capacityId": "3f6ce512-37bd-4b2d-b9d7-60e7ff17caa0"
+  },
+  {
+    "name": "VeO Tracking",
+    "id": "1cbeec2e-46e4-4119-b5c4-e0b376bea140",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "wks_analytics_producto",
+    "id": "c2d2fff5-4a59-46a4-a47b-ae7b93407da4",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "wks_analytics_RRHH",
+    "id": "19b944e6-5ef3-4c2b-b33d-81b5bd655780",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "wks_analytics_sostenibilidad",
+    "id": "4d6f8749-edec-4f51-bdaa-f704c1e1d033",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "wks_analytics_tienda",
+    "id": "8d511287-73bc-456b-8ee0-11ea97b1e545",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "WKS_ChinaDashboard_DataReview",
+    "id": "14fc67e7-7b0c-45e4-9064-4d145dc3e889",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "WKS_ChinaDashboard_Massimo Dutti",
+    "id": "f9254952-311d-4ce2-b570-9ba3afa8013d",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "WKS_ChinaDashboard_ZARA",
+    "id": "7449d981-c529-43f5-98ed-809e604c2643",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "WKS_ChinaData",
+    "id": "8f7bcb51-33fb-4446-b1fb-35671752b8c6",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "WKS_ChinaData_Grow",
+    "id": "f686c170-0948-4b41-a211-f96bc525d8e9",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "WKS_CHINADATA_HR",
+    "id": "4df80278-a17a-47b9-a677-dcd81e75ad18",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "WKS_CYBERSEGURIDAD",
+    "id": "15e7ea47-a985-4a0b-9347-1fb2e2fba302",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "WKS_DATA_PLATFORM_PERFORMANCE",
+    "id": "e9996b04-3865-45fa-890e-59327a16da7b",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "WKS_DATA_TIENDA",
+    "id": "8e1f9936-7292-4e7b-a769-0a4e717f1489",
+    "capacityId": "add763fc-29c1-47a1-8796-068e18f1bfde"
+  },
+  {
+    "name": "WKS_DATA_TIENDA [Development]",
+    "id": "a139444e-9f7f-4390-be1a-d2bef6737f37",
+    "capacityId": "add763fc-29c1-47a1-8796-068e18f1bfde"
+  },
+  {
+    "name": "WKS_DATA_TIENDA [Test]",
+    "id": "ec8f363a-8305-4d5c-9bd6-f0f05ab60f01",
+    "capacityId": "add763fc-29c1-47a1-8796-068e18f1bfde"
+  },
+  {
+    "name": "WKS_OYSHO",
+    "id": "3237cd1f-a3ab-4258-9c43-ad4a30bd247f",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "WKS_OYSHO [Development]",
+    "id": "c90cd4f1-2f83-4986-ba26-4b72743d4cb0",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "WKS_OYSHO [Test]",
+    "id": "f3dc6fde-2aa0-485d-8683-5ab6be208367",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "WKS_SENSORMATIC",
+    "id": "ea74d689-a546-4e4d-bc1a-5749897d348e",
+    "capacityId": "add763fc-29c1-47a1-8796-068e18f1bfde"
+  },
+  {
+    "name": "WKS_TIENDA_SENSORMATIC",
+    "id": "12ac024f-01d4-491a-9b52-282ddd992e0d",
+    "capacityId": "add763fc-29c1-47a1-8796-068e18f1bfde"
+  },
+  {
+    "name": "wks-wapping",
+    "id": "f464700c-f505-4f2e-9ac2-b0aa17315b8a",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "Workshop Analysis",
+    "id": "16d22035-c0a7-44ef-8783-a427d2a15100",
+    "capacityId": "37e5e592-6640-47fa-beb9-5d11127d7f69"
+  },
+  {
+    "name": "Workshop Analysis [Development]",
+    "id": "2d1e0e45-78b9-4105-a357-25a0ca88b659",
+    "capacityId": "37e5e592-6640-47fa-beb9-5d11127d7f69"
+  },
+  {
+    "name": "Workshop Analysis [Test]",
+    "id": "dc4cee9a-e000-4219-811c-477cf41c1a8c",
+    "capacityId": "37e5e592-6640-47fa-beb9-5d11127d7f69"
+  },
+  {
+    "name": "Workspace Logística Plataforma",
+    "id": "81713204-86e4-4838-a906-ef57816e71ba",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "WRAIN_ws",
+    "id": "83ed4132-1f83-4184-b3d8-f5482fbb780a",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "ZARA - ClickCollect",
+    "id": "01ecbd77-28bf-4575-9d90-2e034a1a93f1",
+    "capacityId": "c2191fa8-efc0-489c-8db6-c23c5ebcd2ab"
+  },
+  {
+    "name": "ZARA - ClickCollect - DATAFLOWS",
+    "id": "5531755e-9a88-444e-aa64-4a99085d0ebf",
+    "capacityId": "c2191fa8-efc0-489c-8db6-c23c5ebcd2ab"
+  },
+  {
+    "name": "ZARA - ClickCollect [Development]",
+    "id": "c7657752-d736-4849-bb8b-709b27ff8511",
+    "capacityId": "c2191fa8-efc0-489c-8db6-c23c5ebcd2ab"
+  },
+  {
+    "name": "ZARA - ClickCollect [Test]",
+    "id": "5fa78a8b-6513-4bc0-832f-fa56deb9bc08",
+    "capacityId": "c2191fa8-efc0-489c-8db6-c23c5ebcd2ab"
+  },
+  {
+    "name": "ZARA - CUSTOMER EXPERIENCE",
+    "id": "076712e9-683d-4918-8fe1-57124449a6a3",
+    "capacityId": "c2191fa8-efc0-489c-8db6-c23c5ebcd2ab"
+  },
+  {
+    "name": "ZARA - CUSTOMER EXPERIENCE - DATAFLOWS",
+    "id": "35f1942c-91ee-4586-b579-1aa871a77643",
+    "capacityId": "c2191fa8-efc0-489c-8db6-c23c5ebcd2ab"
+  },
+  {
+    "name": "ZARA - CUSTOMER EXPERIENCE [Development]",
+    "id": "52e36154-41b3-40a2-89fb-787f911746e8",
+    "capacityId": "c2191fa8-efc0-489c-8db6-c23c5ebcd2ab"
+  },
+  {
+    "name": "ZARA - CUSTOMER EXPERIENCE [Test]",
+    "id": "f3ffccbf-86a4-4e15-ae35-3e1da0481733",
+    "capacityId": "c2191fa8-efc0-489c-8db6-c23c5ebcd2ab"
+  },
+  {
+    "name": "ZARA - DROP OFF",
+    "id": "86d2d44b-7330-495b-befb-b771f5562acd",
+    "capacityId": "c2191fa8-efc0-489c-8db6-c23c5ebcd2ab"
+  },
+  {
+    "name": "ZARA - IPOD",
+    "id": "8a42eacf-4c56-441a-8549-733fc36ec74c",
+    "capacityId": "c2191fa8-efc0-489c-8db6-c23c5ebcd2ab"
+  },
+  {
+    "name": "ZARA - IPOD - DATAFLOWS",
+    "id": "47dadd0e-0fdf-4734-84eb-a765ae15ad63",
+    "capacityId": "c2191fa8-efc0-489c-8db6-c23c5ebcd2ab"
+  },
+  {
+    "name": "ZARA - IPOD [Development]",
+    "id": "12857882-61f4-489d-8908-e7da6e5f3d7e",
+    "capacityId": "c2191fa8-efc0-489c-8db6-c23c5ebcd2ab"
+  },
+  {
+    "name": "ZARA - IPOD [Test]",
+    "id": "24353d5c-90aa-4862-ac41-753d62ff7a56",
+    "capacityId": "c2191fa8-efc0-489c-8db6-c23c5ebcd2ab"
+  },
+  {
+    "name": "ZARA - MODO TIENDA",
+    "id": "eb21d171-502e-44c9-b6ea-23d21cefd878",
+    "capacityId": "c2191fa8-efc0-489c-8db6-c23c5ebcd2ab"
+  },
+  {
+    "name": "ZARA - MODO TIENDA - DATAFLOWS",
+    "id": "9b59b66a-37d1-41e4-b7be-92a71412d33c",
+    "capacityId": "c2191fa8-efc0-489c-8db6-c23c5ebcd2ab"
+  },
+  {
+    "name": "ZARA - MODO TIENDA [Development]",
+    "id": "16cb0d07-e0a5-4c6d-9d89-f4410cd6d14a",
+    "capacityId": "c2191fa8-efc0-489c-8db6-c23c5ebcd2ab"
+  },
+  {
+    "name": "ZARA - MODO TIENDA [Test]",
+    "id": "686e1ccc-5410-4a3c-8364-7f960db34b1e",
+    "capacityId": "c2191fa8-efc0-489c-8db6-c23c5ebcd2ab"
+  },
+  {
+    "name": "ZARA - SINT",
+    "id": "e4237570-261a-4360-adb6-4b95f20e3b07",
+    "capacityId": "c2191fa8-efc0-489c-8db6-c23c5ebcd2ab"
+  },
+  {
+    "name": "ZARA - SINT - DATAFLOWS",
+    "id": "8d0eddc0-f1bf-4524-8db1-acc1caef532d",
+    "capacityId": "c2191fa8-efc0-489c-8db6-c23c5ebcd2ab"
+  },
+  {
+    "name": "ZARA - SINT [Development]",
+    "id": "553b800f-e418-4bcb-bd1b-ea0ebcc433dc",
+    "capacityId": "c2191fa8-efc0-489c-8db6-c23c5ebcd2ab"
+  },
+  {
+    "name": "ZARA - SINT [Test]",
+    "id": "cd03541b-d66a-488f-bc47-84a8c3783c23",
+    "capacityId": "c2191fa8-efc0-489c-8db6-c23c5ebcd2ab"
+  },
+  {
+    "name": "Zara complementos Señora",
+    "id": "2aafa0f8-3b65-4aa3-904d-9bfa3e9a78db",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "ZARA ESPAÑA RRHH",
+    "id": "c041d6d1-ea2b-4565-8809-25ccc5911d70",
+    "capacityId": "1e2f5b26-813a-4a8e-8ebc-265c8951f261"
+  },
+  {
+    "name": "ZARA ESPAÑA RRHH [Test]",
+    "id": "a0ac9b0f-62be-4be5-bbb3-22ed9f211c75",
+    "capacityId": "1e2f5b26-813a-4a8e-8ebc-265c8951f261"
+  },
+  {
+    "name": "Zara Home Automated Reports",
+    "id": "f36fdc4a-7e5d-481d-88ee-1a8b3a060efc",
+    "capacityId": "4ef6a650-cbee-4ea2-b5b1-d8ea6b32e30e"
+  },
+  {
+    "name": "Zara Home Automated Reports [Development]",
+    "id": "3d0e45f2-dc18-492d-bfd9-675599acc751",
+    "capacityId": "4ef6a650-cbee-4ea2-b5b1-d8ea6b32e30e"
+  },
+  {
+    "name": "Zara Home BI",
+    "id": "d32fc1a9-42eb-460c-9276-fc44eaf2e476",
+    "capacityId": "4ef6a650-cbee-4ea2-b5b1-d8ea6b32e30e"
+  },
+  {
+    "name": "Zara Home BI [Development]",
+    "id": "72f2aa5b-d4dc-4ca3-bec2-6ced82abc2e5",
+    "capacityId": "4ef6a650-cbee-4ea2-b5b1-d8ea6b32e30e"
+  },
+  {
+    "name": "Zara Home Compras",
+    "id": "d37c69ec-9b9e-490c-a116-b132a180c23e",
+    "capacityId": "33e95abe-5ab3-41ed-ac1a-4d5b01595d54"
+  },
+  {
+    "name": "Zara Home Compras [Development]",
+    "id": "a63020fe-c97a-4a77-af19-bd8b358e3334",
+    "capacityId": "4ef6a650-cbee-4ea2-b5b1-d8ea6b32e30e"
+  },
+  {
+    "name": "Zara Home Distribución",
+    "id": "a8ccb74a-b8fa-4261-a1e1-79a4e2da94c7",
+    "capacityId": "4ef6a650-cbee-4ea2-b5b1-d8ea6b32e30e"
+  },
+  {
+    "name": "Zara Home Ecommerce",
+    "id": "4717c4fb-79bb-4b52-8edd-6648eab09999",
+    "capacityId": "4ef6a650-cbee-4ea2-b5b1-d8ea6b32e30e"
+  },
+  {
+    "name": "Zara Home Ecommerce [Development]",
+    "id": "3ee549cf-bce9-4d17-b9c9-035c0b60ef30",
+    "capacityId": "4ef6a650-cbee-4ea2-b5b1-d8ea6b32e30e"
+  },
+  {
+    "name": "Zara Home Logistica",
+    "id": "52e19f04-d9ec-47cf-99f7-56dc9b02e33a",
+    "capacityId": "4ef6a650-cbee-4ea2-b5b1-d8ea6b32e30e"
+  },
+  {
+    "name": "Zara Home Logistica - Mantenimiento",
+    "id": "6d8a1447-98f9-4363-a0d2-0e7d37325a36",
+    "capacityId": "4ef6a650-cbee-4ea2-b5b1-d8ea6b32e30e"
+  },
+  {
+    "name": "Zara Home Logistica [Development]",
+    "id": "86d8565b-b38c-47c4-873f-5ebd98aac0a2",
+    "capacityId": "4ef6a650-cbee-4ea2-b5b1-d8ea6b32e30e"
+  },
+  {
+    "name": "Zara Home Operaciones Tienda",
+    "id": "1acfcea3-789e-4ab9-9330-608c1cc633d4",
+    "capacityId": "4ef6a650-cbee-4ea2-b5b1-d8ea6b32e30e"
+  },
+  {
+    "name": "Zara Home Operaciones Tienda [Development]",
+    "id": "b3998d5b-6073-451c-a8ce-f7e9c8b80b95",
+    "capacityId": "4ef6a650-cbee-4ea2-b5b1-d8ea6b32e30e"
+  },
+  {
+    "name": "Zara Home People & Culture",
+    "id": "0f27ef7f-a7b6-4069-a5db-2fd4d8ab00db",
+    "capacityId": "4ef6a650-cbee-4ea2-b5b1-d8ea6b32e30e"
+  },
+  {
+    "name": "Zara Home People & Culture [Development]",
+    "id": "ce273e31-64a1-4bb3-a488-86e500e172ba",
+    "capacityId": "4ef6a650-cbee-4ea2-b5b1-d8ea6b32e30e"
+  },
+  {
+    "name": "Zara Home Sostenibilidad",
+    "id": "43f5dffd-a374-4093-8c8d-016a4d8e3a98",
+    "capacityId": "4ef6a650-cbee-4ea2-b5b1-d8ea6b32e30e"
+  },
+  {
+    "name": "Zara Home Sostenibilidad [Development]",
+    "id": "2ca1e3de-8558-43cc-b636-5726700b6d4a",
+    "capacityId": "4ef6a650-cbee-4ea2-b5b1-d8ea6b32e30e"
+  },
+  {
+    "name": "Zara Home Store Analytics",
+    "id": "2dd26cb7-100a-4e3c-a851-df993046ea4d",
+    "capacityId": "4ef6a650-cbee-4ea2-b5b1-d8ea6b32e30e"
+  },
+  {
+    "name": "Zara Home Store Analytics [Development]",
+    "id": "f983efaf-c5fa-4826-8bff-507a861b7b52",
+    "capacityId": "4ef6a650-cbee-4ea2-b5b1-d8ea6b32e30e"
+  },
+  {
+    "name": "Zara Home Transporte",
+    "id": "781f8c0c-8b1c-4e3e-9fb8-e37d159d8e81",
+    "capacityId": "4ef6a650-cbee-4ea2-b5b1-d8ea6b32e30e"
+  },
+  {
+    "name": "Zara Home Transporte [Development]",
+    "id": "a2cafb09-bfdd-47a1-a6e3-bab5bc0588be",
+    "capacityId": "4ef6a650-cbee-4ea2-b5b1-d8ea6b32e30e"
+  },
+  {
+    "name": "Zara Home Ventas",
+    "id": "f4676820-cbd3-421e-88a1-4e2bd2bcebc7",
+    "capacityId": "4ef6a650-cbee-4ea2-b5b1-d8ea6b32e30e"
+  },
+  {
+    "name": "Zara Home Ventas [Development]",
+    "id": "766c14ff-2bae-43fe-b534-7ea0abc20fdf",
+    "capacityId": "4ef6a650-cbee-4ea2-b5b1-d8ea6b32e30e"
+  },
+  {
+    "name": "Zara Streaming",
+    "id": "c025be75-74b5-4a30-97dd-09819498b549",
+    "capacityId": "c2191fa8-efc0-489c-8db6-c23c5ebcd2ab"
+  },
+  {
+    "name": "ZARA USA",
+    "id": "2e48aaad-1f6f-4f9b-af00-1e65831a76f5",
+    "capacityId": "1a3ff9f2-a3cb-42b5-b0bb-b822f076a0c7"
+  },
+  {
+    "name": "Zara_kids",
+    "id": "717b2272-5105-4427-a2dd-e1914c87e253",
+    "capacityId": "c2191fa8-efc0-489c-8db6-c23c5ebcd2ab"
+  },
+  {
+    "name": "ZARACOM-Returns",
+    "id": "e476dcde-454e-4e0a-9446-6d3b9b9bb228",
+    "capacityId": "ccb2ebf0-0ace-4341-a263-9c83412638c8"
+  },
+  {
+    "name": "zarahomecomprasdev",
+    "id": "f30d7081-337e-42ef-a4b5-cacf3dc41730",
+    "capacityId": "4ef6a650-cbee-4ea2-b5b1-d8ea6b32e30e"
+  },
+  {
+    "name": "ZaraSales",
+    "id": "6ae0dae2-910e-4c2c-bf9d-2405f0e6db0d",
+    "capacityId": "c2191fa8-efc0-489c-8db6-c23c5ebcd2ab"
+  },
+  {
+    "name": "ZaraSales [Test]",
+    "id": "819dd699-3674-4cbd-93f3-651eb439f192",
+    "capacityId": "3f6ce512-37bd-4b2d-b9d7-60e7ff17caa0"
+  },
+  {
+    "name": "Zenit",
+    "id": "4f040f2c-18d4-4099-b72e-3c91a8e749cf",
+    "capacityId": "3f6ce512-37bd-4b2d-b9d7-60e7ff17caa0"
+  },
+  {
+    "name": "ZENIT - QA",
+    "id": "f35a29d1-ead6-41f4-a427-5186a1f51bf2",
+    "capacityId": "c2191fa8-efc0-489c-8db6-c23c5ebcd2ab"
+  },
+  {
+    "name": "ZH Online Resps",
+    "id": "12255eef-a938-4fa6-bf56-6172d8390c20",
+    "capacityId": "4ef6a650-cbee-4ea2-b5b1-d8ea6b32e30e"
+  },
+  {
+    "name": "ZOOM 2.0 - EUROPA SUR Y AMERICA ",
+    "id": "a3dcfb36-99fb-4621-9d69-ba3efdc5a52a",
+    "capacityId": "1e2f5b26-813a-4a8e-8ebc-265c8951f261"
+  },
+  {
+    "name": "ZOOM 2.0 [Development] - EUROPA SUR Y AMERICA ",
+    "id": "8028328b-5767-43f1-8fdc-7cdaa307249d",
+    "capacityId": "1bb0fa4d-4438-4ef5-81e9-ef3f09fa8163"
+  },
+  {
+    "name": "ZOOM 2.0 [Test] - EUROPA SUR Y AMERICA ",
+    "id": "049c849b-daac-4a17-8125-38179f988f7f",
+    "capacityId": "1e2f5b26-813a-4a8e-8ebc-265c8951f261"
+  },
+  {
+    "name": "ZOOM 2.0 LEGACY - EUROPA SUR Y AMERICA",
+    "id": "aa3b5374-1fea-46da-9ad2-96c7674ca1c5",
+    "capacityId": "1e2f5b26-813a-4a8e-8ebc-265c8951f261"
+  },
+  {
+    "name": "ZOOM 3.0 - EUROPA SUR Y AMERICA ",
+    "id": "dbaa718d-7b98-42d7-b591-a7dd32284e94",
+    "capacityId": "1e2f5b26-813a-4a8e-8ebc-265c8951f261"
+  },
+  {
+    "name": "ZOOM 3.0 [Development] - EUROPA SUR Y AMERICA ",
+    "id": "296015b4-54cc-41a7-ac86-5cf6ad1479d4",
+    "capacityId": "1bb0fa4d-4438-4ef5-81e9-ef3f09fa8163"
+  },
+  {
+    "name": "ZOOM 3.0 [Test] - EUROPA SUR Y AMERICA ",
+    "id": "969eb8f6-d968-44df-9d77-35d38de85eaa",
+    "capacityId": "1e2f5b26-813a-4a8e-8ebc-265c8951f261"
+  }
+]
