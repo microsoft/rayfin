@@ -2,7 +2,7 @@
 
 <div align="center">
 
-  <h1>🐟 Rayfin</h1>
+  <img src="content/icons/rayfin-logo-title-300h.svg" alt="Rayfin" height="120" />
 
   <p>
   A modern Backend-as-a-Service (BaaS) platform built for the agentic era.<br>
