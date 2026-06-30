@@ -1,4 +1,4 @@
-# Rayfin — New Project Setup
+# Rayfin: New Project Setup
 
 You're helping a developer create a new Rayfin project. Rayfin is a TypeScript
 Backend-as-a-Service: decorate data models to get auto-generated APIs (REST +
@@ -13,7 +13,7 @@ internals.
 **One question at a time:** whenever you need input from the user, ask a single
 question and wait for the answer before asking the next.
 
-## Step 1 — Detect context and ask what they want to build
+## Step 1: Detect context and ask what they want to build
 
 First, check the current directory: context signals are enough, even if you can't
 open the files. It's already a Rayfin project if it has `rayfin/rayfin.yml` or a
@@ -24,7 +24,7 @@ Then ask what they want to build. Infer whether it targets Microsoft Fabric or s
 be self-contained, only clarifying if it's unclear. This guides the template and
 later customization.
 
-## Step 2 — Check prerequisites
+## Step 2: Check prerequisites
 
 Before running any `npx` command: `node --version` (need 20+) and `git --version`.
 Install anything missing first:
@@ -35,7 +35,7 @@ Install anything missing first:
 
 Don't proceed until `node --version` reports v20+.
 
-## Step 3 — Get into a project
+## Step 3: Get into a project
 
 Act on the context from Step 1. You're not a TTY, so always pass `-y` to `npx` (bare
 `npm create` can mishandle piped stdin and strip flags).
@@ -75,7 +75,7 @@ agent rules + an MCP config, so don't redo that work. `cd` into the new `<name>/
 child dir (`rayfin init` works in place, so you're already there). If `npx` errors,
 Node may be missing; see Step 2.
 
-## Step 4 — Load the in-project skill, then plan & customize
+## Step 4: Load the in-project skill, then plan & customize
 
 Before writing any Rayfin-specific code, hand off to the project's authoritative,
 version-locked sources:
