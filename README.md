@@ -26,6 +26,16 @@ npm create @microsoft/rayfin@latest
 
 This CLI scaffolds a new Rayfin project with everything you need: data models, authentication, APIs, and a ready-to-deploy app.
 
+> [!TIP]
+> **Prefer to build with a coding agent?** Hand it the guided setup prompt and
+> describe what you want to build:
+>
+> ```bash
+> copilot -i "$(curl -sSfL https://aka.ms/rayfin/start.md)"
+> ```
+>
+> This loads the [Rayfin starter prompt](docs/START.md): it checks your environment, picks a template, scaffolds the project, and helps you customize.
+
 ### Agent plugin
 
 Install the Rayfin getting-started skill through your agent's native marketplace or extension manager:
