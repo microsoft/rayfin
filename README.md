@@ -34,7 +34,7 @@ This CLI scaffolds a new Rayfin project with everything you need: data models, a
 > copilot -i "$(curl -sSfL https://aka.ms/rayfin/start.md)"
 > ```
 >
-> This loads the [Rayfin starter prompt](docs/START.md): it checks your environment, picks a template, scaffolds the project, and helps you customize.
+> This loads the [Rayfin starter prompt](content/start.md): it checks your environment, picks a template, scaffolds the project, and helps you customize.
 
 ### Agent plugin
 
