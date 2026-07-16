@@ -1,0 +1,728 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Rayfin 徹底解説 — エージェント時代の Backend-as-a-Service</title>
+<meta name="description" content="Microsoft Rayfin（Fabric Apps）を網羅的に解説。アーキテクチャ、デコレーター駆動のデータモデル、認証、CLI、パッケージ構成、ユースケースまで。" />
+<style>
+  :root {
+    --bg: #0b1120;
+    --bg-soft: #111a2e;
+    --panel: #16213a;
+    --panel-2: #1c2942;
+    --border: #263651;
+    --text: #e6edf6;
+    --muted: #9db0cc;
+    --brand: #29b6d8;
+    --brand-2: #4f7cff;
+    --accent: #ffb547;
+    --green: #4ade80;
+    --code-bg: #0d1730;
+    --radius: 14px;
+    --maxw: 880px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background: radial-gradient(1200px 800px at 80% -10%, #16294a 0%, transparent 60%),
+                radial-gradient(1000px 700px at -10% 10%, #10233f 0%, transparent 55%),
+                var(--bg);
+    color: var(--text);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Hiragino Kaku Gothic ProN",
+                 "Yu Gothic", Meiryo, sans-serif;
+    line-height: 1.85;
+    font-size: 17px;
+    -webkit-font-smoothing: antialiased;
+  }
+  a { color: var(--brand); text-decoration: none; }
+  a:hover { text-decoration: underline; }
+
+  /* Header */
+  header.hero {
+    position: relative;
+    overflow: hidden;
+    padding: 72px 24px 60px;
+    border-bottom: 1px solid var(--border);
+    background: linear-gradient(180deg, rgba(41,182,216,0.10), transparent);
+  }
+  .hero-inner { max-width: var(--maxw); margin: 0 auto; }
+  .brand-row { display: flex; align-items: center; gap: 16px; margin-bottom: 28px; }
+  .logo-mark {
+    width: 56px; height: 56px; flex: none;
+    border-radius: 16px;
+    background: linear-gradient(135deg, var(--brand), var(--brand-2));
+    display: grid; place-items: center;
+    box-shadow: 0 8px 30px rgba(41,182,216,0.35);
+  }
+  .logo-mark svg { width: 34px; height: 34px; }
+  .brand-name { font-weight: 800; font-size: 20px; letter-spacing: .5px; }
+  .brand-sub { color: var(--muted); font-size: 13px; }
+  .eyebrow {
+    display: inline-block; font-size: 13px; letter-spacing: 2px; text-transform: uppercase;
+    color: var(--brand); font-weight: 700; margin-bottom: 14px;
+  }
+  h1 {
+    font-size: clamp(30px, 5vw, 46px); line-height: 1.25; margin: 0 0 18px;
+    letter-spacing: -0.5px;
+    background: linear-gradient(120deg, #ffffff 20%, var(--brand) 100%);
+    -webkit-background-clip: text; background-clip: text; color: transparent;
+  }
+  .lede { font-size: 19px; color: var(--muted); max-width: 700px; }
+  .meta-row { margin-top: 26px; display: flex; flex-wrap: wrap; gap: 10px; }
+  .chip {
+    font-size: 13px; padding: 6px 13px; border-radius: 999px;
+    background: var(--panel); border: 1px solid var(--border); color: var(--muted);
+  }
+  .chip strong { color: var(--text); }
+
+  /* Layout */
+  main { max-width: var(--maxw); margin: 0 auto; padding: 8px 24px 100px; }
+
+  /* TOC */
+  nav.toc {
+    background: var(--panel); border: 1px solid var(--border);
+    border-radius: var(--radius); padding: 22px 26px; margin: 44px 0;
+  }
+  nav.toc h2 { margin: 0 0 14px; font-size: 15px; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); }
+  nav.toc ol { margin: 0; padding-left: 20px; columns: 2; column-gap: 32px; }
+  nav.toc li { margin: 6px 0; break-inside: avoid; }
+  @media (max-width: 640px){ nav.toc ol { columns: 1; } }
+
+  section { margin: 56px 0; scroll-margin-top: 20px; }
+  h2.sec {
+    font-size: 27px; margin: 0 0 8px; letter-spacing: -0.3px;
+    display: flex; align-items: baseline; gap: 12px;
+  }
+  h2.sec .num {
+    font-size: 15px; color: var(--brand); font-weight: 800;
+    font-variant-numeric: tabular-nums; opacity: .9;
+  }
+  h3 { font-size: 20px; margin: 34px 0 8px; color: #fff; }
+  h4 { font-size: 16px; margin: 24px 0 6px; color: var(--accent); }
+  p { margin: 12px 0; }
+  .divider { height: 1px; background: var(--border); border: 0; margin: 0; }
+
+  ul, ol { padding-left: 22px; }
+  li { margin: 7px 0; }
+  strong { color: #fff; }
+
+  /* Callouts */
+  .note {
+    border-left: 4px solid var(--brand); background: var(--panel);
+    padding: 14px 18px; border-radius: 0 10px 10px 0; margin: 22px 0;
+  }
+  .note.warn { border-left-color: var(--accent); }
+  .note.tip { border-left-color: var(--green); }
+  .note .label { font-weight: 700; font-size: 13px; letter-spacing: 1px; text-transform: uppercase; display: block; margin-bottom: 4px; }
+  .note.warn .label { color: var(--accent); }
+  .note.tip .label { color: var(--green); }
+  .note.info .label { color: var(--brand); }
+
+  /* Code */
+  pre {
+    background: var(--code-bg); border: 1px solid var(--border);
+    border-radius: 12px; padding: 18px 20px; overflow-x: auto;
+    font-size: 14px; line-height: 1.7; margin: 18px 0;
+  }
+  code {
+    font-family: "SFMono-Regular", "Cascadia Code", Consolas, "Liberation Mono", monospace;
+  }
+  :not(pre) > code {
+    background: var(--panel-2); padding: 2px 7px; border-radius: 6px;
+    font-size: 0.88em; color: #a5d8ff; border: 1px solid var(--border);
+  }
+  pre code { color: #d7e2f4; }
+  .tok-key { color: #ff9db6; }
+  .tok-fn { color: #7ee0c0; }
+  .tok-str { color: #ffd488; }
+  .tok-cmt { color: #6b7f9e; font-style: italic; }
+  .tok-dec { color: #5fd0e6; }
+  .tok-type { color: #9bb4ff; }
+
+  /* Tables */
+  .table-wrap { overflow-x: auto; margin: 20px 0; }
+  table { width: 100%; border-collapse: collapse; font-size: 14.5px; }
+  th, td { text-align: left; padding: 11px 14px; border-bottom: 1px solid var(--border); vertical-align: top; }
+  th { color: var(--brand); font-weight: 700; background: var(--panel); }
+  tr:hover td { background: rgba(41,182,216,0.05); }
+  td code { white-space: nowrap; }
+
+  /* Feature grid */
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); gap: 16px; margin: 22px 0; }
+  .card {
+    background: linear-gradient(180deg, var(--panel), var(--bg-soft));
+    border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 20px; transition: transform .15s ease, border-color .15s ease;
+  }
+  .card:hover { transform: translateY(-3px); border-color: var(--brand); }
+  .card .ic { font-size: 26px; margin-bottom: 8px; }
+  .card h4 { margin: 0 0 6px; color: #fff; }
+  .card p { margin: 0; font-size: 14px; color: var(--muted); }
+
+  /* Pipeline steps */
+  .steps { counter-reset: step; margin: 24px 0; }
+  .step {
+    position: relative; padding: 4px 0 22px 52px; border-left: 2px solid var(--border);
+    margin-left: 16px;
+  }
+  .step:last-child { border-left-color: transparent; }
+  .step::before {
+    counter-increment: step; content: counter(step);
+    position: absolute; left: -17px; top: 0; width: 32px; height: 32px;
+    background: linear-gradient(135deg, var(--brand), var(--brand-2));
+    color: #071019; font-weight: 800; border-radius: 50%;
+    display: grid; place-items: center; font-size: 14px;
+  }
+  .step h4 { margin: 2px 0 4px; color: #fff; }
+  .step p { margin: 0; color: var(--muted); font-size: 14.5px; }
+
+  /* Arch diagram */
+  .arch {
+    background: var(--code-bg); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 22px; margin: 22px 0; font-size: 13.5px;
+    font-family: "SFMono-Regular", Consolas, monospace; color: var(--muted);
+    overflow-x: auto; line-height: 1.5;
+  }
+  .arch pre { background: none; border: 0; padding: 0; margin: 0; color: inherit; }
+
+  footer {
+    max-width: var(--maxw); margin: 0 auto; padding: 40px 24px 80px;
+    border-top: 1px solid var(--border); color: var(--muted); font-size: 14px;
+  }
+  footer a { color: var(--brand); }
+  .kicker { color: var(--brand); font-weight: 700; }
+  .badge-preview {
+    display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: 1px;
+    color: #071019; background: var(--accent); padding: 3px 9px; border-radius: 6px;
+    vertical-align: middle; margin-left: 8px;
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="brand-row">
+      <div class="logo-mark" aria-hidden="true">
+        <svg viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <path d="M6 32c8-14 24-20 40-14-4 5-4 9 0 14-4 5-4 9 0 14C30 52 14 46 6 32z" fill="#071019" fill-opacity="0.25"/>
+          <path d="M4 32c8-13 23-19 38-13-3.5 4.5-3.5 8.5 0 13-3.5 4.5-3.5 8.5 0 13C27 51 12 45 4 32z" fill="#ffffff"/>
+          <path d="M46 20c6 2 11 6 14 12-3 6-8 10-14 12 3-4 3-8 0-12 3-4 3-8 0-12z" fill="#ffffff" fill-opacity="0.85"/>
+          <circle cx="17" cy="29" r="3" fill="#071019"/>
+        </svg>
+      </div>
+      <div>
+        <div class="brand-name">Rayfin <span class="badge-preview">PREVIEW</span></div>
+        <div class="brand-sub">by Microsoft · built on Microsoft Fabric</div>
+      </div>
+    </div>
+
+    <span class="eyebrow">Deep Dive / 徹底解説</span>
+    <h1>Rayfin — エージェント時代のための<br>Backend-as-a-Service</h1>
+    <p class="lede">
+      TypeScript のデコレーターでデータモデルを書くだけ。データベース・認証・API・ストレージ・ホスティングを
+      Microsoft Fabric がまるごと自動プロビジョニングする、新世代の BaaS。その全体像を網羅的に解説します。
+    </p>
+
+    <div class="meta-row">
+      <span class="chip"><strong>対象</strong> 開発者・アーキテクト</span>
+      <span class="chip"><strong>基盤</strong> Microsoft Fabric</span>
+      <span class="chip"><strong>言語</strong> TypeScript</span>
+      <span class="chip"><strong>ライセンス</strong> MIT</span>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <nav class="toc" aria-label="目次">
+    <h2>目次</h2>
+    <ol>
+      <li><a href="#what">Rayfin とは何か</a></li>
+      <li><a href="#why">なぜ Rayfin なのか</a></li>
+      <li><a href="#concepts">3 つのコアコンセプト</a></li>
+      <li><a href="#quickstart">クイックスタート</a></li>
+      <li><a href="#datamodel">デコレーター駆動のデータモデル</a></li>
+      <li><a href="#pipeline">コードが API になるまで</a></li>
+      <li><a href="#client">型安全クライアント SDK</a></li>
+      <li><a href="#authz">認証と認可</a></li>
+      <li><a href="#architecture">アーキテクチャと Fabric 連携</a></li>
+      <li><a href="#packages">パッケージ構成</a></li>
+      <li><a href="#cli">CLI リファレンス</a></li>
+      <li><a href="#local">ローカル開発</a></li>
+      <li><a href="#usecases">ユースケースと適性</a></li>
+      <li><a href="#security">セキュリティ責任分界</a></li>
+      <li><a href="#getstarted">はじめる / 参考リンク</a></li>
+    </ol>
+  </nav>
+
+  <section id="what">
+    <h2 class="sec"><span class="num">01</span> Rayfin とは何か</h2>
+    <p>
+      <strong>Rayfin</strong> は Microsoft が開発する、<strong>フルマネージドな Backend-as-a-Service（BaaS）</strong> プラットフォームです。
+      バックエンドのインフラを構築・運用することなく、チームがアプリケーションを高速に開発・出荷できるようにすることを目的としています。
+    </p>
+    <p>
+      その中心的なアイデアはシンプルです。<strong>TypeScript のデコレーターでデータモデルを定義するだけ</strong>で、
+      プラットフォームが以下をすべて自動的にプロビジョニング・管理します。
+    </p>
+    <div class="grid">
+      <div class="card"><div class="ic">🗄️</div><h4>Database</h4><p>スキーマは TypeScript のデコレーターから自動生成される Fabric 上のマネージド SQL データベース。</p></div>
+      <div class="card"><div class="ic">🔐</div><h4>Authentication</h4><p>セッション管理・トークン処理・サインインフローが組み込み済み。Fabric SSO に対応。</p></div>
+      <div class="card"><div class="ic">🔌</div><h4>Data APIs</h4><p>デコレートしたクラスから GraphQL エンドポイントを自動生成。コントローラー不要。</p></div>
+      <div class="card"><div class="ic">📦</div><h4>Storage</h4><p>ファイルストレージを型安全なクライアント経由で操作。</p></div>
+      <div class="card"><div class="ic">🌐</div><h4>Hosting</h4><p>ビルド済みフロントエンドを 1 コマンドで公開 URL に配信。</p></div>
+      <div class="card"><div class="ic">🤖</div><h4>Agent-ready</h4><p>「エージェント時代」を前提に設計。AI エージェント向けの永続状態と MCP ツールを提供。</p></div>
+    </div>
+    <div class="note info">
+      <span class="label">Fabric Apps としての一面</span>
+      Rayfin は Microsoft Fabric 上では <strong>「Fabric Apps（プレビュー）」</strong> という製品として提供されています。
+      Fabric Apps は Rayfin SDK を基盤とし、開発者が Fabric 上でデータ駆動アプリを統一されたワークフローで構築できるようにします。
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <section id="why">
+    <h2 class="sec"><span class="num">02</span> なぜ Rayfin なのか</h2>
+    <h3>Microsoft Fabric という土台</h3>
+    <p>
+      Rayfin は <a href="https://learn.microsoft.com/en-us/fabric/fundamentals/microsoft-fabric-overview" target="_blank" rel="noopener">Microsoft Fabric</a> の上に構築されています。
+      Fabric は、集中管理されたデータ検出・アクセス制御・ガバナンス機能を提供します。これにより組織は、
+      データアクセス・共有・コンプライアンスをワークロード横断で一貫して管理できます。
+    </p>
+    <p>
+      つまり Rayfin アプリは、<strong>エンタープライズグレードのセキュリティとガバナンスを標準装備</strong>した状態で生まれます。
+      コンプライアンスを犠牲にすることなく、高速に開発できるのです。
+    </p>
+    <h3>「エージェント時代」への最適化</h3>
+    <p>
+      Rayfin は AI エージェントがバックエンドを組み立てる時代を前提に設計されています。
+      GitHub Copilot などのエージェントと相性が良く、<code>@microsoft/rayfin-mcp</code>（Model Context Protocol ツール）や
+      ビルダー向けガイドを通じて、エージェント主導の開発フローをサポートします。
+    </p>
+  </section>
+
+  <hr class="divider" />
+
+  <section id="concepts">
+    <h2 class="sec"><span class="num">03</span> 3 つのコアコンセプト</h2>
+    <p>Rayfin SDK は「デコレーター駆動」のプログラミングモデルであり、次の 3 要素を組み合わせています。</p>
+    <div class="grid">
+      <div class="card">
+        <div class="ic">🏷️</div>
+        <h4>Decorator-driven schema</h4>
+        <p>TypeScript のデコレーターでデータモデル・権限・リレーションを定義。スキーマは 1 か所（コード）が真実の源。</p>
+      </div>
+      <div class="card">
+        <div class="ic">⚙️</div>
+        <h4>Automatic API generation</h4>
+        <p>デコレートしたクラスがそのまま GraphQL エンドポイントに。コントローラーのコードを書く必要はありません。</p>
+      </div>
+      <div class="card">
+        <div class="ic">🛡️</div>
+        <h4>Type-safe clients</h4>
+        <p>生成される TypeScript クライアントが、クエリとミューテーションをコンパイル時に検証します。</p>
+      </div>
+    </div>
+    <div class="note tip">
+      <span class="label">Single source of truth</span>
+      TypeScript モデルへの変更は、<strong>データベーススキーマ → API エンドポイント → クライアントの型</strong>まで
+      スタック全体に自動的に波及します。フィールドをリネームすれば、権限チェックも型も一緒に更新されます。
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <section id="quickstart">
+    <h2 class="sec"><span class="num">04</span> クイックスタート</h2>
+    <p>新規プロジェクトの雛形を作成し、デプロイして動かすまでは実質 2 コマンドです。</p>
+<pre><code><span class="tok-cmt"># 新しい Rayfin プロジェクトを雛形生成</span>
+npm create @microsoft/rayfin@latest
+
+<span class="tok-cmt"># Fabric にデプロイして起動</span>
+npx rayfin up</code></pre>
+    <p>
+      <code>create</code> CLI は、データモデル・認証・API・デプロイ可能なアプリまで、必要なものを一式スキャフォールドします。
+      あとはビジネスロジックに集中するだけです。
+    </p>
+  </section>
+
+  <hr class="divider" />
+
+  <section id="datamodel">
+    <h2 class="sec"><span class="num">05</span> デコレーター駆動のデータモデル</h2>
+    <p>
+      データ構造は、<code>@microsoft/rayfin-core</code> のデコレーターを使った TypeScript クラスで定義します。
+      次は Todo エンティティの完全な例です。行レベルの認可ポリシーも同じ場所で宣言している点に注目してください。
+    </p>
+<pre><code><span class="tok-key">import</span> {
+  entity, role, text, boolean, date, uuid,
+} <span class="tok-key">from</span> <span class="tok-str">'@microsoft/rayfin-core'</span>;
+
+<span class="tok-dec">@entity</span>()
+<span class="tok-dec">@role</span>(<span class="tok-str">'authenticated'</span>, <span class="tok-str">'*'</span>, {
+  policy: (claims, item) => claims.sub.eq(item.user_id),
+})
+<span class="tok-key">export class</span> <span class="tok-type">Todo</span> {
+  <span class="tok-dec">@uuid</span>() id!: <span class="tok-type">string</span>;
+  <span class="tok-dec">@text</span>({ min: <span class="tok-str">1</span>, max: <span class="tok-str">100</span> }) title!: <span class="tok-type">string</span>;
+  <span class="tok-dec">@boolean</span>() isCompleted!: <span class="tok-type">boolean</span>;
+  <span class="tok-dec">@date</span>() createdAt!: <span class="tok-type">Date</span>;
+  <span class="tok-dec">@date</span>({ optional: <span class="tok-key">true</span> }) dueDate?: <span class="tok-type">Date</span>;
+  <span class="tok-dec">@text</span>() user_id!: <span class="tok-type">string</span>;
+}</code></pre>
+    <p>Rayfin はこのデコレーターを解析し、次を生成します。</p>
+    <ul>
+      <li>データベースのテーブル定義（テーブル・カラム・制約・インデックス）</li>
+      <li>GraphQL API エンドポイント</li>
+      <li>行レベルの認可ルール</li>
+      <li>型安全なクライアントメソッド</li>
+    </ul>
+
+    <h3>デコレーターリファレンス</h3>
+    <h4>エンティティ</h4>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>デコレーター</th><th>用途</th><th>例</th></tr></thead>
+        <tbody>
+          <tr><td><code>@entity()</code></td><td>クラスをデータベースエンティティとしてマーク</td><td><code>@entity() class Product</code></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h4>プロパティ（型マッピング）</h4>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>デコレーター</th><th>データベース型</th><th>TypeScript 型</th></tr></thead>
+        <tbody>
+          <tr><td><code>@uuid()</code></td><td>UNIQUEIDENTIFIER</td><td><code>string</code></td></tr>
+          <tr><td><code>@text()</code></td><td>NVARCHAR</td><td><code>string</code></td></tr>
+          <tr><td><code>@int()</code></td><td>INT</td><td><code>number</code></td></tr>
+          <tr><td><code>@decimal()</code></td><td>DECIMAL</td><td><code>number</code></td></tr>
+          <tr><td><code>@bool()</code> / <code>@boolean()</code></td><td>BIT</td><td><code>boolean</code></td></tr>
+          <tr><td><code>@date()</code></td><td>DATETIME2</td><td><code>Date</code></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p>
+      多くのプロパティデコレーターは <code>{ optional: true }</code> や <code>{ min, max }</code> といったオプションを受け取り、
+      NULL 許容や検証制約を宣言できます。
+    </p>
+
+    <h4>権限</h4>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>デコレーター</th><th>用途</th></tr></thead>
+        <tbody>
+          <tr><td><code>@role()</code></td><td>ロールベースの権限（行レベルセキュリティ）を定義</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <section id="pipeline">
+    <h2 class="sec"><span class="num">06</span> コードが API になるまで</h2>
+    <p>Fabric アプリを作成すると、あなたのコードは次のステージを流れていきます。</p>
+    <div class="steps">
+      <div class="step"><h4>Developer</h4><p>好みのエディターでアプリを記述します。</p></div>
+      <div class="step"><h4>TypeScript</h4><p>エンティティクラスを TypeScript で書きます。</p></div>
+      <div class="step"><h4>Decorators</h4><p><code>@entity</code> / <code>@uuid</code> / <code>@text</code> / <code>@role</code> などでクラスとフィールドを注釈します。</p></div>
+      <div class="step"><h4>Schema</h4><p>CLI がデコレート済みクラスを、データベーススキーマ・権限ポリシー・API 構成にコンパイルします。</p></div>
+      <div class="step"><h4>APIs</h4><p>スキーマが GraphQL エンドポイントとして公開されます。</p></div>
+      <div class="step"><h4>Client</h4><p>生成された <code>RayfinClient</code> が、型安全なデータ／認証クライアントを提供します。</p></div>
+      <div class="step"><h4>Application</h4><p>フロントエンドがそのクライアントを使ってデータを読み書きします。</p></div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <section id="client">
+    <h2 class="sec"><span class="num">07</span> 型安全クライアント SDK</h2>
+    <p>
+      GraphQL API に対する CRUD 操作は、<code>@microsoft/rayfin-client</code> の <code>RayfinClient</code> を通じて行います。
+      クライアントはエンティティのフィールドを<strong>コンパイル時に把握</strong>しているため、存在しないフィールドを参照するとその場でエラーになります。
+    </p>
+<pre><code><span class="tok-key">import</span> { RayfinClient } <span class="tok-key">from</span> <span class="tok-str">'@microsoft/rayfin-client'</span>;
+
+<span class="tok-key">const</span> client = <span class="tok-key">new</span> <span class="tok-fn">RayfinClient</span>();
+
+<span class="tok-cmt">// TypeScript は Product のフィールドを理解している</span>
+<span class="tok-key">const</span> products = <span class="tok-key">await</span> client.data.products.<span class="tok-fn">query</span>()
+  .<span class="tok-fn">select</span>([<span class="tok-str">'id'</span>, <span class="tok-str">'name'</span>, <span class="tok-str">'price'</span>])
+  .<span class="tok-fn">execute</span>();
+
+<span class="tok-cmt">// 存在しないフィールドはコンパイルエラー</span>
+<span class="tok-key">const</span> invalid = <span class="tok-key">await</span> client.data.products.<span class="tok-fn">query</span>()
+  .<span class="tok-fn">select</span>([<span class="tok-str">'nonexistentField'</span>])  <span class="tok-cmt">// ❌ TypeScript error</span>
+  .<span class="tok-fn">execute</span>();</code></pre>
+    <div class="note tip">
+      <span class="label">リファクタリング安全性</span>
+      エンティティのフィールドを変更すると、クエリ・ミューテーション・権限チェックまで型レベルで追随します。
+      「バックエンドとフロントエンドの型ずれ」という古典的なバグが構造的に発生しません。
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <section id="authz">
+    <h2 class="sec"><span class="num">08</span> 認証と認可</h2>
+    <h3>認証（Authentication）</h3>
+    <p>
+      セッション管理・トークン処理・サインインフローは組み込みです。デプロイ済みアプリでは <strong>Fabric SSO（Microsoft Entra ID）</strong> を構成し、
+      ローカル開発時にはメール＋パスワードを利用できます。デプロイ後の本番環境では、認証は <strong>Fabric SSO に一本化</strong>され、
+      それ以外の認証プロバイダーは利用できません。
+    </p>
+    <h3>認可（Authorization）</h3>
+    <p>
+      権限は <code>@role</code> デコレーターでデータモデルと同じ場所に定義します。<code>policy</code> 関数で行レベルのアクセス制御を表現できます。
+    </p>
+<pre><code><span class="tok-dec">@entity</span>()
+<span class="tok-dec">@role</span>(<span class="tok-str">'authenticated'</span>, [<span class="tok-str">'create'</span>, <span class="tok-str">'read'</span>, <span class="tok-str">'update'</span>, <span class="tok-str">'delete'</span>], {
+  policy: (claims, item) => claims.sub.eq(item.userId)
+})
+<span class="tok-key">export class</span> <span class="tok-type">UserDocument</span> {
+  <span class="tok-dec">@uuid</span>() id!: <span class="tok-type">string</span>;
+  <span class="tok-dec">@text</span>() userId!: <span class="tok-type">string</span>;
+  <span class="tok-dec">@text</span>() content!: <span class="tok-type">string</span>;
+}</code></pre>
+    <p>このアプローチにより、次が保証されます。</p>
+    <ul>
+      <li>セキュリティルールが、保護対象のデータのすぐ隣で暮らす</li>
+      <li>型安全なポリシー式が、コンパイル時にエラーを捕捉する</li>
+      <li>エンティティのフィールドをリファクタリングすると、権限チェックも自動的に更新される</li>
+    </ul>
+  </section>
+
+  <hr class="divider" />
+
+  <section id="architecture">
+    <h2 class="sec"><span class="num">09</span> アーキテクチャと Fabric 連携</h2>
+    <p>
+      Fabric アプリは、バックエンドを構成する一連のサービス（アプリホスティング・データベース・GraphQL API・認証）を備えた
+      <strong>マネージドサービス</strong>として Fabric 上で動作します。ホスティング・ネットワーク・スケーリングは Fabric が管理します。
+    </p>
+    <div class="arch">
+<pre>                    ┌──────────────────────────────────────────┐
+   npx rayfin up →  │        Fabric App (managed service)      │
+                    │                                          │
+                    │   https://&lt;your-app&gt;-app.rayfin          │
+                    │            .windows.net/                 │
+                    │                                          │
+                    │   /api/graphql  →  Data API (GraphQL)    │
+                    │   /auth         →  Authentication        │
+                    │   /storage      →  File storage          │
+                    └───────────────┬──────────────────────────┘
+                                    │ child items
+              ┌─────────────────────┼─────────────────────┐
+              ▼                     ▼                     ▼
+     ┌──────────────┐      ┌──────────────┐      ┌──────────────┐
+     │ SQL Database │      │Authentication│      │Static Content│
+     │  in Fabric   │      │  (Entra SSO) │      │  (OneLake)   │
+     └──────────────┘      └──────────────┘      └──────────────┘</pre>
+    </div>
+
+    <h3>子サービス（Child services）</h3>
+    <p><code>rayfin up</code> でデプロイすると、<code>rayfin.yml</code> の構成をもとに子サービスが作成され、Fabric ポータル上で Fabric アプリの子アイテムとして現れます。</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>子サービス</th><th>提供内容</th><th>ポータルでの操作</th></tr></thead>
+        <tbody>
+          <tr>
+            <td><strong>SQL database in Fabric</strong></td>
+            <td>TypeScript デコレーターから適用されたスキーマを持つマネージド SQL データベース。</td>
+            <td>DB 参照・クエリエディターでの実行・接続文字列コピー。<strong>ポータルでは読み取り専用</strong>で、スキーマ変更は必ずコード（<code>rayfin up</code>）から行う。</td>
+          </tr>
+          <tr>
+            <td><strong>Authentication</strong></td>
+            <td>Microsoft Entra ID（SSO）を用いた Fabric ブローカー認証。ユーザーは既存の Fabric ID でサインイン。</td>
+            <td>SQL データベース上で認証済みユーザーを確認。</td>
+          </tr>
+          <tr>
+            <td><strong>Static Content</strong></td>
+            <td>ビルド済みフロントエンド資産（HTML/CSS/JS）を OneLake ストレージで公開 URL 配信。</td>
+            <td>ホスティング URL の確認。デプロイのたびに資産を更新。</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>アプリのエンドポイント</h3>
+    <p>各 Fabric アプリは、全サービスへのアクセスを提供する単一のエンドポイントを持ちます。</p>
+<pre><code>https://&lt;your-app&gt;-app.rayfin.windows.net/</code></pre>
+
+    <h3>ポータルでのアイテム権限</h3>
+    <p>ワークスペースのロールはアイテムレベルの権限を上書きしません。組織内でアプリを共有するには、対象ユーザーに <strong>Run and interact</strong> 権限が必要です。</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>権限</th><th>できること</th></tr></thead>
+        <tbody>
+          <tr><td><strong>Run and interact</strong>（既定）</td><td>デプロイ済みアプリを開いて利用し、バックエンド API を呼び出す。ワークスペースメンバーは既定で付与。</td></tr>
+          <tr><td><strong>Edit (Write)</strong></td><td><code>rayfin up</code> でのコードデプロイ、スキーマ変更、設定更新、子サービス管理。</td></tr>
+          <tr><td><strong>Reshare</strong></td><td>他ユーザーへのアクセス付与。ワークスペースの <strong>admin</strong> ロールが必要。</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h3>前提条件</h3>
+    <ul>
+      <li><strong>Fabric capacity</strong>：ワークスペースに Fabric 容量を割り当てる必要がある（サービスは容量ユニットを消費）。</li>
+      <li><strong>テナント管理者設定</strong>：管理者が Fabric Apps ワークロードを有効化する必要がある（Fabric 管理ポータル → テナント設定 → Fabric Apps (preview) を Enabled）。</li>
+      <li><strong>リージョン</strong>：Fabric Apps はまだ全リージョンでは利用できません。</li>
+    </ul>
+  </section>
+
+  <hr class="divider" />
+
+  <section id="packages">
+    <h2 class="sec"><span class="num">10</span> パッケージ構成</h2>
+    <p>Rayfin は複数の npm パッケージから構成されるモノレポです。役割ごとに分割されています。</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>パッケージ</th><th>役割</th></tr></thead>
+        <tbody>
+          <tr><td><code>@microsoft/create-rayfin</code></td><td><code>npm create @microsoft/rayfin@latest</code> でプロジェクトを雛形生成</td></tr>
+          <tr><td><code>@microsoft/rayfin-cli</code></td><td>スキャフォールド・デプロイ・管理を行う CLI</td></tr>
+          <tr><td><code>@microsoft/rayfin-core</code></td><td>エンティティデコレーター・スキーマ定義・コア型（Data API Builder 構成生成）</td></tr>
+          <tr><td><code>@microsoft/rayfin-client</code></td><td>Rayfin サービス向けメインクライアント SDK</td></tr>
+          <tr><td><code>@microsoft/rayfin-data</code></td><td>Data API Builder エンドポイント向けの型安全クライアント</td></tr>
+          <tr><td><code>@microsoft/rayfin-auth</code></td><td>認証ユーティリティ</td></tr>
+          <tr><td><code>@microsoft/rayfin-auth-provider-fabric</code></td><td>Fabric ブローカー認証プロバイダー</td></tr>
+          <tr><td><code>@microsoft/rayfin-functions</code></td><td>Rayfin functions ランタイム</td></tr>
+          <tr><td><code>@microsoft/rayfin-storage</code></td><td>ストレージ操作の型安全クライアント</td></tr>
+          <tr><td><code>@microsoft/rayfin-lib</code></td><td>共有ユーティリティと HTTP クライアント基盤</td></tr>
+          <tr><td><code>@microsoft/rayfin-tools-common</code></td><td>ツール系パッケージの共有ユーティリティ</td></tr>
+          <tr><td><code>@microsoft/rayfin-docs</code></td><td>ドキュメントのインデックス化・検索ライブラリ</td></tr>
+          <tr><td><code>@microsoft/rayfin-guide</code></td><td>プラットフォーム横断のビルダー向けガイド</td></tr>
+          <tr><td><code>@microsoft/rayfin-mcp</code></td><td>Model Context Protocol ツール（AI エージェント連携）</td></tr>
+          <tr><td><code>@microsoft/fabric-embedded-host</code></td><td>Fabric iframe 向け PostMessage ブリッジと埋め込みモード検出</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="note info">
+      <span class="label">リポジトリの現状</span>
+      GitHub 上の <a href="https://github.com/microsoft/rayfin" target="_blank" rel="noopener">microsoft/rayfin</a> リポジトリでは、
+      多くのパッケージが npm 公開済みで「ソースコードは近日公開（source code coming soon）」の段階です。各パッケージは npm から今すぐ利用できます。
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <section id="cli">
+    <h2 class="sec"><span class="num">11</span> CLI リファレンス</h2>
+    <p>CLI は新規プロジェクトの雛形生成、ローカルインフラの起動、スキーマ変更の同期、Fabric へのデプロイを担います。</p>
+    <div class="table-wrap">
+      <table>
+        <thead><tr><th>コマンド</th><th>目的</th></tr></thead>
+        <tbody>
+          <tr><td><code>npm create @microsoft/rayfin@latest</code></td><td>テンプレートから新規プロジェクトを作成</td></tr>
+          <tr><td><code>npx rayfin up</code></td><td>プロジェクトを Fabric にデプロイ</td></tr>
+          <tr><td><code>npx rayfin up db apply</code></td><td>データベーススキーマの変更を適用</td></tr>
+          <tr><td><code>npm run dev</code></td><td>フロントの変更を Fabric 上のバックエンドに対してローカルでテスト</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <h3>典型的な開発サイクル</h3>
+    <div class="steps">
+      <div class="step"><h4>データモデルの定義・変更</h4><p>デコレーター付きの TypeScript クラスを追加・更新する。</p></div>
+      <div class="step"><h4>ローカルでテスト</h4><p><code>npm run dev</code> で、フロントの変更を Fabric 上のバックエンドに対して検証する。</p></div>
+      <div class="step"><h4>Fabric にデプロイ</h4><p><code>npx rayfin up</code> でマネージドサービスにデプロイし、スキーマ変更を適用する。</p></div>
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <section id="local">
+    <h2 class="sec"><span class="num">12</span> ローカル開発 <span class="badge-preview">EXPERIMENTAL</span></h2>
+    <p>
+      Rayfin は<strong>クラウドリソース不要の、純粋なローカル開発体験</strong>もサポートします（現時点では実験的）。
+      Rayfin を試したり、オフラインで開発したりするのに最適です。ローカルではフルスタックを Docker で動かして高速に反復し、
+      本番準備ができたら Fabric にデプロイします。ローカル開発時の認証にはメール＋パスワードを利用できます。
+    </p>
+    <div class="note tip">
+      <span class="label">試すには</span>
+      <a href="https://github.com/microsoft/awesome-rayfin/tree/main/templates/todo-local-experimental" target="_blank" rel="noopener">Todo Local Experimental テンプレート</a>
+      から始めるのがおすすめです。
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <section id="usecases">
+    <h2 class="sec"><span class="num">13</span> ユースケースと適性</h2>
+    <h3>Rayfin が向いているケース</h3>
+    <div class="grid">
+      <div class="card"><div class="ic">⚡</div><h4>高速プロトタイピング</h4><p>事前構成済みインフラで、アイデアから公開 URL まで数分。</p></div>
+      <div class="card"><div class="ic">📊</div><h4>社内ツール・ダッシュボード</h4><p>バックエンドの定型コードなしで、認証付き管理画面を構築。</p></div>
+      <div class="card"><div class="ic">🔎</div><h4>データ探索・可視化</h4><p>Fabric データを GraphQL で問い合わせ、カスタムフロントで表示。</p></div>
+      <div class="card"><div class="ic">🤖</div><h4>AI・エージェントアプリ</h4><p>永続状態を必要とする AI エージェント向けに、構造化されたバックエンドを提供。</p></div>
+    </div>
+    <h3>向いていないケース</h3>
+    <ul>
+      <li>複雑な多段トランザクションやストアドプロシージャを必要とするアプリ</li>
+      <li>Fabric SSO とメール＋パスワード以外の、カスタム認証プロバイダーを必要とするアプリ</li>
+    </ul>
+  </section>
+
+  <hr class="divider" />
+
+  <section id="security">
+    <h2 class="sec"><span class="num">14</span> セキュリティ責任分界</h2>
+    <div class="grid">
+      <div class="card">
+        <div class="ic">🏢</div>
+        <h4>Fabric が提供するもの</h4>
+        <p>Fabric SSO（Entra ID）／<code>@role</code> による行レベルセキュリティ／HTTPS／PKCE／ワークスペース・アイテムレベルの権限。</p>
+      </div>
+      <div class="card">
+        <div class="ic">👤</div>
+        <h4>あなたの責任</h4>
+        <p>シークレット・API キー・機微データをコードや静的資産、リポジトリに含めない（静的コンテンツは公開 URL 配信）。SSO 後にアプリが何を見せ・何をさせるかの制御。最小権限の付与。取り扱うデータの法令・コンプライアンス責任。</p>
+      </div>
+    </div>
+    <div class="note warn">
+      <span class="label">重要</span>
+      静的コンテンツは<strong>公開 URL</strong>から配信されます。フロントエンドの資産に秘密情報を埋め込まないでください。
+      認証済みユーザーが何を閲覧・操作できるかは、あなたのコードが制御します。
+    </div>
+  </section>
+
+  <hr class="divider" />
+
+  <section id="getstarted">
+    <h2 class="sec"><span class="num">15</span> はじめる / 参考リンク</h2>
+    <p>まずは 1 コマンドで雛形を作り、動かしてみましょう。</p>
+<pre><code>npm create @microsoft/rayfin@latest</code></pre>
+    <div class="grid">
+      <div class="card"><div class="ic">📖</div><h4>Docs</h4><p><a href="https://aka.ms/rayfin/docs" target="_blank" rel="noopener">aka.ms/rayfin/docs</a></p></div>
+      <div class="card"><div class="ic">🌐</div><h4>Website</h4><p><a href="https://aka.ms/rayfin" target="_blank" rel="noopener">aka.ms/rayfin</a></p></div>
+      <div class="card"><div class="ic">🧩</div><h4>Templates</h4><p><a href="https://github.com/microsoft/awesome-rayfin" target="_blank" rel="noopener">microsoft/awesome-rayfin</a></p></div>
+      <div class="card"><div class="ic">🐟</div><h4>Community</h4><p><a href="https://reddit.com/r/rayfin" target="_blank" rel="noopener">r/rayfin</a></p></div>
+      <div class="card"><div class="ic">🏗️</div><h4>Fabric</h4><p><a href="https://www.microsoft.com/en-us/microsoft-fabric/getting-started" target="_blank" rel="noopener">Get started with Fabric</a></p></div>
+      <div class="card"><div class="ic">🐛</div><h4>Issues</h4><p><a href="https://github.com/microsoft/rayfin/issues" target="_blank" rel="noopener">GitHub Issues</a></p></div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <p>
+    <span class="kicker">Rayfin 徹底解説</span> — 本記事は
+    <a href="https://github.com/microsoft/rayfin" target="_blank" rel="noopener">microsoft/rayfin</a> の README、
+    <a href="https://learn.microsoft.com/en-us/fabric/apps/overview" target="_blank" rel="noopener">Fabric Apps 概要</a>、および
+    <a href="https://learn.microsoft.com/en-us/javascript/api/fabric-apps-sdk-javascript/rayfin-overview" target="_blank" rel="noopener">Rayfin SDK 概要</a>
+    の公開情報をもとに構成しています。
+  </p>
+  <p>
+    Rayfin / Microsoft Fabric は Microsoft の製品です。本記事は解説を目的とした非公式まとめであり、
+    最新かつ正確な情報は必ず公式ドキュメントをご確認ください。Rayfin / Fabric Apps は現在 <strong>プレビュー</strong> 段階です。
+  </p>
+  <p>ライセンス: MIT · © Microsoft</p>
+</footer>
+
+</body>
+</html>
