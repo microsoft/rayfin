@@ -15,5 +15,8 @@
     "fabric",
     "typescript"
   ],
-  "skills": ["skills/rayfin-getting-started"]
+  "skills": [
+    "skills/rayfin-getting-started",
+    "skills/security-best-practices"
+  ]
 }

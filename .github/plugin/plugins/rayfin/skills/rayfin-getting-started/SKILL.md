@@ -74,3 +74,18 @@ loading the in-project skill: `create-rayfin` creates a child project directory 
 `--project-name`, slugified), so `cd` into it; an in-place `rayfin init` scaffolds in the
 current directory, so you're already there. Once at the project root, load its
 `.agents/skills/rayfin/SKILL.md`.
+
+## Security best practices
+
+Build security into the app from the start:
+
+- Request only the Fabric data and connector permissions the app needs.
+- Filter sensitive data server-side and return only the rows and columns required by the UI.
+- Keep secrets, tokens, and environment-specific identifiers out of client code, URLs, and logs.
+- Avoid rendering PII or detailed errors in the browser unless the user is authorized to see them.
+- Remove debug output and verify production configuration before deployment.
+
+Before deployment, run the
+[Fabric App Security Review](../security-best-practices/SKILL.md) skill to
+check for sensitive data exposure, semantic model risks, unsafe configuration, excessive
+permissions, and information leakage.
