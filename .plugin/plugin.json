@@ -7,7 +7,7 @@
     "name": "Microsoft",
     "url": "https://www.microsoft.com"
   },
-  "homepage": "https://aka.ms/rayfin",
+  "homepage": "https://github.com/microsoft/rayfin",
   "repository": "https://github.com/microsoft/rayfin",
   "license": "MIT",
   "keywords": [

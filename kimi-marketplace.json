@@ -6,7 +6,7 @@
       "displayName": "Rayfin",
       "version": "0.3.0",
       "description": "Get started building a Rayfin app with the Rayfin CLI.",
-      "homepage": "https://aka.ms/rayfin",
+      "homepage": "https://github.com/microsoft/rayfin",
       "keywords": [
         "rayfin",
         "getting-started",
