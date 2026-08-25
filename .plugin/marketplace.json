@@ -1,0 +1,19 @@
+{
+  "name": "rayfin-skills",
+  "owner": {
+    "name": "Microsoft",
+    "url": "https://www.microsoft.com"
+  },
+  "metadata": {
+    "description": "Official Rayfin agent skills for AI coding assistants",
+    "version": "0.3.0"
+  },
+  "plugins": [
+    {
+      "name": "rayfin",
+      "description": "Getting-started router for Rayfin — gets an agent from zero into a working Rayfin project via the Rayfin CLI (scaffold/init), then hands off to the version-locked in-project skill the scaffold installs.",
+      "version": "0.3.0",
+      "source": ".github/plugin/plugins/rayfin"
+    }
+  ]
+}
