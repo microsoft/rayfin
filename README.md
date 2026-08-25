@@ -28,20 +28,7 @@ This CLI scaffolds a new Rayfin project with everything you need: data models, a
 
 ### Agent plugin
 
-Install the Rayfin getting-started skill across supported coding agents and editors:
-
-```bash
-npx plugins add microsoft/rayfin
-```
-
-The plugin supports Claude Code, Cursor, Codex, GitHub Copilot CLI, Grok Build, Kimi Code, and Visual Studio Code agent plugins.
-Gemini CLI can install the same shared skill directly:
-
-```bash
-gemini extensions install https://github.com/microsoft/rayfin
-```
-
-You can also add the repository through each agent's native marketplace:
+Install the Rayfin getting-started skill through your agent's native marketplace or extension manager:
 
 **Claude Code**
 
@@ -65,11 +52,27 @@ copilot plugin install rayfin@rayfin-skills
 codex plugin marketplace add microsoft/rayfin
 ```
 
+After adding the marketplace, install Rayfin from the Plugins Directory.
+
 **Kimi Code**
 
 ```text
 /plugins marketplace https://raw.githubusercontent.com/microsoft/rayfin/main/kimi-marketplace.json
 ```
+
+**Gemini CLI**
+
+```bash
+gemini extensions install https://github.com/microsoft/rayfin
+```
+
+Alternatively, use the cross-agent `plugins` CLI:
+
+```bash
+npx plugins add microsoft/rayfin
+```
+
+The plugin supports Claude Code, Cursor, Codex, GitHub Copilot CLI, Grok Build, Kimi Code, Visual Studio Code agent plugins, and Gemini CLI.
 
 ## What is Rayfin?
 
