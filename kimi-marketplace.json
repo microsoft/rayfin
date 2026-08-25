@@ -1,0 +1,20 @@
+{
+  "version": "1",
+  "plugins": [
+    {
+      "id": "rayfin",
+      "displayName": "Rayfin",
+      "version": "0.3.0",
+      "description": "Get started building a Rayfin app with the Rayfin CLI.",
+      "homepage": "https://aka.ms/rayfin",
+      "keywords": [
+        "rayfin",
+        "getting-started",
+        "scaffold",
+        "fabric",
+        "typescript"
+      ],
+      "source": "https://github.com/microsoft/rayfin"
+    }
+  ]
+}

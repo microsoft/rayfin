@@ -41,6 +41,36 @@ Gemini CLI can install the same shared skill directly:
 gemini extensions install https://github.com/microsoft/rayfin
 ```
 
+You can also add the repository through each agent's native marketplace:
+
+**Claude Code**
+
+```text
+/plugin marketplace add microsoft/rayfin
+/plugin install rayfin@rayfin-skills
+```
+
+Grok Build automatically reads Claude Code marketplaces.
+
+**GitHub Copilot CLI**
+
+```bash
+copilot plugin marketplace add microsoft/rayfin
+copilot plugin install rayfin@rayfin-skills
+```
+
+**Codex**
+
+```bash
+codex plugin marketplace add microsoft/rayfin
+```
+
+**Kimi Code**
+
+```text
+/plugins marketplace https://raw.githubusercontent.com/microsoft/rayfin/main/kimi-marketplace.json
+```
+
 ## What is Rayfin?
 
 Rayfin is a **fully managed Backend-as-a-Service (BaaS)** platform that helps teams build and ship applications faster without building or operating backend infrastructure.
