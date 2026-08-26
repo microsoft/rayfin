@@ -1,0 +1,5 @@
+{
+  "name": "rayfin",
+  "version": "0.3.0",
+  "description": "Getting-started router skill for Rayfin - scaffold a new app with the Rayfin CLI, then use the version-locked skill installed in the project."
+}

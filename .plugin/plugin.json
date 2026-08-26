@@ -1,0 +1,22 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "rayfin",
+  "version": "0.3.0",
+  "description": "Getting-started router skill for Rayfin - scaffold a new app with the Rayfin CLI, then use the version-locked skill installed in the project.",
+  "author": {
+    "name": "Microsoft",
+    "url": "https://www.microsoft.com"
+  },
+  "homepage": "https://github.com/microsoft/rayfin",
+  "repository": "https://github.com/microsoft/rayfin",
+  "license": "MIT",
+  "keywords": [
+    "rayfin",
+    "getting-started",
+    "scaffold",
+    "create-rayfin",
+    "rayfin-cli",
+    "fabric",
+    "typescript"
+  ]
+}

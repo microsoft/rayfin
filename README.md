@@ -26,6 +26,54 @@ npm create @microsoft/rayfin@latest
 
 This CLI scaffolds a new Rayfin project with everything you need: data models, authentication, APIs, and a ready-to-deploy app.
 
+### Agent plugin
+
+Install the Rayfin getting-started skill through your agent's native marketplace or extension manager:
+
+**Claude Code**
+
+```text
+/plugin marketplace add microsoft/rayfin
+/plugin install rayfin@rayfin-skills
+```
+
+Grok Build automatically reads Claude Code marketplaces.
+
+**GitHub Copilot CLI**
+
+```bash
+copilot plugin marketplace add microsoft/rayfin
+copilot plugin install rayfin@rayfin-skills
+```
+
+**Codex**
+
+```bash
+codex plugin marketplace add microsoft/rayfin
+```
+
+After adding the marketplace, install Rayfin from the Plugins Directory.
+
+**Kimi Code**
+
+```text
+/plugins marketplace https://raw.githubusercontent.com/microsoft/rayfin/main/kimi-marketplace.json
+```
+
+**Gemini CLI**
+
+```bash
+gemini extensions install https://github.com/microsoft/rayfin
+```
+
+Alternatively, use the cross-agent `plugins` CLI:
+
+```bash
+npx plugins add microsoft/rayfin
+```
+
+The plugin supports Claude Code, Cursor, Codex, GitHub Copilot CLI, Grok Build, Kimi Code, Visual Studio Code agent plugins, and Gemini CLI.
+
 ## What is Rayfin?
 
 Rayfin is a **fully managed Backend-as-a-Service (BaaS)** platform that helps teams build and ship applications faster without building or operating backend infrastructure.
