@@ -1,0 +1,63 @@
+name: Validate agent integrations
+
+on:
+  pull_request:
+    paths:
+      - '.agents/**'
+      - '.claude-plugin/**'
+      - '.codex-plugin/**'
+      - '.cursor-plugin/**'
+      - '.github/plugin/**'
+      - '.grok-plugin/**'
+      - '.kimi-plugin/**'
+      - '.plugin/**'
+      - 'gemini-extension.json'
+      - 'kimi-marketplace.json'
+      - 'plugin.json'
+      - 'skills/**'
+      - 'tests/**'
+      - 'package.json'
+      - 'package-lock.json'
+      - '.github/workflows/validate-agent-integrations.yml'
+  push:
+    branches:
+      - main
+    paths:
+      - '.agents/**'
+      - '.claude-plugin/**'
+      - '.codex-plugin/**'
+      - '.cursor-plugin/**'
+      - '.github/plugin/**'
+      - '.grok-plugin/**'
+      - '.kimi-plugin/**'
+      - '.plugin/**'
+      - 'gemini-extension.json'
+      - 'kimi-marketplace.json'
+      - 'plugin.json'
+      - 'skills/**'
+      - 'tests/**'
+      - 'package.json'
+      - 'package-lock.json'
+      - '.github/workflows/validate-agent-integrations.yml'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    env:
+      DO_NOT_TRACK: '1'
+
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: actions/setup-node@v5
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+      - run: npm test
+      - run: npx --yes @anthropic-ai/claude-code@2.1.237 plugin validate .
+      - run: npx --yes @google/gemini-cli@0.57.0-preview.0 extensions validate .

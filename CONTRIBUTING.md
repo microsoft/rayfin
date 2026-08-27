@@ -35,7 +35,7 @@ Use the [Feature Request](https://github.com/microsoft/rayfin/issues/new?templat
 1. Fork the repository and create a branch for your change.
 2. Keep pull requests scoped to a focused set of changes.
 3. Include a clear description of the change and its rationale.
-4. Run any existing linters, builds, and tests before submitting.
+4. Run `npm install` once, then `npm test` before submitting changes to agent skills, plugins, or marketplaces.
 
 ## Commit Messages
 
