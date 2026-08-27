@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { readFile } from 'node:fs/promises';
+import { access, readFile } from 'node:fs/promises';
 import path from 'node:path';
 import test from 'node:test';
 import { fileURLToPath } from 'node:url';
@@ -8,17 +8,21 @@ import Ajv2020 from 'ajv/dist/2020.js';
 import addFormats from 'ajv-formats';
 
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..');
-const canonicalManifestPath = '.plugin/plugin.json';
+const canonicalManifestPath = 'plugin.json';
 
 const pluginManifestPaths = [
+  canonicalManifestPath,
   '.claude-plugin/plugin.json',
   '.codex-plugin/plugin.json',
   '.cursor-plugin/plugin.json',
-  '.github/plugin/plugin.json',
   '.grok-plugin/plugin.json',
   '.kimi-plugin/plugin.json',
-  '.plugin/plugin.json',
   'gemini-extension.json',
+];
+
+const shadowManifestPaths = [
+  '.github/plugin/plugin.json',
+  '.plugin/plugin.json',
 ];
 
 const marketplaceManifestPaths = [
@@ -127,6 +131,46 @@ test('all plugin manifests stay aligned', async () => {
       );
     }
   }
+});
+
+test('canonical manifest cannot be shadowed by a legacy manifest', async () => {
+  for (const manifestPath of shadowManifestPaths) {
+    await assert.rejects(
+      access(path.join(root, manifestPath)),
+      { code: 'ENOENT' },
+      `${manifestPath} shadows ${canonicalManifestPath} during plugin intake`,
+    );
+  }
+});
+
+test('canonical manifest meets Awesome Copilot submission policy', async () => {
+  const canonical = await readJson(canonicalManifestPath);
+
+  assert.equal(typeof canonical.license, 'string');
+  assert.ok(canonical.license.length > 0, 'license must not be empty');
+  assert.ok(Array.isArray(canonical.keywords), 'keywords must be an array');
+  assert.ok(canonical.keywords.length <= 10, 'keywords must contain at most 10 entries');
+
+  for (const keyword of canonical.keywords) {
+    assert.match(keyword, /^[a-z0-9-]+$/, `invalid keyword: ${keyword}`);
+    assert.ok(keyword.length < 30, `keyword must be under 30 characters: ${keyword}`);
+  }
+});
+
+test('skill metadata version matches the canonical manifest', async () => {
+  const [canonical, skill] = await Promise.all([
+    readJson(canonicalManifestPath),
+    readFile(
+      path.join(root, 'skills/rayfin-getting-started/SKILL.md'),
+      'utf8',
+    ),
+  ]);
+  const version = skill.match(
+    /^metadata:\r?\n(?:^[ \t]+.*\r?\n)*?^[ \t]+version:[ \t]+["']?([^"'\r\n]+)["']?[ \t]*$/m,
+  )?.[1];
+
+  assert.ok(version, 'SKILL.md metadata.version is required');
+  assert.equal(version, canonical.version);
 });
 
 test('all marketplace entries target the canonical plugin', async () => {
