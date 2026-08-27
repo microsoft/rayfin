@@ -1,0 +1,15 @@
+{
+  "name": "rayfin-agent-integrations",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test": "npm run test:skills && npm run test:manifests",
+    "test:skills": "vally lint skills --strict",
+    "test:manifests": "node --test tests/plugin-manifests.test.mjs"
+  },
+  "devDependencies": {
+    "@microsoft/vally-cli": "0.14.0",
+    "ajv": "8.17.1",
+    "ajv-formats": "3.0.1"
+  }
+}
