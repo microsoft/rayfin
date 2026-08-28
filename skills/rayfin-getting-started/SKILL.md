@@ -1,6 +1,6 @@
 ---
 name: rayfin-getting-started
-description: "Use when starting or creating a NEW Rayfin app, or when a Rayfin task comes up and you are not yet inside a Rayfin project. Gets you into a project with the Rayfin CLI, then hands off to the authoritative, version-locked in-project rayfin skill/MCP/docs that own all in-project work. Triggers: build a Rayfin app, start a Rayfin project, create a new Rayfin app, create-rayfin, npm create @microsoft/rayfin, rayfin init, scaffold rayfin, rayfin CLI, rayfin template, awesome-rayfin gallery, get started with Rayfin"
+description: "Use when starting or creating a NEW Rayfin app, or when a Rayfin task comes up and you are not yet inside a Rayfin project. Gets you into a project with the Rayfin CLI, then hands off to the authoritative, version-locked in-project rayfin skill/MCP/docs that own all in-project work. Triggers: build a Rayfin app, start a Rayfin project, create a new Rayfin app, create-rayfin, npm create @microsoft/rayfin, rayfin init, scaffold rayfin, rayfin CLI, rayfin template, universal app, awesome-rayfin gallery, get started with Rayfin"
 metadata:
   author: microsoft
   version: "0.1.0"
@@ -57,20 +57,30 @@ run non-interactively (stdin isn't a TTY), so use the `npx -y` form — `npm cre
 mishandle piped stdin and strip flags, and `--project-name` is **required** non-interactively.
 
 ```bash
-# List built-in gallery templates (JSON), then create from the closest fit
-npx -y @microsoft/create-rayfin@latest --list-templates
-
-# Create non-interactively — --project-name required; --template takes a slug
-# (e.g. dataapp, gettingstartedauth), not a display name
-npx -y @microsoft/create-rayfin@latest --project-name <app-name> --template <slug>
+# Default: the Universal App template. --template takes a template name or a git URL.
+npx -y @microsoft/create-rayfin@latest --project-name <app-name> \
+  --template https://github.com/spatney/universal-app
 
 # Or add Rayfin into an existing/empty directory
 npx rayfin init [directory]
+
+# Built-in gallery templates (JSON), only if you need a different starting point
+npx -y @microsoft/create-rayfin@latest --list-templates
+
+# Gallery templates take a slug (e.g. dataapp, gettingstartedauth), not a display name
+npx -y @microsoft/create-rayfin@latest --project-name <app-name> --template <slug>
 ```
 
-Prefer a gallery template matching the user's domain (events, field service, todo, CRUD) over
-an empty project — it ships a working data model, auth, and UI. Mind the project root before
-loading the in-project skill: `create-rayfin` creates a child project directory (named from
-`--project-name`, slugified), so `cd` into it; an in-place `rayfin init` scaffolds in the
-current directory, so you're already there. Once at the project root, load its
-`.agents/skills/rayfin/SKILL.md`.
+Default to the **Universal App** unless the user asks for something else. It is a lean
+Fabric-authenticated React + Vite starter that grows into whatever the user describes: a
+capability router (`AGENTS.md` plus `.agents/skills/capability-router/`) maps the request to
+capability packs and pulls in only the Rayfin services, npm modules, and skills that app
+actually needs, covering auth, data modeling, storage, charts, and Fabric analytics. That means
+you don't have to guess a domain template up front, so prefer it over picking a gallery
+template that merely looks close.
+
+Mind the project root before loading the in-project skill: `create-rayfin` creates a child
+project directory (named from `--project-name`, slugified), so `cd` into it; an in-place
+`rayfin init` scaffolds in the current directory, so you're already there. Once at the project
+root, read `AGENTS.md` first when the template ships a capability router, then load
+`.agents/skills/rayfin/SKILL.md` for every version-locked Rayfin specific.
