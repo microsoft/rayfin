@@ -57,17 +57,20 @@ run non-interactively (stdin isn't a TTY), so use the `npx -y` form — `npm cre
 mishandle piped stdin and strip flags, and `--project-name` is **required** non-interactively.
 
 ```bash
-# Default: the Universal App template. --template takes a template name or a git URL.
+# Default: the Universal App, from the awesome-rayfin gallery. --template takes a
+# template name or a git URL; --template-name selects one entry out of a repo that
+# holds several, matched on the entry's display name.
 npx -y @microsoft/create-rayfin@latest --project-name <app-name> \
-  --template https://github.com/spatney/universal-app
+  --template https://github.com/microsoft/awesome-rayfin \
+  --template-name "Universal App"
 
 # Or add Rayfin into an existing/empty directory
 npx rayfin init [directory]
 
-# Built-in gallery templates (JSON), only if you need a different starting point
+# Templates bundled with the CLI (JSON), only if you need a different starting point
 npx -y @microsoft/create-rayfin@latest --list-templates
 
-# Gallery templates take a slug (e.g. dataapp, gettingstartedauth), not a display name
+# Bundled templates take a slug (e.g. dataapp, gettingstartedauth), not a display name
 npx -y @microsoft/create-rayfin@latest --project-name <app-name> --template <slug>
 ```
 
@@ -76,8 +79,12 @@ Fabric-authenticated React + Vite starter that grows into whatever the user desc
 capability router (`AGENTS.md` plus `.agents/skills/capability-router/`) maps the request to
 capability packs and pulls in only the Rayfin services, npm modules, and skills that app
 actually needs, covering auth, data modeling, storage, charts, and Fabric analytics. That means
-you don't have to guess a domain template up front, so prefer it over picking a gallery
+you don't have to guess a domain template up front, so prefer it over picking a domain
 template that merely looks close.
+
+`--template-name` is not optional against `awesome-rayfin`. The repo holds a whole gallery, so
+omitting it aborts the scaffold and prints every entry, which is also the quickest way to see
+what else is on offer.
 
 Mind the project root before loading the in-project skill: `create-rayfin` creates a child
 project directory (named from `--project-name`, slugified), so `cd` into it; an in-place
