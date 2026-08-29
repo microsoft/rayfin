@@ -59,10 +59,10 @@ mishandle piped stdin and strip flags, and `--project-name` is **required** non-
 ```bash
 # Default: the Universal App, from the awesome-rayfin gallery. --template takes a
 # template name or a git URL; --template-name selects one entry out of a repo that
-# holds several, matched on the entry's display name.
-npx -y @microsoft/create-rayfin@latest --project-name <app-name> \
-  --template https://github.com/microsoft/awesome-rayfin \
-  --template-name "Universal App"
+# holds several, matched on the entry's display name. Keep this on one line: a
+# trailing \ is a bash continuation, and agents run this in PowerShell too, where
+# it fails to parse instead of continuing.
+npx -y @microsoft/create-rayfin@latest --project-name <app-name> --template https://github.com/microsoft/awesome-rayfin --template-name "Universal App"
 
 # Or add Rayfin into an existing/empty directory
 npx rayfin init [directory]
