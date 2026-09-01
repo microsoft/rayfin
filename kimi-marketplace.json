@@ -4,7 +4,7 @@
     {
       "id": "rayfin",
       "displayName": "Rayfin",
-      "version": "0.3.0",
+      "version": "0.4.0",
       "description": "Get started building a Rayfin app with the Rayfin CLI.",
       "homepage": "https://github.com/microsoft/rayfin",
       "keywords": [
