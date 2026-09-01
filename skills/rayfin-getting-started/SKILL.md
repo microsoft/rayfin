@@ -3,7 +3,7 @@ name: rayfin-getting-started
 description: "Use when starting or creating a NEW Rayfin app, or when a Rayfin task comes up and you are not yet inside a Rayfin project. Gets you into a project with the Rayfin CLI, then hands off to the authoritative, version-locked in-project rayfin skill/MCP/docs that own all in-project work. Triggers: build a Rayfin app, start a Rayfin project, create a new Rayfin app, create-rayfin, npm create @microsoft/rayfin, rayfin init, scaffold rayfin, rayfin CLI, rayfin template, universal app, awesome-rayfin gallery, get started with Rayfin"
 metadata:
   author: microsoft
-  version: "0.1.0"
+  version: "0.2.0"
 ---
 
 # Rayfin (Getting Started)
