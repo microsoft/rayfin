@@ -65,11 +65,7 @@ mishandle piped stdin and strip flags, and `--project-name` is **required** non-
 # it fails to parse instead of continuing.
 npx -y @microsoft/create-rayfin@latest --project-name <app-name> --template https://github.com/microsoft/awesome-rayfin --template-name "Universal App"
 
-# Or add Rayfin into an existing/empty directory. The CLI ships as
-# @microsoft/rayfin-cli, whose bin is `rayfin`, so npx needs the explicit
-# -p <package> <bin> form: `npx @microsoft/rayfin-cli` looks for a `rayfin-cli`
-# command, finds none, and exits 1 without printing anything. There is no
-# public `rayfin` package either, so plain `npx rayfin` 404s.
+# Or add Rayfin into an existing/empty directory. 
 npx -y -p @microsoft/rayfin-cli@latest rayfin init [directory]
 
 # Templates bundled with the CLI (JSON), only if you need a different starting point
