@@ -26,11 +26,11 @@ Don't proceed until `node --version` reports v20+.
 
 Don't scaffold from memory: fetch the getting-started skill and follow it. It is the canonical source for project detection, the default template, and the exact CLI commands, and it is kept up to date as those change.
 
-```bash
-curl -sSfL https://raw.githubusercontent.com/microsoft/rayfin/main/skills/rayfin-getting-started/SKILL.md
-```
+Fetch and read this URL with your web fetch capability, rather than a shell command, so this works the same on any platform:
 
-Read it, then follow it to detect whether you're already in a Rayfin project, in an existing non-Rayfin app, or in an empty directory, and to run the right command for that case. Feed it what you learned in Step 1: what the user wants to build, and a kebab-case project name you've confirmed with them.
+<https://raw.githubusercontent.com/microsoft/rayfin/main/skills/rayfin-getting-started/SKILL.md>
+
+Then follow it to detect whether you're already in a Rayfin project, in an existing non-Rayfin app, or in an empty directory, and to run the right command for that case. Feed it what you learned in Step 1: what the user wants to build, and a kebab-case project name you've confirmed with them.
 
 Two things that skill assumes and this prompt has already covered: Node is installed (Step 2), and you're not a TTY, so keep passing `-y` to `npx`. If `npx` errors, Node may be missing; see Step 2.
 
