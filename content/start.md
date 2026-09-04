@@ -26,7 +26,7 @@ Don't proceed until `node --version` reports v20+.
 
 Don't scaffold from memory: fetch the getting-started skill and follow it. It is the canonical source for project detection, the default template, and the exact CLI commands, and it is kept up to date as those change.
 
-Fetch and read this URL with your web fetch capability, rather than a shell command, so this works the same on any platform:
+Fetch and read this URL:
 
 <https://raw.githubusercontent.com/microsoft/rayfin/main/skills/rayfin-getting-started/SKILL.md>
 
