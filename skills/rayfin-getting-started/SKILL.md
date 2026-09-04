@@ -3,7 +3,7 @@ name: rayfin-getting-started
 description: "Use when starting or creating a NEW Rayfin app, or when a Rayfin task comes up and you are not yet inside a Rayfin project. Gets you into a project with the Rayfin CLI, then hands off to the authoritative, version-locked in-project rayfin skill/MCP/docs that own all in-project work. Triggers: build a Rayfin app, start a Rayfin project, create a new Rayfin app, create-rayfin, npm create @microsoft/rayfin, rayfin init, scaffold rayfin, rayfin CLI, rayfin template, universal app, awesome-rayfin gallery, get started with Rayfin"
 metadata:
   author: microsoft
-  version: "0.2.0"
+  version: "0.2.1"
 ---
 
 # Rayfin (Getting Started)
@@ -46,8 +46,9 @@ project and continue in place. Never stand up a nested or sibling project.
 
 - **Already in one →** load `.agents/skills/rayfin/SKILL.md` and use the `rayfin` MCP /
   `rayfin docs`. Stop using this skill.
-- **Existing non-Rayfin app here →** add Rayfin in place with `npx rayfin init` (don't
-  scaffold a separate project), then load the in-project skill.
+- **Existing non-Rayfin app here →** add Rayfin in place with
+  `npx -y -p @microsoft/rayfin-cli@latest rayfin init` (don't scaffold a separate
+  project), then load the in-project skill.
 - **Empty directory →** scaffold (below), then load the in-project skill from the project root.
 
 ## Scaffold a new project
@@ -64,8 +65,12 @@ mishandle piped stdin and strip flags, and `--project-name` is **required** non-
 # it fails to parse instead of continuing.
 npx -y @microsoft/create-rayfin@latest --project-name <app-name> --template https://github.com/microsoft/awesome-rayfin --template-name "Universal App"
 
-# Or add Rayfin into an existing/empty directory
-npx rayfin init [directory]
+# Or add Rayfin into an existing/empty directory. The CLI ships as
+# @microsoft/rayfin-cli, whose bin is `rayfin`, so npx needs the explicit
+# -p <package> <bin> form: `npx @microsoft/rayfin-cli` looks for a `rayfin-cli`
+# command, finds none, and exits 1 without printing anything. There is no
+# public `rayfin` package either, so plain `npx rayfin` 404s.
+npx -y -p @microsoft/rayfin-cli@latest rayfin init [directory]
 
 # Templates bundled with the CLI (JSON), only if you need a different starting point
 npx -y @microsoft/create-rayfin@latest --list-templates

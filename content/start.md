@@ -13,16 +13,15 @@ internals.
 **One question at a time:** whenever you need input from the user, ask a single
 question and wait for the answer before asking the next.
 
-## Step 1: Detect context and ask what they want to build
+## Step 1: Ask what they want to build
 
-First, check the current directory: context signals are enough, even if you can't
-open the files. It's already a Rayfin project if it has `rayfin/rayfin.yml` or a
-`package.json` with `@microsoft/rayfin-*` deps. Never create a project nested inside
-or beside an existing app.
+Ask what they want to build, and confirm a kebab-case project name. Infer whether it
+targets Microsoft Fabric or should be self-contained, only clarifying if it's unclear.
+This guides the template choice in Step 3 and the customization in Step 4.
 
-Then ask what they want to build. Infer whether it targets Microsoft Fabric or should
-be self-contained, only clarifying if it's unclear. This guides the template and
-later customization.
+Keep it short if the working directory already looks like an existing app: Step 3
+determines the exact situation and never creates a project nested inside or beside
+another one.
 
 ## Step 2: Check prerequisites
 
@@ -37,43 +36,26 @@ Don't proceed until `node --version` reports v20+.
 
 ## Step 3: Get into a project
 
-Act on the context from Step 1. You're not a TTY, so always pass `-y` to `npx` (bare
-`npm create` can mishandle piped stdin and strip flags).
+Don't scaffold from memory: fetch the getting-started skill and follow it. It is the
+canonical source for project detection, the default template, and the exact CLI
+commands, and it is kept up to date as those change.
 
-- **Already in a Rayfin project:** don't scaffold; they may have run this by mistake.
-  Confirm they mean to work here (else ask for an empty target dir for a new project),
-  then go to Step 4.
-- **Existing non-Rayfin app here:** confirm, then add Rayfin in place with
-  `npx -y rayfin init` (no template). Then Step 4.
-- **Empty directory:** scaffold a new child project. Map the Step 1 answer to a
-  template, then list the live set and pick the closest fit:
+```bash
+curl -sSfL https://raw.githubusercontent.com/microsoft/rayfin/main/skills/rayfin-getting-started/SKILL.md
+```
 
-  ```bash
-  npx -y @microsoft/create-rayfin@latest --list-templates   # JSON of gallery templates
-  ```
+Read it, then follow it to detect whether you're already in a Rayfin project, in an
+existing non-Rayfin app, or in an empty directory, and to run the right command for
+that case. Feed it what you learned in Step 1: what the user wants to build, and a
+kebab-case project name you've confirmed with them.
 
-  If unavailable, fall back to these built-in slugs (default `dataapp` for Fabric, or
-  `todoapp` if self-contained / no Fabric workspace):
+Two things that skill assumes and this prompt has already covered: Node is installed
+(Step 2), and you're not a TTY, so keep passing `-y` to `npx`. If `npx` errors, Node
+may be missing; see Step 2.
 
-  - **`dataapp`** _(default)_: Microsoft Fabric data analytics app.
-  - **`todoapp`**: full app (auth, entities, frontend); best to learn Rayfin end-to-end.
-  - **`gettingstartedauth`**: minimal app with auth wired up; add your own data model.
-  - **`blankapp`**: bare scaffolding (auth + data services, no entities/UI).
-
-  For more options, including user-contributed ones, see the community gallery linked
-  at the end.
-
-  Prefer a template matching their domain over a blank one. Propose a kebab-case
-  project name, confirm it, then:
-
-  ```bash
-  npx -y @microsoft/create-rayfin@latest --project-name <name> --template <slug>
-  ```
-
-The scaffolder (or `init`) creates the project, installs dependencies, and writes
-agent rules + an MCP config, so don't redo that work. `cd` into the new `<name>/`
-child dir (`rayfin init` works in place, so you're already there). If `npx` errors,
-Node may be missing; see Step 2.
+Once it has scaffolded, make sure you're at the project root before continuing:
+`create-rayfin` creates a child directory, while an in-place init leaves you where you
+are. Then continue to Step 4.
 
 ## Step 4: Load the in-project skill, then plan & customize
 
@@ -86,9 +68,10 @@ version-locked sources:
    guessing. The skill file and `rayfin docs` work as soon as the project exists, so
    don't block waiting on the MCP reload.
 
-Then enter plan mode and outline the first changes for what they described in Step 1:
-entities under `rayfin/data/`, views under `src/`, and packages to install. Confirm
-with the user before writing code.
+Then plan before you build: outline the first changes for what they described in
+Step 1 (entities under `rayfin/data/`, views under `src/`, packages to install) and
+confirm that plan with the user before writing code. If your tooling has a planning
+mode, use it.
 
 Don't start the backend or frontend; the user runs the app themselves when ready (see
 the project's `README.md`).
