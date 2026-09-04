@@ -1,32 +1,20 @@
 # Rayfin: New Project Setup
 
-You're helping a developer create a new Rayfin project. Rayfin is a TypeScript
-Backend-as-a-Service: decorate data models to get auto-generated APIs (REST +
-GraphQL), typed clients, auth, storage, and a local dev stack.
+You're helping a developer create a new Rayfin project. Rayfin is a TypeScript Backend-as-a-Service: decorate data models to get auto-generated APIs (REST + GraphQL), typed clients, auth, storage, and a local dev stack.
 
-**Core rule:** Rayfin's specifics are version-locked per project, so once a project
-exists, never answer schema/API/auth/storage/deployment questions from memory:
-remembered Rayfin APIs are routinely wrong. Defer to the project's installed skill,
-`rayfin docs`, and `rayfin` MCP (Step 4). Keep this bootstrap light on Rayfin
-internals.
+**Core rule:** Rayfin's specifics are version-locked per project, so once a project exists, never answer schema/API/auth/storage/deployment questions from memory: remembered Rayfin APIs are routinely wrong. Defer to the project's installed skill, `rayfin docs`, and `rayfin` MCP (Step 4). Keep this bootstrap light on Rayfin internals.
 
-**One question at a time:** whenever you need input from the user, ask a single
-question and wait for the answer before asking the next.
+**One question at a time:** whenever you need input from the user, ask a single question and wait for the answer before asking the next.
 
 ## Step 1: Ask what they want to build
 
-Ask what they want to build, and confirm a kebab-case project name. Infer whether it
-targets Microsoft Fabric or should be self-contained, only clarifying if it's unclear.
-This guides the template choice in Step 3 and the customization in Step 4.
+Ask what they want to build, and confirm a kebab-case project name. Infer whether it targets Microsoft Fabric or should be self-contained, only clarifying if it's unclear. This guides the template choice in Step 3 and the customization in Step 4.
 
-Keep it short if the working directory already looks like an existing app: Step 3
-determines the exact situation and never creates a project nested inside or beside
-another one.
+Keep it short if the working directory already looks like an existing app: Step 3 determines the exact situation and never creates a project nested inside or beside another one.
 
 ## Step 2: Check prerequisites
 
-Before running any `npx` command: `node --version` (need 20+) and `git --version`.
-Install anything missing first:
+Before running any `npx` command: `node --version` (need 20+) and `git --version`. Install anything missing first:
 
 - macOS: `brew install node git`
 - Windows: `winget install -e --id OpenJS.NodeJS.LTS Git.Git`
@@ -36,45 +24,28 @@ Don't proceed until `node --version` reports v20+.
 
 ## Step 3: Get into a project
 
-Don't scaffold from memory: fetch the getting-started skill and follow it. It is the
-canonical source for project detection, the default template, and the exact CLI
-commands, and it is kept up to date as those change.
+Don't scaffold from memory: fetch the getting-started skill and follow it. It is the canonical source for project detection, the default template, and the exact CLI commands, and it is kept up to date as those change.
 
 ```bash
 curl -sSfL https://raw.githubusercontent.com/microsoft/rayfin/main/skills/rayfin-getting-started/SKILL.md
 ```
 
-Read it, then follow it to detect whether you're already in a Rayfin project, in an
-existing non-Rayfin app, or in an empty directory, and to run the right command for
-that case. Feed it what you learned in Step 1: what the user wants to build, and a
-kebab-case project name you've confirmed with them.
+Read it, then follow it to detect whether you're already in a Rayfin project, in an existing non-Rayfin app, or in an empty directory, and to run the right command for that case. Feed it what you learned in Step 1: what the user wants to build, and a kebab-case project name you've confirmed with them.
 
-Two things that skill assumes and this prompt has already covered: Node is installed
-(Step 2), and you're not a TTY, so keep passing `-y` to `npx`. If `npx` errors, Node
-may be missing; see Step 2.
+Two things that skill assumes and this prompt has already covered: Node is installed (Step 2), and you're not a TTY, so keep passing `-y` to `npx`. If `npx` errors, Node may be missing; see Step 2.
 
-Once it has scaffolded, make sure you're at the project root before continuing:
-`create-rayfin` creates a child directory, while an in-place init leaves you where you
-are. Then continue to Step 4.
+Once it has scaffolded, make sure you're at the project root before continuing: `create-rayfin` creates a child directory, while an in-place init leaves you where you are. Then continue to Step 4.
 
 ## Step 4: Load the in-project skill, then plan & customize
 
-Before writing any Rayfin-specific code, hand off to the project's authoritative,
-version-locked sources:
+Before writing any Rayfin-specific code, hand off to the project's authoritative, version-locked sources:
 
-1. Load `.agents/skills/rayfin/SKILL.md` and follow it; if your tooling supports it,
-   reload tools to bring the `rayfin` MCP online.
-2. Look up version-matched APIs via `rayfin docs` and the `rayfin` MCP instead of
-   guessing. The skill file and `rayfin docs` work as soon as the project exists, so
-   don't block waiting on the MCP reload.
+1. Load `.agents/skills/rayfin/SKILL.md` and follow it; if your tooling supports it, reload tools to bring the `rayfin` MCP online.
+2. Look up version-matched APIs via `rayfin docs` and the `rayfin` MCP instead of guessing. The skill file and `rayfin docs` work as soon as the project exists, so don't block waiting on the MCP reload.
 
-Then plan before you build: outline the first changes for what they described in
-Step 1 (entities under `rayfin/data/`, views under `src/`, packages to install) and
-confirm that plan with the user before writing code. If your tooling has a planning
-mode, use it.
+Then plan before you build: outline the first changes for what they described in Step 1 (entities under `rayfin/data/`, views under `src/`, packages to install) and confirm that plan with the user before writing code. If your tooling has a planning mode, use it.
 
-Don't start the backend or frontend; the user runs the app themselves when ready (see
-the project's `README.md`).
+Don't start the backend or frontend; the user runs the app themselves when ready (see the project's `README.md`).
 
 ## Useful links
 
