@@ -37,8 +37,7 @@ This CLI scaffolds a new Rayfin project with everything you need: data models, a
 > On Windows (PowerShell):
 >
 > ```powershell
-> $prompt = Invoke-RestMethod 'https://aka.ms/rayfin/start.md'
-> copilot -i $prompt
+> copilot -i (irm https://aka.ms/rayfin/start.md)
 > ```
 >
 > This loads the [Rayfin starter prompt](content/start.md): it checks your environment, picks a template, scaffolds the project, and helps you customize.
