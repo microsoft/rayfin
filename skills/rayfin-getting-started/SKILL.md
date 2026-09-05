@@ -47,8 +47,8 @@ project and continue in place. Never stand up a nested or sibling project.
 - **Already in one →** load `.agents/skills/rayfin/SKILL.md` and use the `rayfin` MCP /
   `rayfin docs`. Stop using this skill.
 - **Existing non-Rayfin app here →** add Rayfin in place with
-  `npx -y -p @microsoft/rayfin-cli@latest rayfin init` (don't scaffold a separate
-  project), then load the in-project skill.
+  `npx -y -p @microsoft/rayfin-cli@latest rayfin init --project-name <app-name>` (don't
+  scaffold a separate project), then load the in-project skill.
 - **Empty directory →** scaffold (below), then load the in-project skill from the project root.
 
 ## Scaffold a new project
@@ -65,8 +65,8 @@ mishandle piped stdin and strip flags, and `--project-name` is **required** non-
 # it fails to parse instead of continuing.
 npx -y @microsoft/create-rayfin@latest --project-name <app-name> --template https://github.com/microsoft/awesome-rayfin --template-name "Universal App"
 
-# Or add Rayfin into an existing/empty directory. 
-npx -y -p @microsoft/rayfin-cli@latest rayfin init [directory]
+# Or add Rayfin into an existing directory.
+npx -y -p @microsoft/rayfin-cli@latest rayfin init --project-name <app-name> [directory]
 
 # Templates bundled with the CLI (JSON), only if you need a different starting point
 npx -y @microsoft/create-rayfin@latest --list-templates
