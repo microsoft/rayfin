@@ -1,0 +1,55 @@
+name: Validate start.md prompt
+
+on:
+  pull_request:
+    paths:
+      - content/start.md
+      - .github/workflows/validate-start-prompt.yml
+  push:
+    branches: [main]
+    paths:
+      - content/start.md
+      - .github/workflows/validate-start-prompt.yml
+
+permissions:
+  contents: read
+
+jobs:
+  no-straight-quotes:
+    name: No straight double quotes in start.md
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+
+      - name: Reject straight double quotes
+        run: |
+          if grep -n '"' content/start.md; then
+            echo
+            echo "::error file=content/start.md::start.md must not contain straight double quotes"
+            cat <<'EOF'
+          content/start.md contains straight double quotes (") on the lines above.
+
+          Why this breaks:
+            The README documents launching the prompt as a single command, which
+            fetches this file and passes it to copilot as a native-process argument:
+
+              copilot -i "$(curl -sSfL https://aka.ms/rayfin/start.md)"
+              copilot -i (irm https://aka.ms/rayfin/start.md)
+
+            Windows PowerShell 5.1 is still the default shell on Windows, and its
+            legacy argument parser splits native-command arguments on embedded
+            straight double quotes. The prompt arrives truncated, with the remainder
+            passed as stray operands, so the user lands in a broken session.
+            pwsh 7 handles it correctly, but 5.1 is the default path we document.
+
+          How to fix:
+            Reword to avoid the quotes (preferred), for example
+              "20 or later"  ->  20-or-later
+            or use single quotes, or backticks for inline code.
+
+          Apostrophes and backticks are fine: only straight double quotes break the
+          PowerShell 5.1 argument parser.
+          EOF
+            exit 1
+          fi
+          echo "OK: no straight double quotes in content/start.md"
