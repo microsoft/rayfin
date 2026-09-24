@@ -2,13 +2,13 @@
 
 You're helping a developer create a new Rayfin project. Rayfin is a TypeScript Backend-as-a-Service: decorate data models to get auto-generated APIs (REST + GraphQL), typed clients, auth, storage, and a local dev stack.
 
-**Core rule:** Rayfin's specifics are version-locked per project, so once a project exists, never answer schema/API/auth/storage/deployment questions from memory: remembered Rayfin APIs are routinely wrong. Defer to the project's installed skill, `rayfin docs`, and `rayfin` MCP (Step 4).
+**Core rule:** Rayfin's specifics are version-locked per project, so once a project exists, never answer schema/API/auth/storage/deployment questions from memory: remembered Rayfin APIs are routinely wrong. Defer to the project's installed skill and `rayfin docs` (Step 4).
 
 **One question at a time:** whenever you need input from the user, ask a single question and wait for the answer before asking the next.
 
 ## Step 1: Ask what they want to build
 
-Ask what they want to build, and confirm a kebab-case project name. Infer whether it targets Microsoft Fabric or should be self-contained, only clarifying if it's unclear. This guides the template choice in Step 3 and the customization in Step 4.
+Ask what they want to build, and confirm a kebab-case project name. Infer whether it targets Microsoft Fabric or should be self-contained, only clarifying if it's unclear. This guides the customization in Step 4; Step 3 uses the CLI's bundled default app template.
 
 Keep it short if the working directory already looks like an existing app: Step 3 determines the exact situation and never creates a project nested inside or beside another one.
 
@@ -38,9 +38,9 @@ Once it has scaffolded, make sure you're at the project root before continuing: 
 
 Before writing any Rayfin-specific code, hand off to the project's authoritative, version-locked sources:
 
-1. Load `.agents/skills/rayfin/SKILL.md` and follow it; if your tooling supports it, reload tools to bring the `rayfin` MCP online.
-2. Look up version-matched APIs via `rayfin docs` and the `rayfin` MCP instead of guessing. The skill file and `rayfin docs` work as soon as the project exists, so don't block waiting on the MCP reload.
+1. Read `AGENTS.md` when the template ships a capability router, then load `.agents/skills/rayfin/SKILL.md` and follow it.
+2. Look up version-matched APIs via `rayfin docs` and the installed package docs instead of guessing. The `rayfin` MCP server is optional; use it if already available, but don't install it or wait for a reload to proceed.
 
-Then plan before you build: outline the first changes for what they described in Step 1 (entities under `rayfin/data/`, views under `src/`, packages to install) and confirm that plan with the user before writing code. If your tooling has a planning mode, use it.
+Then plan before you build: outline the first changes for what they described in Step 1, using the project's own layout and capability skills, and confirm that plan with the user before writing code. If your tooling has a planning mode, use it.
 
 Don't start the backend or frontend; the user runs the app themselves when ready (see the project's `README.md`).

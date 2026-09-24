@@ -40,7 +40,7 @@ This CLI scaffolds a new Rayfin project with everything you need: data models, a
 > copilot -i (irm https://aka.ms/rayfin/start.md)
 > ```
 >
-> This loads the [Rayfin starter prompt](content/start.md): it checks your environment, picks a template, scaffolds the project, and helps you customize.
+> This loads the [Rayfin starter prompt](content/start.md): it checks your environment, scaffolds the bundled default app template, and helps you customize.
 
 ### Agent plugin
 
@@ -89,6 +89,12 @@ npx plugins add microsoft/rayfin
 ```
 
 The plugin supports Claude Code, Cursor, Codex, GitHub Copilot CLI, Grok Build, Kimi Code, Visual Studio Code agent plugins, and Gemini CLI.
+
+The [getting-started skill](skills/rayfin-getting-started/SKILL.md) uses
+`@microsoft/create-rayfin@latest --template blankapp`, keeping the starter matched to the CLI
+release instead of fetching it from the gallery.
+Once inside the project, agents use its version-locked skill and `rayfin docs`; the Rayfin MCP
+server is optional.
 
 ## What is Rayfin?
 
