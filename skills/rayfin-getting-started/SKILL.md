@@ -25,16 +25,13 @@ API and client queries, auth, storage, and deployment all live in the project's 
 wrong against the installed version. Get into a project, read `.agents/skills/rayfin/SKILL.md`,
 then follow it for version-matched signatures. The in-project skill **file** and the
 `rayfin docs` CLI are available the moment a project exists — including right after you
-scaffold one, in the same session. The `rayfin` MCP server is an optional extra that most
-projects do not install; if it happens to be available it is a convenience, never a
-prerequisite. Lean on the in-project skill file plus `rayfin docs`.
+scaffold one, in the same session.
 
 Being blocked does not unlock memory. Only treat yourself as blocked if you can reach **none**
 of the version-matched sources — you can't read `.agents/skills/rayfin/SKILL.md` *and* can't
-run `rayfin docs` (e.g. tool permissions denied). The `rayfin` MCP server not being installed
-or loaded is **not** a blocker. When genuinely blocked, say you need those sources to answer
-accurately and stop there. Don't offer a "general approach" or example code "in the meantime";
-that stopgap is exactly the fabrication this skill exists to prevent.
+run `rayfin docs` (e.g. tool permissions denied). When genuinely blocked, say you need those
+sources to answer accurately and stop there. Don't offer a "general approach" or example code
+"in the meantime"; that stopgap is exactly the fabrication this skill exists to prevent.
 
 ## Already in a Rayfin project?
 
@@ -44,8 +41,8 @@ depending on `@microsoft/rayfin-*`. Environment signals alone are enough: if the
 context shows either — even when you can't open the files yet — treat it as an existing
 project and continue in place. Never stand up a nested or sibling project.
 
-- **Already in one →** load `.agents/skills/rayfin/SKILL.md` and use `rayfin docs` (or the
-  `rayfin` MCP, if already installed). Stop using this skill.
+- **Already in one →** load `.agents/skills/rayfin/SKILL.md` and use `rayfin docs`.
+  Stop using this skill.
 - **Existing non-Rayfin app here →** add Rayfin in place with
   `npx -y -p @microsoft/rayfin-cli@latest rayfin init --project-name <app-name>` (don't
   scaffold a separate project), then load the in-project skill.
@@ -67,15 +64,7 @@ npx -y -p @microsoft/rayfin-cli@latest rayfin init --project-name <app-name> [di
 ```
 
 **Always use the bundled `blankapp` template.** Don't browse the gallery or pick a
-domain-specific template. This stable template name follows the CLI release: the existing
-Blank App on 1.35.x, and the Universal App from 1.36.0 onward. Keep `@latest`; do not switch
-to a prerelease channel to get the newer template.
-
-The Universal App is a deliberately small React + Vite base with a built-in capability router
-that pulls in the right Rayfin services, npm modules, and skills on demand. The domain shape
-(analytics, CRUD, storage, functions) gets decided inside the project rather than at scaffold
-time. The project's own `.agents/skills/` own that decision and are version-matched to the
-starter.
+domain-specific template.
 
 Mind the project root before loading the in-project skill: `create-rayfin` creates a child
 project directory (named from `--project-name`, slugified), so `cd` into it; an in-place

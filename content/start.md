@@ -39,7 +39,7 @@ Once it has scaffolded, make sure you're at the project root before continuing: 
 Before writing any Rayfin-specific code, hand off to the project's authoritative, version-locked sources:
 
 1. Read `AGENTS.md` when the template ships a capability router, then load `.agents/skills/rayfin/SKILL.md` and follow it.
-2. Look up version-matched APIs via `rayfin docs` and the installed package docs instead of guessing. The `rayfin` MCP server is optional; use it if already available, but don't install it or wait for a reload to proceed.
+2. Look up version-matched APIs via `rayfin docs` and the installed package docs instead of guessing.
 
 Then plan before you build: outline the first changes for what they described in Step 1, using the project's own layout and capability skills, and confirm that plan with the user before writing code. If your tooling has a planning mode, use it.
 

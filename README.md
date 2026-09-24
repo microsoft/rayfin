@@ -90,12 +90,6 @@ npx plugins add microsoft/rayfin
 
 The plugin supports Claude Code, Cursor, Codex, GitHub Copilot CLI, Grok Build, Kimi Code, Visual Studio Code agent plugins, and Gemini CLI.
 
-The [getting-started skill](skills/rayfin-getting-started/SKILL.md) uses
-`@microsoft/create-rayfin@latest --template blankapp`, keeping the starter matched to the CLI
-release instead of fetching it from the gallery.
-Once inside the project, agents use its version-locked skill and `rayfin docs`; the Rayfin MCP
-server is optional.
-
 ## What is Rayfin?
 
 Rayfin is a **fully managed Backend-as-a-Service (BaaS)** platform that helps teams build and ship applications faster without building or operating backend infrastructure.
