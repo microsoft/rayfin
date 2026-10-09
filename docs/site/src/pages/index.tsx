@@ -1,4 +1,5 @@
 import Link from '@docusaurus/Link';
+import useBaseUrl from '@docusaurus/useBaseUrl';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext';
 import Heading from '@theme/Heading';
 import Layout from '@theme/Layout';
@@ -18,7 +19,7 @@ function HomepageHeader() {
       <div className={clsx('container', styles.heroInner)}>
         <div className={styles.heroTopRow}>
           <img
-            src="/img/rayfin.png"
+            src={useBaseUrl('/img/rayfin.png')}
             alt="Project Rayfin"
             className={styles.heroLogo}
           />
@@ -129,7 +130,7 @@ export default function Home(): ReactNode {
               </Link>
               <Link
                 className={clsx('button button--lg', styles.ghostCta)}
-                href="https://github.com/microsoft/project-rayfin"
+                href={siteConfig.customFields?.githubUrl as string}
               >
                 <svg
                   width="20"

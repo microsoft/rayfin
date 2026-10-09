@@ -88,9 +88,9 @@
   display: flex;
   background-repeat: no-repeat;
   background-size: 24px 24px;
-  background-image: url('/img/gh-mark-black.svg');
+  background-image: url('../../static/img/gh-mark-black.svg');
 }
 
 [data-theme='dark'] .header-github-link::before {
-  background-image: url('/img/gh-mark-white.svg');
+  background-image: url('../../static/img/gh-mark-white.svg');
 }
