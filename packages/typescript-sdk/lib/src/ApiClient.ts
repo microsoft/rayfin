@@ -1,5 +1,19 @@
 import { deprecate } from './deprecation.js';
-import { NetworkError, SdkError, type WorkloadFailure } from './errors.js';
+import {
+  AuthError,
+  NetworkError,
+  SdkError,
+  type WorkloadFailure,
+} from './errors.js';
+import {
+  ARTIFACT_BLOCKED_CODE,
+  ARTIFACT_BLOCKED_MESSAGE,
+  artifactBlockDetails,
+  readForbiddenResponse,
+  type ArtifactBlockDetails,
+} from './forbiddenResponse';
+
+const responseAuthErrors = new WeakMap<SdkError, ArtifactBlockDetails>();
 
 /**
  * Interface for API Client configuration.
@@ -273,6 +287,9 @@ export class ApiClient {
   private defaultTimeout: number;
   private getAccessTokenCallback: (() => string | null) | undefined;
   private onRefreshNeededCallback: (() => Promise<void>) | undefined;
+  private refreshResponseError:
+    | ((error: unknown) => AuthError | undefined)
+    | undefined;
   private onAuthExhaustedCallback: (() => void) | undefined;
   private fetchImplementation: Promise<typeof globalThis.fetch>;
 
@@ -354,6 +371,16 @@ export class ApiClient {
    */
   public setRefreshCallback(callback: () => Promise<void>): void {
     this.onRefreshNeededCallback = callback;
+    this.refreshResponseError = undefined;
+  }
+
+  /** @internal Grants response-error mapping only to an Auth-owned refresh operation. */
+  public setAuthRefreshCallback(
+    callback: () => Promise<void>,
+    responseError: (error: unknown) => AuthError | undefined
+  ): void {
+    this.setRefreshCallback(callback);
+    this.refreshResponseError = responseError;
   }
 
   /**
@@ -362,6 +389,56 @@ export class ApiClient {
    */
   public setAuthExhaustedCallback(callback: () => void): void {
     this.onAuthExhaustedCallback = callback;
+  }
+
+  /** @internal Maps only rejections produced by SDK response parsing. */
+  public getResponseAuthError(error: unknown): AuthError | undefined {
+    const details =
+      error instanceof SdkError ? responseAuthErrors.get(error) : undefined;
+    if (!details) {
+      return undefined;
+    }
+    const mapped = new AuthError(
+      ARTIFACT_BLOCKED_MESSAGE,
+      ARTIFACT_BLOCKED_CODE,
+      403,
+      details.requestId
+    );
+    responseAuthErrors.set(mapped, details);
+    return mapped;
+  }
+
+  private artifactBlockedError(value: unknown): NetworkError | undefined {
+    const details = artifactBlockDetails(value);
+    if (!details) {
+      return undefined;
+    }
+    const error = new NetworkError(
+      ARTIFACT_BLOCKED_MESSAGE,
+      403,
+      ARTIFACT_BLOCKED_CODE,
+      details.requestId
+    );
+    responseAuthErrors.set(error, details);
+    return error;
+  }
+
+  private async fetchResponse(
+    url: string,
+    options: RequestInit
+  ): Promise<Response> {
+    try {
+      const fetchImpl = await this.fetchImplementation;
+      return await fetchImpl(url, options);
+    } catch (error) {
+      if (
+        error instanceof SdkError &&
+        (responseAuthErrors.has(error) || error.code === ARTIFACT_BLOCKED_CODE)
+      ) {
+        throw new NetworkError('Network request failed.');
+      }
+      throw error;
+    }
   }
 
   /**
@@ -484,14 +561,29 @@ export class ApiClient {
    * @param response - The fetch Response object
    * @returns The Response if it's ok, otherwise throws an appropriate error
    */
-  private async handleResponseErrors(response: Response): Promise<Response> {
+  private async handleResponseErrors(
+    response: Response,
+    signal: AbortSignal
+  ): Promise<Response> {
     if (!response.ok) {
       let errorMessage: string;
       let errorData: any;
 
+      if (response.status === 403) {
+        errorData = await readForbiddenResponse(response, signal);
+        const blocked = !response.redirected
+          ? this.artifactBlockedError(errorData)
+          : undefined;
+        if (blocked) {
+          throw blocked;
+        }
+      }
+
       try {
         // Try to parse error response as JSON
-        errorData = await response.json();
+        if (response.status !== 403) {
+          errorData = await response.json();
+        }
         // Support standard 'message', OAuth 'error_description', and the
         // Fabric workload envelope, which carries its detail in `errors[]`.
         errorMessage =
@@ -530,12 +622,29 @@ export class ApiClient {
     url: string,
     options: RequestOptions
   ): Promise<T> {
-    if (this.onRefreshNeededCallback) {
+    const refresh = this.onRefreshNeededCallback;
+    const currentResponseError = this.refreshResponseError;
+    if (refresh) {
       // Trigger refresh (includes promise lock for concurrent prevention).
       // Errors propagate directly so callers can distinguish fatal auth
       // failures (SESSION_EXPIRED, INVALID_GRANT) from transient issues
       // (SERVER_ERROR, network blip, REFRESH_BACKOFF).
-      await this.onRefreshNeededCallback();
+      try {
+        await refresh();
+      } catch (error) {
+        const responseError = currentResponseError?.(error);
+        if (responseError) {
+          throw responseError;
+        }
+        if (
+          error instanceof SdkError &&
+          (responseAuthErrors.has(error) ||
+            error.code === ARTIFACT_BLOCKED_CODE)
+        ) {
+          throw new NetworkError('Token refresh failed.');
+        }
+        throw error;
+      }
 
       // Retry the original request with the refreshed token.
       // Preserve the original request headers (e.g. Content-Type) but drop any
@@ -625,18 +734,18 @@ export class ApiClient {
     });
 
     try {
-      // Get the fetch implementation
-      const fetchImpl = await this.fetchImplementation;
-
       // Race between the fetch and the timeout. The fetch is wired to our
       // controller so a timeout (or caller abort) tears down the request.
       const response = (await Promise.race([
-        fetchImpl(url, { ...fetchOptions, signal: controller.signal }),
+        this.fetchResponse(url, {
+          ...fetchOptions,
+          signal: controller.signal,
+        }),
         timeoutPromise,
       ])) as Response;
 
       // Handle response based on status code
-      await this.handleResponseErrors(response);
+      await this.handleResponseErrors(response, controller.signal);
 
       // If no content (204 No Content) or Content-Length is 0, return empty object
       if (
@@ -916,7 +1025,16 @@ export class ApiClient {
         redirect: 'error',
         credentials: 'omit',
       },
-      readResponse
+      async (response, signal) => {
+        if (response.status === 403 && !response.redirected) {
+          const value = await readForbiddenResponse(response, signal);
+          const blocked = this.artifactBlockedError(value);
+          if (blocked) {
+            throw blocked;
+          }
+        }
+        return readResponse(response);
+      }
     );
   }
 
@@ -934,7 +1052,7 @@ export class ApiClient {
       redirect?: RequestInit['redirect'];
       credentials?: RequestInit['credentials'];
     },
-    readResponse: (response: Response) => Promise<T>
+    readResponse: (response: Response, signal: AbortSignal) => Promise<T>
   ): Promise<T> {
     const {
       method = 'GET',
@@ -973,9 +1091,6 @@ export class ApiClient {
     }
 
     try {
-      // Get the fetch implementation
-      const fetchImpl = await this.fetchImplementation;
-
       // Create combined abort controller for timeout + caller signal
       const controller = new AbortController();
       const timeoutId = setTimeout(
@@ -1018,7 +1133,10 @@ export class ApiClient {
           (requestOptions as any).duplex = 'half';
         }
 
-        return await readResponse(await fetchImpl(url, requestOptions));
+        return await readResponse(
+          await this.fetchResponse(url, requestOptions),
+          controller.signal
+        );
       } finally {
         clearTimeout(timeoutId);
         if (signal && onCallerAbort) {

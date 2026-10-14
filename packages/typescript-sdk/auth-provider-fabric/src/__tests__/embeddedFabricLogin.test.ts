@@ -1,13 +1,19 @@
+import { AuthError, SdkError } from '@microsoft/rayfin-lib';
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 
 import * as transportModule from '../PostMessageAuthTransport';
 import { embeddedFabricLogin } from '../embeddedFabricLogin';
+import { ensureSignedInWithFabric } from '../ensureSignedInWithFabric';
 import * as classificationModule from '../externalEmbedClassification';
-import { resetEmbeddedHandoffStateForTests } from '../fabricAuthHelpers';
+import {
+  hasEmbeddedHandoffCompleted,
+  resetEmbeddedHandoffStateForTests,
+} from '../fabricAuthHelpers';
 import {
   clearFabricUserHint,
   persistFabricUserHintFromUrl,
 } from '../fabricUserHint';
+import * as initiateFabricLoginModule from '../initiateFabricLogin';
 import type { FabricAuthOptions } from '../types';
 
 /**
@@ -151,6 +157,91 @@ describe('embeddedFabricLogin', () => {
 
     expect(mockAuth.createSessionFromTokenResponse).not.toHaveBeenCalled();
   });
+
+  it.each(['embeddedFabricLogin', 'ensureSignedInWithFabric'] as const)(
+    'propagates the normal host administrator-block response through %s without fallback',
+    async (entryPoint) => {
+      withUserHint();
+      vi.mocked(transportModule.requestHandoff).mockRestore();
+      vi.spyOn(classificationModule, 'classifyExternalEmbed').mockResolvedValue(
+        undefined
+      );
+      vi.spyOn(classificationModule, 'isExternalEmbedScenario').mockReturnValue(
+        false
+      );
+      const popup = vi
+        .spyOn(initiateFabricLoginModule, 'initiateFabricLogin')
+        .mockResolvedValue(undefined);
+      mockAuth.getSession = vi.fn(() => ({
+        isAuthenticated: false,
+        user: null,
+      }));
+      mockAuth.hasRefreshToken = vi.fn(() => false);
+      mockAuth.refreshSession = vi.fn();
+      const privateHostText = 'SYNTHETIC-PRIVATE-HOST-MESSAGE';
+      const postMessage = vi.fn((request: { requestId: string }) => {
+        window.dispatchEvent(
+          new MessageEvent('message', {
+            source: window.parent,
+            origin: 'https://host.example.com',
+            data: {
+              channel: 'fabric-auth',
+              version: 1,
+              requestId: request.requestId,
+              kind: 'response',
+              success: false,
+              error: {
+                code: 'APP_ADMIN_BLOCKED',
+                message: privateHostText,
+                details: { reason: 'SYNTHETIC-PRIVATE-HOST-DETAIL' },
+              },
+            },
+          })
+        );
+      });
+      const parent = window.parent;
+      Object.defineProperty(window, 'parent', {
+        value: { postMessage },
+        writable: true,
+        configurable: true,
+      });
+      try {
+        const embeddedOptions = { ...options, fabricEmbedded: true };
+        const promise =
+          entryPoint === 'embeddedFabricLogin'
+            ? embeddedFabricLogin(mockAuth, embeddedOptions)
+            : ensureSignedInWithFabric(mockAuth, embeddedOptions);
+        const error = await promise.catch((error: unknown) => error);
+
+        expect(error).toBeInstanceOf(AuthError);
+        expect(error).toBeInstanceOf(SdkError);
+        expect(error).toMatchObject({
+          code: 'ArtifactBlockedByAdmin',
+          message:
+            'This app has been blocked by your admin. Reach out to the app owner to get unblocked.',
+        });
+        expect(String(error)).not.toContain(privateHostText);
+        expect(JSON.stringify(error)).not.toContain('SYNTHETIC-PRIVATE');
+        expect(postMessage).toHaveBeenCalledTimes(1);
+        expect(postMessage.mock.calls[0][0]).toMatchObject({
+          channel: 'fabric-auth',
+          kind: 'auth.requestHandoff',
+        });
+        expect(popup).not.toHaveBeenCalled();
+        expect(mockSignOut).not.toHaveBeenCalled();
+        expect(mockAuth.refreshSession).not.toHaveBeenCalled();
+        expect(mockExchangeVerificationCode).not.toHaveBeenCalled();
+        expect(mockAuth.createSessionFromTokenResponse).not.toHaveBeenCalled();
+        expect(hasEmbeddedHandoffCompleted()).toBe(false);
+      } finally {
+        Object.defineProperty(window, 'parent', {
+          value: parent,
+          writable: true,
+          configurable: true,
+        });
+      }
+    }
+  );
 
   it('propagates token exchange errors', async () => {
     mockExchangeVerificationCode.mockRejectedValue(

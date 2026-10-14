@@ -24,3 +24,14 @@ The Phase 2 + Phase 3 milestone for this package is the package-level
 convention contract: declare `rayfinDocs` in `package.json`, ship a
 `assets/docs/` directory, let `@microsoft/rayfin-docs` discover it
 automatically.
+
+## Administrator-block errors
+
+`ApiClient` reports a recognized service administrator-block rejection as a `NetworkError` with `code: 'ArtifactBlockedByAdmin'` and `status: 403`.
+Authentication helpers preserve the same code and status in an `AuthError`.
+Both error types expose an optional readonly `requestId` containing a validated service correlation GUID.
+No raw response, embedded diagnostics, or service-provided message is attached to this rejection.
+
+The fixed message is: "This app has been blocked by your admin. Reach out to the app owner to get unblocked."
+Branch on the exact error code, not the message or a generic 401/403 status.
+The SDK recognizes only the exact root code in a bounded HTTP 403 JSON response, and does not automatically refresh credentials or retry that rejection.

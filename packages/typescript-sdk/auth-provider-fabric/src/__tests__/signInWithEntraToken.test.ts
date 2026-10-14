@@ -1,6 +1,7 @@
 // @vitest-environment node
 
 import { createServer, type ServerResponse } from 'node:http';
+import { inspect } from 'node:util';
 
 import {
   Auth,
@@ -245,7 +246,11 @@ describe('signInWithEntraToken: public entry in Node', () => {
       expect(error).toMatchObject({ code });
       expect(String(error)).not.toContain('SECRET');
       expect(read).not.toHaveBeenCalled();
-      expect(cancel).toHaveBeenCalledExactlyOnceWith();
+      if (Number(status) === 403) {
+        expect(cancel).not.toHaveBeenCalled();
+      } else {
+        expect(cancel).toHaveBeenCalledExactlyOnceWith();
+      }
       expect(fetch).toHaveBeenCalledTimes(1);
       expect(refresh).not.toHaveBeenCalled();
       expect(login).not.toHaveBeenCalled();
@@ -781,5 +786,241 @@ describe('signInWithEntraToken: public entry in Node', () => {
     expect(fetch).toHaveBeenCalledTimes(1);
     expect(auth.getSession().isAuthenticated).toBe(true);
     expect(vi.getTimerCount()).toBe(1);
+  });
+});
+
+describe('signInWithEntraToken: response trust boundaries', () => {
+  const sensitiveValues = [
+    entraToken,
+    'SYNTHETIC-ACCESS-TOKEN',
+    'SYNTHETIC-REFRESH-TOKEN',
+    'SYNTHETIC-COOKIE',
+    'SYNTHETIC-DETAIL',
+  ];
+  const denial = {
+    code: 'SYNTHETIC_BLOCK',
+    errorCode: 'SYNTHETIC_BLOCK',
+    message: 'The synthetic app is blocked by its administrator.',
+    details: sensitiveValues.join(' '),
+    accessToken: sensitiveValues[1],
+    refreshToken: sensitiveValues[2],
+    cookie: sensitiveValues[3],
+  };
+
+  function observeConsole() {
+    return (['debug', 'error', 'info', 'log', 'warn'] as const).map((method) =>
+      vi.spyOn(console, method).mockImplementation(() => {})
+    );
+  }
+
+  function expectSanitizedFailure(
+    error: unknown,
+    logs: ReturnType<typeof observeConsole>
+  ) {
+    const output = [
+      String(error),
+      JSON.stringify(error),
+      inspect(
+        logs.flatMap((log) => log.mock.calls),
+        { depth: null }
+      ),
+    ].join('\n');
+    for (const value of [...sensitiveValues, denial.message]) {
+      expect(output).not.toContain(value);
+    }
+    for (const field of ['body', 'response', 'details', 'cause']) {
+      expect(error).not.toHaveProperty(field);
+    }
+  }
+
+  describe.each([
+    { status: 401, code: 'AUTH_FAILED' },
+    { status: 403, code: 'INSUFFICIENT_PERMISSIONS' },
+  ])('unrecognized HTTP $status responses', ({ status, code }) => {
+    it.each([
+      { name: 'empty body', body: '' },
+      { name: 'malformed JSON', body: '{"message":"SYNTHETIC-DETAIL"' },
+      { name: 'null', body: 'null' },
+      { name: 'string', body: JSON.stringify(denial.message) },
+      { name: 'number', body: '42' },
+      { name: 'boolean', body: 'true' },
+      { name: 'array', body: JSON.stringify([denial]) },
+      { name: 'unknown root codes', body: JSON.stringify(denial) },
+      { name: 'nested codes', body: JSON.stringify({ error: denial }) },
+      { name: 'error list', body: JSON.stringify({ errors: [denial] }) },
+      { name: 'unknown object', body: JSON.stringify({ reason: denial }) },
+      {
+        name: 'HTML',
+        body: `<h1>${denial.message}</h1><p>${denial.details}</p>`,
+        contentType: 'text/html',
+      },
+      {
+        name: 'plain text',
+        body: `${denial.message} ${denial.details}`,
+        contentType: 'text/plain',
+      },
+    ])(
+      'keeps the generic code for $name without exposing diagnostics',
+      async ({ body, contentType }) => {
+        const logs = observeConsole();
+        const { auth, client, fetch } = setup(
+          vi.fn<typeof globalThis.fetch>().mockResolvedValue(
+            new Response(body, {
+              status,
+              headers: { 'Content-Type': contentType ?? 'application/json' },
+            })
+          )
+        );
+        const refresh = vi.fn();
+        client.setRefreshCallback(refresh);
+        const login = vi.fn();
+        auth.on('AUTH_LOGIN', login);
+
+        const error = await signIn(auth).catch((error: unknown) => error);
+
+        expect(error).toBeInstanceOf(AuthError);
+        expect(error).toMatchObject({ code });
+        expectSanitizedFailure(error, logs);
+        expect(fetch).toHaveBeenCalledTimes(1);
+        expect(refresh).not.toHaveBeenCalled();
+        expect(login).not.toHaveBeenCalled();
+        expect(auth.getSession().isAuthenticated).toBe(false);
+      }
+    );
+  });
+
+  it.each([
+    { status: 401, code: 'AUTH_FAILED' },
+    { status: 403, code: 'INSUFFICIENT_PERMISSIONS' },
+  ])(
+    'cancels an unbounded non-JSON HTTP $status body without pulling it',
+    async ({ status, code }) => {
+      const pull = vi.fn();
+      const cancel = vi.fn();
+      const body = new ReadableStream<Uint8Array>(
+        {
+          pull(controller) {
+            pull();
+            controller.enqueue(new TextEncoder().encode(denial.details));
+          },
+          cancel,
+        },
+        { highWaterMark: 0 }
+      );
+      const { auth, fetch } = setup(
+        vi.fn<typeof globalThis.fetch>().mockResolvedValue(
+          new Response(body, {
+            status,
+            headers: { 'Content-Type': 'text/plain' },
+          })
+        )
+      );
+
+      await expect(signIn(auth)).rejects.toMatchObject({ code });
+
+      expect(pull).not.toHaveBeenCalled();
+      expect(cancel).toHaveBeenCalledTimes(1);
+      expect(fetch).toHaveBeenCalledTimes(1);
+      expect(auth.getSession().isAuthenticated).toBe(false);
+    }
+  );
+
+  it.each(['fetch', 'storage read', 'storage write'])(
+    'does not trust a denial-coded AuthError from %s',
+    async (source) => {
+      const logs = observeConsole();
+      const failure = Object.assign(
+        new AuthError(`${denial.message} ${denial.details}`, denial.code),
+        { status: 403, details: denial }
+      );
+      const storage: AuthStorage = {
+        getItem: vi.fn(() => null),
+        setItem: vi.fn(),
+        removeItem: vi.fn(),
+      };
+      const fetch = vi.fn<typeof globalThis.fetch>();
+      if (source === 'fetch') {
+        fetch.mockRejectedValue(failure);
+      } else {
+        fetch.mockResolvedValue(Response.json(tokens()));
+      }
+      const { auth, client } = setup(fetch, { storage });
+      if (source === 'storage read') {
+        vi.mocked(storage.getItem).mockImplementation(() => {
+          throw failure;
+        });
+      } else if (source === 'storage write') {
+        vi.mocked(storage.setItem).mockImplementation(() => {
+          throw failure;
+        });
+      }
+      const refresh = vi.fn();
+      client.setRefreshCallback(refresh);
+      const login = vi.fn();
+      auth.on('AUTH_LOGIN', login);
+
+      const error = await signIn(auth).catch((error: unknown) => error);
+
+      expect(error).toBeInstanceOf(AuthError);
+      expect(error).not.toBe(failure);
+      expect(error).toMatchObject({ code: 'TOKEN_EXCHANGE_FAILED' });
+      expectSanitizedFailure(error, logs);
+      expect(fetch).toHaveBeenCalledTimes(1);
+      expect(refresh).not.toHaveBeenCalled();
+      expect(login).not.toHaveBeenCalled();
+      expect(auth.getSession().isAuthenticated).toBe(false);
+    }
+  );
+
+  it('rejects a denial-shaped HTTP success as an invalid token response', async () => {
+    const logs = observeConsole();
+    const { auth, client, fetch } = setup(
+      vi.fn<typeof globalThis.fetch>().mockResolvedValue(Response.json(denial))
+    );
+    const refresh = vi.fn();
+    client.setRefreshCallback(refresh);
+    const login = vi.fn();
+    auth.on('AUTH_LOGIN', login);
+
+    const error = await signIn(auth).catch((error: unknown) => error);
+
+    expect(error).toMatchObject({ code: 'INVALID_TOKEN_RESPONSE' });
+    expectSanitizedFailure(error, logs);
+    expect(fetch).toHaveBeenCalledTimes(1);
+    expect(refresh).not.toHaveBeenCalled();
+    expect(login).not.toHaveBeenCalled();
+    expect(auth.getSession().isAuthenticated).toBe(false);
+  });
+
+  it('consumes successful token JSON once for authentication, not diagnostics', async () => {
+    const logs = observeConsole();
+    const tokenResponse = tokens();
+    const response = Response.json({ ...denial, ...tokenResponse });
+    const json = vi.spyOn(response, 'json');
+    const text = vi.spyOn(response, 'text');
+    const clone = vi.spyOn(response, 'clone');
+    const cancel = vi.spyOn(response.body!, 'cancel');
+    const { auth, fetch } = setup(
+      vi.fn<typeof globalThis.fetch>().mockResolvedValue(response)
+    );
+
+    const session = await signIn(auth);
+
+    expect(session.isAuthenticated).toBe(true);
+    expect(json).toHaveBeenCalledExactlyOnceWith();
+    expect(text).not.toHaveBeenCalled();
+    expect(clone).not.toHaveBeenCalled();
+    expect(cancel).not.toHaveBeenCalled();
+    expect(fetch).toHaveBeenCalledTimes(1);
+    const output = inspect([session, logs.flatMap((log) => log.mock.calls)], {
+      depth: null,
+    });
+    for (const value of [
+      ...sensitiveValues,
+      tokenResponse.accessToken,
+      tokenResponse.refreshToken,
+    ]) {
+      expect(output).not.toContain(value);
+    }
   });
 });

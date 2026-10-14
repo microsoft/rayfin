@@ -1,3 +1,9 @@
+import {
+  ARTIFACT_BLOCKED_CODE,
+  ARTIFACT_BLOCKED_MESSAGE,
+  isArtifactBlockedResponse,
+} from '@microsoft/rayfin-lib';
+
 import { EmbedHostError, type EmbedHostErrorCode } from './errors';
 import type { HandoffProvider, HandoffRequest, HandoffResult } from './types';
 
@@ -33,7 +39,21 @@ function statusToCode(status: number): EmbedHostErrorCode {
 export function createExternalEntraHandoffProvider(): HandoffProvider {
   return {
     async acquire(request: HandoffRequest): Promise<HandoffResult> {
-      const token = await request.getAccessToken();
+      let token: string;
+      try {
+        token = await request.getAccessToken();
+      } catch (error) {
+        if (
+          error instanceof EmbedHostError &&
+          error.code === ARTIFACT_BLOCKED_CODE
+        ) {
+          throw new EmbedHostError(
+            'Failed to acquire the delegated Entra token.',
+            'AUTHORIZE_FAILED'
+          );
+        }
+        throw error;
+      }
 
       const body: Record<string, string> = {
         returnOrigin: request.returnOrigin,
@@ -65,6 +85,12 @@ export function createExternalEntraHandoffProvider(): HandoffProvider {
       }
 
       if (!response.ok) {
+        if (await isArtifactBlockedResponse(response)) {
+          throw new EmbedHostError(
+            ARTIFACT_BLOCKED_MESSAGE,
+            ARTIFACT_BLOCKED_CODE
+          );
+        }
         throw new EmbedHostError(
           `Brokered-authorize endpoint responded with status ${response.status}.`,
           statusToCode(response.status)

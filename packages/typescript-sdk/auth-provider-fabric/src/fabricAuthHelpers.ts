@@ -1,5 +1,7 @@
 import { isEmbeddedMode as sharedIsEmbeddedMode } from '@microsoft/fabric-embedded-host';
 import type { Auth, OpaqueSession } from '@microsoft/rayfin-auth';
+import { getRefreshResponseError } from '@microsoft/rayfin-auth/_internal';
+import { AuthError } from '@microsoft/rayfin-lib';
 
 import type { FabricAuthOptions } from './types';
 
@@ -60,6 +62,7 @@ export function resetEmbeddedHandoffStateForTests(): void {
  * 2. If a refresh token is available, tries `auth.refreshSession()` and
  *    returns the refreshed session on success.
  * 3. Returns `null` when neither path produces an authenticated session.
+ *    A recognized administrator-block rejection is rethrown instead.
  *
  * This helper never opens windows, popups, or postMessage channels —
  * it is always safe to call on page load.
@@ -83,7 +86,16 @@ export async function tryResumeSession(
         console.debug('[FabricAuth] Session refreshed successfully');
         return refreshedSession;
       }
-    } catch {
+    } catch (error) {
+      if (
+        error instanceof AuthError &&
+        error.code === 'ArtifactBlockedByAdmin'
+      ) {
+        const responseError = getRefreshResponseError(auth, error);
+        if (responseError) {
+          throw responseError;
+        }
+      }
       console.warn('[FabricAuth] Session refresh failed, continuing');
     }
   }

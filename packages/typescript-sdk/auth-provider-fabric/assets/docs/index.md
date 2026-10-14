@@ -194,6 +194,30 @@ Common cases include missing required options, blocked popups, explicit broker e
 Direct token sign-in reports `INVALID_REQUEST` for invalid local inputs, `EXCHANGE_NOT_ENABLED` for a disabled exchange, `AUTH_FAILED` for token rejection, `INSUFFICIENT_PERMISSIONS` for missing Execute access, and `NOT_AVAILABLE` for an unavailable endpoint.
 Transport or other HTTP failures use `TOKEN_EXCHANGE_FAILED`; malformed successful responses use `INVALID_TOKEN_RESPONSE`.
 Errors do not include the supplied token or raw server response.
+`AUTH_FAILED` and `INSUFFICIENT_PERMISSIONS` alone do not identify an administrator block.
+Do not infer that cause from response text.
+
+When direct token exchange explicitly reports an administrator block, the helper rejects with `AuthError`, `code: 'ArtifactBlockedByAdmin'`, and `status: 403`.
+Its message is always: "This app has been blocked by your admin. Reach out to the app owner to get unblocked."
+An optional `requestId` contains only a validated service correlation GUID; missing or invalid correlation is omitted.
+The SDK does not copy the service's message or other diagnostic fields.
+
+Recognition requires an HTTP 403 JSON response with the exact root `code`; an optional `httpStatusCode` must also be `403`.
+Failure-body inspection is limited to 16 KiB and one second, or the request timeout if shorter.
+Unrecognized, malformed, oversized, or unreadable responses keep the generic failure behavior.
+Successful token payloads are read only for authentication, not for error diagnostics.
+
+Normal embedded Fabric handoff also reports `AuthError` with `code: 'ArtifactBlockedByAdmin'` when the parent host returns the exact bridge error code `APP_ADMIN_BLOCKED`.
+It uses the same fixed consumer message and omits the host's message and details.
+A bridge rejection does not provide an HTTP `status` or a service `requestId`.
+Both `embeddedFabricLogin()` and `ensureSignedInWithFabric()` propagate it without exchanging a handoff code for tokens, creating a session, or falling back to a popup.
+Other bridge errors retain their existing codes and messages.
+The embedded flow's existing identity-based sign-out before handoff is unchanged.
+
+The administrator-block rejection itself does not refresh credentials, retry the rejected request, or discard an existing session.
+Session resume surfaces this rejection instead of continuing to a popup login, and refresh backoff preserves the same error code.
+Backoff belongs to the current session and is cleared when a replacement session is successfully installed.
+The error reports a service rejection; it does not itself change access or unblock the app.
 
 ```typescript
 import { AuthError } from '@microsoft/rayfin-lib';
@@ -203,6 +227,9 @@ try {
 } catch (error) {
   if (error instanceof AuthError) {
     console.error(error.code, error.message);
+    if (error.code === 'ArtifactBlockedByAdmin' && error.requestId) {
+      console.error('Request ID', error.requestId);
+    }
   }
 }
 ```

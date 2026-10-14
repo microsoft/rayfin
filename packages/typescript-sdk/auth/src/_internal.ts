@@ -7,7 +7,7 @@
 //
 // These exports may change without a major version bump.
 
-import type { ApiClient } from '@microsoft/rayfin-lib';
+import type { ApiClient, AuthError } from '@microsoft/rayfin-lib';
 
 import type { Auth } from './Auth';
 import type { OpaqueSession, TokenResponse } from './types';
@@ -15,6 +15,14 @@ import type { OpaqueSession, TokenResponse } from './types';
 /** Returns the configured transport for first-party companion providers. */
 export function getAuthProviderClient(auth: Auth): ApiClient {
   return auth.getAuthApi().getClientForProvider();
+}
+
+/** Recognizes the current session's refresh rejection for companion providers. */
+export function getRefreshResponseError(
+  auth: Auth,
+  error: unknown
+): AuthError | undefined {
+  return auth.getRefreshResponseError(error);
 }
 
 /**
