@@ -4,6 +4,10 @@ import { basename, extname, join, relative, sep } from 'path';
 import type { DiscoveredPackage } from './discovery.js';
 import { docKindToModule } from './discovery.js';
 import type { DocEntry, DocModule, DocSection, DocSource } from './types.js';
+import {
+  resolveDocsMarkdown,
+  type DocsVisibilityOptions,
+} from './visibility.js';
 
 const DEFAULT_MODULES: DocModule[] = ['guide', 'host', 'ts-sdk'];
 const UNPUBLISHED_DOC_DIRECTORY_NAMES = new Set(['preview', 'experimental']);
@@ -85,6 +89,11 @@ function parseFrontMatter(markdown: string): FrontMatterResult {
 
   const body = lines.slice(endIndex + 1).join('\n');
   return { attributes, body };
+}
+
+export function getDocFrontmatterFlags(markdown: string): string[] {
+  const value = parseFrontMatter(markdown).attributes.flags;
+  return Array.isArray(value) ? value : typeof value === 'string' ? [value] : [];
 }
 
 function extractTitle(markdown: string): string | undefined {
@@ -284,11 +293,40 @@ function buildEntry(
   module: DocModule,
   pathRoot: string,
   source?: DocSource,
-  idPrefix: string = module
-): DocEntry {
+  idPrefix: string = module,
+  visibility: DocsVisibilityOptions = {}
+): DocEntry | undefined {
   const raw = readFileSync(filePath, 'utf-8');
   const frontMatter = parseFrontMatter(raw);
-  const content = frontMatter.body.trim();
+  const registeredFlags = new Set(
+    (visibility.registeredFlags ?? []).map((flag) => flag.trim().toLowerCase())
+  );
+  const enabledFlags = new Set(
+    (visibility.enabledFlags ?? []).map((flag) => flag.trim().toLowerCase())
+  );
+  const documentFlags = Array.isArray(frontMatter.attributes.flags)
+    ? frontMatter.attributes.flags
+    : typeof frontMatter.attributes.flags === 'string'
+      ? [frontMatter.attributes.flags]
+      : [];
+  for (const flag of documentFlags) {
+    const normalized = flag.trim().toLowerCase();
+    if (!normalized || !registeredFlags.has(normalized)) {
+      throw new Error(
+        `${filePath}:1: Unknown documentation feature flag '${flag}'.`
+      );
+    }
+  }
+  if (documentFlags.some((flag) => !enabledFlags.has(flag.trim().toLowerCase()))) {
+    return undefined;
+  }
+  const content = resolveDocsMarkdown(frontMatter.body.trim(), {
+    ...visibility,
+    sourcePath: filePath,
+  }).trim();
+  if (!content) {
+    return undefined;
+  }
   const title =
     (typeof frontMatter.attributes.title === 'string'
       ? frontMatter.attributes.title
@@ -333,7 +371,8 @@ function buildEntry(
 
 export function loadDocs(
   assetsRoot: string,
-  modules: DocModule[] = DEFAULT_MODULES
+  modules: DocModule[] = DEFAULT_MODULES,
+  visibility: DocsVisibilityOptions = {}
 ): DocEntry[] {
   const entries: DocEntry[] = [];
 
@@ -345,7 +384,17 @@ export function loadDocs(
     const files = collectMarkdownFiles(moduleRoot);
 
     for (const filePath of files) {
-      entries.push(buildEntry(filePath, moduleName, assetsRoot));
+      const entry = buildEntry(
+        filePath,
+        moduleName,
+        assetsRoot,
+        undefined,
+        moduleName,
+        visibility
+      );
+      if (entry) {
+        entries.push(entry);
+      }
     }
   }
 
@@ -368,7 +417,10 @@ export function loadDocs(
  * docs root, walked directories, and every walked file's realpath, then
  * skip anything that escapes the trusted package/docs boundaries.
  */
-export function loadDocsFromPackage(pkg: DiscoveredPackage): DocEntry[] {
+export function loadDocsFromPackage(
+  pkg: DiscoveredPackage,
+  visibility: DocsVisibilityOptions = {}
+): DocEntry[] {
   const docsRoot = join(pkg.packageRoot, pkg.manifest.dir);
   if (!existsSync(docsRoot)) {
     return [];
@@ -404,7 +456,15 @@ export function loadDocsFromPackage(pkg: DiscoveredPackage): DocEntry[] {
     }
     safe.push(filePath);
   }
-  return safe.map((filePath) =>
-    buildEntry(filePath, module, docsRoot, source, pkg.manifest.module)
-  );
+  return safe.flatMap((filePath) => {
+    const entry = buildEntry(
+      filePath,
+      module,
+      docsRoot,
+      source,
+      pkg.manifest.module,
+      visibility
+    );
+    return entry ? [entry] : [];
+  });
 }

@@ -3,10 +3,21 @@ import { describe, expect, it } from 'vitest';
 import {
   createFeatureFlags,
   FEATURE_FLAGS_ENV_VAR,
+  getRegisteredDocsFeatureFlags,
   parseFeatureFlags,
+  registerDocsFeatureFlag,
 } from '../feature-flags.js';
 
 describe('feature flags registry', () => {
+  it('normalizes and exposes registered documentation feature flags', () => {
+    registerDocsFeatureFlag(' Docs-Experimental-Test ');
+
+    expect(getRegisteredDocsFeatureFlags()).toContain(
+      'docs-experimental-test'
+    );
+    expect(() => registerDocsFeatureFlag('  ')).toThrow(/cannot be empty/);
+  });
+
   it('returns true for a registered feature resolver', () => {
     const featureFlags = createFeatureFlags({
       env: new Map(),

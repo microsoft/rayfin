@@ -14,6 +14,11 @@
       "import": "./dist/internal.js",
       "types": "./dist/internal.d.ts"
     },
+    "./_internal/feature-flags": {
+      "types": "./dist/feature-flags.d.ts",
+      "import": "./dist/feature-flags.js",
+      "require": "./dist/site-cjs/feature-flags.js"
+    },
     "./package.json": "./package.json",
     "./_internal/adapters": {
       "import": "./dist/adapters/index.js",
@@ -147,7 +152,7 @@
     "LICENSE"
   ],
   "scripts": {
-    "build": "tsc",
+    "build": "tsc && tsc -p tsconfig.site-cjs.json && node scripts/write-site-cjs-package-json.mjs",
     "build:watch": "tsc --watch",
     "clean": "rimraf dist .tsbuildinfo",
     "test": "vitest --run"

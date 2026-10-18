@@ -69,6 +69,9 @@ importers:
       '@microsoft/rayfin-docs':
         specifier: link:../../packages/tools/docs-lib
         version: link:../../packages/tools/docs-lib
+      '@microsoft/rayfin-tools-common':
+        specifier: link:../../packages/tools/common
+        version: link:../../packages/tools/common
       clsx:
         specifier: ^2.0.0
         version: 2.1.1

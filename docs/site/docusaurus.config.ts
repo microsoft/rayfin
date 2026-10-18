@@ -3,9 +3,19 @@ import { resolve } from 'path';
 
 import type * as Preset from '@docusaurus/preset-classic';
 import type { Config } from '@docusaurus/types';
+import {
+  FEATURE_FLAGS_ENV_VAR,
+  getRegisteredDocsFeatureFlags,
+  parseFeatureFlags,
+} from '@microsoft/rayfin-tools-common/_internal/feature-flags';
+import {
+  remarkDirective,
+  remarkDocsVisibility,
+} from '@microsoft/rayfin-docs/_internal/remark';
 import { themes as prismThemes } from 'prism-react-renderer';
 
 import { getRayfinSiteDocsSources } from './rayfin-docs-sources';
+import { getDocsExcludedByFlags } from './doc-visibility';
 import { getSdkEditUrl, getSiteSettings, tsSdkRouteBasePath } from './site-settings';
 
 const siteSettings = getSiteSettings(process.env);
@@ -21,6 +31,28 @@ const nonApiSources = docsSources.filter(
 const excludedDocsGlobs = [
   '**/preview/**',
   '**/experimental/**',
+];
+const docsEnabledFlags = [
+  ...parseFeatureFlags(
+    new Map([
+      [FEATURE_FLAGS_ENV_VAR, process.env[FEATURE_FLAGS_ENV_VAR] ?? ''],
+    ])
+  ),
+];
+const docsRegisteredFlags = getRegisteredDocsFeatureFlags();
+const docsRemarkPlugins = [
+  remarkDirective,
+  [
+    remarkDocsVisibility,
+    {
+      enabledFlags: docsEnabledFlags,
+      registeredFlags: docsRegisteredFlags,
+    },
+  ],
+];
+const excludedDocs = (docsRoot: string) => [
+  ...excludedDocsGlobs,
+  ...getDocsExcludedByFlags(docsRoot, docsEnabledFlags, docsRegisteredFlags),
 ];
 
 // Mirror every api-reference package's docs into a single staging dir so all
@@ -294,7 +326,8 @@ const config: Config = {
         routeBasePath: source.routeBasePath,
         editUrl: ({ docPath }) =>
           siteSettings.editUrl(source.repositoryPath, docPath),
-        exclude: excludedDocsGlobs,
+        exclude: excludedDocs(resolve(__dirname, source.path)),
+        remarkPlugins: docsRemarkPlugins,
       },
     ]),
     apiReferenceSources.length > 0 && [
@@ -310,7 +343,8 @@ const config: Config = {
             tsSdkRepoPathByModule,
             tsSdkTypedocBackedModules
           ),
-        exclude: excludedDocsGlobs,
+        exclude: excludedDocs(tsSdkStagingDir),
+        remarkPlugins: docsRemarkPlugins,
         sidebarItemsGenerator: async ({
           defaultSidebarItemsGenerator,
           ...args

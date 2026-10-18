@@ -21,8 +21,34 @@ export interface FeatureFlagsRegistry {
   get(name: string): FeatureFlagValue;
 }
 
+const registeredDocsFeatureFlags = new Set<string>();
+
+for (const name of [
+  'storage',
+  'postgresql',
+  'docker-local-dev',
+  'tools-arch-v2',
+  'up-legacy',
+  'cli-up-anonstatic',
+  'cli-minor-fixes',
+]) {
+  registeredDocsFeatureFlags.add(name);
+}
+
 export function normalizeFeatureFlagName(name: string): string {
   return name.trim().toLowerCase();
+}
+
+export function registerDocsFeatureFlag(name: string): void {
+  const normalizedName = normalizeFeatureFlagName(name);
+  if (!normalizedName) {
+    throw new Error('Documentation feature flag names cannot be empty.');
+  }
+  registeredDocsFeatureFlags.add(normalizedName);
+}
+
+export function getRegisteredDocsFeatureFlags(): readonly string[] {
+  return [...registeredDocsFeatureFlags].sort();
 }
 
 export function parseFeatureFlags(

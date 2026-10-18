@@ -1,0 +1,13 @@
+{
+  "name": "@microsoft/rayfin-docs-sanitizer-fixture",
+  "version": "1.0.0",
+  "files": [
+    "assets/docs",
+    "assets/docs.search.json"
+  ],
+  "rayfinDocs": {
+    "kind": "guide",
+    "module": "fixture",
+    "dir": "assets/docs"
+  }
+}

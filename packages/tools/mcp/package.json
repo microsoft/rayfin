@@ -19,7 +19,8 @@
     "@microsoft/rayfin-docs": "workspace:*",
     "commander": "^12.1.0",
     "fastmcp": "^3.29.0",
-    "zod": "^4.3.6"
+    "zod": "^4.3.6",
+    "@microsoft/rayfin-tools-common": "workspace:*"
   },
   "devDependencies": {
     "@types/node": "^24.0.10",

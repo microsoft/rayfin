@@ -1,0 +1,16 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "composite": false,
+    "declaration": false,
+    "declarationMap": false,
+    "incremental": false,
+    "module": "CommonJS",
+    "moduleResolution": "node",
+    "outDir": "./dist/site-cjs",
+    "sourceMap": false,
+    "tsBuildInfoFile": ".tsbuildinfo.site-cjs",
+    "rootDir": "./src"
+  },
+  "include": ["src/feature-flags.ts"]
+}

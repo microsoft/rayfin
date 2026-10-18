@@ -71,6 +71,9 @@ jobs:
         working-directory: packages/tools/cli
         run: node --test "templates/universal-app/.agents/**/*.test.mjs"
 
+      - name: Verify sanitized documentation package artifacts
+        run: node packages/tools/docs-lib/scripts/verify-packed-docs.mjs
+
       - name: Upload test results artifacts
         uses: actions/upload-artifact@v4
         if: ${{ !cancelled() }}

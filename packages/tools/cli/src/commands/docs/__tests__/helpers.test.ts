@@ -87,6 +87,7 @@ describe('getDocsService', () => {
 
   afterEach(() => {
     vi.restoreAllMocks();
+    vi.unstubAllEnvs();
     resetDocsServiceForTesting();
     if (tempRoot) {
       rmSync(tempRoot, { recursive: true, force: true });
@@ -132,6 +133,41 @@ describe('getDocsService', () => {
     });
     expect(serviceB.searchDocs('cliappbtoken')).toHaveLength(1);
     expect(serviceB.searchDocs('cliappatoken')).toHaveLength(0);
+  });
+
+  it('filters inline experimental content using RAYFIN_FEATURE_FLAGS', () => {
+    tempRoot = mkdtempSync(join(tmpdir(), 'rayfin-cli-flags-'));
+    vi.spyOn(process, 'cwd').mockReturnValue(tempRoot);
+    writeRayfinPackage(
+      tempRoot,
+      '1.0.0',
+      `# Core Docs
+
+:::experimental{flag=storage}
+
+gateduniquetoken.
+:::else
+
+fallbackuniquetoken.
+:::
+`
+    );
+
+    vi.stubEnv('RAYFIN_FEATURE_FLAGS', ' Storage ');
+    const enabled = getDocsService(undefined, {
+      noCache: true,
+      cacheDir: join(tempRoot, 'cache'),
+    });
+    expect(enabled.searchDocs('gateduniquetoken')).toHaveLength(1);
+    expect(enabled.searchDocs('fallbackuniquetoken')).toHaveLength(0);
+
+    vi.stubEnv('RAYFIN_FEATURE_FLAGS', '');
+    const disabled = getDocsService(undefined, {
+      noCache: true,
+      cacheDir: join(tempRoot, 'cache'),
+    });
+    expect(disabled.searchDocs('gateduniquetoken')).toHaveLength(0);
+    expect(disabled.searchDocs('fallbackuniquetoken')).toHaveLength(1);
   });
 });
 

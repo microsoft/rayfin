@@ -9,6 +9,11 @@ import {
   DocsService,
   type DocModule,
 } from '@microsoft/rayfin-docs';
+import {
+  FEATURE_FLAGS_ENV_VAR,
+  getRegisteredDocsFeatureFlags,
+  parseFeatureFlags,
+} from '@microsoft/rayfin-tools-common/_internal';
 import { FastMCP } from 'fastmcp';
 import { z } from 'zod';
 
@@ -48,6 +53,14 @@ export function createServer(options?: {
 
   const docsServiceOptions = {
     modules: loadedModules,
+    enabledFlags: [
+      ...parseFeatureFlags(
+        new Map([
+          [FEATURE_FLAGS_ENV_VAR, process.env[FEATURE_FLAGS_ENV_VAR] ?? ''],
+        ])
+      ),
+    ],
+    registeredFlags: getRegisteredDocsFeatureFlags(),
     ...(options?.noCache === true ? { cache: DOCS_CACHE_SKIP_READ } : {}),
     discover: {
       // The MCP server is launched by an MCP host (Cursor, Copilot,

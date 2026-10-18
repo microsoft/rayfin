@@ -14,6 +14,11 @@ import {
   type DocModule,
   type DocSearchScope,
 } from '@microsoft/rayfin-docs';
+import {
+  FEATURE_FLAGS_ENV_VAR,
+  getRegisteredDocsFeatureFlags,
+  parseFeatureFlags,
+} from '@microsoft/rayfin-tools-common/_internal';
 
 import { CliHandledError } from '../../errors.js';
 import {
@@ -40,6 +45,16 @@ export const DOC_SCOPES: readonly DocSearchScope[] = [
 ] as const;
 
 export const NO_CACHE_OPTION_DESC = DOCS_NO_CACHE_OPTION_DESCRIPTION;
+
+function enabledDocsFlags(): string[] {
+  return [
+    ...parseFeatureFlags(
+      new Map([
+        [FEATURE_FLAGS_ENV_VAR, process.env[FEATURE_FLAGS_ENV_VAR] ?? ''],
+      ])
+    ),
+  ].sort();
+}
 
 /**
  * Cache of `DocsService` instances keyed by their loaded module set. Each
@@ -70,6 +85,8 @@ function createDocsService(
 
   return new DocsService({
     modules: [...modules],
+    enabledFlags: enabledDocsFlags(),
+    registeredFlags: getRegisteredDocsFeatureFlags(),
     ...(cache ? { cache } : {}),
     // Use `process.cwd()` as the discovery base so a globally-installed
     // CLI walks the USER's project node_modules - not the global
@@ -106,9 +123,11 @@ export function getDocsService(
     return createDocsService(modules, options);
   }
 
-  const key = options?.cacheDir
-    ? `${modulesKey(modules)}|cacheDir=${options.cacheDir}`
-    : modulesKey(modules);
+  const key = [
+    modulesKey(modules),
+    `flags=${enabledDocsFlags().join(',')}`,
+    ...(options?.cacheDir ? [`cacheDir=${options.cacheDir}`] : []),
+  ].join('|');
   let service = cachedServices.get(key);
   if (!service) {
     service = createDocsService(modules, options);
@@ -128,7 +147,13 @@ export function resetDocsServiceForTesting(): void {
  */
 export function setDocsServiceForTesting(service: DocsService): void {
   cachedServices.clear();
-  cachedServices.set(modulesKey(DOCS_DEFAULT_MODULES), service);
+  cachedServices.set(
+    [
+      modulesKey(DOCS_DEFAULT_MODULES),
+      `flags=${enabledDocsFlags().join(',')}`,
+    ].join('|'),
+    service
+  );
 }
 
 /**

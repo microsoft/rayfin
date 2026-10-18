@@ -11,5 +11,12 @@
     "sourceMap": false,
     "tsBuildInfoFile": ".tsbuildinfo.site-cjs"
   },
-  "include": ["src/discovery.ts", "src/types.ts"]
+  "include": [
+    "src/discovery.ts",
+    "src/types.ts",
+    "src/visibility.ts",
+    "src/loader.ts",
+    "src/_internal/remark.ts",
+    "src/_internal/site.ts"
+  ]
 }

@@ -18,7 +18,7 @@ import type {
  * Avoids escape-bloating the asset and a redundant second `JSON.parse`
  * on the cold-start path that every CLI invocation pays.
  */
-export const DOCS_INDEX_SCHEMA_VERSION = 2;
+export const DOCS_INDEX_SCHEMA_VERSION = 3;
 
 /**
  * Single source of truth for MiniSearch construction. Both `createDocsIndex`
@@ -74,6 +74,13 @@ function stableStringify(value: unknown): string {
  */
 export const DOCS_SEARCH_CONFIG_FINGERPRINT =
   stableStringify(DOCS_SEARCH_OPTIONS);
+
+export function docsVisibilityFingerprint(flags: readonly string[]): string {
+  const normalized = [...new Set(flags.map((flag) => flag.trim().toLowerCase()))]
+    .filter(Boolean)
+    .sort();
+  return stableStringify(normalized);
+}
 
 export interface DocsIndex {
   mini: MiniSearch<DocEntry>;
@@ -175,6 +182,7 @@ function buildEntryAndSymbolMaps(entries: DocEntry[]): {
 export interface PrebuiltDocsIndex {
   schemaVersion: number;
   configFingerprint: string;
+  visibilityFingerprint: string;
   modules: DocModule[];
   entries: DocEntry[];
   miniSerialized: ReturnType<MiniSearch<DocEntry>['toJSON']>;
@@ -184,11 +192,13 @@ export interface PrebuiltDocsIndex {
 export function serializeDocsIndex(
   entries: DocEntry[],
   modules: DocModule[],
-  index: DocsIndex
+  index: DocsIndex,
+  enabledFlags: readonly string[] = []
 ): PrebuiltDocsIndex {
   return {
     schemaVersion: DOCS_INDEX_SCHEMA_VERSION,
     configFingerprint: DOCS_SEARCH_CONFIG_FINGERPRINT,
+    visibilityFingerprint: docsVisibilityFingerprint(enabledFlags),
     modules: [...modules].sort(),
     entries,
     miniSerialized: index.mini.toJSON(),

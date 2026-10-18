@@ -14,6 +14,16 @@
       "types": "./dist/_internal/build-index.d.ts",
       "import": "./dist/_internal/build-index.js"
     },
+    "./_internal/remark": {
+      "types": "./dist/_internal/remark.d.ts",
+      "import": "./dist/_internal/remark.js",
+      "require": "./dist/site-cjs/_internal/remark.js"
+    },
+    "./_internal/site": {
+      "types": "./dist/_internal/site.d.ts",
+      "import": "./dist/_internal/site.js",
+      "require": "./dist/site-cjs/_internal/site.js"
+    },
     "./_internal/site-discovery": {
       "types": "./dist/discovery.d.ts",
       "import": "./dist/discovery.js",
@@ -31,7 +41,11 @@
     "LICENSE"
   ],
   "dependencies": {
-    "minisearch": "~7.2.0"
+    "minisearch": "~7.2.0",
+    "remark-directive": "~4.0.0",
+    "remark-parse": "~11.0.0",
+    "remark-stringify": "~11.0.0",
+    "unified": "~11.0.5"
   },
   "devDependencies": {
     "@types/node": "^24.0.10",

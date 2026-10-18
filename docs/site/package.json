@@ -6,7 +6,7 @@
     "docusaurus": "docusaurus",
     "start": "docusaurus start",
     "build": "docusaurus build",
-    "test": "vitest run site-settings.test.ts",
+    "test": "vitest run site-settings.test.ts doc-visibility.test.ts",
     "test:build": "vitest run build-output.test.ts",
     "swizzle": "docusaurus swizzle",
     "deploy": "docusaurus deploy",
@@ -29,7 +29,8 @@
     "@microsoft/rayfin-docs": "workspace:*",
     "prism-react-renderer": "^2.3.0",
     "react": "^19.2.1",
-    "react-dom": "^19.2.1"
+    "react-dom": "^19.2.1",
+    "@microsoft/rayfin-tools-common": "workspace:*"
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "3.10.0",

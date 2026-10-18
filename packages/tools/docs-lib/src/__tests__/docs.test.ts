@@ -2,6 +2,7 @@ import {
   existsSync,
   mkdtempSync,
   mkdirSync,
+  readFileSync,
   readdirSync,
   rmSync,
   writeFileSync,
@@ -181,6 +182,62 @@ describe('docs loader and service', () => {
     expect(guideOnly[0]?.module).toBe('guide');
   });
 
+  it('resolves experimental content before every index and retrieval path', () => {
+    tempRoot = createFixture();
+    const docsDir = join(tempRoot, 'docs', 'guide');
+    const flag = 'functions-experimental-auth';
+    writeFileSync(
+      join(docsDir, 'functions-auth.md'),
+      `# Functions authentication
+
+:::experimental{flag=${flag}}
+
+## Function: authenticateBroker
+
+experimentalbrokertoken is available to opted-in builders.
+:::else
+
+The standard authentication flow remains available.
+:::
+`
+    );
+    const options = {
+      assetsRoot: tempRoot,
+      modules: ['guide'] as const,
+      registeredFlags: [flag],
+    };
+
+    const disabled = new DocsService(options);
+    const disabledItem = disabled
+      .listDocs('guide')
+      .find((item) => item.path.endsWith('functions-auth.md'));
+    const disabledDoc = disabledItem
+      ? disabled.getDocById(disabledItem.id)
+      : undefined;
+    expect(disabledDoc?.content).not.toContain('experimentalbrokertoken');
+    expect(disabled.searchDocs('experimentalbrokertoken')).toHaveLength(0);
+    expect(disabled.getSymbolDocs('authenticateBroker')).toHaveLength(0);
+    expect(disabledDoc?.content).toContain(
+      'The standard authentication flow remains available.'
+    );
+
+    const enabled = new DocsService({
+      ...options,
+      enabledFlags: [flag],
+    });
+    const enabledItem = enabled
+      .listDocs('guide')
+      .find((item) => item.path.endsWith('functions-auth.md'));
+    const enabledDoc = enabledItem
+      ? enabled.getDocById(enabledItem.id)
+      : undefined;
+    expect(enabledDoc?.content).toContain('experimentalbrokertoken');
+    expect(enabled.searchDocs('experimentalbrokertoken')[0]?.snippet).toContain(
+      'experimentalbrokertoken'
+    );
+    expect(enabled.getSymbolDocs('authenticateBroker')).toHaveLength(1);
+  });
+
   it('returns full section content for symbols', () => {
     tempRoot = createFixture();
     const service = new DocsService({
@@ -279,6 +336,46 @@ describe('docs loader and service', () => {
     expect(newVersionCacheFiles).toHaveLength(1);
     expect(newVersionCacheFiles[0]).not.toBe(firstCacheFiles[0]);
     expect(existsSync(cacheDir)).toBe(true);
+  });
+
+  it('keys discovered indexes by the normalized visibility flag set', () => {
+    tempRoot = mkdtempSync(join(tmpdir(), 'rayfin-docs-visibility-cache-'));
+    const cacheDir = join(tempRoot, '.cache');
+    const flag = 'functions-experimental-auth';
+    writeRayfinPackage(
+      tempRoot,
+      '1.0.0',
+      `# Core Docs
+
+:::experimental{flag=${flag}}
+
+visibilitycachetoken is only present when enabled.
+:::
+`
+    );
+    const shared = {
+      discover: {
+        from: tempRoot,
+        candidates: ['@microsoft/rayfin-core'],
+      },
+      cache: { dir: cacheDir },
+      registeredFlags: [flag],
+    };
+
+    const enabled = new DocsService({
+      ...shared,
+      enabledFlags: [flag],
+    });
+    expect(enabled.searchDocs('visibilitycachetoken')).toHaveLength(1);
+    const cachedIndex = JSON.parse(
+      readFileSync(join(cacheDir, readdirSync(cacheDir)[0]!), 'utf8')
+    ) as { visibilityFingerprint: string };
+    expect(cachedIndex.visibilityFingerprint).toBe(
+      JSON.stringify([flag])
+    );
+
+    const disabled = new DocsService(shared);
+    expect(disabled.searchDocs('visibilitycachetoken')).toHaveLength(0);
   });
 
   it.each(['preview', 'experimental'])(

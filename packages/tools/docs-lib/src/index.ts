@@ -24,6 +24,7 @@ import {
   DOCS_SEARCH_CONFIG_FINGERPRINT,
   type PrebuiltDocsIndex,
   createDocsIndex,
+  docsVisibilityFingerprint,
   loadDocsIndexFromPrebuilt,
   searchDocs,
   serializeDocsIndex,
@@ -36,6 +37,7 @@ import type {
   DocSearchResult,
   DocSectionRef,
 } from './types.js';
+import type { DocsVisibilityOptions } from './visibility.js';
 
 const PREBUILT_INDEX_FILENAME = 'docs.search.json';
 const DISCOVERED_CACHE_PREFIX = 'docs-index-';
@@ -173,6 +175,7 @@ function isPrebuiltDocsIndex(value: unknown): value is PrebuiltDocsIndex {
     typeof value === 'object' &&
     typeof (value as PrebuiltDocsIndex).schemaVersion === 'number' &&
     typeof (value as PrebuiltDocsIndex).configFingerprint === 'string' &&
+    typeof (value as PrebuiltDocsIndex).visibilityFingerprint === 'string' &&
     Array.isArray((value as PrebuiltDocsIndex).modules) &&
     Array.isArray((value as PrebuiltDocsIndex).entries) &&
     !!(value as PrebuiltDocsIndex).miniSerialized &&
@@ -182,12 +185,14 @@ function isPrebuiltDocsIndex(value: unknown): value is PrebuiltDocsIndex {
 
 function isCompatiblePrebuiltIndex(
   parsed: PrebuiltDocsIndex,
-  modules: readonly DocModule[]
+  modules: readonly DocModule[],
+  enabledFlags: readonly string[]
 ): boolean {
   return (
     parsed.schemaVersion === DOCS_INDEX_SCHEMA_VERSION &&
     parsed.configFingerprint === DOCS_SEARCH_CONFIG_FINGERPRINT &&
-    modulesKey(parsed.modules) === modulesKey(modules)
+    modulesKey(parsed.modules) === modulesKey(modules) &&
+    parsed.visibilityFingerprint === docsVisibilityFingerprint(enabledFlags)
   );
 }
 
@@ -199,7 +204,8 @@ function isCompatiblePrebuiltIndex(
  */
 function tryLoadPrebuiltIndex(
   assetsRoot: string,
-  modules: readonly DocModule[]
+  modules: readonly DocModule[],
+  enabledFlags: readonly string[]
 ): PrebuiltDocsIndex | undefined {
   const path = join(assetsRoot, PREBUILT_INDEX_FILENAME);
   let parsed: PrebuiltDocsIndex;
@@ -219,7 +225,9 @@ function tryLoadPrebuiltIndex(
     return undefined;
   }
 
-  return isCompatiblePrebuiltIndex(parsed, modules) ? parsed : undefined;
+  return isCompatiblePrebuiltIndex(parsed, modules, enabledFlags)
+    ? parsed
+    : undefined;
 }
 
 function normalizeCacheOptions(
@@ -268,11 +276,13 @@ function defaultDocsCacheDir(discoverFrom?: string, useTemp = false): string {
 
 function discoveredCacheKey(
   packages: readonly DiscoveredPackage[],
-  modules: readonly DocModule[]
+  modules: readonly DocModule[],
+  enabledFlags: readonly string[]
 ): string {
   const payload = {
     schemaVersion: DOCS_INDEX_SCHEMA_VERSION,
     configFingerprint: DOCS_SEARCH_CONFIG_FINGERPRINT,
+    visibilityFingerprint: docsVisibilityFingerprint(enabledFlags),
     modules: [...modules].sort(),
     packages: packages
       .map((pkg) => ({
@@ -289,26 +299,28 @@ function discoveredCacheKey(
 function discoveredCachePath(
   packages: readonly DiscoveredPackage[],
   modules: readonly DocModule[],
+  enabledFlags: readonly string[],
   cache: ResolvedCacheOptions,
   discoverFrom?: string
 ): string {
   const dir = cache.dir ?? defaultDocsCacheDir(discoverFrom);
   return join(
     dir,
-    `${DISCOVERED_CACHE_PREFIX}${discoveredCacheKey(packages, modules)}.json`
+    `${DISCOVERED_CACHE_PREFIX}${discoveredCacheKey(packages, modules, enabledFlags)}.json`
   );
 }
 
 function fallbackDiscoveredCachePath(
   packages: readonly DiscoveredPackage[],
   modules: readonly DocModule[],
+  enabledFlags: readonly string[],
   cache: ResolvedCacheOptions,
   discoverFrom?: string
 ): string | undefined {
   if (cache.dir) {
     return undefined;
   }
-  return discoveredCachePath(packages, modules, {
+  return discoveredCachePath(packages, modules, enabledFlags, {
     ...cache,
     dir: defaultDocsCacheDir(discoverFrom, true),
   });
@@ -317,6 +329,7 @@ function fallbackDiscoveredCachePath(
 function tryLoadDiscoveredIndexCache(
   cachePaths: readonly string[],
   modules: readonly DocModule[],
+  enabledFlags: readonly string[],
   cache: ResolvedCacheOptions
 ): PrebuiltDocsIndex | undefined {
   if (!cache.enabled || !cache.read || cachePaths.length === 0) {
@@ -333,7 +346,7 @@ function tryLoadDiscoveredIndexCache(
     if (!isPrebuiltDocsIndex(parsed)) {
       continue;
     }
-    if (isCompatiblePrebuiltIndex(parsed, modules)) {
+    if (isCompatiblePrebuiltIndex(parsed, modules, enabledFlags)) {
       return parsed;
     }
   }
@@ -451,6 +464,10 @@ export class DocsService {
      * discovered package docs.
      */
     modules?: readonly DocModule[];
+    /** Active documentation flags used to resolve gated regions. */
+    enabledFlags?: readonly string[];
+    /** Registered flags accepted by documentation markers. */
+    registeredFlags?: readonly string[];
     /**
      * Optional on-disk cache for indexes built from discovered installed
      * packages. Enabled by default for discover-only mode so CLI/MCP cold
@@ -471,6 +488,15 @@ export class DocsService {
     }
 
     const modules = options.modules ?? DOCS_DEFAULT_MODULES;
+    const enabledFlags = [
+      ...new Set(
+        (options.enabledFlags ?? []).map((flag) => flag.trim().toLowerCase())
+      ),
+    ].filter(Boolean);
+    const visibility: DocsVisibilityOptions = {
+      enabledFlags,
+      registeredFlags: options.registeredFlags ?? [],
+    };
     const cache = normalizeCacheOptions(
       options.cache,
       !!options.discover && !options.assetsRoot
@@ -496,6 +522,7 @@ export class DocsService {
           ? discoveredCachePath(
               discoveredPackages,
               modules,
+              enabledFlags,
               cache,
               discoveryOptions.from
             )
@@ -505,6 +532,7 @@ export class DocsService {
           ? fallbackDiscoveredCachePath(
               discoveredPackages,
               modules,
+              enabledFlags,
               cache,
               discoveryOptions.from
             )
@@ -515,6 +543,7 @@ export class DocsService {
             (path): path is string => !!path
           ),
           modules,
+          enabledFlags,
           cache
         );
         if (cached) {
@@ -523,13 +552,13 @@ export class DocsService {
         }
       }
       for (const pkg of discoveredPackages) {
-        discoveredEntries.push(...loadDocsFromPackage(pkg));
+        discoveredEntries.push(...loadDocsFromPackage(pkg, visibility));
       }
     }
 
     if (options.assetsRoot) {
       const root = options.assetsRoot;
-      const prebuilt = tryLoadPrebuiltIndex(root, modules);
+      const prebuilt = tryLoadPrebuiltIndex(root, modules, enabledFlags);
       if (prebuilt && discoveredEntries.length === 0) {
         // Fast path: prebuilt-only mode (no discovery to merge with).
         // Rehydrate index + entries from the prebuilt envelope without
@@ -543,7 +572,7 @@ export class DocsService {
       }
       const bundled = prebuilt
         ? prebuilt.entries
-        : loadDocs(root, [...modules]);
+        : loadDocs(root, [...modules], visibility);
       if (discoveredEntries.length === 0) {
         // No discovery overlay — skip the merge map entirely.
         this.entries = bundled;
@@ -573,7 +602,7 @@ export class DocsService {
         discoveredCacheFile,
         discoveredFallbackCacheFile,
         cache,
-        serializeDocsIndex(this.entries, [...modules], index)
+        serializeDocsIndex(this.entries, [...modules], index, enabledFlags)
       );
     }
   }

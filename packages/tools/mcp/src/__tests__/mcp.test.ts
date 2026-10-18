@@ -1,4 +1,4 @@
-import { describe, expect, it, vi, beforeEach } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 type ToolDefinition = {
   name: string;
@@ -121,6 +121,7 @@ import { createServer, startServer } from '../mcp';
 
 describe('mcp server tools', () => {
   beforeEach(() => {
+    vi.unstubAllEnvs();
     mocks.createdServers.length = 0;
     mocks.listDocs.mockClear();
     mocks.getDocById.mockClear();
@@ -130,6 +131,10 @@ describe('mcp server tools', () => {
     mocks.discoverPackages.mockClear();
     mocks.mapDiscoverResult.mockClear();
     mocks.docsServiceOptions.length = 0;
+  });
+
+  afterEach(() => {
+    vi.unstubAllEnvs();
   });
 
   it('registers documentation tools and executes them', async () => {
@@ -147,8 +152,10 @@ describe('mcp server tools', () => {
 
     const listTool = server.tools.find((tool) => tool.name === 'list_docs');
     const listResult = await listTool?.execute({ module: 'guide' });
-    expect(mocks.docsServiceOptions[0]).toEqual({
+    expect(mocks.docsServiceOptions[0]).toMatchObject({
       modules: ['guide', 'ts-sdk'],
+      enabledFlags: [],
+      registeredFlags: expect.arrayContaining(['storage']),
       discover: {
         from: process.cwd(),
       },
@@ -195,6 +202,20 @@ describe('mcp server tools', () => {
       ],
       total: 2,
       query: 'core',
+    });
+  });
+
+  it('passes normalized active documentation flags to DocsService', async () => {
+    vi.stubEnv('RAYFIN_FEATURE_FLAGS', ' Storage, PostgreSQL ');
+    const server = createServer() as unknown as {
+      tools: ToolDefinition[];
+    };
+    const listTool = server.tools.find((tool) => tool.name === 'list_docs');
+    await listTool?.execute({ module: 'guide' });
+
+    expect(mocks.docsServiceOptions[0]).toMatchObject({
+      enabledFlags: ['storage', 'postgresql'],
+      registeredFlags: expect.arrayContaining(['storage', 'postgresql']),
     });
   });
 
