@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "comment": "Add flag-gated documentation visibility",
+      "type": "none",
+      "packageName": "@microsoft/rayfin-mcp"
+    }
+  ],
+  "packageName": "@microsoft/rayfin-mcp",
+  "email": "andersonc@microsoft.com"
+}
