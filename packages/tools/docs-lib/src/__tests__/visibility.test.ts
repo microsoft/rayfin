@@ -1,15 +1,15 @@
-import { describe, expect, it } from "vitest";
+import { describe, expect, it } from 'vitest';
 
 import {
   resolveDocsMarkdown,
   sanitizeDocsMarkdownForPublish,
-} from "../visibility.js";
+} from '../visibility.js';
 
-const flag = "functions-experimental-auth";
+const flag = 'functions-experimental-auth';
 const registeredFlags = [flag];
 
-describe("docs visibility resolver", () => {
-  it("selects the experimental branch when enabled", () => {
+describe('docs visibility resolver', () => {
+  it('selects the experimental branch when enabled', () => {
     const result = resolveDocsMarkdown(
       `:::experimental{flag=${flag}}
 
@@ -21,16 +21,16 @@ Gated-only text.
 Legacy-only text.
 :::
 `,
-      { enabledFlags: [flag], registeredFlags, sourcePath: "functions.md" },
+      { enabledFlags: [flag], registeredFlags, sourcePath: 'functions.md' }
     );
 
-    expect(result).toContain("Brokered authentication");
-    expect(result).toContain("Gated-only text.");
-    expect(result).not.toContain("Legacy-only text.");
-    expect(result).not.toContain(":::experimental");
+    expect(result).toContain('Brokered authentication');
+    expect(result).toContain('Gated-only text.');
+    expect(result).not.toContain('Legacy-only text.');
+    expect(result).not.toContain(':::experimental');
   });
 
-  it("selects only the else branch when disabled", () => {
+  it('selects only the else branch when disabled', () => {
     const result = resolveDocsMarkdown(
       `:::experimental{flag=${flag}}
 
@@ -40,14 +40,14 @@ Experimental secret.
 Public fallback.
 :::
 `,
-      { registeredFlags, sourcePath: "functions.md" },
+      { registeredFlags, sourcePath: 'functions.md' }
     );
 
-    expect(result).toContain("Public fallback.");
-    expect(result).not.toContain("Experimental secret.");
+    expect(result).toContain('Public fallback.');
+    expect(result).not.toContain('Experimental secret.');
   });
 
-  it("removes private regions regardless of flag state", () => {
+  it('removes private regions regardless of flag state', () => {
     const result = resolveDocsMarkdown(
       `Public text.
 
@@ -56,14 +56,14 @@ Public fallback.
 Private secret.
 :::
 `,
-      { enabledFlags: [flag], registeredFlags, sourcePath: "functions.md" },
+      { enabledFlags: [flag], registeredFlags, sourcePath: 'functions.md' }
     );
 
-    expect(result).toContain("Public text.");
-    expect(result).not.toContain("Private secret.");
+    expect(result).toContain('Public text.');
+    expect(result).not.toContain('Private secret.');
   });
 
-  it("strips private package content while preserving experimental regions", () => {
+  it('strips private package content while preserving experimental regions', () => {
     const sanitized = sanitizeDocsMarkdownForPublish(
       `Public text.
 
@@ -77,20 +77,20 @@ Private secret.
 Experimental feature.
 :::
 `,
-      { registeredFlags, sourcePath: "functions.md" },
+      { registeredFlags, sourcePath: 'functions.md' }
     );
 
-    expect(sanitized).not.toContain("Private secret.");
-    expect(sanitized).toContain(":::experimental");
+    expect(sanitized).not.toContain('Private secret.');
+    expect(sanitized).toContain(':::experimental');
     expect(
       resolveDocsMarkdown(sanitized, {
         enabledFlags: [flag],
         registeredFlags,
-      }),
-    ).toContain("Experimental feature.");
+      })
+    ).toContain('Experimental feature.');
   });
 
-  it("preserves marker-like content inside fenced code blocks", () => {
+  it('preserves marker-like content inside fenced code blocks', () => {
     const source = `\`\`\`md
 :::experimental{flag=not-a-real-flag}
 example
@@ -126,12 +126,12 @@ example
       `:::experimental{flag=${flag}}\n\n:::experimental{flag=${flag}}\nNested.\n:::\n:::\n`,
       /Nested :::experimental regions are not supported/,
     ],
-  ])("fails closed for malformed or unregistered markers", (source, error) => {
+  ])('fails closed for malformed or unregistered markers', (source, error) => {
     expect(() =>
       resolveDocsMarkdown(source, {
         registeredFlags,
-        sourcePath: "functions.md",
-      }),
+        sourcePath: 'functions.md',
+      })
     ).toThrow(error);
   });
 });

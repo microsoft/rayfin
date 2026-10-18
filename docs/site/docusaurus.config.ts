@@ -4,18 +4,18 @@ import { resolve } from 'path';
 import type * as Preset from '@docusaurus/preset-classic';
 import type { Config } from '@docusaurus/types';
 import {
+  remarkDirective,
+  remarkDocsVisibility,
+} from '@microsoft/rayfin-docs/_internal/remark';
+import {
   FEATURE_FLAGS_ENV_VAR,
   getRegisteredDocsFeatureFlags,
   parseFeatureFlags,
 } from '@microsoft/rayfin-tools-common/_internal/feature-flags';
-import {
-  remarkDirective,
-  remarkDocsVisibility,
-} from '@microsoft/rayfin-docs/_internal/remark';
 import { themes as prismThemes } from 'prism-react-renderer';
 
-import { getRayfinSiteDocsSources } from './rayfin-docs-sources';
 import { getDocsExcludedByFlags } from './doc-visibility';
+import { getRayfinSiteDocsSources } from './rayfin-docs-sources';
 import { getSdkEditUrl, getSiteSettings, tsSdkRouteBasePath } from './site-settings';
 
 const siteSettings = getSiteSettings(process.env);

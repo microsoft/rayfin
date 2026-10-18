@@ -12,9 +12,7 @@ describe('feature flags registry', () => {
   it('normalizes and exposes registered documentation feature flags', () => {
     registerDocsFeatureFlag(' Docs-Experimental-Test ');
 
-    expect(getRegisteredDocsFeatureFlags()).toContain(
-      'docs-experimental-test'
-    );
+    expect(getRegisteredDocsFeatureFlags()).toContain('docs-experimental-test');
     expect(() => registerDocsFeatureFlag('  ')).toThrow(/cannot be empty/);
   });
 

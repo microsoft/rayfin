@@ -4,11 +4,11 @@
  * are passed.
  */
 
+import { FEATURE_FLAGS_ENV_VAR } from '@microsoft/rayfin-tools-common/_internal';
 import { Command } from 'commander';
 import inquirer from 'inquirer';
 
 import { idFor } from '../../services/agent-files/manager.js';
-import { FEATURE_FLAGS_ENV_VAR } from '@microsoft/rayfin-tools-common/_internal';
 import type { ItemId, ItemState } from '../../services/agent-files/types.js';
 import {
   emitJson,
@@ -16,6 +16,7 @@ import {
   resolveOutputMode,
   resolveRootOutputFlags,
 } from '../../utils/output-mode.js';
+import { getDocsService } from '../docs/helpers.js';
 
 import {
   buildEnableMap,
@@ -27,7 +28,6 @@ import {
   printReport,
   validateEnableDisableConflict,
 } from './helpers.js';
-import { getDocsService } from '../docs/helpers.js';
 
 interface InstallCliOptions {
   /**
@@ -165,7 +165,9 @@ export const installCommand = new Command('install')
       });
       if (
         !options.dryRun &&
-        process.env[FEATURE_FLAGS_ENV_VAR]?.split(',').some((flag) => flag.trim())
+        process.env[FEATURE_FLAGS_ENV_VAR]?.split(',').some((flag) =>
+          flag.trim()
+        )
       ) {
         getDocsService();
       }

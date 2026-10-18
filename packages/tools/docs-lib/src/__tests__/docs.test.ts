@@ -370,9 +370,7 @@ visibilitycachetoken is only present when enabled.
     const cachedIndex = JSON.parse(
       readFileSync(join(cacheDir, readdirSync(cacheDir)[0]!), 'utf8')
     ) as { visibilityFingerprint: string };
-    expect(cachedIndex.visibilityFingerprint).toBe(
-      JSON.stringify([flag])
-    );
+    expect(cachedIndex.visibilityFingerprint).toBe(JSON.stringify([flag]));
 
     const disabled = new DocsService(shared);
     expect(disabled.searchDocs('visibilitycachetoken')).toHaveLength(0);

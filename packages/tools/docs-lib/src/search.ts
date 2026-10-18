@@ -76,7 +76,9 @@ export const DOCS_SEARCH_CONFIG_FINGERPRINT =
   stableStringify(DOCS_SEARCH_OPTIONS);
 
 export function docsVisibilityFingerprint(flags: readonly string[]): string {
-  const normalized = [...new Set(flags.map((flag) => flag.trim().toLowerCase()))]
+  const normalized = [
+    ...new Set(flags.map((flag) => flag.trim().toLowerCase())),
+  ]
     .filter(Boolean)
     .sort();
   return stableStringify(normalized);

@@ -6,4 +6,4 @@ export {
   remarkDirective,
   remarkDocsVisibility,
   type DocsVisibilityOptions,
-} from "../visibility.js";
+} from '../visibility.js';

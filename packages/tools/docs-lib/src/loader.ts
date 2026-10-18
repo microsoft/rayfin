@@ -93,7 +93,11 @@ function parseFrontMatter(markdown: string): FrontMatterResult {
 
 export function getDocFrontmatterFlags(markdown: string): string[] {
   const value = parseFrontMatter(markdown).attributes.flags;
-  return Array.isArray(value) ? value : typeof value === 'string' ? [value] : [];
+  return Array.isArray(value)
+    ? value
+    : typeof value === 'string'
+      ? [value]
+      : [];
 }
 
 function extractTitle(markdown: string): string | undefined {
@@ -317,7 +321,9 @@ function buildEntry(
       );
     }
   }
-  if (documentFlags.some((flag) => !enabledFlags.has(flag.trim().toLowerCase()))) {
+  if (
+    documentFlags.some((flag) => !enabledFlags.has(flag.trim().toLowerCase()))
+  ) {
     return undefined;
   }
   const content = resolveDocsMarkdown(frontMatter.body.trim(), {

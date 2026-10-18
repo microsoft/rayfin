@@ -1,1 +1,1 @@
-export { getDocFrontmatterFlags } from "../loader.js";
+export { getDocFrontmatterFlags } from '../loader.js';
