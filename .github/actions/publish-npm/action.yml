@@ -133,7 +133,7 @@ runs:
         echo "Publishing with dist-tag: $TAG"
         RELEASE_FOLDER="$RUNNER_TEMP/rayfin-npm-publish"
         node packages/tools/docs-lib/scripts/run-publish-checks.mjs
-        node common/scripts/install-run-rush.js publish --pack --include-all --release-folder "$RELEASE_FOLDER"
+        node common/scripts/install-run-rush.js publish --publish --pack --include-all --release-folder "$RELEASE_FOLDER"
         node packages/tools/docs-lib/scripts/sanitize-packed-docs.mjs "$RELEASE_FOLDER"
         NPM_CONFIG_USERCONFIG="$GITHUB_WORKSPACE/common/config/rush/.npmrc-publish" \
           node packages/tools/docs-lib/scripts/publish-packed-packages.mjs "$RELEASE_FOLDER" "$TAG"
