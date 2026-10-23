@@ -10,7 +10,7 @@
     "@types/node": "^20.5.9",
     "jsdom": "^24.1.0",
     "typescript": "^5.9.2",
-    "vite": "7.3.5",
+    "vite": "7.3.7",
     "vitest": "3.2.6"
   },
   "pnpm": {
