@@ -154,6 +154,10 @@ export class AuthApi {
    * Helper to map error responses to AuthError
    */
   private mapError(operation: keyof typeof AUTH_ERROR_MAPS, error: any): never {
+    const responseError = this.apiClient.getResponseAuthError(error);
+    if (responseError) {
+      throw responseError;
+    }
     const errorMap = AUTH_ERROR_MAPS[operation];
     if (error.status && errorMap[error.status as keyof typeof errorMap]) {
       const [message, code] = errorMap[error.status as keyof typeof errorMap];

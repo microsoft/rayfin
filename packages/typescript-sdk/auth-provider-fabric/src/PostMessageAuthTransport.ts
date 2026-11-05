@@ -2,7 +2,11 @@ import {
   sendBridgeRequest,
   BridgeError,
 } from '@microsoft/fabric-embedded-host';
-import { AuthError } from '@microsoft/rayfin-lib';
+import {
+  ARTIFACT_BLOCKED_CODE,
+  ARTIFACT_BLOCKED_MESSAGE,
+  AuthError,
+} from '@microsoft/rayfin-lib';
 
 /**
  * Handoff result returned by the host extension's `AuthPlugin`.
@@ -113,6 +117,9 @@ export function requestHandoff(params: {
   }).catch((err) => {
     // Re-wrap BridgeError as AuthError for backward compatibility
     if (err instanceof BridgeError) {
+      if (err.code === 'APP_ADMIN_BLOCKED') {
+        throw new AuthError(ARTIFACT_BLOCKED_MESSAGE, ARTIFACT_BLOCKED_CODE);
+      }
       throw new AuthError(err.message, err.code);
     }
     throw err;

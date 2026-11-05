@@ -3,12 +3,7 @@
   "operationSettings": [
     {
       "operationName": "build",
-      "outputFolderNames": ["build",".docusaurus"],
-      "dependsOnEnvVars": [
-        "GITHUB_ACTIONS",
-        "GITHUB_REPOSITORY",
-        "DOCUSAURUS_PUBLIC_SITE"
-      ]
+      "outputFolderNames": ["build",".docusaurus"]
     }
   ]
 }

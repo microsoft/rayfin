@@ -7,8 +7,11 @@ import { SdkError } from '@microsoft/rayfin-lib';
  * endpoint; `AUTHORIZE_FAILED` also covers network/transport failures. The
  * remaining codes cover request-validation failures raised before any network
  * call.
+ * `ArtifactBlockedByAdmin` identifies an explicit administrator-block response,
+ * not a generic permission denial.
  */
 export type EmbedHostErrorCode =
+  | 'ArtifactBlockedByAdmin'
   | 'EXCHANGE_NOT_ENABLED'
   | 'AUTH_FAILED'
   | 'INSUFFICIENT_PERMISSIONS'
