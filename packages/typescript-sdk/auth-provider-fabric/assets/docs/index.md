@@ -266,10 +266,10 @@ Failure-body inspection is limited to 16 KiB and one second, or the request time
 Unrecognized, malformed, oversized, or unreadable responses keep the generic failure behavior.
 Successful token payloads are read only for authentication, not for error diagnostics.
 
-Normal embedded Fabric handoff also reports `AuthError` with `code: 'ArtifactBlockedByAdmin'` when the parent host returns the exact bridge error code `APP_ADMIN_BLOCKED`.
-It uses the same fixed consumer message and omits the host's message and details.
+External hosts using `createEmbedHost()` forward a recognized administrator-block response with the canonical `ArtifactBlockedByAdmin` code and fixed consumer message.
+The iframe bridge preserves that code and message without host-specific translation.
 A bridge rejection does not provide an HTTP `status` or a service `requestId`.
-Both `embeddedFabricLogin()` and `ensureSignedInWithFabric()` propagate it without exchanging a handoff code for tokens, creating a session, or falling back to a popup.
+Both `embeddedFabricLogin()` and `ensureSignedInWithFabric()` propagate this external-host rejection without exchanging a handoff code for tokens, creating a session, or falling back to a popup.
 Other bridge errors retain their existing codes and messages.
 The embedded flow's existing identity-based sign-out before handoff is unchanged.
 

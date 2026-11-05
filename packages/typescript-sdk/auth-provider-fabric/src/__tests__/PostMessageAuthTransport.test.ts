@@ -1,4 +1,4 @@
-import { AuthError, SdkError } from '@microsoft/rayfin-lib';
+import { AuthError } from '@microsoft/rayfin-lib';
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 
 import { requestHandoff } from '../PostMessageAuthTransport';
@@ -116,65 +116,8 @@ describe('PostMessageAuthTransport', () => {
     await expect(promise).rejects.toThrow('MWC token failed');
   });
 
-  it('maps an administrator-block bridge response to the fixed public error', async () => {
-    const privateHostText = 'SYNTHETIC-PRIVATE-HOST-MESSAGE';
-    const privateDetail = 'SYNTHETIC-PRIVATE-HOST-DETAIL';
-    const logs = (['debug', 'error', 'info', 'log', 'warn'] as const).map(
-      (method) => vi.spyOn(console, method).mockImplementation(() => {})
-    );
-    const promise = requestHandoff(defaultParams);
-
-    window.dispatchEvent(
-      new MessageEvent('message', {
-        source: window.parent,
-        origin: 'https://host.example.com',
-        data: {
-          channel: 'fabric-auth',
-          version: 1,
-          requestId: 'aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee',
-          kind: 'response',
-          success: false,
-          error: {
-            code: 'APP_ADMIN_BLOCKED',
-            message: privateHostText,
-            details: { reason: privateDetail },
-          },
-        },
-      })
-    );
-
-    const error = await promise.catch((error: unknown) => error);
-
-    expect(error).toBeInstanceOf(AuthError);
-    expect(error).toBeInstanceOf(SdkError);
-    expect(error).toMatchObject({
-      code: 'ArtifactBlockedByAdmin',
-      message:
-        'This app has been blocked by your admin. Reach out to the app owner to get unblocked.',
-    });
-    for (const field of ['details', 'cause', 'status', 'requestId']) {
-      expect(error).not.toHaveProperty(field);
-    }
-    const output = [
-      String(error),
-      JSON.stringify(error),
-      JSON.stringify(logs.flatMap((log) => log.mock.calls)),
-    ].join('\n');
-    expect(output).not.toContain(privateHostText);
-    expect(output).not.toContain(privateDetail);
-  });
-
-  it.each([
-    'PLUGIN_ERROR',
-    'app_admin_blocked',
-    'App_Admin_Blocked',
-    'APP_ADMIN_BLOCKED ',
-    ' APP_ADMIN_BLOCKED',
-    'APP_ADMIN_BLOCKED\n',
-    'APP_ADMIN_BLOCKED_EXTRA',
-    'ArtifactBlockedByAdmin',
-  ])(
-    'preserves the code and message for other bridge errors: %j',
+  it.each(['PLUGIN_ERROR', 'ArtifactBlockedByAdmin'])(
+    'preserves the code and message for bridge errors: %j',
     async (code) => {
       const message = 'Synthetic generic host error';
       const promise = requestHandoff(defaultParams);
@@ -199,7 +142,7 @@ describe('PostMessageAuthTransport', () => {
   );
 
   it.each(['source', 'requestId', 'origin'] as const)(
-    'ignores an administrator-block response with a mismatched %s',
+    'ignores a bridge error with a mismatched %s',
     async (mismatch) => {
       const origin = 'https://host.example.com';
       const promise = requestHandoff({
@@ -218,7 +161,7 @@ describe('PostMessageAuthTransport', () => {
             kind: 'response',
             success: false,
             error: {
-              code: 'APP_ADMIN_BLOCKED',
+              code: 'PLUGIN_ERROR',
               message: 'Synthetic host error',
             },
           },
