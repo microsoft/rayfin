@@ -116,6 +116,65 @@ document.querySelector('#sign-in')?.addEventListener('click', async () => {
 });
 ```
 
+## Embedded startup with structured results
+
+Use `initEmbeddedAuthWithResult()` in the embedded app when startup needs to distinguish an authenticated session, a non-embedded page, and an authentication failure.
+It follows the existing embedded-mode detection, external-host classification, session resume, and handoff flow without opening a popup.
+Await it before using a stored session, even if `auth.getSession()` already reports a signed-in user.
+
+```typescript
+import {
+  initEmbeddedAuthWithResult,
+  type EmbeddedAuthResult,
+} from '@microsoft/rayfin-auth-provider-fabric';
+
+const result: EmbeddedAuthResult = await initEmbeddedAuthWithResult(
+  client.auth,
+  fabricOptions
+);
+
+if (result.status === 'authenticated') {
+  startApp(result.session);
+} else if (result.status === 'error') {
+  if (result.error.code === 'ArtifactBlockedByAdmin') {
+    showBlockedMessage(result.error.message);
+  } else {
+    showAuthenticationError(result.error.code);
+  }
+} else {
+  showStandaloneSignIn();
+}
+```
+
+The presentation functions in this example belong to your application.
+The SDK does not render error UI, and `createEmbedHost()` remains a headless parent broker without an error callback.
+
+```typescript
+function initEmbeddedAuthWithResult(
+  auth: Auth,
+  options: FabricAuthOptions
+): Promise<EmbeddedAuthResult>;
+
+type EmbeddedAuthResult =
+  | { status: 'authenticated'; session: OpaqueSession }
+  | { status: 'not-embedded' }
+  | { status: 'error'; error: SdkError };
+```
+
+`error` is a sanitized `AuthError`, `NetworkError`, or `SdkError` from `@microsoft/rayfin-lib`, preserving the SDK category and a valid machine-readable code.
+Administrator blocks retain the fixed public message; other errors use "Embedded Fabric authentication failed."
+Valid HTTP statuses and GUID request identifiers are retained when available, but raw messages, causes, response bodies, workload diagnostics, and other custom fields are not copied.
+Codes must be at most 128 ASCII letters, digits, or underscores and start with a letter; missing or invalid codes and untyped exceptions use `EMBEDDED_AUTH_FAILED`.
+Handoff completion without an authenticated session reports `SESSION_NOT_ESTABLISHED`.
+Branch on `status` and `error.code`, not message text or the original thrown object's identity.
+
+`not-embedded` means neither a Fabric embedded flag nor an external-host acknowledgement was detected; it is not an authentication failure.
+Generic refresh failures still fall through to the handoff, while a terminal administrator-block refresh rejection is returned as an error.
+
+The existing `initEmbeddedAuth()` API is unchanged: it returns a session or `null` for a non-embedded page, failed handoff, or handoff without a session.
+Its pre-existing pre-handoff rejection behavior is also preserved.
+The new API captures failures across the complete startup flow as error results; callers opt in by changing the function they call.
+
 ## Options
 
 `FabricAuthOptions` controls how the broker URL is constructed and how the handoff is returned to your app.

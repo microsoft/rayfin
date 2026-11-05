@@ -109,6 +109,7 @@ async function handleSignIn() {
 ### Embedded flow: automatic authentication on startup
 
 Call `initEmbeddedAuth()` once at app startup (for example, in a React `useEffect` or initialization routine).
+Use [`initEmbeddedAuthWithResult()`](#initembeddedauthwithresult) instead when the app needs a typed failure result, including administrator-block errors, rather than a failed handoff returning `null`.
 Await it before restoring a stored user or rendering authenticated content, even when a persisted session exists.
 It is safe to call on every page load: standalone pages return `null` immediately, while framed pages briefly wait for an external embed acknowledgement before choosing the login path.
 Keep session-change observers from publishing a stored user while initialization is pending.
@@ -192,15 +193,16 @@ export function useFabricAuth() {
   const [session, setSession] = useState(client.auth.getSession());
 
   const signIn = useCallback(async () => {
-    const result = await ensureSignedInWithFabric(
-      client.auth,
-      fabricOptions
-    );
+    const result = await ensureSignedInWithFabric(client.auth, fabricOptions);
     setSession(result);
     return result;
   }, []);
 
-  return { session, signIn, isAuthenticated: session?.isAuthenticated ?? false };
+  return {
+    session,
+    signIn,
+    isAuthenticated: session?.isAuthenticated ?? false,
+  };
 }
 ```
 
@@ -245,6 +247,35 @@ Never opens a popup or new tab — safe for page-load use.
 2. Attempt refresh via refresh token.
 3. Request handoff from the parent frame via `postMessage` and exchange for tokens.
 
+### initEmbeddedAuthWithResult
+
+```typescript
+function initEmbeddedAuthWithResult(
+  auth: Auth,
+  options: FabricAuthOptions
+): Promise<EmbeddedAuthResult>;
+
+type EmbeddedAuthResult =
+  | { status: 'authenticated'; session: OpaqueSession }
+  | { status: 'not-embedded' }
+  | { status: 'error'; error: SdkError };
+```
+
+An opt-in startup companion to `initEmbeddedAuth()` that never opens a popup or renders UI.
+It covers embedded-mode detection, external-host classification, session resume, and handoff through session creation.
+`authenticated` supplies the opaque session; `not-embedded` is a no-op; `error` supplies a sanitized typed failure for the embedded app to handle.
+Generic refresh failures retain the existing fallback to handoff rather than becoming terminal results.
+
+The error preserves the `AuthError`, `NetworkError`, or `SdkError` category and a valid machine-readable code.
+It is a new error object with a fixed message, optional valid HTTP status, and optional GUID request identifier; raw responses, original messages, causes, and custom details are omitted.
+`ArtifactBlockedByAdmin` retains its fixed consumer message, other failures use "Embedded Fabric authentication failed.", and unknown exceptions or invalid codes use `EMBEDDED_AUTH_FAILED`.
+Handoff completion without an authenticated session uses `SESSION_NOT_ESTABLISHED`.
+Error codes are limited to 128 ASCII letters, digits, or underscores, starting with a letter.
+
+The existing `initEmbeddedAuth()` signature and behavior are preserved, including `null` for failed handoffs and any existing pre-handoff promise rejections.
+The new function captures those pre-handoff failures into its `error` outcome as well.
+The embedded app owns error presentation; the external parent broker remains headless.
+
 ### initiateFabricLogin
 
 ```typescript
@@ -260,13 +291,13 @@ Most apps should use `ensureSignedInWithFabric` instead.
 
 ### FabricAuthOptions
 
-| Property | Type | Description |
-| --- | --- | --- |
-| `workspaceId` | `string` | The Fabric workspace ID. |
-| `projectId` | `string` | The Rayfin item ID (AppBackend artifact ID). |
-| `fabricPortalUrl` | `string` | The Fabric Portal base URL (for example, `https://app.fabric.microsoft.com`). |
-| `returnOrigin` | `string` | Your app's origin (for example, `window.location.origin`). Used as the `postMessage` target origin. |
-| `fabricEmbedded` | `boolean` (optional) | When `true`, force embedded mode. The SDK also auto-detects embedded mode when `?fabricEmbedded=true` is in the URL. |
+| Property          | Type                 | Description                                                                                                          |
+| ----------------- | -------------------- | -------------------------------------------------------------------------------------------------------------------- |
+| `workspaceId`     | `string`             | The Fabric workspace ID.                                                                                             |
+| `projectId`       | `string`             | The Rayfin item ID (AppBackend artifact ID).                                                                         |
+| `fabricPortalUrl` | `string`             | The Fabric Portal base URL (for example, `https://app.fabric.microsoft.com`).                                        |
+| `returnOrigin`    | `string`             | Your app's origin (for example, `window.location.origin`). Used as the `postMessage` target origin.                  |
+| `fabricEmbedded`  | `boolean` (optional) | When `true`, force embedded mode. The SDK also auto-detects embedded mode when `?fabricEmbedded=true` is in the URL. |
 
 ## Security
 
@@ -284,11 +315,11 @@ Fabric auth requires three Vite environment variables so your frontend can build
 `npx rayfin dev` writes the underlying `RAYFIN_PUBLIC_*` values to `rayfin/.env` and maps them to Vite-compatible names in `.env.local` before starting the frontend.
 Production builds retain the scaffolded `prebuild` hook to refresh those values before bundling.
 
-| Source variable (`rayfin/.env`) | Vite variable (`.env.local`) | Description | Example |
-| --- | --- | --- | --- |
-| `RAYFIN_PUBLIC_ITEM_ID` | `VITE_FABRIC_ITEM_ID` | The Fabric item ID (Fabric data app artifact ID). Maps to `projectId`. | `21b98705-08d5-448c-ab32-d88a3d00af41` |
-| `RAYFIN_PUBLIC_WORKSPACE_ID` | `VITE_FABRIC_WORKSPACE_ID` | The Fabric workspace ID. Maps to `workspaceId`. | `b80c0e39-468a-4742-8f0a-458dc6b1c918` |
-| `RAYFIN_PUBLIC_PORTAL_URL` | `VITE_FABRIC_PORTAL_URL` | The Fabric Portal base URL. Maps to `fabricPortalUrl`. | `https://app.fabric.microsoft.com/` |
+| Source variable (`rayfin/.env`) | Vite variable (`.env.local`) | Description                                                            | Example                                |
+| ------------------------------- | ---------------------------- | ---------------------------------------------------------------------- | -------------------------------------- |
+| `RAYFIN_PUBLIC_ITEM_ID`         | `VITE_FABRIC_ITEM_ID`        | The Fabric item ID (Fabric data app artifact ID). Maps to `projectId`. | `21b98705-08d5-448c-ab32-d88a3d00af41` |
+| `RAYFIN_PUBLIC_WORKSPACE_ID`    | `VITE_FABRIC_WORKSPACE_ID`   | The Fabric workspace ID. Maps to `workspaceId`.                        | `b80c0e39-468a-4742-8f0a-458dc6b1c918` |
+| `RAYFIN_PUBLIC_PORTAL_URL`      | `VITE_FABRIC_PORTAL_URL`     | The Fabric Portal base URL. Maps to `fabricPortalUrl`.                 | `https://app.fabric.microsoft.com/`    |
 
 For local development, add these to `rayfin/.env`:
 
