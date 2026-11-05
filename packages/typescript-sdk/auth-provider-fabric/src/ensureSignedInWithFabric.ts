@@ -25,7 +25,8 @@ import type { FabricAuthOptions } from './types';
  *    stamps no `?_fu=` hint) this is skipped on the first call per page load, so a
  *    session belonging to a previously signed-in Fabric user cannot be reused.
  * 2. **Refresh token** — if a refresh token is available, attempt `auth.refreshSession()`.
- *    Return the refreshed session on success; continue on failure.
+ *    Return the refreshed session on success; continue on failure unless the
+ *    service explicitly reports an administrator block.
  *    Subject to the same skip.
  * 3. **Embedded mode** — if running inside a Fabric iframe (`fabricEmbedded=true`)
  *    or a third-party portal that acknowledges the externalEmbed classification
@@ -44,7 +45,8 @@ import type { FabricAuthOptions } from './types';
  * @param auth - The Auth instance.
  * @param options - Fabric authentication options (workspaceId, projectId, fabricPortalUrl, returnOrigin).
  * @returns A promise that resolves with the authenticated session.
- * @throws `AuthError` - If all steps fail or the broker tab is blocked.
+ * @throws `AuthError` - If all steps fail, the service reports an administrator
+ * block, or the broker tab is blocked.
  *
  * @example
  * ```typescript

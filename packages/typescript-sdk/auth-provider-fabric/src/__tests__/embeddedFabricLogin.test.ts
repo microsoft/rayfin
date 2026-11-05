@@ -1,13 +1,18 @@
+import { AuthError } from '@microsoft/rayfin-lib';
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 
 import * as transportModule from '../PostMessageAuthTransport';
 import { embeddedFabricLogin } from '../embeddedFabricLogin';
 import * as classificationModule from '../externalEmbedClassification';
-import { resetEmbeddedHandoffStateForTests } from '../fabricAuthHelpers';
+import {
+  hasEmbeddedHandoffCompleted,
+  resetEmbeddedHandoffStateForTests,
+} from '../fabricAuthHelpers';
 import {
   clearFabricUserHint,
   persistFabricUserHintFromUrl,
 } from '../fabricUserHint';
+import { initEmbeddedAuthWithResult } from '../initEmbeddedAuth';
 import type { FabricAuthOptions } from '../types';
 
 /**
@@ -150,6 +155,97 @@ describe('embeddedFabricLogin', () => {
     );
 
     expect(mockAuth.createSessionFromTokenResponse).not.toHaveBeenCalled();
+  });
+
+  it('returns a structured failure through the external-host acknowledgement and handoff', async () => {
+    vi.mocked(transportModule.requestHandoff).mockRestore();
+    classificationModule.resetExternalEmbedClassificationForTests();
+    mockAuth.getSession = vi.fn(() => ({
+      isAuthenticated: false,
+      user: null,
+    }));
+    mockAuth.getAuthApi = vi.fn(() => ({
+      exchangeVerificationCode: mockExchangeVerificationCode,
+      getBrokeredAuthorizeExternalUrl: () =>
+        'https://api.example.com/api/auth/v1/brokered/authorize/external',
+    }));
+    const origin = 'https://portal.example.com';
+    const postMessage = vi.fn(
+      (request: { requestId: string; kind: string }) => {
+        const data =
+          request.kind === 'externalEmbed.ready'
+            ? {
+                kind: 'externalEmbed.ack',
+                scenario: 'externalEmbed',
+              }
+            : {
+                kind: 'response',
+                success: false,
+                error: {
+                  code: 'ArtifactBlockedByAdmin',
+                  message: 'SYNTHETIC-PRIVATE-HOST-MESSAGE',
+                },
+              };
+        window.dispatchEvent(
+          new MessageEvent('message', {
+            source: window.parent,
+            origin,
+            data: {
+              channel: 'fabric-auth',
+              version: 1,
+              requestId: request.requestId,
+              ...data,
+            },
+          })
+        );
+      }
+    );
+    const popup = vi.spyOn(window, 'open');
+    const parent = window.parent;
+    Object.defineProperty(window, 'parent', {
+      value: { postMessage },
+      writable: true,
+      configurable: true,
+    });
+    try {
+      const result = await initEmbeddedAuthWithResult(mockAuth, options);
+
+      expect(result.status).toBe('error');
+      if (result.status !== 'error') {
+        throw new Error('Expected an external-embed startup error');
+      }
+      expect(result.error).toBeInstanceOf(AuthError);
+      expect(result.error).toMatchObject({
+        code: 'ArtifactBlockedByAdmin',
+        message:
+          'This app has been blocked by your admin. Reach out to the app owner to get unblocked.',
+      });
+      expect(JSON.stringify(result)).not.toContain('SYNTHETIC-PRIVATE');
+      expect(postMessage).toHaveBeenCalledTimes(2);
+      expect(postMessage).toHaveBeenLastCalledWith(
+        expect.objectContaining({
+          kind: 'auth.requestHandoff',
+          payload: expect.objectContaining({
+            brokeredAuthorizeUrl:
+              'https://api.example.com/api/auth/v1/brokered/authorize/external',
+            artifactId: options.projectId,
+          }),
+        }),
+        origin
+      );
+      expect(mockSignOut).toHaveBeenCalledTimes(1);
+      expect(mockExchangeVerificationCode).not.toHaveBeenCalled();
+      expect(mockAuth.createSessionFromTokenResponse).not.toHaveBeenCalled();
+      expect(hasEmbeddedHandoffCompleted()).toBe(false);
+      expect(popup).not.toHaveBeenCalled();
+    } finally {
+      Object.defineProperty(window, 'parent', {
+        value: parent,
+        writable: true,
+        configurable: true,
+      });
+      classificationModule.resetExternalEmbedClassificationForTests();
+    }
   });
 
   it('propagates token exchange errors', async () => {

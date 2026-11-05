@@ -23,13 +23,30 @@ export class SdkError extends Error {
  */
 export class AuthError extends SdkError {
   public override name = 'AuthError';
+  /** HTTP status associated with a recognized service rejection, when available. */
+  declare readonly status?: number;
+  /** Validated service request identifier, when provided for a recognized rejection. */
+  declare readonly requestId?: string;
 
   /**
    * @param message - Human-readable error description.
    * @param code - Optional stable, machine-readable error code.
+   * @param status - Optional HTTP status associated with the rejection.
+   * @param requestId - Optional service request identifier for troubleshooting.
    */
-  constructor(message: string, code?: string) {
+  constructor(
+    message: string,
+    code?: string,
+    status?: number,
+    requestId?: string
+  ) {
     super(message, code);
+    if (status !== undefined) {
+      this.status = status;
+    }
+    if (requestId !== undefined) {
+      this.requestId = requestId;
+    }
     Object.setPrototypeOf(this, AuthError.prototype);
   }
 }
@@ -70,6 +87,8 @@ export class NetworkError extends SdkError {
   public override name = 'NetworkError';
   /** HTTP status code associated with the failed response, when available. */
   public status?: number | undefined;
+  /** Validated service request identifier, when provided for a recognized rejection. */
+  declare readonly requestId?: string;
   /**
    * Structured detail from a Fabric workload failure envelope, when the
    * response carried one.
@@ -83,10 +102,19 @@ export class NetworkError extends SdkError {
    * @param message - Human-readable error description.
    * @param status - HTTP status code associated with the failed response.
    * @param code - Optional stable, machine-readable error code.
+   * @param requestId - Optional service request identifier for troubleshooting.
    */
-  constructor(message: string, status?: number, code?: string) {
+  constructor(
+    message: string,
+    status?: number,
+    code?: string,
+    requestId?: string
+  ) {
     super(message, code);
     this.status = status;
+    if (requestId !== undefined) {
+      this.requestId = requestId;
+    }
     Object.setPrototypeOf(this, NetworkError.prototype);
   }
 }

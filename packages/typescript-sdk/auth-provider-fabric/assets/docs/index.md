@@ -116,6 +116,65 @@ document.querySelector('#sign-in')?.addEventListener('click', async () => {
 });
 ```
 
+## Embedded startup with structured results
+
+Use `initEmbeddedAuthWithResult()` in the embedded app when startup needs to distinguish an authenticated session, a non-embedded page, and an authentication failure.
+It follows the existing embedded-mode detection, external-host classification, session resume, and handoff flow without opening a popup.
+Await it before using a stored session, even if `auth.getSession()` already reports a signed-in user.
+
+```typescript
+import {
+  initEmbeddedAuthWithResult,
+  type EmbeddedAuthResult,
+} from '@microsoft/rayfin-auth-provider-fabric';
+
+const result: EmbeddedAuthResult = await initEmbeddedAuthWithResult(
+  client.auth,
+  fabricOptions
+);
+
+if (result.status === 'authenticated') {
+  startApp(result.session);
+} else if (result.status === 'error') {
+  if (result.error.code === 'ArtifactBlockedByAdmin') {
+    showBlockedMessage(result.error.message);
+  } else {
+    showAuthenticationError(result.error.code);
+  }
+} else {
+  showStandaloneSignIn();
+}
+```
+
+The presentation functions in this example belong to your application.
+The SDK does not render error UI, and `createEmbedHost()` remains a headless parent broker without an error callback.
+
+```typescript
+function initEmbeddedAuthWithResult(
+  auth: Auth,
+  options: FabricAuthOptions
+): Promise<EmbeddedAuthResult>;
+
+type EmbeddedAuthResult =
+  | { status: 'authenticated'; session: OpaqueSession }
+  | { status: 'not-embedded' }
+  | { status: 'error'; error: SdkError };
+```
+
+`error` is a sanitized `AuthError`, `NetworkError`, or `SdkError` from `@microsoft/rayfin-lib`, preserving the SDK category and a valid machine-readable code.
+Administrator blocks retain the fixed public message; other errors use "Embedded Fabric authentication failed."
+Valid HTTP statuses and GUID request identifiers are retained when available, but raw messages, causes, response bodies, workload diagnostics, and other custom fields are not copied.
+Codes must be at most 128 ASCII letters, digits, or underscores and start with a letter; missing or invalid codes and untyped exceptions use `EMBEDDED_AUTH_FAILED`.
+Handoff completion without an authenticated session reports `SESSION_NOT_ESTABLISHED`.
+Branch on `status` and `error.code`, not message text or the original thrown object's identity.
+
+`not-embedded` means neither a Fabric embedded flag nor an external-host acknowledgement was detected; it is not an authentication failure.
+Generic refresh failures still fall through to the handoff, while a terminal administrator-block refresh rejection is returned as an error.
+
+The existing `initEmbeddedAuth()` API is unchanged: it returns a session or `null` for a non-embedded page, failed handoff, or handoff without a session.
+Its pre-existing pre-handoff rejection behavior is also preserved.
+The new API captures failures across the complete startup flow as error results; callers opt in by changing the function they call.
+
 ## Options
 
 `FabricAuthOptions` controls how the broker URL is constructed and how the handoff is returned to your app.
@@ -194,6 +253,30 @@ Common cases include missing required options, blocked popups, explicit broker e
 Direct token sign-in reports `INVALID_REQUEST` for invalid local inputs, `EXCHANGE_NOT_ENABLED` for a disabled exchange, `AUTH_FAILED` for token rejection, `INSUFFICIENT_PERMISSIONS` for missing Execute access, and `NOT_AVAILABLE` for an unavailable endpoint.
 Transport or other HTTP failures use `TOKEN_EXCHANGE_FAILED`; malformed successful responses use `INVALID_TOKEN_RESPONSE`.
 Errors do not include the supplied token or raw server response.
+`AUTH_FAILED` and `INSUFFICIENT_PERMISSIONS` alone do not identify an administrator block.
+Do not infer that cause from response text.
+
+When direct token exchange explicitly reports an administrator block, the helper rejects with `AuthError`, `code: 'ArtifactBlockedByAdmin'`, and `status: 403`.
+Its message is always: "This app has been blocked by your admin. Reach out to the app owner to get unblocked."
+An optional `requestId` contains only a validated service correlation GUID; missing or invalid correlation is omitted.
+The SDK does not copy the service's message or other diagnostic fields.
+
+Recognition requires an HTTP 403 JSON response with the exact root `code`; an optional `httpStatusCode` must also be `403`.
+Failure-body inspection is limited to 16 KiB and one second, or the request timeout if shorter.
+Unrecognized, malformed, oversized, or unreadable responses keep the generic failure behavior.
+Successful token payloads are read only for authentication, not for error diagnostics.
+
+External hosts using `createEmbedHost()` forward a recognized administrator-block response with the canonical `ArtifactBlockedByAdmin` code and fixed consumer message.
+The iframe bridge preserves that code and message without host-specific translation.
+A bridge rejection does not provide an HTTP `status` or a service `requestId`.
+Both `embeddedFabricLogin()` and `ensureSignedInWithFabric()` propagate this external-host rejection without exchanging a handoff code for tokens, creating a session, or falling back to a popup.
+Other bridge errors retain their existing codes and messages.
+The embedded flow's existing identity-based sign-out before handoff is unchanged.
+
+The administrator-block rejection itself does not refresh credentials, retry the rejected request, or discard an existing session.
+Session resume surfaces this rejection instead of continuing to a popup login, and refresh backoff preserves the same error code.
+Backoff belongs to the current session and is cleared when a replacement session is successfully installed.
+The error reports a service rejection; it does not itself change access or unblock the app.
 
 ```typescript
 import { AuthError } from '@microsoft/rayfin-lib';
@@ -203,6 +286,9 @@ try {
 } catch (error) {
   if (error instanceof AuthError) {
     console.error(error.code, error.message);
+    if (error.code === 'ArtifactBlockedByAdmin' && error.requestId) {
+      console.error('Request ID', error.requestId);
+    }
   }
 }
 ```

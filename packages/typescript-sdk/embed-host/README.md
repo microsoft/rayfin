@@ -36,3 +36,15 @@ handoff, so those are the same value.
 `getAccessToken` is invoked once per handoff request; the token is attached only
 to the outbound authorization call and is never cached or echoed back over the
 bridge.
+
+## Administrator-block errors
+
+The default handoff provider recognizes an administrator block only from an HTTP 403 JSON response whose root `code` is exactly `ArtifactBlockedByAdmin`.
+If `httpStatusCode` is present, it must also be numeric `403`.
+Inspection is bounded to 16 KiB and one second; malformed, unreadable, oversized, redirected, or unrecognized responses keep the existing generic error mapping.
+Generic HTTP 403 responses remain `INSUFFICIENT_PERMISSIONS`.
+
+`createEmbedHost()` forwards the recognized rejection to the iframe as `ArtifactBlockedByAdmin` with the fixed message: "This app has been blocked by your admin. Reach out to the app owner to get unblocked."
+It does not forward backend messages, nested diagnostics, tokens, or service correlation details.
+The iframe auth provider preserves this code and message in an `AuthError` rather than exchanging a handoff code or creating a session.
+Consumers should branch on the stable code rather than parse message text.

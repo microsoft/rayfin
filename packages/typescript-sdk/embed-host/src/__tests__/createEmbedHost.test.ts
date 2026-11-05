@@ -165,6 +165,70 @@ describe('createEmbedHost', () => {
     expect(JSON.stringify(envelope)).not.toContain('delegated-token');
   });
 
+  it.each([
+    {
+      body: JSON.stringify({
+        code: 'ArtifactBlockedByAdmin',
+        httpStatusCode: 403,
+        message: 'SYNTHETIC-PRIVATE-BACKEND-TEXT',
+        details: [{ message: 'delegated-token' }],
+      }),
+      code: 'ArtifactBlockedByAdmin',
+      message:
+        'This app has been blocked by your admin. Reach out to the app owner to get unblocked.',
+    },
+    {
+      body: JSON.stringify({ message: 'SYNTHETIC-PRIVATE-BACKEND-TEXT' }),
+      code: 'INSUFFICIENT_PERMISSIONS',
+      message: 'Brokered-authorize endpoint responded with status 403.',
+    },
+    {
+      body: '{"code":',
+      code: 'INSUFFICIENT_PERMISSIONS',
+      message: 'Brokered-authorize endpoint responded with status 403.',
+    },
+    {
+      body: JSON.stringify({
+        code: 'UNKNOWN_BLOCK',
+        message: 'SYNTHETIC-PRIVATE-BACKEND-TEXT',
+      }),
+      code: 'INSUFFICIENT_PERMISSIONS',
+      message: 'Brokered-authorize endpoint responded with status 403.',
+    },
+  ])(
+    'forwards only the safe default-provider error fields: %#',
+    async ({ body, code, message }) => {
+      const fetch = vi.spyOn(globalThis, 'fetch').mockResolvedValueOnce(
+        new Response(body, {
+          status: 403,
+          headers: { 'Content-Type': 'application/json' },
+        })
+      );
+      host = createEmbedHost(baseOptions());
+      const iframe = fakeIframe();
+      dispatch(readiness(), IFRAME_ORIGIN, iframe);
+      dispatch(handoff(), IFRAME_ORIGIN, iframe);
+      await vi.waitFor(() =>
+        expect(iframe.postMessage).toHaveBeenCalledTimes(2)
+      );
+
+      const [envelope, options] = iframe.postMessage.mock.calls[1];
+      expect(envelope).toEqual({
+        channel: 'fabric-auth',
+        version: 1,
+        kind: 'response',
+        requestId: 'req-1',
+        success: false,
+        error: { code, message },
+      });
+      expect(options).toEqual({ targetOrigin: IFRAME_ORIGIN });
+      expect(fetch).toHaveBeenCalledTimes(1);
+      expect(JSON.stringify(envelope)).not.toContain('SYNTHETIC-PRIVATE');
+      expect(JSON.stringify(envelope)).not.toContain('delegated-token');
+      expect(envelope).not.toHaveProperty('result');
+    }
+  );
+
   it('passes the delegated token and artifact to the provider', async () => {
     let seen: HandoffRequest | undefined;
     const provider: HandoffProvider = {

@@ -1,3 +1,4 @@
+import { AuthError } from '@microsoft/rayfin-lib';
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 
 import { requestHandoff } from '../PostMessageAuthTransport';
@@ -34,6 +35,7 @@ describe('PostMessageAuthTransport', () => {
   });
 
   afterEach(() => {
+    vi.restoreAllMocks();
     Object.defineProperty(window, 'parent', {
       value: originalParent,
       writable: true,
@@ -113,6 +115,80 @@ describe('PostMessageAuthTransport', () => {
 
     await expect(promise).rejects.toThrow('MWC token failed');
   });
+
+  it.each(['PLUGIN_ERROR', 'ArtifactBlockedByAdmin'])(
+    'preserves the code and message for bridge errors: %j',
+    async (code) => {
+      const message = 'Synthetic generic host error';
+      const promise = requestHandoff(defaultParams);
+
+      window.dispatchEvent(
+        new MessageEvent('message', {
+          source: window.parent,
+          data: {
+            requestId: 'aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee',
+            kind: 'response',
+            success: false,
+            error: { code, message },
+          },
+        })
+      );
+
+      const error = await promise.catch((error: unknown) => error);
+
+      expect(error).toBeInstanceOf(AuthError);
+      expect(error).toMatchObject({ code, message });
+    }
+  );
+
+  it.each(['source', 'requestId', 'origin'] as const)(
+    'ignores a bridge error with a mismatched %s',
+    async (mismatch) => {
+      const origin = 'https://host.example.com';
+      const promise = requestHandoff({
+        ...defaultParams,
+        targetOrigin: origin,
+      });
+      window.dispatchEvent(
+        new MessageEvent('message', {
+          source: mismatch === 'source' ? window : window.parent,
+          origin: mismatch === 'origin' ? 'https://other.example.com' : origin,
+          data: {
+            requestId:
+              mismatch === 'requestId'
+                ? 'bbbbbbbb-bbbb-bbbb-bbbb-bbbbbbbbbbbb'
+                : 'aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee',
+            kind: 'response',
+            success: false,
+            error: {
+              code: 'PLUGIN_ERROR',
+              message: 'Synthetic host error',
+            },
+          },
+        })
+      );
+      window.dispatchEvent(
+        new MessageEvent('message', {
+          source: window.parent,
+          origin,
+          data: {
+            requestId: 'aaaaaaaa-bbbb-cccc-dddd-eeeeeeeeeeee',
+            kind: 'response',
+            success: true,
+            result: {
+              handoffCode: 'accepted-handoff',
+              state: defaultParams.state,
+            },
+          },
+        })
+      );
+
+      await expect(promise).resolves.toEqual({
+        handoffCode: 'accepted-handoff',
+        state: defaultParams.state,
+      });
+    }
+  );
 
   it('rejects on timeout when no response arrives', async () => {
     const promise = requestHandoff({ ...defaultParams, timeoutMs: 50 });
