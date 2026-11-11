@@ -2,10 +2,9 @@
  * CLI implementation of the {@link SecretStore} adapter.
  *
  * Persists opaque key/value secrets to a single owner-only JSON file under
- * `~/.rayfin/` (the same config dir MSAL's token cache uses). This is the
- * Node analog of `vscode.SecretStorage`; it is intentionally separate from
- * the MSAL token cache, which `@azure/msal-node` manages internally through
- * its own cache plugin.
+ * `~/.rayfin/` (the same config dir MSAL's token cache uses). This store is
+ * intentionally separate from the MSAL token cache, which `@azure/msal-node`
+ * manages internally through its own cache plugin.
  *
  * The file is written with mode `0o600` and its parent directory with
  * `0o700` for defense-in-depth, matching the CLI's `auth.json` handling.

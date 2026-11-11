@@ -10,7 +10,7 @@ import { readConfig } from '../config/readConfig.js';
 
 ## Shared code
 
-`@microsoft/rayfin-tools-common` (`packages/tools/common/`) is a private package for code shared across CLI, MCP, and VS Code extension. It must stay **universal** (no Node.js or DOM-specific APIs). See [`packages/tools/common/AGENTS.md`](./common/AGENTS.md).
+`@microsoft/rayfin-tools-common` (`packages/tools/common/`) is a private package for code shared across CLI, `create-rayfin`, and MCP. It must stay **universal** (no Node.js or DOM-specific APIs). See [`packages/tools/common/AGENTS.md`](./common/AGENTS.md).
 
 ## Docs and MCP
 
@@ -36,13 +36,13 @@ For any tools package whose `src/index.ts` (or `package.json` `exports`) is cons
 - Do **not** reference internal helpers, non-exported types, internal module paths (`_internal/...`, `dist/...`), internal env vars / feature flags / secrets / endpoints, or contributor-only notes in public TSDoc.
 - If a symbol is exported only for cross-package wiring, tests, or other contributor-only consumers, tag it `@internal` so it is stripped from the documented surface.
 
-Private-only tools packages (`@microsoft/rayfin-tools-common`, the VS Code extension internals) don't ship to Builders, but anything they re-export to other tools packages should still be `@internal` unless it's intended for end-user consumption.
+Private-only tools packages such as `@microsoft/rayfin-tools-common` don't ship to Builders, but anything they re-export to other tools packages should still be `@internal` unless it's intended for end-user consumption.
 
 Full rules and examples: [common/config/typedoc/AGENTS.md](../../common/config/typedoc/AGENTS.md#public-api-documentation-requirements).
 
 ## Architecture migration (in progress)
 
-The Rayfin tools line (CLI, `create-rayfin`, VS Code extension) is migrating to the target architecture in [`docs/rfc/rayfin-tools-architecture.md`](../../docs/rfc/rayfin-tools-architecture.md). Live status and the per-PR breakdown live in [`docs/rfc/rayfin-tools-architecture-migration.md`](../../docs/rfc/rayfin-tools-architecture-migration.md).
+The Rayfin tools line (CLI, `create-rayfin`, MCP) is migrating to the target architecture in [`docs/rfc/rayfin-tools-architecture.md`](../../docs/rfc/rayfin-tools-architecture.md). Live status and the per-PR breakdown live in [`docs/rfc/rayfin-tools-architecture-migration.md`](../../docs/rfc/rayfin-tools-architecture-migration.md).
 
 Two principles when working on this migration matter for every PR:
 

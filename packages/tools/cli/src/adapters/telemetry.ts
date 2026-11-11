@@ -2,7 +2,7 @@
  * CLI implementation of the {@link TelemetryHandle} adapter.
  *
  * Workflows enrich the current invocation's event through this handle rather
- * than via ambient async-local-storage (unavailable in the VS Code web host).
+ * than via ambient async-local-storage (unavailable in browsers).
  * The CLI owns the {@link InvocationContext} lifecycle via Commander hooks;
  * this handle is the per-invocation enrichment seam workflows see.
  *

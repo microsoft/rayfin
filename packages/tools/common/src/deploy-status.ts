@@ -37,8 +37,7 @@ export interface DeployStatusResponse {
  * Builds the Fabric REST API path (relative to the API base URL) for the
  * Rayfin workload `__private/deploy/status` endpoint.
  *
- * Shared between the CLI and VS Code extension so both tools target the
- * same workload contract.
+ * Centralizes the workload endpoint contract for deploy clients.
  */
 export function deployStatusPath(
   workspaceId: string,

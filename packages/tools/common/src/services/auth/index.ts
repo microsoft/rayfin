@@ -8,9 +8,9 @@
  * never touch MSAL, secret stores, or login prompts directly.
  *
  * Phase 2 backs this with the CLI's existing `ensureAuthenticated`; the
- * interface lives here so the `up` workflow (and later the VS Code host)
- * depend only on the universal contract. The shape mirrors the CLI's
- * `TokenResult` so the first implementation is a thin delegation.
+ * interface lives here so the `up` workflow depends only on the universal
+ * contract. The shape mirrors the CLI's `TokenResult` so the first
+ * implementation is a thin delegation.
  */
 export interface AuthSession {
   /** Bearer token for the requested scopes. */

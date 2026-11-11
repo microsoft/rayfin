@@ -25,8 +25,8 @@ export interface RunResult {
   /**
    * Whether the process actually started. `false` means it never launched
    * (e.g. `ENOENT` / command not found, or a host with no local-process
-   * capability such as the VS Code web extension host). When `false`,
-   * `exitCode` is meaningless and `spawnError` carries the reason.
+   * capability). When `false`, `exitCode` is meaningless and `spawnError`
+   * carries the reason.
    *
    * This distinguishes "the tool isn't installed" from "the tool ran and
    * failed" — very different remediation paths that both otherwise collapse
@@ -63,10 +63,8 @@ export interface RunResult {
  * CommandRunner adapter — shell / subprocess execution.
  *
  * Streams stdio and resolves with the exit code and captured output. Node
- * hosts back this with `child_process`; the VS Code host uses Terminal
- * Shell Integration (web-safe, but with no access to a local Docker
- * daemon). A host that cannot run local processes resolves
- * `{ launched: false, spawnError }` rather than throwing.
+ * hosts back this with `child_process`. A host that cannot run local processes
+ * resolves `{ launched: false, spawnError }` rather than throwing.
  */
 export interface CommandRunner {
   run(

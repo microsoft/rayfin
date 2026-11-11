@@ -29,10 +29,7 @@
 **/.DS_Store
 **/.rayfin-copilot.json
 
-# Build-tool caches. Present in the VS Code bundler's
-# `packages/tools/vscode/scripts/template-ignore.mjs` and absent here, so the
-# same working tree shipped them through the CLI and not through the vsix.
-# They are unambiguously tool state under the policy above.
+# Build-tool caches are unambiguously tool state under the policy above.
 # `.temp` was previously anchored to `rayfin/` alone, which let
 # `packages/api/.temp/` through; it is dot-prefixed tool state like the rest,
 # so it is matched at any depth here and no longer listed under the root-

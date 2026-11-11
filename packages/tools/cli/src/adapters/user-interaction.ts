@@ -9,8 +9,8 @@
  * Dismissal semantics follow the interface: inquirer resolves the answer
  * synchronously on submit and has no first-class "dismissed" signal for a
  * non-interactive stream, so `prompt` / `select` return the entered/chosen
- * value here; the `undefined` branch exists for hosts (e.g. VS Code) whose
- * pickers can be escaped. `confirm` always resolves a boolean.
+ * value here; the `undefined` branch exists for hosts whose pickers can be
+ * escaped. `confirm` always resolves a boolean.
  */
 import type {
   SelectChoice,

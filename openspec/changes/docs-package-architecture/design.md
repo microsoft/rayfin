@@ -24,7 +24,7 @@ fix each.
 
 - Eliminate doc-version drift between the displayed docs and the user's installed SDK packages.
 - Make `@microsoft/rayfin-docs` the single backend used by every Rayfin doc-facing surface (MCP server, CLI,
-  future VS Code panel, future bots, future CI lints).
+  future bots, future CI lints).
 - Close the four-package TypeDoc coverage gap (`rayfin-storage`, `rayfin-functions`, `rayfin-react`,
   `rayfin-auth-provider-fabric`, `fabric-embedded-host`) as part of the migration to per-package docs.
 - Give the agent a structured "this package isn't installed but here's how to find out about it" answer for
@@ -51,7 +51,7 @@ fix each.
 
 **Rationale:** The current architecture has `DocsService` living in `@microsoft/rayfin-mcp` and the CLI importing
 it from there. That's backwards — `DocsService` is fundamental, the MCP server is one surface. By extracting the
-library, we (a) decouple doc-content updates from MCP/CLI release cycles, (b) make new surfaces (VS Code, bots,
+library, we (a) decouple doc-content updates from MCP/CLI release cycles, (b) make new surfaces (bots,
 CI lints) trivial to add, (c) eliminate the indirection where the CLI is "an MCP package consumer that doesn't
 need an MCP server."
 

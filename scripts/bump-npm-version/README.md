@@ -85,7 +85,7 @@ Summary:
 
 | Flag | Default | Purpose |
 | --- | --- | --- |
-| `--target-version <semver>` | unset | Pin the `typescript-sdk` lockstep policy in [../../common/config/rush/version-policies.json](../../common/config/rush/version-policies.json) and the `rayfin-vscode` extension to this exact stable version. Individual-version policies (`cli`, `rayfin-mcp`, `rayfin-docs`, `rayfin-guide`, `rayfin-host-docs`) still auto-bump from existing changefiles. |
+| `--target-version <semver>` | unset | Pin the `typescript-sdk` lockstep policy in [../../common/config/rush/version-policies.json](../../common/config/rush/version-policies.json) to this exact stable version. Individual-version policies (`cli`, `rayfin-mcp`, `rayfin-docs`, `rayfin-guide`, `rayfin-host-docs`) still auto-bump from existing changefiles. |
 | `--push` | `false` | Push the current branch after all commits are in place. |
 | `--pr` | `false` | Open a PR via `gh`. Requires `--push` and `--issue`. |
 | `--issue <N>` | unset | GitHub issue number to link with `Closes #N` and to auto-assign its author. Required when `--pr` is set. |
@@ -109,7 +109,7 @@ The script fails fast on invalid combinations:
 
 ## How it works
 
-The script runs nine named phases sequentially.
+The script runs eight named phases sequentially.
 Each phase logs a header and is small enough to reason about in isolation.
 
 | # | Phase | What it does |
@@ -118,11 +118,10 @@ Each phase logs a header and is small enough to reason about in isolation.
 | 2 | `bumpVersions` | If `--target-version` is set, edits only the `version` field of the `typescript-sdk` lockstep entry in [../../common/config/rush/version-policies.json](../../common/config/rush/version-policies.json) via a targeted regex (preserving JSONC comments and surrounding formatting). Then runs `rush version --bump` (deliberately without `-b <branch>` — see below). |
 | 3 | `stripSkipCi` | Inspects every commit in `preBumpHead..HEAD` for forbidden markers (`[skip ci]`, `[ci skip]`, `[no ci]`, `[skip actions]`, `***NO_CI***`). Rewrites only those commits using `git filter-branch --msg-filter` scoped to the same range. Aborts if any marker remains. |
 | 4 | `commitBump` | Stages everything and commits with `chore: bump versions`. Skips silently if nothing is staged. |
-| 5 | `bumpVscode` | Patches the `version` field of [../../packages/tools/vscode/package.json](../../packages/tools/vscode/package.json). Uses `--target-version` when set, otherwise a minor bump (`x.(y+1).0`). Preserves the trailing newline. |
-| 6 | `formatAndLint` | Runs `rush format` then `rush docs:lint --fix`. |
-| 7 | `commitFormat` | Stages everything and commits with `chore: format after version bump`. Skips silently if nothing changed. |
-| 8 | `push` | Pushes the branch when `--push` is set. Otherwise prints the exact command for manual use. |
-| 9 | `openPr` | Opens a PR when `--pr` is set. Resolves the assignee via `gh issue view <N> --json author -q .author.login`. Body includes a bumped-package table and `Closes #<N>`. |
+| 5 | `formatAndLint` | Runs `rush format` then `rush docs:lint --fix`. |
+| 6 | `commitFormat` | Stages everything and commits with `chore: format after version bump`. Skips silently if nothing changed. |
+| 7 | `push` | Pushes the branch when `--push` is set. Otherwise prints the exact command for manual use. |
+| 8 | `openPr` | Opens a PR when `--pr` is set. Resolves the assignee via `gh issue view <N> --json author -q .author.login`. Body includes a bumped-package table and `Closes #<N>`. |
 
 ## The `[skip ci]` rule
 
@@ -154,7 +153,7 @@ npm run bump:npm -- --from commitBump --skip-rebuild
 Re-running earlier phases is generally idempotent (`rush update`,
 `rush rebuild`, formatting, lint), but Phase 2 will refuse to re-pin the
 lockstep version if it is already at the target.
-Phase 4 and Phase 7 skip silently when their staging step produces no diff,
+Phase 4 and Phase 6 skip silently when their staging step produces no diff,
 so they are safe to repeat.
 The preflight phase writes the pre-bump HEAD SHA to a private state file under
 `.git`.
@@ -272,7 +271,7 @@ Conventions to keep:
 - Mutating commands should respect `--dry-run` by returning early or wrapping
   the side-effecting write in `if (dryRun) { ... return; }`.
 - Never invoke an LLM from inside a core phase.
-  The single approved LLM touchpoint is `tryRunLlmNarrative` in Phase 9.
+  The single approved LLM touchpoint is `tryRunLlmNarrative` in Phase 8.
 
 ## See also
 

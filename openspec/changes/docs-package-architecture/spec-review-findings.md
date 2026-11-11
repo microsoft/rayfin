@@ -247,7 +247,7 @@ it in MCP/CLI outputs in Phase 4.
 
 ### N1. Layer separation (`DocsSourceProvider` interface)
 
-**Reviewer concern:** The library is described as reusable by web/VS Code
+**Reviewer concern:** The library is described as reusable by web
 surfaces, but `PackageDiscovery` is Node-specific.
 
 **Resolution:** Add a `DocsSourceProvider` interface in Phase 1 that

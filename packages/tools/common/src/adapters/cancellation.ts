@@ -1,11 +1,9 @@
 /**
  * Minimal cancellation primitive for universal (web-safe) code.
  *
- * Workflows honor cancellation between steps via a token threaded through
- * their `Progress` adapter. This interface is intentionally the structural
- * subset shared by `vscode.CancellationToken` and an `AbortSignal`-backed
- * shim, so a host can supply whichever it already has without the shared
- * layer importing `vscode.*` or Node built-ins.
+ * Workflows honor cancellation between steps via a token in their dependencies.
+ * Hosts can supply this interface directly or use an `AbortSignal`-backed shim
+ * without the shared layer importing Node built-ins.
  */
 export interface CancellationToken {
   /** Whether cancellation has already been requested. */
@@ -13,8 +11,7 @@ export interface CancellationToken {
 
   /**
    * Subscribe to the cancellation event. Returns a disposable; call
-   * `dispose()` to unsubscribe. Mirrors the `vscode.CancellationToken`
-   * shape so VS Code's native token satisfies this interface directly.
+   * `dispose()` to unsubscribe.
    */
   onCancellationRequested(listener: () => void): { dispose(): void };
 }
@@ -89,8 +86,7 @@ export function createLinkedCancellation(
  * Adapt a web-platform `AbortSignal` into a {@link CancellationToken}.
  *
  * Lets Node and browser hosts that already model cancellation with
- * `AbortController` satisfy the workflow contract without depending on
- * `vscode.*`.
+ * `AbortController` satisfy the workflow contract.
  */
 export function cancellationTokenFromSignal(
   signal: AbortSignal

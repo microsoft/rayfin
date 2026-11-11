@@ -10,14 +10,7 @@ import type { DeploymentInfo } from './types.js';
  *
  * Universal: no `node:fs` imports. The caller reads/writes the file content.
  *
- * Used by:
- *  - `@microsoft/rayfin-cli` — all `.env` I/O (rayfin/.env, runtime values, etc.)
- *  - `rayfin-vscode` — deployment registry + env I/O from the VS Code extension
- *
- * Replaces the three previously-duplicated parsers:
- *  - CLI `utils/env-file-utils.ts::parseEnvContent`
- *  - CLI `utils/env-fabric-utils.ts` (dotenv package wrapper)
- *  - VS Code `services/rayfin/envFabric.ts::parseDotenv`
+ * Used by `@microsoft/rayfin-cli` for `.env` I/O.
  */
 
 /**
@@ -255,7 +248,7 @@ export function mapPublicEnvForFramework(
   return result;
 }
 
-// ── Deployment helpers (shared by CLI + VS Code) ───────────────────────
+// ── Deployment helpers ─────────────────────────────────────────────────
 
 /**
  * Sanitize a Fabric workspace display name into a registry-safe slug.

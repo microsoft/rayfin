@@ -37,7 +37,7 @@ This is a multi-phase change; the proposal scopes all five phases so dependencie
 
 - `@microsoft/rayfin-docs` — a runtime library exposing `DocsService`, `PackageDiscovery`, `SearchIndex`,
   `SymbolResolver`, and `CatalogResolver`. It owns the small bundled catalog snapshot used for package discovery. Used
-  by `rayfin-mcp`, `rayfin-cli`, and any future surface (VS Code extension, web playground, CI lints).
+  by `rayfin-mcp`, `rayfin-cli`, and any future surface (web playground, CI lints).
 - `@microsoft/rayfin-guide` — markdown-only package holding cross-cutting Builder guides
   (`getting-started/`, `auth/overview.md`, `data/permissions.md`, `cli/*.md`, etc.). Declares the new `rayfinDocs`
   package.json field so the indexer picks it up.

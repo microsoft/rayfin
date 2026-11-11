@@ -672,7 +672,7 @@
     },
     {
       // Hidden template selected by the agent plugin through create-rayfin and
-      // bundled by the CLI and VS Code extension.
+      // bundled by the CLI.
       "packageName": "universal-app",
       "projectFolder": "samples/universal-app",
       "shouldPublish": false,
@@ -692,14 +692,6 @@
       "subspaceName": "docs",
       "shouldPublish": false,
       "tags": ["docs", "docgen"]
-    },
-    {
-      "packageName": "rayfin-vscode",
-      "projectFolder": "packages/tools/vscode",
-      "subspaceName": "vscode",
-      // "versionPolicyName": "vscode",
-      "shouldPublish": false,
-      "tags": ["tools", "vscode"]
     },
     {
       "packageName": "rayfin-cli-e2e",

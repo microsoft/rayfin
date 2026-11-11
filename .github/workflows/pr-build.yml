@@ -118,30 +118,3 @@ jobs:
           else
             echo "No TypeScript coverage data available" >> $GITHUB_STEP_SUMMARY
           fi
-
-  vsix-build:
-    name: VSIX Build (mirrors Azure release pipeline)
-    runs-on: ubuntu-latest
-    # Mirrors .azure-pipelines/templates/vsix-build-stage.yml so that any
-    # regression that breaks the scoped vsix install/build (which only
-    # installs dependencies reachable from rayfin-vscode and therefore
-    # exposes missing devDependencies that a full `rush install` would
-    # otherwise mask via cross-project hoisting) is caught at PR time.
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22
-
-      - name: Rush install (vscode extension dependencies)
-        run: node common/scripts/install-run-rush.js install --to rayfin-vscode
-
-      - name: Rush build (vscode extension)
-        run: node common/scripts/install-run-rush.js build --to rayfin-vscode
-
-      - name: Package VSIX
-        run: node ../../../common/scripts/install-run-rushx.js package
-        working-directory: packages/tools/vscode

@@ -5,7 +5,7 @@
  * Even though `@types/node` is now a devDependency (required to compile
  * the Node-only sub-modules under `_internal/env-config` and `_internal/templates`),
  * the **public, universal** surface of this package must still tolerate
- * running in browsers / WebWorkers (VS Code webviews) where `process` is
+ * running in browsers / WebWorkers where `process` is
  * undefined. This local declaration keeps `process` typed as possibly
  * `undefined` and limited to a small allowlist of fields, so universal
  * code is forced to write `typeof process !== 'undefined'` guards and

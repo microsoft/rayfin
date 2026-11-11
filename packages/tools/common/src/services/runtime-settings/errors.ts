@@ -7,9 +7,8 @@
  * `rayfin.yml` no longer has, so each known code is restated in terms of
  * `assetAccess`.
  *
- * Lives beside the outbound translation rather than in a host, so the CLI and
- * the VS Code extension cannot drift into describing the same rejection
- * differently.
+ * Lives beside the outbound translation so deploy clients describe the same
+ * rejection consistently.
  */
 const STATIC_HOSTING_POSTURE_REQUIRED = 'StaticHostingPostureRequired';
 const INVALID_STATIC_HOSTING_POSTURE = 'InvalidStaticHostingPosture';

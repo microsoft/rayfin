@@ -11,8 +11,7 @@
  * values. The legacy `rayfin/.temp/.env` location is no longer used.
  *
  * Parser/serializer are re-exports of the universal implementations in
- * `@microsoft/rayfin-tools-common` so the CLI and VS Code extension share
- * one canonical `.env` format.
+ * `@microsoft/rayfin-tools-common` to provide one canonical `.env` format.
  */
 
 import { access, constants, mkdir, readFile, writeFile } from 'fs/promises';

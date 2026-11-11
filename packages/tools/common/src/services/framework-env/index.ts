@@ -9,10 +9,10 @@
  * directly.
  *
  * Phase 2 backs this with the CLI's existing `detectFrontendFramework` and
- * `writeFrameworkEnvFile`; the interface lives here so the `up` workflow (and
- * later the VS Code host) depend only on the universal contract. It is
- * intentionally Node-free — the implementation that performs detection and
- * filesystem IO lives in the host (`cli/src/rayfin-services/`).
+ * `writeFrameworkEnvFile`; the interface lives here so the `up` workflow
+ * depends only on the universal contract. It is intentionally Node-free —
+ * the implementation that performs detection and filesystem IO lives in the
+ * host (`cli/src/rayfin-services/`).
  */
 
 import type { StaticHostingConfig } from '../../config/index.js';

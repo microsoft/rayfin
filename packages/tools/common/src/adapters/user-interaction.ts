@@ -25,7 +25,7 @@ export interface SelectChoice<T> {
 export interface UserInteraction {
   /**
    * Free-text prompt. Resolves to the entered string, or `undefined` when
-   * the user dismisses the prompt (e.g. Esc in VS Code's `showInputBox`).
+   * the user dismisses the prompt (e.g. by pressing Esc).
    * Dismissal is an expected outcome, not an error — the workflow decides
    * whether to default, skip, or treat it as a cancellation.
    */
@@ -42,7 +42,7 @@ export interface UserInteraction {
 
   /**
    * Single-choice picker. Resolves to the chosen value, or `undefined` when
-   * the user dismisses the picker (e.g. Esc in VS Code's `showQuickPick`).
+   * the user dismisses the picker (e.g. by pressing Esc).
    */
   select<T>(
     message: string,

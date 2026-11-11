@@ -10,7 +10,7 @@
 export interface TelemetryPolicyOptions {
   /** True when the user has explicitly opted out (e.g. env var, config). */
   userOptOut: boolean;
-  /** Host-resolved telemetry setting (e.g. VS Code telemetry level). */
+  /** Host-resolved telemetry setting. */
   hostSettingEnabled?: boolean;
 }
 

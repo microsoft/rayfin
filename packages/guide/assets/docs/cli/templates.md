@@ -21,7 +21,7 @@ External and local template sources are discovered through `rayfin-template.yml`
 Built-in templates are packaged with the CLI and appear in `--list-templates` automatically.
 
 > **Universal App is available as the built-in `blankapp` template.**
-> The visible `blankapp` entry appears in `--list-templates` and is available in the CLI and VS Code.
+> The visible `blankapp` entry appears in the CLI's `--list-templates` output.
 > Its canonical `universal-app` name remains hidden to avoid a duplicate listing, but plugin automation can still select it explicitly with `--template universal-app`.
 > Both names scaffold the same committed workspace template.
 > This does not change support for ordinary local directories, git repositories, or registered templates.

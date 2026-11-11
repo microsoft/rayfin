@@ -53,7 +53,7 @@ Inline service paths are consistent with the existing per-service configuration 
 
 **Decision**: Treat `path` values as relative to `projectRoot` (the directory where `rayfin/rayfin.yml` was found), not relative to `process.cwd()` or the `rayfin/` subdirectory.
 
-**Rationale**: `projectRoot` is the stable anchor already used by all existing path resolution in the CLI and VS Code extension.
+**Rationale**: `projectRoot` is the stable anchor already used by existing path resolution in the CLI.
 Using `process.cwd()` would make behavior dependent on where the user runs the CLI, which is fragile.
 
 **Alternative considered**: Relative to `rayfin/` — rejected because it would require paths like `../../packages/data` which is confusing and error-prone.
@@ -74,9 +74,9 @@ Centralizing it prevents divergence between call sites and makes the "no path = 
 
 ### D4: `path` is added to `RayfinConfig` in `@microsoft/rayfin-tools-common`, not in CLI-local types
 
-**Decision**: The `path` field is added to the canonical `RayfinConfig` interface in `packages/tools/common/src/config/types.ts` so both the CLI and VS Code extension can read it without duplication.
+**Decision**: The `path` field is added to the canonical `RayfinConfig` interface in `packages/tools/common/src/config/types.ts` so tools can read it without duplication.
 
-**Rationale**: `RayfinConfig` is already shared. Adding `path` only to a CLI-local type would require the VS Code extension to separately handle path-qualified YAML, creating a split that will cause bugs.
+**Rationale**: `RayfinConfig` is already shared. Keeping `path` in the canonical type prevents tools from maintaining divergent models of path-qualified YAML.
 
 ---
 
@@ -225,7 +225,6 @@ The `resolvePackageExports()` function is exported from `dab-config-generator.ts
 ## Risks / Trade-offs
 
 - **Path traversal in `path` values** → Mitigation: validate that the resolved path stays within the project root at config-load time; reject paths with `..` components that escape the project boundary.
-- **Stale resolution in VS Code extension** → The extension currently does not use `path` in service-specific operations (entity discovery runs server-side), so no immediate work is needed there. Risk: future extension features (e.g., local entity schema preview) silently ignore `path`. Mitigation: add a `TODO` comment in the extension's config loader.
 - **Sample drift** → `workspace-todo-app` could fall behind the main `todo-app` as features are added. Mitigation: the sample is explicitly scoped as a structural reference, not a feature showcase; keep it minimal.
 - **No validation of `path` existence at startup** → A misconfigured `path` pointing to a non-existent directory will only surface as an error when the affected operation runs (e.g., entity discovery). Mitigation: add an existence check in `resolveServicePath` when a non-default path is provided, with a clear error message.
 
@@ -247,7 +246,6 @@ A guided migration command to automate the transition from a flat to workspace l
 
 ## Open Questions
 
-- **Should the VS Code extension display resolved service paths in the project panel?** This could help users debug misconfigured workspace layouts, but adds UI surface area. Deferred to a follow-up.
 - **Should `rayfin init` prompt for workspace layout during scaffolding?** Out of scope for this change but worth tracking as a follow-up once `workspace-todo-app` is validated.
 - **Should `path` be supported on `auth`?** Currently excluded since it is fully host-managed, but a future need (e.g., auth middleware co-located in a separate package) could warrant it. Excluded for now.
 - **Should the CLI auto-discover well-known workspace packages when `workspaces` is present in the root `package.json`?** If the root `package.json` declares npm workspaces and a service has no `path` set, the CLI could check for conventionally named packages (e.g., `frontend`, `data`, `functions`) and use them as defaults.

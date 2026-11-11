@@ -10,8 +10,7 @@ import type {
 } from './types.js';
 
 /**
- * Prerequisite definitions for the project-setup wizard.
- * Shared across VS Code extension and CLI.
+ * Prerequisite definitions for project setup.
  */
 export const PREREQ_DEFINITIONS: readonly PrereqDefinition[] = [
   {

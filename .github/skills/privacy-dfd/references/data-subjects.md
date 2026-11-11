@@ -18,7 +18,7 @@ Identify the correct data subject for each personal data element.
 ## Selection Guidance
 
 - For **Fabric workloads**: Builders are typically C1 users; App Users of Builder apps are C2 users
-- For **developer tools** (CLI, VS Code extension): The developer is a C1 user
+- For **developer tools** (CLI, MCP): The developer is a C1 user
 - For **telemetry**: If the event contains pseudonymous user identifiers (EUPI), the data subject is the C1 user whose identifier it is
 - For **organizational data** (tenant IDs, workspace IDs): Leave data subject blank — OII is not personal data
 - For **system metadata** (event names, durations, status codes): Leave data subject blank — not linkable to a user

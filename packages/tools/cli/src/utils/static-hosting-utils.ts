@@ -222,8 +222,6 @@ export async function runStaticBuildCommand(
  * the nearest `package.json` and rejects valid ESM under `"type": "commonjs"`.
  * A file is only rejected when it parses as neither a module nor a script.
  *
- * Scope is the CLI; VS Code packages static content through its own path.
- *
  * @returns Messages for the files that failed to parse; empty when all parse.
  * @throws When a check could not be run - a spawn failure is an environment
  *   problem, not evidence that the file is broken.

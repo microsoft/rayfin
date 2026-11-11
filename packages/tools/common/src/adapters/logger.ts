@@ -1,10 +1,9 @@
 /**
  * Logger adapter — human-readable output lines.
  *
- * One real implementation per host (CLI → `console.*`, VS Code → output
- * channel), shared across all commands on that host. Workflows render
- * human-facing text exclusively through this adapter; they never call
- * `console.*` directly.
+ * One real implementation per host (e.g. CLI → `console.*`), shared across
+ * all commands on that host. Workflows render human-facing text exclusively
+ * through this adapter; they never call `console.*` directly.
  *
  * `log` is the normal informational level; `warn` and `error` are the two
  * higher severities. Verbose detail is a separate concern handled by the

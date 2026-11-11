@@ -301,7 +301,7 @@ The reworked `rayfin up` command SHALL maintain unit test coverage.
 
 ### Requirement: Redirect URI registration during static content deploy
 
-After deploying static content, the deploy tools (CLI and VS Code extension) SHALL add only the bare hosting origin to `allowedRedirectUris`.
+After deploying static content, the CLI SHALL add only the bare hosting origin to `allowedRedirectUris`.
 The `/auth/callback` path SHALL NOT be auto-added.
 
 #### Scenario: Static deploy registers bare origin only

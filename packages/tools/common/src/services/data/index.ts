@@ -8,10 +8,9 @@
  * rendering directly.
  *
  * Phase 2 backs this with the CLI's existing `applyDbConfig`; the interface
- * lives here so the `up` workflow (and later the VS Code host) depend only on
- * the universal contract. It is intentionally Node-free — the implementation
- * that performs filesystem and network IO lives in the host
- * (`cli/src/rayfin-services/data.ts`).
+ * lives here so the `up` workflow depends only on the universal contract.
+ * It is intentionally Node-free — the implementation that performs filesystem
+ * and network IO lives in the host (`cli/src/rayfin-services/data.ts`).
  */
 import type { Dialect } from '../../config/index.js';
 

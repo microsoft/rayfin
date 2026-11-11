@@ -4,9 +4,8 @@ import { transformProjectName } from './validation.js';
 /**
  * Read template entries from a directory listing.
  *
- * Accepts an abstract FS interface so it can be called from both Node.js
- * (create-rayfin CLI) and VS Code extension host contexts without importing
- * `node:fs` directly — keeping `rayfin-tools-common` universal.
+ * Accepts an abstract FS interface without importing `node:fs` directly,
+ * keeping `rayfin-tools-common` universal.
  */
 export function readTemplatesFromDirectory(
   directory: string,
@@ -137,9 +136,8 @@ export function customizeTemplateFiles(
 /**
  * Minimal file-system interface required by template operations.
  *
- * Consumers provide platform-specific implementations:
- * - Node.js CLI: thin wrapper around `node:fs`
- * - VS Code extension: thin wrapper around `node:fs` (extension host is Node)
+ * Consumers provide platform-specific implementations, such as a Node.js
+ * CLI wrapper around `node:fs`.
  */
 export interface TemplateFs {
   readDir(path: string): string[];

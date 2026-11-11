@@ -1,8 +1,8 @@
 /**
  * Public entrypoint for the `dev` workflow.
  *
- * Hosts (CLI `cli/src/commands/dev/`, later the VS Code extension) import the
- * workflow runner, its request/result/deps contracts, and the
+ * Hosts (such as CLI `cli/src/commands/dev/`) import the workflow runner,
+ * its request/result/deps contracts, and the
  * {@link DevBackendProvider} seam they implement from here; steps stay internal
  * to the `steps/` folder.
  */

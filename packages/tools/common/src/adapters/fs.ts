@@ -1,9 +1,8 @@
 /**
  * Filesystem adapter — async file IO.
  *
- * Async-only so the same interface works in the VS Code web extension host
- * (which exposes `vscode.workspace.fs`, a Promise-based API with no
- * synchronous variants). Node hosts back this with `node:fs/promises`.
+ * Async-only so hosts with asynchronous filesystem APIs can satisfy the same
+ * interface. Node hosts back this with `node:fs/promises`.
  *
  * Universal code never imports `node:fs` directly — it declares an `Fs` in
  * its `Deps` and the host injects the concrete implementation.

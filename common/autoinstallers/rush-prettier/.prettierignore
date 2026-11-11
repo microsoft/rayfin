@@ -8,10 +8,6 @@ dist
 .pnpm-store
 .markdownlint-cli2.jsonc
 **/assets/templates
-# VS Code extension plugin build output: copy-plugin.mjs stages plugin/ here and
-# derives the root plugin.json and .mcp.json that chat.pluginLocations needs.
-# Generated, gitignored, and never committed, so formatting it rewrites artifacts.
-**/tools/vscode/rayfin
 **/docs/site
 **/docs/features
 .changeset

@@ -1,13 +1,10 @@
 /**
  * The `projectRuntimeSettings` wire payload, shared by every deploy client.
  *
- * Both the CLI and the VS Code extension write runtime settings to the same
- * workload endpoint, so the body they send — and the client identity the
- * workload gates on — is one contract rather than one per host. Assembling it
- * here keeps a host from shipping a body the workload silently rejects: when
- * static-hosting access control is enforced, a write with no
- * {@link DEPLOY_CLIENT_VERSION_KEY} entry is refused with HTTP 400, and the
- * remedy it names ("upgrade the CLI") is useless to a host that is not the CLI.
+ * The workload endpoint expects a specific payload and client identity.
+ * Assembling it here keeps a host from shipping a body the workload silently
+ * rejects: when static-hosting access control is enforced, a write with no
+ * {@link DEPLOY_CLIENT_VERSION_KEY} entry is refused with HTTP 400.
  *
  * Hosts still own transport: acquiring tokens, retry, and headers stay in each
  * host's client. This module only maps in-memory config to the wire shape.

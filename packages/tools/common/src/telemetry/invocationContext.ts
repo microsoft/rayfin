@@ -1,7 +1,7 @@
 /**
  * Per-invocation telemetry context.
  *
- * Accumulates state during a single CLI command or VS Code action and
+ * Accumulates state during a single CLI command and
  * produces a typed {@link RayfinCommandEvent} at finalization. This
  * object is passed through the call chain explicitly — it is **not** a
  * global singleton.
@@ -182,7 +182,6 @@ export class InvocationContext {
     const durationMs = Date.now() - this.startTime.getTime();
     const clientSourceMap: Record<ProductName, ClientSource> = {
       'rayfin-cli': 'cli',
-      'rayfin-vscode': 'vscode',
       'create-rayfin': 'create-rayfin',
     };
     const clientSource: ClientSource = clientSourceMap[this._productName];

@@ -47,11 +47,6 @@ gemini extensions install https://github.com/microsoft/rayfin
 
 Discovery: `gemini-extension.json` at the repo root.
 
-### VS Code Copilot Chat
-
-The Rayfin VS Code extension bundles the plugin at `rayfin/` and registers it via `chat.pluginLocations` on activate.
-`scripts/copy-plugin.mjs` layers a root `plugin.json` and an `.mcp.json` onto its copy, so extension users get the MCP server even though the published plugin deliberately ships without one.
-
 ## Skill Content
 
 ### Rules (6 categories)
@@ -127,12 +122,6 @@ plugin/                                staging copy of the public repo root
 
 packages/tools/cli/
   assets/agent-files/skills/rayfin/SKILL.md   version-locked in-project skill
-
-packages/tools/vscode/
-  scripts/copy-plugin.mjs   (copies plugin/ into the extension, adds MCP)
-  rayfin/                   (build output, bundled into the vsix)
-  src/extension.ts          (registerCopilotPlugin on activate)
-  .vscodeignore             (includes rayfin/ in vsix)
 ```
 
 ## Future Work

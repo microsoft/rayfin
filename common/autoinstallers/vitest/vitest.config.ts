@@ -34,7 +34,6 @@ export default defineConfig({
       '!samples/**/e2e/**/vitest.config.ts',
       '!packages/tools/cli/templates/**/vitest.config.ts',
       '!packages/tools/create-rayfin/templates/**/vitest.config.ts',
-      '!packages/tools/vscode/templates/**/vitest.config.ts',
     ],
     coverage: {
       provider: 'v8',

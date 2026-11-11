@@ -2,8 +2,7 @@
  * A single progress update emitted by a workflow step.
  *
  * Push-style: the workflow calls `report` as it advances; the host decides
- * how to render (ora spinner, plain stderr line, `vscode.window.withProgress`,
- * or silence in `--output json`).
+ * how to render (ora spinner, plain stderr line, or silence in `--output json`).
  */
 export interface ProgressUpdate {
   /** Coarse phase label, e.g. `'deploy'` or `'apply-db'`. */
@@ -18,8 +17,7 @@ export interface ProgressUpdate {
  * Progress adapter — phase + percent reporting.
  *
  * Push-style: the workflow calls `report` as it advances and the host renders
- * (or silences) the update. Satisfies both pull-style renderers (ora) and
- * push-style ones (`vscode.window.withProgress`).
+ * (or silences) the update.
  *
  * Cancellation is a **separate** concern: a workflow that needs to honor
  * cancellation declares `CancellationToken` directly in its `Deps`
