@@ -92,39 +92,6 @@
         "E2E_KEEP_BACKEND_RUNNING": "true"
       },
       "skipFiles": ["<node_internals>/**"]
-    },
-    {
-      "name": "Launch Rayfin Extension",
-      "type": "extensionHost",
-      "request": "launch",
-      "runtimeExecutable": "${execPath}",
-      "args": [
-        "--profile=noExtensionsProfile",
-        "--extensionDevelopmentPath=${workspaceFolder}/packages/tools/vscode"
-      ],
-      "outFiles": ["${workspaceFolder}/packages/tools/vscode/dist/**/*.js"],
-      "preLaunchTask": "vscode: watch",
-      "autoAttachChildProcesses": false,
-      "sourceMaps": true,
-      "resolveSourceMapLocations": [
-        "${workspaceFolder}/packages/tools/vscode/dist/**",
-        "!**/node_modules/**"
-      ],
-      "sourceMapPathOverrides": {
-        "./*": "${workspaceFolder}/packages/tools/vscode/*"
-      }
-    },
-    {
-      "name": "Launch Rayfin Web Extension",
-      "type": "extensionHost",
-      "request": "launch",
-      "debugWebWorkerHost": true,
-      "args": [
-        "--extensionDevelopmentPath=${workspaceFolder}/packages/tools/vscode",
-        "--extensionDevelopmentKind=web"
-      ],
-      "outFiles": ["${workspaceFolder}/packages/tools/vscode/dist/web/**/*.js"],
-      "preLaunchTask": "vscode: watch"
     }
   ]
 }

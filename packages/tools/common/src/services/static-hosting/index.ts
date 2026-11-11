@@ -79,9 +79,8 @@ export interface StaticHostingService {
   /**
    * Validate that the configured static folder exists and contains files.
    *
-   * Async so a host whose filesystem access is asynchronous (e.g. the VS Code
-   * web host backed by `vscode.workspace.fs`) can satisfy the contract; the
-   * CLI host wraps its synchronous util.
+   * Async so a host whose filesystem access is asynchronous can satisfy the
+   * contract; the CLI host wraps its synchronous util.
    */
   validateFolder(
     projectRoot: string,

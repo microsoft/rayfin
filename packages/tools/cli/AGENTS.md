@@ -66,7 +66,6 @@ Each feature owns a relative file overlay under `.template-features/<feature>/`.
 The shared post-scaffold pipeline applies overlays selected by `RAYFIN_FEATURE_FLAGS`, before installing dependencies, for bundled, local, and external templates.
 Template feature selection reads only the invocation environment, never an enclosing project's deployment configuration or environment file.
 The common CLI entry point defers unrelated runtime commands during `init`, preserving root flags, telemetry, and error handling without validating parent service settings.
-The VS Code bundler materializes the default selection with the same Node-only helper; its web-compatible runtime only copies the finished template.
 It consumes the declaration and removes the authoring payload from the generated app in both enabled and disabled cases.
 Overlay paths must remain inside the app and must not traverse links or tool-state directories.
 Later enabled overlays win when two features author the same file.

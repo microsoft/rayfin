@@ -228,52 +228,6 @@ export default [
     },
   },
 
-  // VS Code webviews run in a browser iframe and must only import Node-free
-  // tools-common template subpaths.
-  {
-    files: ['packages/tools/vscode/src/webviews/**/*.{ts,tsx}'],
-    rules: {
-      'no-restricted-imports': [
-        'error',
-        {
-          paths: [
-            {
-              name: '@microsoft/rayfin-tools-common/_internal/templates',
-              message:
-                'Webview code must import template helpers from @microsoft/rayfin-tools-common/_internal/templates/universal.',
-            },
-            {
-              name: '@microsoft/rayfin-tools-common/_internal/templates/git',
-              message:
-                'Webview code must import template helpers from @microsoft/rayfin-tools-common/_internal/templates/universal.',
-            },
-            {
-              name: '@microsoft/rayfin-tools-common/_internal/auth',
-              importNames: ['bootstrapEnvironmentConfig'],
-              message:
-                'Webview code must not import the Node-only bootstrapEnvironmentConfig; import only the universal env-config symbols (EnvironmentConfig, RAYFIN_ENV_CONFIG_VARS).',
-            },
-            {
-              name: '@microsoft/rayfin-tools-common/_internal/env-config',
-              importNames: ['bootstrapEnvironmentConfig'],
-              message:
-                'Webview code must not import the Node-only bootstrapEnvironmentConfig; import only the universal env-config symbols (EnvironmentConfig, RAYFIN_ENV_CONFIG_VARS).',
-            },
-          ],
-          patterns: [
-            {
-              group: [
-                '@microsoft/rayfin-tools-common/_internal/templates/git/*',
-              ],
-              message:
-                'Webview code must import template helpers from @microsoft/rayfin-tools-common/_internal/templates/universal.',
-            },
-          ],
-        },
-      ],
-    },
-  },
-
   // Interface files - allow unused parameters (they're just type definitions)
   {
     files: ['**/interfaces/**/*.ts', '**/types/**/*.ts'],
@@ -310,10 +264,8 @@ export default [
       '**/*.d.ts',
       '**/bin/**',
       '**/obj/**',
-      '**/.vscode-ext-debug*/**',
       '**/assets/templates/**', // Ignore template files in create-rayfin
       'packages/tools/cli/templates/**', // Build output: bundled from samples/ by scripts/bundle-templates.ts
-      'packages/tools/vscode/templates/**', // Build output: bundled from samples/ by scripts/bundle-template.mjs
       '**/.vscode/**',
       '**/.git/**',
       // Skill material, not app code.  `.agents` carries documentation and kit

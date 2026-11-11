@@ -2,7 +2,6 @@
  * Platform-agnostic logging abstraction.
  *
  * Consumers inject implementations appropriate to their environment:
- * - VS Code: writes to an OutputChannel
  * - CLI: writes to stdout/stderr
  * - Tests: no-op or captured
  */

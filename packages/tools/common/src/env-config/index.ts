@@ -32,10 +32,9 @@
  * dependencies on each other's internals.
  *
  * The shared model itself is **universal** — it does not import Node.js
- * APIs and is safe to bundle into browser/WebWorker consumers (e.g. VS
- * Code webviews). The Node-only filesystem hydration helper
- * `bootstrapEnvironmentConfig` is also re-exported below for
- * convenience, but only Node-only consumers (CLI entry points) should
+ * APIs and is safe to bundle into browser/WebWorker consumers. The Node-only
+ * filesystem hydration helper `bootstrapEnvironmentConfig` is also re-exported
+ * below for convenience, but only Node-only consumers (CLI entry points) should
  * reference it. Browser/WebWorker consumers must import only the
  * universal symbols below.
  */

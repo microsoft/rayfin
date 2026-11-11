@@ -186,7 +186,6 @@ If the change IS user-facing, the section MUST also include tasks that:
    - `docs/site/docs/guide/auth/` — authentication setup.
    - `docs/site/docs/guide/app-backend/` — backend services and patterns.
    - `docs/site/docs/guide/hosting/` — deployment, Fabric, OSS host.
-   - `docs/site/docs/guide/vscode/` — VS Code extension.
    - `docs/site/docs/guide/preview/` — preview/experimental features.
 2. **Choose update vs create** — prefer updating an existing page. Only add a new page when no existing page is a reasonable owner; in that case the task MUST name the new file path and the parent category page that links to it.
 3. **List the concrete edits** — each page edit is its own checkbox stating what content is added/changed (for example, "Add `--workspace-uri` flag row to the `rayfin up` flag table and add an example invocation").

@@ -20,7 +20,7 @@ const DIAGNOSTIC_AREA = 'fabric';
  * whose host implementation owns authentication (the bearer token is attached
  * by the adapter, never here). Verbose detail is emitted through the optional
  * {@link Diagnostics} sink rather than written to the console, so the client
- * is safe to run in any host (CLI, VS Code desktop/web).
+ * is safe to run in any host.
  *
  * This is the low-level transport (paths, verbs, status handling), not a
  * Fabric operation vocabulary. Steps and product services SHOULD depend on a

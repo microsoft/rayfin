@@ -191,7 +191,7 @@ These variables are read from the shell environment and are never written to fil
 | `RAYFIN_ENCRYPTION_FALLBACK_ENABLED` | Set to `true` to allow plaintext token cache on systems without OS credential storage. Development only. |
 | `RAYFIN_FEATURE_FLAGS` | Comma-separated list of experimental feature names to enable (case-insensitive). Recognized public values include `docker-local-dev`, `postgresql`, and `storage`. |
 | `RAYFIN_WEBSERVICE_IMAGE_NAME` | **Experimental.** Override the webservice container image used by `rayfin dev --provider docker` and Docker Compose. Defaults to `ghcr.io/microsoft/project-rayfin/webservice:cli-<version>`. |
-| `RAYFIN_APPINSIGHTS_CONNECTION_STRING` | Override the telemetry endpoint for the CLI and VS Code extension. |
+| `RAYFIN_APPINSIGHTS_CONNECTION_STRING` | Override the telemetry endpoint for the CLI. |
 | `RAYFIN_TELEMETRY_ENV` | Override the CLI and `create-rayfin` telemetry environment label. Values are trimmed and lowercased. Known labels include `github-actions`, `azure-pipelines`, `gitlab-ci`, `jenkins`, `codespaces`, `devcontainer`, `local`, and `other`; custom labels may contain 1–64 ASCII letters, digits, hyphens, or underscores. Invalid non-empty values map to `other`, while an empty value uses automatic detection. Do not include identifying or sensitive values. |
 
 ### Recognized `RAYFIN_FEATURE_FLAGS` values

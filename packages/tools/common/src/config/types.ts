@@ -193,7 +193,7 @@ export interface FunctionsAuthConfig {
 /**
  * The full Rayfin project configuration as defined in `rayfin/rayfin.yml`.
  *
- * Shared across CLI, VS Code extension, and any future consumers.
+ * Shared across the CLI and other consumers.
  */
 export interface RayfinConfig {
   id: string;

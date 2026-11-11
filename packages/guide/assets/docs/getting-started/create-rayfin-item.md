@@ -48,21 +48,20 @@ If you do not have an existing workspace, create one:
 
 ## Step 4: Open, edit, and deploy your app
 
-After creating the Fabric data app, open the project in VS Code and use GitHub Copilot to build your app.
+After creating the Fabric data app, create or open a Rayfin project on your computer.
 
-1. In the Fabric portal, click **Open in VS Code** on your newly created Fabric data app.
-   VS Code opens with the project files loaded.
-1. Use **GitHub Copilot** to make changes to your app.
-   For example, ask Copilot to add a new data model, create a UI component, or update your API endpoints.
-1. When you are ready to deploy, run the following command in the VS Code terminal:
+1. If you don't have a project yet, run `npm create @microsoft/rayfin@latest` and select a template.
+1. Open the project in your preferred editor and make changes to your app.
+1. From your project root, deploy to the workspace and data app you created:
 
    ```bash
-   npx rayfin up
+   npx rayfin up --workspace-id <workspace-guid> --item-name "<data-app-name>"
    ```
 
-   You can also use the Command Palette and select **Project Rayfin: Up: Deploy to Fabric**.
-1. Once the deployment completes, Fabric provisions your app and displays the **App URL** in the terminal output.
-1. Click the **App URL** to open your deployed application in the browser and verify your changes.
+   Replace the placeholders with your Fabric workspace ID and the data app name.
+   If the project already has a recorded deployment in that workspace, it cannot be retargeted to a different data app; use a different project or workspace.
+1. When prompted, confirm that you want to reuse the existing data app and overwrite its configuration.
+1. Once deployment completes, open the **Hosting URL** from the terminal output in a browser to verify your changes.
 
 See [Deploy to Microsoft Fabric](../app-backend/deploy.md) to learn more about deployment options.
 

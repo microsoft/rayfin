@@ -140,9 +140,6 @@ packages/**/*.d.ts
 packages/**/*.d.ts.map
 packages/**/*.js
 !packages/docgen/**/*.js
-!packages/tools/vscode/src/__mocks__/**/*.js
-!packages/tools/vscode/src/webviews/typings.d.ts
-!packages/tools/vscode/src/typings.d.ts
 !packages/tools/common/src/typings.d.ts
 
 packages/**/*.js.map
@@ -186,8 +183,6 @@ storage-config*.json
 # Nuget package
 **/*.nupkg
 
-# VS Code extension package
-*.vsix
 # Exception: Include DAB packages in local-packages for development
 # TODO: In future we should get the packages from a dedicated pipeline in Github
 !packages/host/local-packages/*.nupkg
@@ -239,9 +234,6 @@ packages/tools/mcp/assets/docs.search.json
 
 # Build artifact zips
 *.zip
-
-# VS Code extension debug files
-.vscode-ext-debug*
 
 .worktrees/
 

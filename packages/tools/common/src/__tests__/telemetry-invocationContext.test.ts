@@ -393,9 +393,9 @@ describe('InvocationContext', () => {
     cliCtx.markSuccess();
     expect(cliCtx.finalize(TEST_ENV).clientSource).toBe('cli');
 
-    const vscodeCtx = new InvocationContext('rayfin-vscode', '0.1.0');
-    vscodeCtx.markSuccess();
-    expect(vscodeCtx.finalize(TEST_ENV).clientSource).toBe('vscode');
+    const createCtx = new InvocationContext('create-rayfin', '0.1.0');
+    createCtx.markSuccess();
+    expect(createCtx.finalize(TEST_ENV).clientSource).toBe('create-rayfin');
   });
 
   it('markSuccess() sets resultCategory to Success', () => {

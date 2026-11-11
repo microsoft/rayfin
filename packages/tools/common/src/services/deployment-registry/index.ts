@@ -12,9 +12,8 @@
  * deployment-env-file utils; the interface lives here so the `up` workflow
  * (and later other hosts) depend only on the universal contract. It is
  * intentionally Node-free, and every operation is async so a host whose
- * filesystem access is asynchronous (e.g. the VS Code web host backed by
- * `vscode.workspace.fs`) can satisfy it; the CLI host wraps its synchronous
- * utils.
+ * filesystem access is asynchronous can satisfy it; the CLI host wraps its
+ * synchronous utils.
  *
  * Out of scope here (by design): interactive deployment selection, which is a
  * Layer 1 prompt concern, and hydrating a deployment from Fabric, which is

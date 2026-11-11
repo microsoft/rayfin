@@ -72,7 +72,7 @@ Your frontend application uses this endpoint via the `VITE_RAYFIN_API_URL` envir
 
 ## Deployment
 
-You deploy your application to a Fabric data app using the `rayfin up` CLI command or the **Project Rayfin: Up: Deploy to Fabric** command in VS Code.
+You deploy your application to a Fabric data app using the `rayfin up` CLI command.
 
 ### What happens during deployment
 

@@ -1,10 +1,9 @@
 /**
  * TelemetryHandle adapter — per-invocation event enrichment.
  *
- * The host owns the `InvocationContext` lifecycle (CLI installs Commander
- * hooks; VS Code installs command-activation hooks). Workflows enrich the
- * current invocation's event through this handle — never via ambient
- * async-local-storage, which is unavailable in the VS Code web host.
+ * The host owns the `InvocationContext` lifecycle (the CLI installs Commander
+ * hooks). Workflows enrich the current invocation's event through this handle
+ * rather than ambient async-local-storage, which is unavailable in browsers.
  *
  * Properties are string dimensions; measurements are numeric metrics.
  * Callers MUST pass only safe, non-identifying values (the shared telemetry

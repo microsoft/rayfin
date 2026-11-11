@@ -19,5 +19,5 @@
    * hyphens, for example "my-subspace".  The corresponding config files will have paths
    * such as "common/config/subspaces/my-subspace/package-lock.yaml".
    */
-  "subspaceNames": ["default", "rayfin-cli", "samples", "docs", "vscode"]
+  "subspaceNames": ["default", "rayfin-cli", "samples", "docs"]
 }

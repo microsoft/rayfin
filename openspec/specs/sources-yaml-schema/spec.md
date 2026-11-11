@@ -292,7 +292,7 @@ Known types can be held from new authoring without becoming invalid for existing
 
 ### Requirement: CLI connector catalog uses ConnectorType
 
-The connector catalog in `packages/tools/common/src/config/connectors.ts` SHALL key its `CONNECTOR_CATALOG` map using `ConnectorType` values instead of plain strings. The catalog lives in `@microsoft/rayfin-tools-common` so it can be shared across CLI, VS Code extension, and other consumers.
+The connector catalog in `packages/tools/common/src/config/connectors.ts` SHALL key its `CONNECTOR_CATALOG` map using `ConnectorType` values instead of plain strings. The catalog lives in `@microsoft/rayfin-tools-common` so it can be shared across the CLI and other consumers.
 
 **ID**: `SOURCES-YAML-010`
 

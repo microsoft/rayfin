@@ -24,7 +24,6 @@ Run `rush lint` (or just `node common/autoinstallers/rush-prettier/node_modules/
 These are deliberately omitted from the entry-point list:
 
 - `packages/tools/common` — no `STAGED.md`, internal universal helpers only; not on the published docs surface.
-- `packages/tools/vscode` — `package.json` `main` points at a built `dist/main.js`, so TypeDoc can't resolve a TypeScript source entry. Re-include only after the extension grows a normal `src/index.ts` entry point.
 
 If you exclude additional packages, document the reason here.
 

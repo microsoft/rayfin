@@ -114,7 +114,6 @@ const T1_DEV_COMMAND: Task = {
       'guide/getting-started/',
       'guide/auth/',
       'guide/data/',
-      'guide/vscode/',
       'guide/app-backend/',
       'guide/hosting/',
     ]);

@@ -123,7 +123,7 @@ They do not validate deployed secrets, app-identity permissions, downstream endp
 
 ## Distribution and repository validation
 
-The CLI and VS Code display this workspace as **✨ Use default template**, using the existing `blankapp` template ID.
+The CLI displays this workspace as **✨ Use default template**, using the existing `blankapp` template ID.
 Its canonical `universal-app` name remains hidden to avoid a duplicate listing, but it stays selectable explicitly for plugin automation.
 
 Inside the Project Rayfin repository, the parent `samples/universal-app/` directory is a contributor-only Rush validation harness.
@@ -143,7 +143,7 @@ GitHub Copilot CLI is not required to scaffold or run this app.
 
 ## Instructions for building a new web app
 
-1. **Open the generated app**: Open a terminal in the project created by the Rayfin CLI, VS Code, or the Rayfin Copilot plugin.
+1. **Open the generated app**: Open a terminal in the project created by the Rayfin CLI or the Rayfin Copilot plugin.
 2. **Install dependencies if needed**: Run `npm install` from the workspace root.
 3. **Build the app**: Use your preferred editor or coding agent.
    If you use GitHub Copilot CLI, run `copilot`, then describe what you want to build.

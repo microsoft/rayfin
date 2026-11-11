@@ -1,7 +1,7 @@
 /**
  * Public entrypoint for the `up` workflow.
  *
- * Hosts (CLI `cli/src/index.ts`, VS Code `extension.ts`) import the workflow
+ * Hosts (such as CLI `cli/src/index.ts`) import the workflow
  * runner and its request/result/deps contracts from here. The backend
  * provisioning steps are also exported for peer workflows that need to create
  * the same Fabric target without running the full deployment workflow.

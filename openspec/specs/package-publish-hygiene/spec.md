@@ -4,16 +4,16 @@
 
 ### Requirement: Every publishable package SHALL have an explicit files field
 
-Every `package.json` under `packages/` that is not marked `"private": true` and is not the VS Code extension (`rayfin-vscode`) SHALL include an explicit `files` array.
+Every `package.json` under `packages/` that is not marked `"private": true` SHALL include an explicit `files` array.
 
 #### Scenario: SDK package with no files field
 
 - **WHEN** a publishable SDK package (e.g., `@microsoft/rayfin-auth`) has no `files` field in its `package.json`
 - **THEN** a `files` field SHALL be added containing `["dist/**/*.js", "dist/**/*.d.ts", "!dist/**/__tests__/**"]`
 
-#### Scenario: Private or non-npm package is skipped
+#### Scenario: Private package is skipped
 
-- **WHEN** a package has `"private": true` (e.g., `@rayfin/docgen`) or is packaged via `vsce` (e.g., `rayfin-vscode`)
+- **WHEN** a package has `"private": true` (e.g., `@rayfin/docgen`)
 - **THEN** its `package.json` SHALL NOT be modified by this change
 
 ### Requirement: Published packages SHALL NOT contain source map files
@@ -119,7 +119,7 @@ Every publishable package that uses an explicit `files` array SHALL include `"LI
 
 #### Scenario: Package with no files array
 
-- **WHEN** a package has no `files` array (e.g., private packages or vscode extension)
+- **WHEN** a package has no `files` array (e.g., a private package)
 - **THEN** no `files` array SHALL be added solely for LICENSE inclusion
 
 #### Scenario: Verifying LICENSE in published tarball

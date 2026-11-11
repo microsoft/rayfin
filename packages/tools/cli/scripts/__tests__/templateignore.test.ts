@@ -255,9 +255,7 @@ describe('global template ignore policy', () => {
   });
 
   it('excludes .npmrc at the root and at depth', () => {
-    // Registry credentials, once anyone has authenticated against a private
-    // feed. The vsix bundler's list already carried it; this one did not, so
-    // the same tree leaked it here instead.
+    // Registry credentials can be present after authenticating to a private feed.
     const matcher = globalMatcher();
 
     for (const segments of [['.npmrc'], ['packages', 'api', '.npmrc']]) {
@@ -269,10 +267,7 @@ describe('global template ignore policy', () => {
   });
 
   it('excludes build-tool caches at the root and at depth', () => {
-    // The VS Code list carries these; this one did not, so a tree that had been
-    // run through `vite dev` bundled its cache here and not in the vsix.
-    // Directories, so the matcher is told so: the trailing-slash patterns do
-    // not fire against a file of the same name.
+    // Trailing-slash patterns match directories, not files of the same name.
     const matcher = globalMatcher();
 
     for (const name of ['.vite', '.cache', '.tmp', '.temp']) {

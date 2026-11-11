@@ -7,8 +7,7 @@
  *
  * Drives the full Rayfin coordinated-release flow:
  *   preflight → bumpVersions → stripSkipCi → commitBump →
- *   bumpVscode → formatAndLint → commitFormat →
- *   push (opt-in) → openPr (opt-in)
+ *   formatAndLint → commitFormat → push (opt-in) → openPr (opt-in)
  *
  * Run with:
  *   npm run bump:npm -- [flags]
@@ -37,7 +36,6 @@ const PHASES = [
   'bumpVersions',
   'stripSkipCi',
   'commitBump',
-  'bumpVscode',
   'formatAndLint',
   'commitFormat',
   'push',
@@ -72,10 +70,7 @@ interface Ctx {
   currentBranch: string;
   preBumpHead: string;
   publishablePackages: RushProject[];
-  vscodePackage: RushProject | undefined;
   stateFile: string;
-  /** Set true after Phase 4 commits something — used to gate Phase 6 staging. */
-  bumpCommitMade: boolean;
 }
 
 interface RunState {
@@ -279,7 +274,7 @@ Usage:
   (equivalently: node common/scripts/install-run.js ${TSX_PACKAGE} tsx scripts/bump-npm-version/index.ts [flags])
 
 Flags:
-  --target-version <semver>   Pin typescript-sdk lockstep and vscode extension to this stable version.
+  --target-version <semver>   Pin typescript-sdk lockstep to this stable version.
                               Individual-version policies (cli, mcp, docs, guide, host-docs)
                               still auto-bump from changefiles.
   --push                      Push the branch when done. Default: false.
@@ -411,13 +406,6 @@ function readPublishablePackages(repoRoot: string): RushProject[] {
     join(repoRoot, 'rush.json')
   );
   return rushJson.projects.filter((p) => p.shouldPublish !== false);
-}
-
-function readVscodePackageEntry(repoRoot: string): RushProject | undefined {
-  const rushJson = readJsonc<{ projects: RushProject[] }>(
-    join(repoRoot, 'rush.json')
-  );
-  return rushJson.projects.find((p) => p.packageName === 'rayfin-vscode');
 }
 
 function getStateFile(repoRoot: string): string {
@@ -689,7 +677,6 @@ function phaseCommitBump(ctx: Ctx): void {
   git(['add', '-A'], { cwd: ctx.repoRoot });
   if (workingTreeHasStagedChanges(ctx)) {
     git(['commit', '-m', 'chore: bump versions'], { cwd: ctx.repoRoot });
-    ctx.bumpCommitMade = true;
     ok('Committed: chore: bump versions');
   } else {
     info('No staged changes to commit; skipping bump commit.');
@@ -708,51 +695,11 @@ function workingTreeHasStagedChanges(ctx: Ctx): boolean {
 }
 
 // ---------------------------------------------------------------------------
-// Phase: bumpVscode
-// ---------------------------------------------------------------------------
-
-function phaseBumpVscode(ctx: Ctx): void {
-  header('Phase 5 — Bump rayfin-vscode extension');
-
-  if (!ctx.vscodePackage) {
-    warn('rayfin-vscode entry not found in rush.json; skipping vscode bump.');
-    return;
-  }
-  const pkgPath = join(
-    ctx.repoRoot,
-    ctx.vscodePackage.projectFolder,
-    'package.json'
-  );
-  const pkg = readJson<{ version: string }>(pkgPath);
-  const current = pkg.version;
-  const next = ctx.args.targetVersion ?? bumpMinor(current);
-  if (next === current) {
-    info(`vscode package already at ${current}; nothing to do.`);
-    return;
-  }
-  if (dryRun) {
-    info(
-      `(dry-run) Would bump rayfin-vscode ${current} → ${next} in ${relative(ctx.repoRoot, pkgPath)}`
-    );
-    return;
-  }
-  pkg.version = next;
-  writeJsonPreservingTrailingNewline(pkgPath, pkg);
-  ok(`Bumped rayfin-vscode: ${current} → ${next}`);
-}
-
-function bumpMinor(v: string): string {
-  const core = v.split('-')[0]!.split('+')[0]!;
-  const [maj, min] = core.split('.').map((s) => Number(s));
-  return `${maj ?? 0}.${(min ?? 0) + 1}.0`;
-}
-
-// ---------------------------------------------------------------------------
 // Phase: formatAndLint
 // ---------------------------------------------------------------------------
 
 function phaseFormatAndLint(ctx: Ctx): void {
-  header('Phase 6 — Format & lint');
+  header('Phase 5 — Format & lint');
   run('rush', ['format'], { cwd: ctx.repoRoot });
   run('rush', ['docs:lint', '--fix'], { cwd: ctx.repoRoot });
 }
@@ -762,7 +709,7 @@ function phaseFormatAndLint(ctx: Ctx): void {
 // ---------------------------------------------------------------------------
 
 function phaseCommitFormat(ctx: Ctx): void {
-  header('Phase 7 — Commit formatting changes');
+  header('Phase 6 — Commit formatting changes');
   git(['add', '-A'], { cwd: ctx.repoRoot });
   if (workingTreeHasStagedChanges(ctx)) {
     git(['commit', '-m', 'chore: format after version bump'], {
@@ -779,7 +726,7 @@ function phaseCommitFormat(ctx: Ctx): void {
 // ---------------------------------------------------------------------------
 
 function phasePush(ctx: Ctx): void {
-  header('Phase 8 — Push');
+  header('Phase 7 — Push');
   if (!ctx.args.push) {
     info(`--push not set. To push manually run:`);
     console.log(`    git push origin ${ctx.currentBranch}`);
@@ -794,7 +741,7 @@ function phasePush(ctx: Ctx): void {
 // ---------------------------------------------------------------------------
 
 function phaseOpenPr(ctx: Ctx): void {
-  header('Phase 9 — Open pull request');
+  header('Phase 8 — Open pull request');
   if (!ctx.args.pr) {
     info('--pr not set; skipping PR creation.');
     return;
@@ -944,7 +891,6 @@ const PHASE_FNS: Record<Phase, (ctx: Ctx) => void> = {
   bumpVersions: phaseBumpVersions,
   stripSkipCi: phaseStripSkipCi,
   commitBump: phaseCommitBump,
-  bumpVscode: phaseBumpVscode,
   formatAndLint: phaseFormatAndLint,
   commitFormat: phaseCommitFormat,
   push: phasePush,
@@ -964,7 +910,6 @@ function main(): void {
     '--show-current',
   ]);
   const publishablePackages = readPublishablePackages(repoRoot);
-  const vscodePackage = readVscodePackageEntry(repoRoot);
   const stateFile = getStateFile(repoRoot);
 
   const ctx: Ctx = {
@@ -973,9 +918,7 @@ function main(): void {
     currentBranch,
     preBumpHead: '',
     publishablePackages,
-    vscodePackage,
     stateFile,
-    bumpCommitMade: false,
   };
 
   if (args.dryRun) warn('DRY RUN — no side effects will be applied.');

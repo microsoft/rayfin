@@ -65,7 +65,7 @@ Disabling or excluding Functions SHALL NOT permit an explicitly invalid auth val
 
 The application-auth feature flag and capability option SHALL NOT be required or resolved by current tooling.
 Setting an old feature-flag value SHALL NOT permit another auth mode or bypass validation.
-The shared `validateFunctionsConfig` contract SHALL apply to legacy and v2 CLI `up`, both Fabric-backed and Docker-backed CLI `dev`, and VS Code deployment.
+The shared `validateFunctionsConfig` contract SHALL apply to legacy and v2 CLI `up` and both Fabric-backed and Docker-backed CLI `dev`.
 Normal CLI `dev` SHALL validate for both providers because Fabric writes the declared services through the workload client and Docker posts them to its local `/api/projectRuntimeSettings` endpoint.
 CLI `dev functions apply`, `up functions deploy`, and `up staticapp deploy` SHALL NOT validate local Functions auth because they do not apply that setting.
 Applicable commands SHALL reject invalid configuration before authentication, prerequisite installation, builds, packaging, runtime launch, or upload.

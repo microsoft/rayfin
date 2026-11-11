@@ -2,7 +2,7 @@
  * Typed telemetry event schemas for the Rayfin platform.
  *
  * These interfaces define the wire format for all client-side telemetry
- * events emitted by the CLI and VS Code extension. Every field is typed,
+ * events emitted by the Rayfin CLI tools. Every field is typed,
  * documented, and versioned via `schemaVersion`.
  *
  * Shared runtime guards validate enrichment at accumulation and serialization
@@ -10,10 +10,10 @@
  */
 
 /** Product identifiers for telemetry events. */
-export type ProductName = 'rayfin-cli' | 'rayfin-vscode' | 'create-rayfin';
+export type ProductName = 'rayfin-cli' | 'create-rayfin';
 
 /** Client source discriminator. */
-export type ClientSource = 'cli' | 'vscode' | 'create-rayfin';
+export type ClientSource = 'cli' | 'create-rayfin';
 
 /** Outcome classification for a command invocation. */
 export type ResultCategory = 'Success' | 'Failure' | 'UserFault' | 'Canceled';
@@ -407,7 +407,7 @@ export interface EnvironmentInfo {
 }
 
 /**
- * Emitted once per CLI command or VS Code command invocation.
+ * Emitted once per CLI command invocation.
  *
  * Captures timing, outcome, and safe parameter metadata.
  * The schema evolves additively: optional fields and allowlisted
