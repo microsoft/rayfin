@@ -5,15 +5,16 @@ import {
   loadRayfinConfig,
   resolveServicePath,
 } from '../../utils/config-utils.js';
-import { resolveDeploymentEnvFile } from '../../utils/env-fabric-utils.js';
 import {
-  resolveOutputMode,
-  resolveRootOutputFlags,
+  resolveCommandFlags,
   emitJson,
   emitJsonError,
   formatDuration,
+  isInteractive,
+  modeWarn,
 } from '../../utils/output-mode.js';
 import { findRayfinProjectRoot } from '../../utils/project-utils.js';
+import { resolveDeploymentForUpdate } from '../../utils/resolve-deployment-for-update.js';
 
 /**
  * DB subcommand for remote deployment.
@@ -41,13 +42,11 @@ export const upDbCommand = new Command('db')
           json?: boolean;
         }
       ) {
-        // OR-merge with root-level flags. `??` would not fall through a
-        // `false` default declared on the local option; see
-        // `resolveRootOutputFlags()` for context.
-        const root = resolveRootOutputFlags(this);
-        const resolvedVerbose = Boolean(options.verbose) || root.verbose;
-        const jsonFlag = Boolean(options.json) || root.json;
-        const mode = resolveOutputMode({ json: jsonFlag });
+        const {
+          mode,
+          verbose: resolvedVerbose,
+          yes,
+        } = resolveCommandFlags(this);
 
         // The parent `up` command also declares `--force` (for the full
         // `rayfin up --force` deploy). Commander binds the `--force` token to
@@ -72,7 +71,19 @@ export const upDbCommand = new Command('db')
             projectRoot,
             rayfinConfig?.services?.data?.path
           );
-          const resolved = await resolveDeploymentEnvFile({ projectRoot });
+          const globals = this.optsWithGlobals();
+          const resolved = await resolveDeploymentForUpdate({
+            projectRoot,
+            workspace: globals.workspace,
+            workspaceId: globals.workspaceId,
+            itemName: globals.itemName,
+            dryRun: globals.dryRun,
+            workspaceUri: globals.workspaceUri,
+            nonInteractive: !isInteractive({ yes }),
+          });
+          for (const warning of resolved?.warnings ?? []) {
+            modeWarn(mode, warning);
+          }
 
           // Use shared applyDbConfig function with remote: true.
           // No `remoteEndpoint` override — applyDbConfig falls through to
@@ -80,6 +91,7 @@ export const upDbCommand = new Command('db')
           // Fabric item endpoint.
           await applyDbConfig({
             remote: true,
+            mode,
             force: resolvedForce,
             verbose: resolvedVerbose,
             exitOnError: true,
