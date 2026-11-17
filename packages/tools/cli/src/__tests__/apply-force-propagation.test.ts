@@ -13,6 +13,12 @@ vi.mock('../utils/env-fabric-utils.js', () => ({
     deployment: { rayfinApiUrl: 'https://example.test/api' },
   })),
 }));
+vi.mock('../utils/resolve-deployment-for-update.js', () => ({
+  resolveDeploymentForUpdate: vi.fn(async () => ({
+    deployment: { rayfinApiUrl: 'https://example.test/api' },
+    warnings: [],
+  })),
+}));
 vi.mock('../utils/project-utils.js', () => ({
   findRayfinProjectRoot: vi.fn(() => '/tmp/project'),
 }));

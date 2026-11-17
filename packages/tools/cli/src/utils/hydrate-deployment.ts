@@ -21,7 +21,10 @@ import { RayfinItemManager } from '../services/fabric/rayfin-item.js';
 import { WorkspaceManager } from '../services/fabric/workspace.js';
 
 import { hasAmbientToken, getAmbientToken } from './ambient-env.js';
-import { writeDeploymentEnvFile } from './env-fabric-utils.js';
+import {
+  writeDeploymentEnvFile,
+  type DeploymentEnvVars,
+} from './env-fabric-utils.js';
 import { fabricFetch } from './http-client.js';
 
 export interface HydrateOptions {
@@ -80,10 +83,8 @@ async function acquireToken(
 }
 
 /**
- * Authenticate to Fabric, fetch the BaaS endpoint and publishable key for
- * the given workspace + item, and persist a full deployment record into
- * `rayfin/.deployments.json` (plus the `RAYFIN_PUBLIC_*` projection in
- * `rayfin/.env`).
+ * Authenticate to Fabric and read deployment metadata without changing
+ * local files or cloud resources.
  *
  * Auth defaults to **silent-only** (ambient token or cached silent
  * token). Pass `interactive: true` from a TTY-attached parent process to
@@ -98,16 +99,16 @@ async function acquireToken(
  * throws with an actionable message so callers can surface it as a
  * warning and fall back to a minimal pre-seed.
  */
-export async function hydrateDeploymentFromFabric(
+export async function readDeploymentFromFabric(
   options: HydrateOptions
-): Promise<HydrateResult> {
-  const {
-    projectRoot,
-    workspaceId,
-    itemId,
-    tenantId,
-    interactive = false,
-  } = options;
+): Promise<{
+  workspaceDisplayName: string;
+  deployment: DeploymentEnvVars & {
+    rayfinApiUrl: string;
+    publishableKey: string;
+  };
+}> {
+  const { workspaceId, itemId, tenantId, interactive = false } = options;
 
   let token: string;
   try {
@@ -182,13 +183,11 @@ export async function hydrateDeploymentFromFabric(
     backendUrl: baasEndpoint,
   }).replace(/\/+$/, '');
 
-  // Persist full deployment record + RAYFIN_PUBLIC_* in rayfin/.env.
-  // Pass the bare portal origin; the registry helper composes the deep
+  // Return the bare portal origin; the registry helper composes the deep
   // link as `<portalUrl>/groups/<ws>/appbackends/<item>?ctid=<tenant>`.
-  const envFilePath = await writeDeploymentEnvFile(
-    projectRoot,
-    workspace.displayName,
-    {
+  return {
+    workspaceDisplayName: workspace.displayName,
+    deployment: {
       rayfinItemId: itemId,
       rayfinApiUrl: baasEndpoint,
       fabricWorkspaceId: workspaceId,
@@ -196,13 +195,26 @@ export async function hydrateDeploymentFromFabric(
       publishableKey,
       fabricPortalUrl: portalBase,
       hostingUrl: undefined,
-    }
+    },
+  };
+}
+
+/** Fetch and persist deployment metadata for an existing Fabric item. */
+export async function hydrateDeploymentFromFabric(
+  options: HydrateOptions
+): Promise<HydrateResult> {
+  const { workspaceDisplayName, deployment } =
+    await readDeploymentFromFabric(options);
+  const envFilePath = await writeDeploymentEnvFile(
+    options.projectRoot,
+    workspaceDisplayName,
+    deployment
   );
 
   return {
-    workspaceDisplayName: workspace.displayName,
-    baasEndpoint,
-    publishableKey,
+    workspaceDisplayName,
+    baasEndpoint: deployment.rayfinApiUrl,
+    publishableKey: deployment.publishableKey,
     envFilePath,
   };
 }

@@ -4,7 +4,7 @@ const mocks = vi.hoisted(() => ({
   applyDbConfig: vi.fn(),
   loadRayfinConfig: vi.fn(),
   resolveServicePath: vi.fn(),
-  resolveDeploymentEnvFile: vi.fn(),
+  resolveDeploymentForUpdate: vi.fn(),
   findRayfinProjectRoot: vi.fn(),
 }));
 
@@ -17,8 +17,8 @@ vi.mock('../../../utils/config-utils.js', () => ({
   resolveServicePath: mocks.resolveServicePath,
 }));
 
-vi.mock('../../../utils/env-fabric-utils.js', () => ({
-  resolveDeploymentEnvFile: mocks.resolveDeploymentEnvFile,
+vi.mock('../../../utils/resolve-deployment-for-update.js', () => ({
+  resolveDeploymentForUpdate: mocks.resolveDeploymentForUpdate,
 }));
 
 vi.mock('../../../utils/project-utils.js', () => ({
@@ -40,10 +40,31 @@ describe('rayfin up db apply', () => {
       },
     });
     mocks.resolveServicePath.mockReturnValue('/repo/packages/data');
-    mocks.resolveDeploymentEnvFile.mockResolvedValue({
+    mocks.resolveDeploymentForUpdate.mockResolvedValue({
       deployment: { rayfinApiUrl: 'https://example.test/workload' },
+      warnings: [],
     });
     mocks.applyDbConfig.mockResolvedValue(undefined);
+  });
+
+  it('resolves an existing app before applying database changes in a fresh checkout', async () => {
+    await runApply();
+
+    expect(mocks.resolveDeploymentForUpdate).toHaveBeenCalledWith(
+      expect.objectContaining({ projectRoot: '/repo', nonInteractive: true })
+    );
+    expect(
+      mocks.resolveDeploymentForUpdate.mock.invocationCallOrder[0]
+    ).toBeLessThan(mocks.applyDbConfig.mock.invocationCallOrder[0]);
+  });
+
+  it('does not apply database changes when target discovery fails', async () => {
+    mocks.resolveDeploymentForUpdate.mockRejectedValueOnce(
+      new Error('AppBackend not found')
+    );
+
+    await expect(runApply()).rejects.toThrow('AppBackend not found');
+    expect(mocks.applyDbConfig).not.toHaveBeenCalled();
   });
 
   it('enables transient-error retry on the remote apply', async () => {

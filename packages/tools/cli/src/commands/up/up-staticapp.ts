@@ -12,18 +12,18 @@ import {
   loadRayfinConfig,
   resolveServiceRoot,
 } from '../../utils/config-utils.js';
-import { resolveDeploymentEnvFile } from '../../utils/env-fabric-utils.js';
 import { formatBytes } from '../../utils/format-utils.js';
 import { persistHostingUrl } from '../../utils/hosting-url-utils.js';
 import { fabricFetch, throwIfNotOk } from '../../utils/http-client.js';
 import {
-  resolveOutputMode,
-  resolveRootOutputFlags,
+  resolveCommandFlags,
   modeLog,
   modeError,
   emitJson,
   emitJsonError,
   formatDuration,
+  isInteractive,
+  modeWarn,
 } from '../../utils/output-mode.js';
 import { resolveDeclaredPackageVersions } from '../../utils/package-versions.js';
 import { findRayfinProjectRoot } from '../../utils/project-utils.js';
@@ -33,6 +33,7 @@ import {
   getRemoteRuntimeSettingsUrl,
   hasRemoteEndpoint,
 } from '../../utils/remote-endpoint-utils.js';
+import { resolveDeploymentForUpdate } from '../../utils/resolve-deployment-for-update.js';
 import { HttpError, withRetry, RETRY_CONFIG } from '../../utils/retry-utils.js';
 import {
   removeRuntimeConfigFile,
@@ -112,11 +113,69 @@ export const upStaticappCommand = new Command('staticapp')
         this: Command,
         options: { verbose?: boolean; skipBuild?: boolean; json?: boolean }
       ) {
-        const resolvedVerbose =
-          Boolean(options.verbose) || resolveRootOutputFlags(this).verbose;
-        const jsonFlag =
-          Boolean(options.json) || resolveRootOutputFlags(this).json;
-        const mode = resolveOutputMode({ json: jsonFlag });
+        const {
+          mode,
+          verbose: resolvedVerbose,
+          yes,
+        } = resolveCommandFlags(this);
+        const projectRoot = findRayfinProjectRoot(process.cwd(), {
+          verbose: false,
+          silent: true,
+        });
+        const rayfinConfig = loadRayfinConfig(projectRoot, { silent: true });
+        if (!rayfinConfig) {
+          if (mode === 'json') {
+            emitJsonError(mode, 'Could not load rayfin.yml configuration');
+          }
+          modeError(mode, '❌ Could not load rayfin.yml configuration');
+          modeError(
+            mode,
+            "   Run 'rayfin init' to create a project configuration."
+          );
+          throw new CliHandledError(
+            new Error('Could not load rayfin.yml configuration')
+          );
+        }
+
+        const staticConfig = rayfinConfig.services.staticHosting;
+        if (!staticConfig?.enabled) {
+          if (mode === 'json') {
+            emitJsonError(mode, 'Static hosting is not enabled in rayfin.yml');
+          }
+          modeError(mode, '❌ Static hosting is not enabled in rayfin.yml');
+          modeError(
+            mode,
+            "💡 Set 'services.staticHosting.enabled: true' and re-run"
+          );
+          throw new CliHandledError(
+            new Error('Static hosting is not enabled in rayfin.yml')
+          );
+        }
+        const globals = this.optsWithGlobals();
+        const resolved = await resolveDeploymentForUpdate({
+          projectRoot,
+          workspace: globals.workspace,
+          workspaceId: globals.workspaceId,
+          itemName: globals.itemName,
+          dryRun: globals.dryRun,
+          workspaceUri: globals.workspaceUri,
+          nonInteractive: !isInteractive({ yes }),
+        }).catch((error: unknown) => {
+          const message =
+            error instanceof Error ? error.message : String(error);
+          if (mode === 'json') {
+            emitJsonError(mode, message);
+          }
+          modeError(mode, `❌ ${message}`);
+          modeError(
+            mode,
+            '   Check the selected workspace and --item-name, then retry.'
+          );
+          throw new CliHandledError(error);
+        });
+        for (const warning of resolved?.warnings ?? []) {
+          modeWarn(mode, warning);
+        }
 
         // Verify remote endpoint exists
         if (!hasRemoteEndpoint()) {
@@ -145,37 +204,6 @@ export const upStaticappCommand = new Command('staticapp')
           );
         }
 
-        // Load config (silent to avoid duplicate root messages)
-        const rayfinConfig = loadRayfinConfig(process.cwd(), { silent: true });
-        if (!rayfinConfig) {
-          if (mode === 'json') {
-            emitJsonError(mode, 'Could not load rayfin.yml configuration');
-          }
-          modeError(mode, '❌ Could not load rayfin.yml configuration');
-          throw new CliHandledError(
-            new Error('Could not load rayfin.yml configuration')
-          );
-        }
-
-        const staticConfig = rayfinConfig.services.staticHosting;
-        if (!staticConfig?.enabled) {
-          if (mode === 'json') {
-            emitJsonError(mode, 'Static hosting is not enabled in rayfin.yml');
-          }
-          modeError(mode, '❌ Static hosting is not enabled in rayfin.yml');
-          modeError(
-            mode,
-            "💡 Set 'services.staticHosting.enabled: true' and re-run"
-          );
-          throw new CliHandledError(
-            new Error('Static hosting is not enabled in rayfin.yml')
-          );
-        }
-
-        const projectRoot = findRayfinProjectRoot(process.cwd(), {
-          verbose: false,
-          silent: true,
-        });
         const staticServiceRoot = resolveServiceRoot(
           projectRoot,
           'staticHosting',
@@ -183,7 +211,6 @@ export const upStaticappCommand = new Command('staticapp')
         );
 
         // Read rayfinItemId and workspaceName from the deployment registry
-        const resolved = await resolveDeploymentEnvFile({ projectRoot });
         const rayfinItemId = resolved?.deployment.rayfinItemId;
         const workspaceName = resolved?.workspaceName;
         const monikerHeaders: Record<string, string> = rayfinItemId
